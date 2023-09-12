@@ -57,49 +57,6 @@ In my free time, ...
 :::
 
 
-```{=html}
-<!-- GRID PHOTOS NOT INTERACTIVE
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Grid Gallery with HTML & CSS</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="image-grid" >
-       <img class="image-grid-col-2 image-grid-row-2" src="images/cliff.jpeg" alt="Cliff bar"> 
-       <img src="images/sunset.jpg" alt="Camping in Big Sur"> 
-    </div>
-</body>
-</html>
--->
-```
-
-```{=html}
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="grid">
-    <div class="img-wrapper">
-      <img class="blur" src="images/cliff.jpeg">
-      <div class="content fade">cliff bar</div>
-    </div>
-    <div class="img-wrapper">
-      <img class="zoom blur" src="images/sunset.jpg">
-      <div class="content fade">camping </div>
-    </div>
-  </div>
-</body>
-</html>
-```
-
 
 
 
