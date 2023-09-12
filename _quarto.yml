@@ -3,18 +3,39 @@ project:
   output-dir: docs
 
 website:
-  title: "ramhunte.github.io"
+  title: "Raymond Hunter"
   navbar:
-    left:
+    title: "Raymond Hunter"
+    left: 
       - href: index.qmd
         text: Home
       - about.qmd
+      - resume.qmd
+    
+    right: 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/raymond-hunter-90a8081a7/
+      - icon: github
+        href: https://github.com/ramhunte
+      - icon: envelope
+        href: mailto:ramhunte@bren.ucsb.edu  
+ 
+ 
+  page-footer: 
+    left: 
+      - "Copyright 2023, Raymond Hunter"
+
+  
+    
+    
+
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
-    toc: true
+    theme: 
+    - styles.scss
+    toc: false
+    page-layout: full
 
 editor: visual
 

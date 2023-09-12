@@ -1,0 +1,53 @@
+---
+title: "Resume"
+editor: visual
+
+---
+
+
+::: panel-tabset
+
+### Education 
+
+**University of California, Santa Barbara** \| Santa Barbara, CA 
+
+- *Masters in Environmental Science and Management* \| Sept 2022 - June 2024
+
+**University of California, Santa Cruz** \| Santa Cruz, CA
+
+- *B.Sc. Ecology and Evolutionary Biology* \| Sept 2017 - Dec 2020 
+- *B.A. Environmental Studies* \| Sept 2017 - Dec 2020
+
+
+### Experience 
+
+**University of California, Santa Barbara** \| Teaching Assistant \| Sept 2022 - present
+
+**University of California, Santa Barbara** \| Lab Technician \| Jan 2021 - May 2022
+
+**Mountain View Biological Consulting** \| Biologist \| Feb 2021 - Sept 2021
+
+### Skills & Certifications
+
+**Languages/Software:** 
+
+-  R 
+-  SQL 
+-  Git/GitHub 
+-  QGIS  
+-  Tableau 
+- excel 
+
+**Certificates:** 
+
+-  Google Data Analytics (Sept 2023)
+
+### Resume
+ [Download PDF](rh_resume.pdf)
+
+<iframe
+  width="800"
+  height="800"
+  src="rh_resume.pdf">
+</iframe>
+:::

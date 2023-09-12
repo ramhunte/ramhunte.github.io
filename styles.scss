@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+
+// Colors
+$gray1:#DCDCDC ;
+$lightblue: #E0FFFF;
+$darkturq: #2F4F4F;
+$turq: 	#DAA520	;
+
+// Base document colors
+$navbar-bg: $darkturq; // navbar
+$navbar-fg: $lightblue; // navbar foreground elements
+$navbar-hl: $turq; // highlight color when hovering over navbar links
+$body-bg: $gray1; // page background 
+$body-color: $darkturq; // page text 
+$footer-bg: $darkturq; // footer 
+$link-color: $turq; // hyperlinks 
+
+// Inline code
+$code-bg: $darkturq; // inline code background color
+$code-color: $turq; // inline code text color
+
+// Code blocks
+$code-block-bg: $darkturq; // code block background color
+
+
+
+/*-- scss:rules --*/
+
+h1, h2, h3, h4, h5 {
+  letter-spacing: 5px;
+  font-weight: 700
+}
+
+
