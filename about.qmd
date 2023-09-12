@@ -1,11 +1,22 @@
 ---
 title: "About"
 ---
+<hr class="custom-line">
+
+<h4>a snapshot of my life</h4>
+
+
+
+
+
+![](images/baja.jpeg)
+
 
 ::: panel-tabset
 
-### Background
+### Bio
 
+<h4>Background</h4>
 Born and raised in Laguna Beach, CA, Ray's love for the great outdoors was fostered in the blue waters of the Pacific ocean where he frequently surfed and swam with the local inhabitants of the kelp. He frequently visited the Sierra Nevada mountains where he learned to dwell in the quietness of the mountains in the sun and snow. Upon graduating high school, his deep connection to the environment drove him to Santa Cruz where he attended the University of California, Santa Cruz. His education in Ecology and Evolutionary Biology as well as Environmental Studies planted the seed of a young scientist. Ray frequented the redwood forests, fast streams, and rugged coast of the Monterrey bay, serving a crucial period in developing his curiosity of the natural world. 
 
 Upon graduating in 3 years, he moved to Mammoth Lakes in 2021 to pursue rock climbing, skiing, backpacking, and working as a freshwater ecologist at the Sierra Nevada Aquatic Research Center (SNARL). He learned many of the skills that shape a successful scientist and make one really look at the world in a critical way. And he might have had a bit too much fun on the side when he wasnt working. His passion to continue learning drew him back to the coast in 2022 to start a masters program in the Bren School of Environmental Science and Management at UCSB where he remains today. 
@@ -14,11 +25,13 @@ Upon graduating in 3 years, he moved to Mammoth Lakes in 2021 to pursue rock cli
 
 ### Interests
 
+<h4>Environmental Data Science</h4>
+
 While Ray is passionate about a variety of environmental topics, one underlying theme keeps the gears in his mind spinning: Environmental Data. Grappling, extracting, analyzing, and visualizing data are ways that one can make sense of the world around them, and that is just what he likes to do. Ray is the data manager for his masters group project where he is using regression analyses to understand what the most cost effective restorations methods are when restoring Puget Sound Chinook habitat. 
 
 ### Hobbies
 
-In my free time, ...
+<h4>In my free time, . . .</h4>
 
 ::: {layout-ncol="2"}
 

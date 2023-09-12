@@ -3,9 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: "Raymond Hunter"
+  favicon: images/logo.png
   navbar:
-    title: "Raymond Hunter"
+    logo: images/logo.png
     left: 
       - href: index.qmd
         text: Home
@@ -24,6 +24,8 @@ website:
   page-footer: 
     left: 
       - "Copyright 2023, Raymond Hunter"
+    right: 
+      - "Made using Quarto"
 
   
     
@@ -34,6 +36,7 @@ format:
   html:
     theme: 
     - styles.scss
+    mainfont: Comfortaa
     toc: false
     page-layout: full
 
