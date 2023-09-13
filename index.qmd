@@ -1,6 +1,6 @@
 ---
 title: "Raymond Hunter"
-subtitle: "Nature Lover | Data Science"
+subtitle: "Nature | Data Science"
 image: images/headshot.jpg
 about:
   template: trestles

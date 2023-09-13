@@ -29,9 +29,11 @@ I frequented streams in the eastern Sierra doing field and lab work, with the go
 
 ::: {layout-ncol="2"}
 
-![Field work in Big Sur, CA](images/big_sur.jpg)
 
 ![Field work in Puerto Rico](images/pr.jpg)
+
+
+![Holding a desert iguana in Baja California](images/liz.jpeg)
 
 
 
@@ -39,7 +41,12 @@ I frequented streams in the eastern Sierra doing field and lab work, with the go
 ![Some beautiful microbes from Puerto Rico](images/microbes.jpg)
 
 
-![Holding a desert iguana in Baja California](images/liz.jpeg)
+![Field work in Big Sur, CA](images/big_sur.jpg)
+
+
+![Sampling a rock glacier stream in the Sierras](images/rock_glacier.jpeg)
+
+![Working in the lab at UCSC](images/lab.jpg)
 
 :::
 
@@ -61,7 +68,7 @@ Aside from his masters work, I am particularly interested in working with big da
 
 ### Hobbies
 
-<h4>In my free time, . . .</h4>
+<h4>In my free time . . .</h4>
 
 My brain suffers immensely when he feels that he can't get outside and move at the end of the day. Equally as strong as my love for nature is my desire to immerse myself in it. Some of my favorite activities include: rock climbing, surfing, paragliding, spearfishing, running, backpacking, and practicing yoga. While I know I can't do them all every day, I try my best to at least one of them... or 3. Here are some of my favorite memories over the years. 
 
@@ -83,9 +90,12 @@ My brain suffers immensely when he feels that he can't get outside and move at t
 
 ![Big wall climbing on El Capitan, Yosemite](images/surf.jpg)
 
-![Beach day in Kauai](images/beach.jpg)
+
 
 ![Snack during a backcountry ski tour](images/touring.jpeg)
+
+
+![Beach day in Kauai](images/beach.jpg)
 
 
 

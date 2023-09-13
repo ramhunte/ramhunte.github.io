@@ -1,14 +1,17 @@
 /*-- scss:defaults --*/
 
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
+//@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
 
 // Colors
 $gray1:#F8F8F8 ;
 $lightblue: #E0FFFF;
 $darkturq: #2F4F4F;
-$gold: 	#DAA520	;
+$gold: #E9B116	;
 
 // Base document colors
 $navbar-bg: $darkturq; // navbar
@@ -75,6 +78,9 @@ body {
  .tab-content {  
    border: 3px solid $darkturq;
 }
+
+
+
 
 
 
