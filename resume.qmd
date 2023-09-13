@@ -42,9 +42,12 @@ title: "Resume"
 -  Google Data Analytics (Sept 2023)
 
 ### Full Resume
- [Download PDF](rh_resume.pdf)
 
-<iframe
+<p align="center">
+ [Download PDF](rh_resume.pdf)
+</p>
+
+<iframe 
   width="800"
   height="800"
   src="rh_resume.pdf">

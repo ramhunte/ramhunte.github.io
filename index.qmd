@@ -17,19 +17,20 @@ about:
       text: Email
       href: mailto:ramhunte@bren.ucsb.edu
 ---
+![](images/big_pine.jpg)
+
 
 ## Hello world!
 
-<hr class="custom-line">
-
 Out of the infinite amount of content that available on the web, you have stumbled upon a little screenshot of my life on a computer screen. Whoohoo! My name is Raymond (I go by Ray), and I created this personal website in R Studio to show off some of the things that are important to me in my academic and professional career. Here, I am sharing some skills, experiences, and hobbies that have molded me into the nature loving, data enthusiast that I am today.
 
-With a diverse background in the "environmental" field, I have developed a passion for investigating environmental problems and applying data analysis skills to make sense of the chaos. Some of my favorite tools to use are R/RStudio, SQL, Tableau, QGIS, and of course, spreadsheets. I use these tools for everything from creating multi-species occupancy analyses of invasive rodents to visualizing anthropogenic energy production and consumption to simply analyzing my monthly budgeting. My knowledge and understanding in working with data grows daily, which further cycles back into a positive feedback loop making me even more curious to analyze how the world works.
+With a diverse background in the "environmental" field, I have developed a passion for investigating environmental problems and applying data science skills to make sense of the chaos. Some of my favorite tools to use are R/RStudio, SQL, Tableau, QGIS, and of course, spreadsheets. I use these tools for everything from creating multi-species occupancy analyses of invasive rodents to visualizing anthropogenic energy production and consumption to simply analyzing my monthly budgeting.
 
 I am currently completing my Masters in the 
 [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) 
-at the University of California Santa Barbara, and I work as a teaching assistant on the side. When not grading tests or squinting my eyes at error messages, I enjoy flooding my brain with dopamine in activities including rock climbing, surfing, paragliding, spearfishing, running, and practicing yoga.
+at the University of California Santa Barbara, and I work as a teaching assistant on the side. When not grading tests or squinting my eyes at error messages, I enjoy getting after it outside.
 
+Enjoy!
 <hr class="custom-line">
 
 *"Not all those who wonder are lost"* - Gandalf the Grey
