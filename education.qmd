@@ -1,8 +1,0 @@
----
-title: "Education"
-image: ucsb_logo.jpg
----
-
-**University of California, Santa Barbara** \| Santa Barbara, CA *Masters in Environmental Science and Management* \| Sept 2022 - June 2024
-
-**University of California, Santa Cruz** \| Santa Cruz, CA B.Sc. *Ecology and Evolutionary Biology* \| Sept 2017 - Dec 2020 B.A. *Environmental Studies* \| Sept 2017 - Dec 2020
