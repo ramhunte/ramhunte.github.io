@@ -1,0 +1,133 @@
+---
+title: "Resume"
+---
+<hr class="custom-line">
+
+::: panel-tabset
+
+### Education 
+
+**University of California, Santa Barbara** \| Santa Barbara, CA 
+
+![](images/cap2.svg){width="2%"} *Masters in Environmental Science and Management* \| Sept 2022 - June 2024
+
+**University of California, Santa Cruz** \| cum laude 3.84 GP \| Santa Cruz, CA
+
+![](images/cap2.svg){width="2%"} *B.Sc. Ecology and Evolutionary Biology* \| Highest Honors 4.0 GPA\| Sept 2017 - Dec 2020 
+
+![](images/cap2.svg){width="2%"} *B.A. Environmental Studies* \| Highest Honors 4.0 GPA\| Sept 2017 - Dec 2020
+
+
+### Professional Experience 
+
+**Lab Technician – Sierra Nevada Aquatic Research laboratory**, Mammoth Lakes, CA (1/21–6/22)
+
+- Quantified long term acid mining drainage impacts on stream biodiversity to inform US Forest Service on remediation success over 20+ years
+- Identified and recorded 100,000’s of stream organisms in excel to manage over 20 years of project data
+
+**Biologist – Mountain View Biological Consulting**, Mammoth Lakes, CA (2/21–10/21)
+
+- Mapped field sites in GIS, located access points and project perimeters, and communicated project logistics to senior biologists and project managers 
+- Drafted dozens of environmental compliance reports for contractors, consultants, and land owners summarizing project description and biological activity within the region of interest
+- Conducted 100’s of bird and small mammal surveys and reported contractor non-compliances
+
+**Consultant Assistant – Laguna Geo Sciences**, Laguna Beach, CA (remote seasonal 1/18-6/20)
+
+- Organized and managed project data sets and files pertaining to geological activities 
+- Researched and documented site logistics for senior management to ensure clients’ needs are met
+
+
+**Education Intern – Santa Cruz Coastal Watershed Council**, Santa Cruz, CA (1/20-4/20)
+
+- Taught freshwater science and climate change to 100+ elementary school kids 
+- Constructed a conceptual model on watershed pollution to educate elementary school classes on the impacts of littering, urbanization, and climate change on stream biodiversity
+
+### Academic Experience
+
+**Teaching Assistant UCSB** (9/22-present)
+
+- Environmental Chemistry (3/23-present), Environmental Ethics (1/23-3/23), Infectious Disease Ecology (9/22-12/22)
+- Lecture at 4 hour long sections a week teaching science concepts and material
+- Designed lesson plans and held office hours weekly for deepening of understanding in the subject
+
+**Data Manager - Masters Group Project** (3/23-present)
+
+- Quantified the economic costs to implement critical salmonid habitat conservation efforts in Washington State for NOAA
+- Worked with large multi-year government data sets (geospatial information and time series) to identify the most critically endangered salmon habitat and how it has changed over time 
+
+**Carbon Accounting** student (9/22-12/22)
+
+- Managed a group project calculating the total scope 1-3 emissions of McGrath power plant (Oxnard, CA) according to the Greenhouse Gas Protocol and authored a final report
+- Collected emissions data across multiple data bases, calculated relevant scope emissions in excel, and presented our findings for a panel of professors, researchers, and industry experts
+
+**Research Assistant – Palkovacs Lab UCSC**, Santa Cruz, CA (9/2019-12-20)
+
+- Secured $10,000’s in research grants to study the link between steelhead trout genotypes and prey selectivity on benthic macroinvertebrate (BMI) communities
+- Designed a study measuring the ecological consequences of wildfires across 3 different watersheds in coastal California to inform land management of potential trophic cascades
+
+
+**REU Researcher – University of Puerto Rico**, Rio Piedras, PR (6/19-9/19)
+
+- Designed a research project measuring disturbance impacts on diversity of 25+ freshwater meiofauna taxa in proximity to highly developed areas in low income communities
+- Collected hundreds of field samples, analyzed samples under the microscope, and reported findings to a committee of freshwater ecologists and Puerto Rican citizens in a research paper 
+
+
+**Field Technician – Lyon Lab UCSC**, Santa Cruz, CA (9/19-12-20)
+
+- Documented hundreds of sparrow social interactions to provide data on the link between phenotypic hierarchical traits and social dominance within migrating flocks 
+
+**Intern -  Small Mammal Undergraduate Research in the Forest** UCSC, Santa Cruz, CA (9/18-12/18)            
+
+- Trapped, tagged, and recorded hundreds of coastal California rodents and contributed results to long term metadata on mammal populations
+- Worked intensive field days setting up transects, laying traps, and collecting field data in Monterey Bay
+
+
+**Lab Technician - Kay Lab UCSC**, Santa Cruz, CA (9/17-4/18)
+
+- Measured fitness variation of various flowering plants in different toxic soil environments
+
+
+
+
+
+
+### Skills/Certifications/Awards
+
+**Languages/Software:** 
+
+-  R 
+-  SQL 
+-  Git/GitHub 
+-  QGIS  
+-  Tableau 
+-  Excel & Google Sheets
+
+**Certificates:** 
+
+-  Google Data Analytics (Sept 2023)
+
+**Awards:**
+
+- Bren Academic Excellence Recruitment Fellowship 2022 & 2023 
+- NRS Field Science Fellowship 2020 
+- Future Leaders in Coastal Science Award 2019 
+- Kathryn D. Sullivan Impact Award 2019 
+- Norris Center Student Natural History Award 2019 
+- Richard A. Cooley Award 2019 
+- Golden Key International Honors Society 2018
+- The National Society of Collegiate Scholars 2017
+- Honors Program UCSC 
+- UCSC Deans Honor Roll (2017-2020)
+
+### Full Resume
+
+<p align="center">
+ [Download PDF](rh_resume.pdf)
+</p>
+
+<iframe 
+  width="800"
+  height="800"
+  src="rh_resume.pdf">
+</iframe>
+:::

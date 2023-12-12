@@ -1,0 +1,45 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  favicon: images/logo.png
+  navbar:
+    logo: images/logo.png
+    left: 
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - resume.qmd
+      - blogs.qmd
+    
+    right: 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/raymond-hunter-90a8081a7/
+      - icon: github
+        href: https://github.com/ramhunte
+      - icon: envelope
+        href: mailto:ramhunte@bren.ucsb.edu  
+ 
+ 
+  page-footer: 
+    left: 
+      - "Copyright 2023, Raymond Hunter"
+    right: 
+      - "Made using Quarto"
+
+  
+    
+    
+
+
+format:
+  html:
+    theme: 
+    - styles.scss
+    mainfont: Raleway
+    toc: false
+    page-layout: full
+
+editor: visual
+

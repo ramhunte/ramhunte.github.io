@@ -1,0 +1,105 @@
+/*-- scss:defaults --*/
+
+// Fonts
+
+//@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+
+// Colors
+$gray1:#F8F8F8 ;
+$lightblue: #E0FFFF;
+$darkturq: #2F4F4F;
+$gold: #E9B116	;
+
+// Base document colors
+$navbar-bg: $darkturq; // navbar
+$navbar-fg: $gray1; // navbar foreground elements
+$navbar-hl: $gold; // highlight color when hovering over navbar links
+$body-bg: $gray1; // page background 
+$body-color: $darkturq; // page text 
+$footer-bg: $darkturq; // footer 
+$footer-fg: $gray1; // footer foreground
+$link-color: $gold; // hyperlinks 
+
+// Inline code
+//$code-bg: $darkturq; // inline code background color
+//$code-color: $gold; // inline code text color
+
+// Code blocks
+//$code-block-bg: $darkturq; // code block background color
+
+
+
+/*-- scss:rules --*/
+
+h1 {
+  letter-spacing: 5px;
+  font-weight: 700;
+  color: $darkturq ;
+}
+
+h2, h4 {
+letter-spacing: 5px;
+font-weight: 700;
+font-size: 26px;
+color: $darkturq ;
+}
+
+h3 {
+letter-spacing: 4px;
+font-weight: 500;
+font-size: 20px;
+color: $darkturq ;
+}
+
+
+
+
+
+
+
+.title {
+  color: $darkturq;
+
+}
+
+.subtitle {
+  color: $darkturq;
+}
+
+
+/* Background image of painting */
+/* body {
+/*     background-image: url(images/paint2.jpg);
+/*     background-size: cover; /* Adjust as needed */
+/*     background-repeat: no-repeat; /* Prevent repeating the image */
+/* }
+
+/* Change the font size of tabset tabs */
+.nav-tabs li {
+    font-size: 24px; /* Adjust the font size as needed */
+   linear-gradient: url(images/paint2.jpg);
+   background-color: transparent; 
+}  
+
+
+/* creating a border around the tab content  */
+ .tab-content {  
+   border: 3px solid $darkturq;
+}
+
+
+
+
+
+
+.custom-line {
+    border-style: solid;
+    border-top: 3px solid $darkturq; /* Adjust the width and color as needed */
+}
+
+
+
+
