@@ -1,5 +1,5 @@
 ---
-title: 'A Spatial Analysis of Houston Blackouts and the Communities it Affected'
+title: "A Spatial Analysis of Houston Blackouts and the Communities it Affected"
 description: "an investigation of environmental injustice"
 author:
   - name: Raymond Hunter
