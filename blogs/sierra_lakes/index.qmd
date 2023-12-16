@@ -8,7 +8,7 @@ date: 12-08-2023
 
 bibliography: references.bib
 citation:
-  url: http://localhost:3491/blogs/sierra_lakes/
+  url: https://ramhunte.github.io/blogs/sierra_lakes/
 image: copepod.jpg
 categories: [Quarto, R, ecology] # self-defined categories
 format: 
