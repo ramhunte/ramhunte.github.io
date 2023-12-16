@@ -1,6 +1,6 @@
 ---
-title: 'A Spatial Analysis of Houston Blackouts and the Communtiies it Affected'
-# description: "A look into modeling microcosms"
+title: 'A Spatial Analysis of Houston Blackouts and the Communities it Affected'
+description: "an investigation of environmental injustice"
 author:
   - name: Raymond Hunter
     url: https://ramhunte.github.io/
