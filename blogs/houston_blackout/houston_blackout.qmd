@@ -530,9 +530,7 @@ $45,000, with some outliers in the
 \$200,000 + range. Some of the limitations of the study are that the
 census tracts don't represent how many homes experienced a black out or
 how long the black out was experienced for. These factors could have
-underlying socioeconomic patterns that we can't see here which could explain why certain tracts experienced blackouts for the duration that they did. This should be an area for fututre investigation to strengthen the results found in this study.
-
-
+underlying socioeconomic patterns that we can't see here which could explain why certain tracts experienced blackouts for the duration that they did. This should be an area for future investigation to strengthen the results found in this study.
 
 
 
