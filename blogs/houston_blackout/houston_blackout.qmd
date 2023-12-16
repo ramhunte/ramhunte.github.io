@@ -6,10 +6,10 @@ author:
     url: https://ramhunte.github.io/
 date: 12-015-2023
 # bibliography: references.bib
-#citation:
-  # url:
-# image: 
-categories: [Quarto, R] # self-defined categories
+citation:
+   url: https://ramhunte.github.io/blogs/houston_blackout/houston_blackout.html
+image: "images/map.png"
+categories: [Quarto, R, Spatial] # self-defined categories
 format: 
   html:
     code-fold: true
