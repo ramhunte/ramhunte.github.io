@@ -24,71 +24,52 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 [Github Project Repository](https://github.com/ramhunte/marine_aquaculture)
 
-
 ## Background
 
-Land based meat production poses serious environmental challenges through its contribution to greenhouse gas (GHG) emissions as well as harsh land use impacts. As society progresses further into uncharted waters with climate change, it is critical that we explore alternative options to mitigate GHG emissions. Marine aquaculture is an important practice that has a high potential to transform the way the global food supply operates as a more sustainable protein option than land-based meat production.[^1]  One important study by [Gentry et al.](https://www.nature.com/articles/s41559-017-0257-9) mapped the potential for marine aquaculture globally based on multiple constraints, including ship traffic, dissolved oxygen, and bottom depth .[^2] This highlighted the true potential of the industry, although it is still far from reaching its capacity. 
+Land based meat production poses serious environmental challenges through its contribution to greenhouse gas (GHG) emissions as well as harsh land use impacts. As society progresses further into uncharted waters with climate change, it is critical that we explore alternative options to mitigate GHG emissions. Marine aquaculture is an important practice that has a high potential to transform the way the global food supply operates as a more sustainable protein option than land-based meat production.[^1] One important study by [Gentry et al.](https://www.nature.com/articles/s41559-017-0257-9) mapped the potential for marine aquaculture globally based on multiple constraints, including ship traffic, dissolved oxygen, and bottom depth .[^2] This highlighted the true potential of the industry, although it is still far from reaching its capacity.
 
-[^1]: Hall, S. J., Delaporte, A., Phillips, M. J., Beveridge, M. &
-    O'Keefe, M. Blue Frontiers: Managing the Environmental Costs of
-    Aquaculture (The WorldFish Center, Penang, Malaysia, 2011).
+[^1]: Hall, S. J., Delaporte, A., Phillips, M. J., Beveridge, M. & O'Keefe, M. Blue Frontiers: Managing the Environmental Costs of Aquaculture (The WorldFish Center, Penang, Malaysia, 2011).
 
-[^2]: Gentry, R. R., Froehlich, H. E., Grimm, D., Kareiva, P., Parke,
-    M., Rust, M., Gaines, S. D., & Halpern, B. S. Mapping the global
-    potential for marine aquaculture. *Nature Ecology & Evolution*, 1,
-    1317-1324 (2017).
-
+[^2]: Gentry, R. R., Froehlich, H. E., Grimm, D., Kareiva, P., Parke, M., Rust, M., Gaines, S. D., & Halpern, B. S. Mapping the global potential for marine aquaculture. *Nature Ecology & Evolution*, 1, 1317-1324 (2017).
 
 ## Objectives
 
 The purpose of this work flow is to utilize spatial analysis tools to understand how we can identify commercial potential of natural resources. In this analysis, I am looking at how to identify potential marine species habitat suitable for aquaculture along the West Coast of the United States in each of its Exclusive Economic Zones (EEZ). I specifically look at habitat requirements across temperature and depth requirements for oysters (a widely commercially available food source) and then create a function from this analysis that can be applied to any west coast species with a given temperature and depth range and potential for aquaculture. This analysis utilizes a variety of spatial analysis tools to for both vector and raster data. These include:
 
--  spatial subsetting and joins
--  raster reclassifiaction
--  rasterization and vectorization of spatial data
--  cropping and masking layers
--  zonal statistics
--  transforming CRS
--  utilizing periodic checks
+-   spatial subsetting and joins
+-   raster reclassifiaction
+-   rasterization and vectorization of spatial data
+-   cropping and masking layers
+-   zonal statistics
+-   transforming CRS
+-   utilizing periodic checks
 
 ## Approach
 
-Based on previous research, we know that oysters need the following
-conditions in order to reach optimal growth rates:
--   sea surface temperature: 11-30°C
--   depth: 0-70 meters below sea level
+Based on previous research, we know that oysters need the following conditions in order to reach optimal growth rates: - sea surface temperature: 11-30°C - depth: 0-70 meters below sea level
 
-I used raster and vector data and spatial analysis tools to identify where these ranges overlapped to isolate suitable habitat.
-Following these steps, I created maps visualizing priority EEZ's depending on their total and percent suitable aquaculture habitat. I applied this methodology into a function that reproduces the same workflow to find suitable habita for any species with a temperature and depth range that could be potentially grown along the west coast.
+I used raster and vector data and spatial analysis tools to identify where these ranges overlapped to isolate suitable habitat. Following these steps, I created maps visualizing priority EEZ's depending on their total and percent suitable aquaculture habitat. I applied this methodology into a function that reproduces the same workflow to find suitable habita for any species with a temperature and depth range that could be potentially grown along the west coast.
 
 ### Data
 
 #### Sea Surface Temperature
 
-Average annual sea surface temperature (SST) from the years
-2008 to 2012 was used to characterize the average sea surface temperature within the region. The data was originally generated from
-[NOAA's 5km Daily Global Satellite Sea Surface Temperature Anomaly
-v3.1](https://coralreefwatch.noaa.gov/product/5km/index_5km_ssta.php).
+Average annual sea surface temperature (SST) from the years 2008 to 2012 was used to characterize the average sea surface temperature within the region. The data was originally generated from [NOAA's 5km Daily Global Satellite Sea Surface Temperature Anomaly v3.1](https://coralreefwatch.noaa.gov/product/5km/index_5km_ssta.php).
 
 #### Bathymetry
 
-To characterize the depth of the ocean I used the [General
-Bathymetric Chart of the Oceans
-(GEBCO)](https://www.gebco.net/data_and_products/gridded_bathymetry_data/#area).[^3]
+To characterize the depth of the ocean I used the [General Bathymetric Chart of the Oceans (GEBCO)](https://www.gebco.net/data_and_products/gridded_bathymetry_data/#area).[^3]
 
-[^3]: GEBCO Compilation Group (2022) GEBCO_2022 Grid
-    (<doi:10.5285/e0f0bb80-ab44-2739-e053-6c86abc0289c>).
+[^3]: GEBCO Compilation Group (2022) GEBCO_2022 Grid (<doi:10.5285/e0f0bb80-ab44-2739-e053-6c86abc0289c>).
 
 #### Exclusive Economic Zones
 
-Maritime boundaries were designated using Exclusive Economic
-Zones off of the west coast of US from
-[Marineregions.org](https://www.marineregions.org/eez.php). 
+Maritime boundaries were designated using Exclusive Economic Zones off of the west coast of US from [Marineregions.org](https://www.marineregions.org/eez.php).
 
 ## Analysis
-    
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE)
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.align = "center")
 
 #necessary packages
 library(tidyverse)
@@ -99,17 +80,18 @@ library(spDataLarge)
 library(spData)
 library(patchwork)
 library(scales)
-
-data <- file.path("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-4-ramhunte/data")
 ```
 
 
-#### Prepare data 
+```{r setup, include=FALSE}
+data <- file.path("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-4-ramhunte/data")
+```
+
+#### Prepare data
 
 To start, I loaded in and organized all necessary data and made sure it had the correct coordinate reference system. This involved:
 
--   reading in the shapefile for the West Coast EEZ
-    (`wc_regions_clean.shp`)\
+-   reading in the shapefile for the West Coast EEZ (`wc_regions_clean.shp`)\
 -   reading in SST raster data
     -   `average_annual_sst_2008.tif`\
     -   `average_annual_sst_2009.tif`\
@@ -143,13 +125,9 @@ bath <- rast(file.path(data, "depth.tif"))
 # plot(bath)
 ```
 
-#### Process data 
+#### Process data
 
-Next, I processed the SST and depth data so that they could be
-combined. In this case the SST and depth data had slightly different
-resolutions, extents, and positions. Because I didn't want to change the
-underlying depth data, I resampled to match the SST data
-using the nearest neighbor approach.
+Next, I processed the SST and depth data so that they could be combined. In this case the SST and depth data had slightly different resolutions, extents, and positions. Because I didn't want to change the underlying depth data, I resampled to match the SST data using the nearest neighbor approach.
 
 The steps I took can be summarized as follows:
 
@@ -157,8 +135,7 @@ The steps I took can be summarized as follows:
 -   Step 2: convert SST data from Kelvin to Celsius\
 -   Step 3: crop depth raster to match the extent of the SST raster (match CRS first)
 -   Step 4: resample the NPP data to match the resolution of the SST datausing the nearest neighbor approach\
--   Step 5: check that the depth and SST match in resolution, extent, and
-    coordinate reference system\
+-   Step 5: check that the depth and SST match in resolution, extent, and coordinate reference system\
 
 I then created a check to ensure that the extent, resolution, and CRS of bathymetry and temperature raster layers matched.
 
@@ -195,11 +172,9 @@ if(ext(resamp_bath) == ext(cels_sst) &
 
 ```
 
-#### Finding suitable locations 
+#### Finding suitable locations
 
-In order to find suitable locations for marine aquaculture, I first needed
-to find locations that were suitable in terms of both SST and depth. This involved reclassifying the SST and depth data into locations that are suitable for Oysters by assigning a `1` or a `NA` value to suitable and unsuitable habitats. I then multiplied the two rasters to look for locations that satisfy both SST and depth conditions (raster cells where `1` values overlapped) using the `lapp()` function. Lastly, I created a check to ensure that the masked ideal layer only showed overlapping ideal depth and temperature conditions.
- 
+In order to find suitable locations for marine aquaculture, I first needed to find locations that were suitable in terms of both SST and depth. This involved reclassifying the SST and depth data into locations that are suitable for Oysters by assigning a `1` or a `NA` value to suitable and unsuitable habitats. I then multiplied the two rasters to look for locations that satisfy both SST and depth conditions (raster cells where `1` values overlapped) using the `lapp()` function. Lastly, I created a check to ensure that the masked ideal layer only showed overlapping ideal depth and temperature conditions.
 
 ```{r, include=TRUE, results = TRUE}
 #reclassifying temperature and bathymetry raster data, and then overlaying the layers to find ideal habitat 
@@ -248,14 +223,12 @@ if(all(
 
 ```
 
-#### Determine the most suitable EEZ 
+#### Determine the most suitable EEZ
 
-I first needed to determine the total suitable area within each EEZ in order to
-rank zones by priority. To do so, I found the total area of
-suitable locations within each EEZ. The steps in which I approached this can be summarized as such:
+I first needed to determine the total suitable area within each EEZ in order to rank zones by priority. To do so, I found the total area of suitable locations within each EEZ. The steps in which I approached this can be summarized as such:
 
 -   Step 1: read in, rasterize, and crop the the eez data to the extent and resolution of the ideal habitat layer
--   Step 2: calculate the size of each raster cell in km^2
+-   Step 2: calculate the size of each raster cell in km\^2
 -   Step 3: sum the tala area of suitable habitat cells using `zonal()` function
 -   Step 4: join this data with the eez data and create new columns with the total eez area, the toal suitable habitat in each eez, and the percent suitable habitat by eez
 
@@ -287,10 +260,9 @@ joined_eez <- left_join(eez,
 
 ```
 
-#### Visualize results 
+#### Visualize results
 
 Finally, I created two maps showing 1) the total suitable oyster aquaculture habitat area by region, and 2) the percent suitable oyster aquaculture habitat area by region:
-
 
 ```{r, include=TRUE, out.width = "100%", fig.align = "center", fig.cap="**Figure 1. % Suitable Oyster Aquaculture Habitat of \nWest Coast Exclusive Economic Zones in the US**. Shows the percent of ideal oyster aquaculture habitat by exclusive economic zones along the west coast. Washington shows the highest % suitable habitat, followed by Central and Southern California."}
 
@@ -363,8 +335,6 @@ ggplot() +
 
 
 ```
-
-
 
 #### Expanding to other species
 
@@ -453,7 +423,6 @@ ideal_crib_for_a_species <- function(species = "NAME", depth_min, depth_max, tem
   }
 ```
 
-
 I wanted to test out this function on kelp crabs (*Pugettia producta*) as they are widely dispersed and could potentially make a good candidate for aquaculture. Data on the Kelp Crab was obtained from [SeaLifeBase](https://www.sealifebase.ca/search.php) which presents habitat information on thousands of species. Lets take a look:
 
 ```{r, out.width = "100%", fig.align = "center"}
@@ -461,18 +430,3 @@ ideal_crib_for_a_species("Kelp Crab", depth_min = -98, depth_max =  0, temp_min 
 ```
 
 And there you have it! This is how I used spatial analysis tools in R to figure out where potential oyster (and any other species) aquaculture might be by EEZ along the west coast of the United States.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

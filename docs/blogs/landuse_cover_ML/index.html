@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Raymond Hunter">
+<meta name="dcterms.date" content="2023-12-19">
+<meta name="description" content="using algorithms to understand how we use our land">
+
+<title>Applying Supervised Machine Learning to Landuse Cover in Santa Barbara, CA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/logo.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html" rel="" target="">
+ <span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs.html" rel="" target="">
+ <span class="menu-text">My Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ramhunte" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:ramhunte@bren.ucsb.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective">Objective</a>
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  </ul></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a>
+  <ul class="collapse">
+  <li><a href="#process-data" id="toc-process-data" class="nav-link" data-scroll-target="#process-data">Process data</a></li>
+  <li><a href="#classify-image" id="toc-classify-image" class="nav-link" data-scroll-target="#classify-image">Classify image</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Applying Supervised Machine Learning to Landuse Cover in Santa Barbara, CA</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Spatial</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    using algorithms to understand how we use our land
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="https://ramhunte.github.io/">Raymond Hunter</a> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 19, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>Humans have been altering the natural world for centuries through agriculture, farming, development, recreation, etc. The impacts of landuse change have become critical to understand as evidence shows that it contributes significantly to climate change and is responsible for ecological degredation globally.[^1] Monitoring the distribution and change in landuse types can help us understand the impacts of climate change, natural disasters, deforestation, urbanization, and much more.</p>
+<p>Dale, V. H. (1997). The relationship between land‐use change and climate change. Ecological applications, 7(3), 753-769.</p>
+<p>Determining land cover types over large areas is a major application of remote sensing because we are able to distinguish different materials based on their spectral reflectance. In other words, remote sensing has opened up new doors to study land use change by looking at different proportions of light that it reflects up to satellites. By utiliizng remotely sensed imagery, we can classify landcover into classes or groups that allow us to understand the distribution and change in landcover types over large areas. There are many approaches for performing landcover classification – <em>supervised</em> approaches use training data labeled by the user, whereas <em>unsupervised</em> approaches use algorithms to create groups which are identified by the user afterward.</p>
+</section>
+<section id="objective" class="level1">
+<h1>Objective</h1>
+<p>In this analysis, I used a form of supervised classification, a <em>decision tree classifier</em>, to predict landuse cover in Santa Barbara, California. <a href="https://medium.com/@ml.at.berkeley/machine-learning-crash-course-part-5-decision-trees-and-ensemble-models-dcc5a36af8cd">Decision trees</a> classify pixels using a series of conditions based on values in spectral bands. These conditions (or decisions) are developed based on training data. Here, I created a land cover classification for southern Santa Barbara County based on multi-spectral imagery and data on the location of 4 land cover types:</p>
+<ul>
+<li>green vegetation</li>
+<li>dry grass or soil</li>
+<li>urban</li>
+<li>water</li>
+</ul>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>My approach to this analysis can be summed up in 5 steps:</p>
+<ul>
+<li>Step 1: load and process Landsat scene data</li>
+<li>Step 2: crop and mask Landsat data to study area (Santa Barbara)</li>
+<li>Step 3: extract spectral data at training sites (subset of parcels within Santa Barbara)</li>
+<li>Step 4: train and apply decision tree classifier</li>
+<li>Step 5: plot results</li>
+</ul>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p><strong>Landsat 5 Thematic Mapper</strong></p>
+<p>Data was obtained from <a href="https://www.usgs.gov/landsat-missions/landsat-5">Landsat 5</a>, including 1 scene from September 25, 2007. The specific spectral bands being used are: 1, 2, 3, 4, 5, 7 from the collection 2 surface reflectance product.</p>
+<p><strong>Study area and training data</strong> A polygon representing southern Santa Barbara county was used as the overall study site. I also used polygons of regions within Santa Barbara representing training sites, including character string with land cover type. The decision tree derived from the training data is then applied to the entire Santa Barbara county polygon to create predictions of landuse cover for the whole region.</p>
+</section>
+</section>
+<section id="workflow" class="level1">
+<h1>Workflow</h1>
+<section id="process-data" class="level2">
+<h2 class="anchored" data-anchor-id="process-data">Process data</h2>
+<section id="load-packages-and-set-working-directory" class="level4">
+<h4 class="anchored" data-anchor-id="load-packages-and-set-working-directory">Load packages and set working directory</h4>
+<p>Because this project required working with both vector and raster data, I used both <code>sf</code> and <code>terra</code> packages in my workflow. To train our classification decision tree and plot the results, I used the <code>rpart</code> and <code>rpart.plot</code> packages.</p>
+<div class="cell">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>, <span class="at">fig.align =</span> <span class="st">"center"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(tmap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="load-landsat-data" class="level4">
+<h4 class="anchored" data-anchor-id="load-landsat-data">Load Landsat data</h4>
+<p>First, I created a raster stack based on the 6 bands I worked with. Each file name ends with the band number (e.g.&nbsp;<code>B1.tif</code>). Band 6 corresponds to thermal data, which we will not be working with for this analysis, so it was not included in the data. To create a raster stack, I made a list of the files that I wanted to work with and read them all in at once using the <code>rast</code> function. The names of the layers were then updated to match the spectral bands and plot a true color image to see what we’re working with.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># list files for each band, including the full file path</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">file.path</span>(data, <span class="st">"landsat-data/"</span>), <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># read in and store as a raster stack</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>landsat <span class="ot">&lt;-</span> <span class="fu">rast</span>(filelist)</span>
+<span id="cb2-7"><a href="#cb2-7"></a>landsat</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># update layer names to match band</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="fu">names</span>(landsat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"NIR"</span>, <span class="st">"SWIR1"</span>, <span class="st">"SWIR2"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a>landsat</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># plot true color image</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="fu">plotRGB</span>(landsat, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="load-study-area" class="level4">
+<h4 class="anchored" data-anchor-id="load-study-area">Load study area</h4>
+<p>I wanted to constrain the analysis to the southern portion of the county where there was training data, so I read in a file that defines the region of interest (ROI). I made sure that both CRS from the shape file and the Landsat data matched.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># read in shapefile for southern portion of SB county</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>SB_county_south <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"SB_county_south.shp"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># project to match the Landsat data</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>SB_county_south <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(SB_county_south, <span class="at">crs =</span> <span class="fu">st_crs</span>(landsat))</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># plot(SB_county_south)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="crop-and-mask-landsat-data-to-study-area" class="level4">
+<h4 class="anchored" data-anchor-id="crop-and-mask-landsat-data-to-study-area">Crop and mask Landsat data to study area</h4>
+<p>Next, I cropped and masked the Landsat data to the study area. This reduced the amount of data that needed to be worked with and therefore saves computational time and energy. Furthermore, I removed objects that I no longer was going to be working with using the <code>rm()</code> function to save space (optional).</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># crop Landsat scene to the extent of the SB county shapefile</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>landsat_cropped <span class="ot">&lt;-</span> <span class="fu">crop</span>(landsat, SB_county_south)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># mask the raster to southern portion of SB county</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>landsat_masked <span class="ot">&lt;-</span> <span class="fu">mask</span>(landsat_cropped, SB_county_south)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># remove unnecessary object from environment</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="fu">rm</span>(landsat, landsat_cropped, SB_county_south)</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="fu">plotRGB</span>(landsat_masked, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-landsat-values-to-reflectance" class="level4">
+<h4 class="anchored" data-anchor-id="convert-landsat-values-to-reflectance">Convert Landsat values to reflectance</h4>
+<p>Next, I converted the values in the raster stack to correspond to reflectance values. To do so, I first removed erroneous values and applied any <a href="https://www.usgs.gov/faqs/how-do-i-use-scale-factor-landsat-level-2-science-products#:~:text=Landsat%20Collection%202%20surface%20temperature,the%20scale%20factor%20is%20applied.">scaling factors</a> to convert to reflectance. In this case, I worked with <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">Landsat Collection 2</a>. The valid range of pixel values for this collection is 7,273-43,636, with a multiplicative scale factor of 0.0000275 and an additive scale factor of -0.2. So I reclassified any erroneous values as <code>NA</code> and updated the values for each pixel based on the scaling factors. Now the pixel values should range from 0-100%.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">summary</span>(landsat_masked)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># reclassify erroneous values as NA</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>rcl <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">7273</span>, <span class="cn">NA</span>,</span>
+<span id="cb5-4"><a href="#cb5-4"></a>         <span class="dv">43636</span>, <span class="cn">Inf</span>, <span class="cn">NA</span>), </span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>landsat <span class="ot">&lt;-</span> <span class="fu">classify</span>(landsat_masked, <span class="at">rcl =</span> rcl)</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># adjust values based on scaling factor</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>landsat <span class="ot">&lt;-</span> (landsat <span class="sc">*</span> <span class="fl">0.0000275</span> <span class="sc">-</span> <span class="fl">0.2</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="fu">summary</span>(landsat)</span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># plot true color image to check results</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="fu">plotRGB</span>(landsat, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># check values are 0 - 100</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">summary</span>(landsat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="classify-image" class="level2">
+<h2 class="anchored" data-anchor-id="classify-image">Classify image</h2>
+<section id="extract-reflectance-values-for-training-data" class="level4">
+<h4 class="anchored" data-anchor-id="extract-reflectance-values-for-training-data">Extract reflectance values for training data</h4>
+<p>Here, I loaded in the shapefile identifying different locations within the study area as containing one of the 4 land cover types. I then extracted the spectral values at each site to create a data frame that relates land cover types to their spectral reflectance.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># read in and transform training data</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>training_data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"trainingdata.shp"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">st_transform</span>(., <span class="at">crs =</span> <span class="fu">st_crs</span>(landsat))</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#plot</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">plot</span>(training_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># extract reflectance values at training sites</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>training_data_values <span class="ot">&lt;-</span> <span class="fu">extract</span>(landsat, training_data, <span class="at">df =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># convert training data to data frame</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>training_data_attributes <span class="ot">&lt;-</span> training_data <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co"># join training data attributes and extracted reflectance values</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a>SB_training_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(training_data_values, training_data_attributes,</span>
+<span id="cb8-11"><a href="#cb8-11"></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ID"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-12"><a href="#cb8-12"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">as.factor</span>(type))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="train-decision-tree-classifier" class="level4">
+<h4 class="anchored" data-anchor-id="train-decision-tree-classifier">Train decision tree classifier</h4>
+<p>To train the decision tree, I first needed to establish a model formula (i.e.&nbsp;what the response and predictor variables are). The <code>rpart</code> function implements the <a href="https://medium.com/geekculture/decision-trees-with-cart-algorithm-7e179acee8ff">CART algorithm</a>. The <code>rpart</code> function needs to know the model formula and training data you would like to use. Because I was performing a classification, I set <code>method = "class"</code>. I also set <code>na.action = na.omit</code> to remove any pixels with <code>NA</code>s from the analysis.<br>
+</p>
+<p>To understand how the decision tree will classify pixels, I first plotted the results. The decision tree is comprised of a hierarchy of binary decisions. Each decision rule has 2 outcomes based on a conditional statement pertaining to values in each spectral band.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># establish model formula</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>SB_formula <span class="ot">&lt;-</span> type <span class="sc">~</span> red <span class="sc">+</span> green <span class="sc">+</span> blue <span class="sc">+</span> NIR <span class="sc">+</span> SWIR1 <span class="sc">+</span> SWIR2</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># train decision tree</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>SB_decision_tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(<span class="at">formula =</span> SB_formula,</span>
+<span id="cb9-7"><a href="#cb9-7"></a>      <span class="at">data =</span> SB_training_data, </span>
+<span id="cb9-8"><a href="#cb9-8"></a>      <span class="at">method =</span> <span class="st">"class"</span>, </span>
+<span id="cb9-9"><a href="#cb9-9"></a>      <span class="at">na.action =</span> na.omit)</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co"># plot decision tree</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="fu">prp</span>(SB_decision_tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="apply-decision-tree" class="level4">
+<h4 class="anchored" data-anchor-id="apply-decision-tree">Apply decision tree</h4>
+<p>After making the decision tree, I applied it to the entire image. The <code>terra</code> package includes a <code>predict()</code> function that allows you to apply a model to the data. In order for this to work properly, the names of the layers needed to match the column names of the predictors I used to train our decision tree. The <code>predict()</code> function then returns a raster layer with integer values. These integer values correspond to the <em>factor levels</em> in the training data. To figure out what category each integer corresponded to, I then inspected the levels of the training data.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># classify image based on decision tree</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>SB_classification <span class="ot">&lt;-</span> <span class="fu">predict</span>(landsat, SB_decision_tree, <span class="at">type =</span> <span class="st">"class"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># inspect level to understand the order of classes in prediction</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>SB_classification</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="plot-results" class="level4">
+<h4 class="anchored" data-anchor-id="plot-results">Plot results</h4>
+<p>Finally, I plotted the results to check out the land cover map.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># plot results</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">tm_shape</span>(SB_classification) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">tm_raster</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This analysis highlights the power of using supervised classification to gain insight of land use over on a large scale. While this technique has some challenges, it is a powerful tool that can be used in the environmental field to understand not just land use cover but a wide variety of environmental topics. It is important that these practices are also ground truthed to ensure the predicted model results are accurate.</p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb12" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">---</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="an">title:</span><span class="co"> "Applying Supervised Machine Learning to Landuse Cover in Santa Barbara, CA"</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="an">description:</span><span class="co"> "building algorithms to understand how we use our land"</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="an">author:</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co">  - name: Raymond Hunter</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="co">    url: https://ramhunte.github.io/</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="an">date:</span><span class="co"> 12-019-2023</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co"># bibliography: references.bib</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="co">#citation:</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="co">  # url: </span></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="an">image:</span><span class="co"> "images/SB.png"</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="an">categories:</span><span class="co"> [Quarto, R, Spatial] # self-defined categories</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="co">  html:</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="co">    code-fold: true</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="co">    code-copy: true</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="co">    code-summary: "code"</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="co">    code-tools: true</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="co">    code-block-border-left: true</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="an">draft:</span><span class="co"> false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="co">---</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a></span>
+<span id="cb12-25"><a href="#cb12-25"></a><span class="fu"># Overview</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a></span>
+<span id="cb12-27"><a href="#cb12-27"></a>Humans have been altering the natural world for centuries through agriculture, farming, development, recreation, etc. The impacts of landuse change have become critical to understand as evidence shows that it contributes significantly to climate change and is responsible for ecological degredation globally.<span class="ot">[^1]</span> Monitoring the distribution and change in landuse types can help us understand the impacts of climate change, natural disasters, deforestation, urbanization, and much more. </span>
+<span id="cb12-28"><a href="#cb12-28"></a></span>
+<span id="cb12-29"><a href="#cb12-29"></a>Dale, V. H. (1997). The relationship between land‐use change and climate change. Ecological applications, 7(3), 753-769.</span>
+<span id="cb12-30"><a href="#cb12-30"></a></span>
+<span id="cb12-31"><a href="#cb12-31"></a></span>
+<span id="cb12-32"><a href="#cb12-32"></a></span>
+<span id="cb12-33"><a href="#cb12-33"></a>Determining land cover types over large areas is a major application of remote sensing because we are able to distinguish different materials based on their spectral reflectance. In other words, remote sensing has opened up new doors to study land use change by looking at different proportions of light that it reflects up to satellites. By utiliizng remotely sensed imagery, we can classify landcover into classes or groups that allow us to understand the distribution and change in landcover types over large areas. There are many approaches for performing landcover classification -- *supervised* approaches use training data labeled by the user, whereas *unsupervised* approaches use algorithms to create groups which are identified by the user afterward.</span>
+<span id="cb12-34"><a href="#cb12-34"></a></span>
+<span id="cb12-35"><a href="#cb12-35"></a><span class="fu"># Objective</span></span>
+<span id="cb12-36"><a href="#cb12-36"></a></span>
+<span id="cb12-37"><a href="#cb12-37"></a>In this analysis, I used a form of supervised classification, a *decision tree classifier*, to predict landuse cover in Santa Barbara, California. <span class="co">[</span><span class="ot">Decision trees</span><span class="co">](https://medium.com/@ml.at.berkeley/machine-learning-crash-course-part-5-decision-trees-and-ensemble-models-dcc5a36af8cd)</span> classify pixels using a series of conditions based on values in spectral bands. These conditions (or decisions) are developed based on training data. Here, I created a land cover classification for southern Santa Barbara County based on multi-spectral imagery and data on the location of 4 land cover types:</span>
+<span id="cb12-38"><a href="#cb12-38"></a></span>
+<span id="cb12-39"><a href="#cb12-39"></a><span class="ss">-   </span>green vegetation</span>
+<span id="cb12-40"><a href="#cb12-40"></a><span class="ss">-   </span>dry grass or soil</span>
+<span id="cb12-41"><a href="#cb12-41"></a><span class="ss">-   </span>urban</span>
+<span id="cb12-42"><a href="#cb12-42"></a><span class="ss">-   </span>water</span>
+<span id="cb12-43"><a href="#cb12-43"></a></span>
+<span id="cb12-44"><a href="#cb12-44"></a><span class="fu">## Summary</span></span>
+<span id="cb12-45"><a href="#cb12-45"></a></span>
+<span id="cb12-46"><a href="#cb12-46"></a>My approach to this analysis can be summed up in 5 steps:</span>
+<span id="cb12-47"><a href="#cb12-47"></a></span>
+<span id="cb12-48"><a href="#cb12-48"></a><span class="ss">-   </span>Step 1: load and process Landsat scene data</span>
+<span id="cb12-49"><a href="#cb12-49"></a><span class="ss">-   </span>Step 2: crop and mask Landsat data to study area (Santa Barbara)</span>
+<span id="cb12-50"><a href="#cb12-50"></a><span class="ss">-   </span>Step 3: extract spectral data at training sites (subset of parcels within Santa Barbara)</span>
+<span id="cb12-51"><a href="#cb12-51"></a><span class="ss">-   </span>Step 4: train and apply decision tree classifier</span>
+<span id="cb12-52"><a href="#cb12-52"></a><span class="ss">-   </span>Step 5: plot results</span>
+<span id="cb12-53"><a href="#cb12-53"></a></span>
+<span id="cb12-54"><a href="#cb12-54"></a><span class="fu">## Data</span></span>
+<span id="cb12-55"><a href="#cb12-55"></a></span>
+<span id="cb12-56"><a href="#cb12-56"></a>**Landsat 5 Thematic Mapper**</span>
+<span id="cb12-57"><a href="#cb12-57"></a></span>
+<span id="cb12-58"><a href="#cb12-58"></a>Data was obtained from <span class="co">[</span><span class="ot">Landsat 5</span><span class="co">](https://www.usgs.gov/landsat-missions/landsat-5)</span>, including 1 scene from September 25, 2007. The specific spectral bands being used are: 1, 2, 3, 4, 5, 7 from the collection 2 surface reflectance product.</span>
+<span id="cb12-59"><a href="#cb12-59"></a></span>
+<span id="cb12-60"><a href="#cb12-60"></a>**Study area and training data** A polygon representing southern Santa Barbara county was used as the overall study site. I also used polygons of regions within Santa Barbara representing training sites, including character string with land cover type. The decision tree derived from the training data is then applied to the entire Santa Barbara county polygon to create predictions of landuse cover for the whole region.</span>
+<span id="cb12-61"><a href="#cb12-61"></a></span>
+<span id="cb12-62"><a href="#cb12-62"></a><span class="fu"># Workflow</span></span>
+<span id="cb12-63"><a href="#cb12-63"></a></span>
+<span id="cb12-64"><a href="#cb12-64"></a><span class="fu">## Process data</span></span>
+<span id="cb12-65"><a href="#cb12-65"></a></span>
+<span id="cb12-66"><a href="#cb12-66"></a><span class="fu">#### Load packages and set working directory</span></span>
+<span id="cb12-67"><a href="#cb12-67"></a></span>
+<span id="cb12-68"><a href="#cb12-68"></a>Because this project required working with both vector and raster data, I used both <span class="in">`sf`</span> and <span class="in">`terra`</span> packages in my workflow. To train our classification decision tree and plot the results, I used the <span class="in">`rpart`</span> and <span class="in">`rpart.plot`</span> packages.</span>
+<span id="cb12-69"><a href="#cb12-69"></a></span>
+<span id="cb12-70"><a href="#cb12-70"></a><span class="in">```{r include=TRUE, message=FALSE, warning=FALSE}</span></span>
+<span id="cb12-71"><a href="#cb12-71"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>, <span class="at">fig.align =</span> <span class="st">"center"</span>)</span>
+<span id="cb12-72"><a href="#cb12-72"></a></span>
+<span id="cb12-73"><a href="#cb12-73"></a><span class="fu">library</span>(sf)</span>
+<span id="cb12-74"><a href="#cb12-74"></a><span class="fu">library</span>(terra)</span>
+<span id="cb12-75"><a href="#cb12-75"></a><span class="fu">library</span>(here)</span>
+<span id="cb12-76"><a href="#cb12-76"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-77"><a href="#cb12-77"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb12-78"><a href="#cb12-78"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb12-79"><a href="#cb12-79"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb12-80"><a href="#cb12-80"></a><span class="in">```</span></span>
+<span id="cb12-81"><a href="#cb12-81"></a></span>
+<span id="cb12-82"><a href="#cb12-82"></a></span>
+<span id="cb12-83"><a href="#cb12-83"></a><span class="in">```{r include=FALSE, message=FALSE, warning=FALSE}</span></span>
+<span id="cb12-84"><a href="#cb12-84"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb12-85"><a href="#cb12-85"></a>data <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/week9/data"</span>)</span>
+<span id="cb12-86"><a href="#cb12-86"></a><span class="in">```</span></span>
+<span id="cb12-87"><a href="#cb12-87"></a></span>
+<span id="cb12-88"><a href="#cb12-88"></a><span class="fu">#### Load Landsat data</span></span>
+<span id="cb12-89"><a href="#cb12-89"></a></span>
+<span id="cb12-90"><a href="#cb12-90"></a>First, I created a raster stack based on the 6 bands I worked with. Each file name ends with the band number (e.g. <span class="in">`B1.tif`</span>). Band 6 corresponds to thermal data, which we will not be working with for this analysis, so it was not included in the data. To create a raster stack, I made a list of the files that I wanted to work with and read them all in at once using the <span class="in">`rast`</span> function. The names of the layers were then updated to match the spectral bands and plot a true color image to see what we're working with.</span>
+<span id="cb12-91"><a href="#cb12-91"></a></span>
+<span id="cb12-92"><a href="#cb12-92"></a><span class="in">```{r include=TRUE}</span></span>
+<span id="cb12-93"><a href="#cb12-93"></a><span class="co"># list files for each band, including the full file path</span></span>
+<span id="cb12-94"><a href="#cb12-94"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">file.path</span>(data, <span class="st">"landsat-data/"</span>), <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-95"><a href="#cb12-95"></a></span>
+<span id="cb12-96"><a href="#cb12-96"></a><span class="co"># read in and store as a raster stack</span></span>
+<span id="cb12-97"><a href="#cb12-97"></a></span>
+<span id="cb12-98"><a href="#cb12-98"></a>landsat <span class="ot">&lt;-</span> <span class="fu">rast</span>(filelist)</span>
+<span id="cb12-99"><a href="#cb12-99"></a>landsat</span>
+<span id="cb12-100"><a href="#cb12-100"></a></span>
+<span id="cb12-101"><a href="#cb12-101"></a><span class="co"># update layer names to match band</span></span>
+<span id="cb12-102"><a href="#cb12-102"></a></span>
+<span id="cb12-103"><a href="#cb12-103"></a><span class="fu">names</span>(landsat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"NIR"</span>, <span class="st">"SWIR1"</span>, <span class="st">"SWIR2"</span>)</span>
+<span id="cb12-104"><a href="#cb12-104"></a>landsat</span>
+<span id="cb12-105"><a href="#cb12-105"></a></span>
+<span id="cb12-106"><a href="#cb12-106"></a><span class="co"># plot true color image</span></span>
+<span id="cb12-107"><a href="#cb12-107"></a></span>
+<span id="cb12-108"><a href="#cb12-108"></a><span class="fu">plotRGB</span>(landsat, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span>
+<span id="cb12-109"><a href="#cb12-109"></a><span class="in">```</span></span>
+<span id="cb12-110"><a href="#cb12-110"></a></span>
+<span id="cb12-111"><a href="#cb12-111"></a><span class="fu">#### Load study area</span></span>
+<span id="cb12-112"><a href="#cb12-112"></a></span>
+<span id="cb12-113"><a href="#cb12-113"></a>I wanted to constrain the analysis to the southern portion of the county where there was training data, so I read in a file that defines the region of interest (ROI). I made sure that both CRS from the shape file and the Landsat data matched.</span>
+<span id="cb12-114"><a href="#cb12-114"></a></span>
+<span id="cb12-115"><a href="#cb12-115"></a><span class="in">```{r include=TRUE}</span></span>
+<span id="cb12-116"><a href="#cb12-116"></a></span>
+<span id="cb12-117"><a href="#cb12-117"></a><span class="co"># read in shapefile for southern portion of SB county</span></span>
+<span id="cb12-118"><a href="#cb12-118"></a>SB_county_south <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"SB_county_south.shp"</span>))</span>
+<span id="cb12-119"><a href="#cb12-119"></a></span>
+<span id="cb12-120"><a href="#cb12-120"></a><span class="co"># project to match the Landsat data</span></span>
+<span id="cb12-121"><a href="#cb12-121"></a>SB_county_south <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(SB_county_south, <span class="at">crs =</span> <span class="fu">st_crs</span>(landsat))</span>
+<span id="cb12-122"><a href="#cb12-122"></a></span>
+<span id="cb12-123"><a href="#cb12-123"></a><span class="co"># plot(SB_county_south)</span></span>
+<span id="cb12-124"><a href="#cb12-124"></a><span class="in">```</span></span>
+<span id="cb12-125"><a href="#cb12-125"></a></span>
+<span id="cb12-126"><a href="#cb12-126"></a><span class="fu">#### Crop and mask Landsat data to study area</span></span>
+<span id="cb12-127"><a href="#cb12-127"></a></span>
+<span id="cb12-128"><a href="#cb12-128"></a>Next, I cropped and masked the Landsat data to the study area. This reduced the amount of data that needed to be worked with and therefore saves computational time and energy. Furthermore, I removed objects that I no longer was going to be working with using the <span class="in">`rm()`</span> function to save space (optional).</span>
+<span id="cb12-129"><a href="#cb12-129"></a></span>
+<span id="cb12-130"><a href="#cb12-130"></a><span class="in">```{r include=TRUE}</span></span>
+<span id="cb12-131"><a href="#cb12-131"></a></span>
+<span id="cb12-132"><a href="#cb12-132"></a><span class="co"># crop Landsat scene to the extent of the SB county shapefile</span></span>
+<span id="cb12-133"><a href="#cb12-133"></a>landsat_cropped <span class="ot">&lt;-</span> <span class="fu">crop</span>(landsat, SB_county_south)</span>
+<span id="cb12-134"><a href="#cb12-134"></a></span>
+<span id="cb12-135"><a href="#cb12-135"></a><span class="co"># mask the raster to southern portion of SB county</span></span>
+<span id="cb12-136"><a href="#cb12-136"></a>landsat_masked <span class="ot">&lt;-</span> <span class="fu">mask</span>(landsat_cropped, SB_county_south)</span>
+<span id="cb12-137"><a href="#cb12-137"></a></span>
+<span id="cb12-138"><a href="#cb12-138"></a><span class="co"># remove unnecessary object from environment</span></span>
+<span id="cb12-139"><a href="#cb12-139"></a><span class="fu">rm</span>(landsat, landsat_cropped, SB_county_south)</span>
+<span id="cb12-140"><a href="#cb12-140"></a></span>
+<span id="cb12-141"><a href="#cb12-141"></a><span class="fu">plotRGB</span>(landsat_masked, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span>
+<span id="cb12-142"><a href="#cb12-142"></a><span class="in">```</span></span>
+<span id="cb12-143"><a href="#cb12-143"></a></span>
+<span id="cb12-144"><a href="#cb12-144"></a><span class="fu">#### Convert Landsat values to reflectance</span></span>
+<span id="cb12-145"><a href="#cb12-145"></a></span>
+<span id="cb12-146"><a href="#cb12-146"></a>Next, I converted the values in the raster stack to correspond to reflectance values. To do so, I first removed erroneous values and applied any <span class="co">[</span><span class="ot">scaling factors</span><span class="co">](https://www.usgs.gov/faqs/how-do-i-use-scale-factor-landsat-level-2-science-products#:~:text=Landsat%20Collection%202%20surface%20temperature,the%20scale%20factor%20is%20applied.)</span> to convert to reflectance. In this case, I worked with <span class="co">[</span><span class="ot">Landsat Collection 2</span><span class="co">](https://www.usgs.gov/landsat-missions/landsat-collection-2)</span>. The valid range of pixel values for this collection is 7,273-43,636, with a multiplicative scale factor of 0.0000275 and an additive scale factor of -0.2. So I reclassified any erroneous values as <span class="in">`NA`</span> and updated the values for each pixel based on the scaling factors. Now the pixel values should range from 0-100%.</span>
+<span id="cb12-147"><a href="#cb12-147"></a></span>
+<span id="cb12-148"><a href="#cb12-148"></a><span class="in">```{r include=TRUE}</span></span>
+<span id="cb12-149"><a href="#cb12-149"></a><span class="fu">summary</span>(landsat_masked)</span>
+<span id="cb12-150"><a href="#cb12-150"></a><span class="co"># reclassify erroneous values as NA</span></span>
+<span id="cb12-151"><a href="#cb12-151"></a>rcl <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">7273</span>, <span class="cn">NA</span>,</span>
+<span id="cb12-152"><a href="#cb12-152"></a>         <span class="dv">43636</span>, <span class="cn">Inf</span>, <span class="cn">NA</span>), </span>
+<span id="cb12-153"><a href="#cb12-153"></a>        <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-154"><a href="#cb12-154"></a></span>
+<span id="cb12-155"><a href="#cb12-155"></a></span>
+<span id="cb12-156"><a href="#cb12-156"></a>landsat <span class="ot">&lt;-</span> <span class="fu">classify</span>(landsat_masked, <span class="at">rcl =</span> rcl)</span>
+<span id="cb12-157"><a href="#cb12-157"></a></span>
+<span id="cb12-158"><a href="#cb12-158"></a><span class="co"># adjust values based on scaling factor</span></span>
+<span id="cb12-159"><a href="#cb12-159"></a></span>
+<span id="cb12-160"><a href="#cb12-160"></a>landsat <span class="ot">&lt;-</span> (landsat <span class="sc">*</span> <span class="fl">0.0000275</span> <span class="sc">-</span> <span class="fl">0.2</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb12-161"><a href="#cb12-161"></a><span class="fu">summary</span>(landsat)</span>
+<span id="cb12-162"><a href="#cb12-162"></a></span>
+<span id="cb12-163"><a href="#cb12-163"></a><span class="co"># plot true color image to check results</span></span>
+<span id="cb12-164"><a href="#cb12-164"></a><span class="fu">plotRGB</span>(landsat, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span>
+<span id="cb12-165"><a href="#cb12-165"></a></span>
+<span id="cb12-166"><a href="#cb12-166"></a><span class="co"># check values are 0 - 100</span></span>
+<span id="cb12-167"><a href="#cb12-167"></a><span class="fu">summary</span>(landsat)</span>
+<span id="cb12-168"><a href="#cb12-168"></a><span class="in">```</span></span>
+<span id="cb12-169"><a href="#cb12-169"></a></span>
+<span id="cb12-170"><a href="#cb12-170"></a><span class="fu">## Classify image</span></span>
+<span id="cb12-171"><a href="#cb12-171"></a></span>
+<span id="cb12-172"><a href="#cb12-172"></a><span class="fu">#### Extract reflectance values for training data</span></span>
+<span id="cb12-173"><a href="#cb12-173"></a></span>
+<span id="cb12-174"><a href="#cb12-174"></a>Here, I loaded in the shapefile identifying different locations within the study area as containing one of the 4 land cover types. I then extracted the spectral values at each site to create a data frame that relates land cover types to their spectral reflectance.</span>
+<span id="cb12-175"><a href="#cb12-175"></a></span>
+<span id="cb12-176"><a href="#cb12-176"></a><span class="in">```{r include=TRUE}</span></span>
+<span id="cb12-177"><a href="#cb12-177"></a><span class="co"># read in and transform training data</span></span>
+<span id="cb12-178"><a href="#cb12-178"></a>training_data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"trainingdata.shp"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-179"><a href="#cb12-179"></a>  <span class="fu">st_transform</span>(., <span class="at">crs =</span> <span class="fu">st_crs</span>(landsat))</span>
+<span id="cb12-180"><a href="#cb12-180"></a><span class="co">#plot</span></span>
+<span id="cb12-181"><a href="#cb12-181"></a><span class="fu">plot</span>(training_data)</span>
+<span id="cb12-182"><a href="#cb12-182"></a></span>
+<span id="cb12-183"><a href="#cb12-183"></a><span class="co"># extract reflectance values at training sites</span></span>
+<span id="cb12-184"><a href="#cb12-184"></a>training_data_values <span class="ot">&lt;-</span> <span class="fu">extract</span>(landsat, training_data, <span class="at">df =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-185"><a href="#cb12-185"></a></span>
+<span id="cb12-186"><a href="#cb12-186"></a><span class="co"># convert training data to data frame</span></span>
+<span id="cb12-187"><a href="#cb12-187"></a>training_data_attributes <span class="ot">&lt;-</span> training_data <span class="sc">%&gt;%</span> </span>
+<span id="cb12-188"><a href="#cb12-188"></a>  <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb12-189"><a href="#cb12-189"></a></span>
+<span id="cb12-190"><a href="#cb12-190"></a><span class="co"># join training data attributes and extracted reflectance values</span></span>
+<span id="cb12-191"><a href="#cb12-191"></a></span>
+<span id="cb12-192"><a href="#cb12-192"></a>SB_training_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(training_data_values, training_data_attributes,</span>
+<span id="cb12-193"><a href="#cb12-193"></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ID"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-194"><a href="#cb12-194"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">as.factor</span>(type))</span>
+<span id="cb12-195"><a href="#cb12-195"></a></span>
+<span id="cb12-196"><a href="#cb12-196"></a></span>
+<span id="cb12-197"><a href="#cb12-197"></a><span class="in">```</span></span>
+<span id="cb12-198"><a href="#cb12-198"></a></span>
+<span id="cb12-199"><a href="#cb12-199"></a><span class="fu">#### Train decision tree classifier</span></span>
+<span id="cb12-200"><a href="#cb12-200"></a></span>
+<span id="cb12-201"><a href="#cb12-201"></a>To train the decision tree, I first needed to establish a model formula (i.e. what the response and predictor variables are). The <span class="in">`rpart`</span> function implements the <span class="co">[</span><span class="ot">CART algorithm</span><span class="co">](https://medium.com/geekculture/decision-trees-with-cart-algorithm-7e179acee8ff)</span>. The <span class="in">`rpart`</span> function needs to know the model formula and training data you would like to use. Because I was performing a classification, I set <span class="in">`method = "class"`</span>. I also set <span class="in">`na.action = na.omit`</span> to remove any pixels with <span class="in">`NA`</span>s from the analysis.\</span>
+<span id="cb12-202"><a href="#cb12-202"></a></span>
+<span id="cb12-203"><a href="#cb12-203"></a>To understand how the decision tree will classify pixels, I first plotted the results. The decision tree is comprised of a hierarchy of binary decisions. Each decision rule has 2 outcomes based on a conditional statement pertaining to values in each spectral band.</span>
+<span id="cb12-204"><a href="#cb12-204"></a></span>
+<span id="cb12-205"><a href="#cb12-205"></a><span class="in">```{r include=TRUE}</span></span>
+<span id="cb12-206"><a href="#cb12-206"></a><span class="co"># establish model formula</span></span>
+<span id="cb12-207"><a href="#cb12-207"></a></span>
+<span id="cb12-208"><a href="#cb12-208"></a>SB_formula <span class="ot">&lt;-</span> type <span class="sc">~</span> red <span class="sc">+</span> green <span class="sc">+</span> blue <span class="sc">+</span> NIR <span class="sc">+</span> SWIR1 <span class="sc">+</span> SWIR2</span>
+<span id="cb12-209"><a href="#cb12-209"></a></span>
+<span id="cb12-210"><a href="#cb12-210"></a><span class="co"># train decision tree</span></span>
+<span id="cb12-211"><a href="#cb12-211"></a>SB_decision_tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(<span class="at">formula =</span> SB_formula,</span>
+<span id="cb12-212"><a href="#cb12-212"></a>      <span class="at">data =</span> SB_training_data, </span>
+<span id="cb12-213"><a href="#cb12-213"></a>      <span class="at">method =</span> <span class="st">"class"</span>, </span>
+<span id="cb12-214"><a href="#cb12-214"></a>      <span class="at">na.action =</span> na.omit)</span>
+<span id="cb12-215"><a href="#cb12-215"></a></span>
+<span id="cb12-216"><a href="#cb12-216"></a><span class="co"># plot decision tree</span></span>
+<span id="cb12-217"><a href="#cb12-217"></a><span class="fu">prp</span>(SB_decision_tree)</span>
+<span id="cb12-218"><a href="#cb12-218"></a></span>
+<span id="cb12-219"><a href="#cb12-219"></a></span>
+<span id="cb12-220"><a href="#cb12-220"></a></span>
+<span id="cb12-221"><a href="#cb12-221"></a><span class="in">```</span></span>
+<span id="cb12-222"><a href="#cb12-222"></a></span>
+<span id="cb12-223"><a href="#cb12-223"></a><span class="fu">#### Apply decision tree</span></span>
+<span id="cb12-224"><a href="#cb12-224"></a></span>
+<span id="cb12-225"><a href="#cb12-225"></a>After making the decision tree, I applied it to the entire image. The <span class="in">`terra`</span> package includes a <span class="in">`predict()`</span> function that allows you to apply a model to the data. In order for this to work properly, the names of the layers needed to match the column names of the predictors I used to train our decision tree. The <span class="in">`predict()`</span> function then returns a raster layer with integer values. These integer values correspond to the *factor levels* in the training data. To figure out what category each integer corresponded to, I then inspected the levels of the training data.</span>
+<span id="cb12-226"><a href="#cb12-226"></a></span>
+<span id="cb12-227"><a href="#cb12-227"></a><span class="in">```{r include=TRUE}</span></span>
+<span id="cb12-228"><a href="#cb12-228"></a><span class="co"># classify image based on decision tree</span></span>
+<span id="cb12-229"><a href="#cb12-229"></a>SB_classification <span class="ot">&lt;-</span> <span class="fu">predict</span>(landsat, SB_decision_tree, <span class="at">type =</span> <span class="st">"class"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-230"><a href="#cb12-230"></a></span>
+<span id="cb12-231"><a href="#cb12-231"></a><span class="co"># inspect level to understand the order of classes in prediction</span></span>
+<span id="cb12-232"><a href="#cb12-232"></a>SB_classification</span>
+<span id="cb12-233"><a href="#cb12-233"></a></span>
+<span id="cb12-234"><a href="#cb12-234"></a><span class="in">```</span></span>
+<span id="cb12-235"><a href="#cb12-235"></a></span>
+<span id="cb12-236"><a href="#cb12-236"></a><span class="fu">#### Plot results</span></span>
+<span id="cb12-237"><a href="#cb12-237"></a></span>
+<span id="cb12-238"><a href="#cb12-238"></a>Finally, I plotted the results to check out the land cover map.</span>
+<span id="cb12-239"><a href="#cb12-239"></a></span>
+<span id="cb12-242"><a href="#cb12-242"></a><span class="in">```{r}</span></span>
+<span id="cb12-243"><a href="#cb12-243"></a><span class="co"># plot results</span></span>
+<span id="cb12-244"><a href="#cb12-244"></a><span class="fu">tm_shape</span>(SB_classification) <span class="sc">+</span></span>
+<span id="cb12-245"><a href="#cb12-245"></a>  <span class="fu">tm_raster</span>()</span>
+<span id="cb12-246"><a href="#cb12-246"></a></span>
+<span id="cb12-247"><a href="#cb12-247"></a><span class="in">```</span></span>
+<span id="cb12-248"><a href="#cb12-248"></a></span>
+<span id="cb12-249"><a href="#cb12-249"></a><span class="fu">## Conclusion</span></span>
+<span id="cb12-250"><a href="#cb12-250"></a></span>
+<span id="cb12-251"><a href="#cb12-251"></a>This analysis highlights the power of using supervised classification to gain insight of land use over on a large scale. While this technique has some challenges, it is a powerful tool that can be used in the environmental field to understand not just land use cover but a wide variety of environmental topics. It is important that these practices are also ground truthed to ensure the predicted model results are accurate.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2023, Raymond Hunter
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Made using Quarto
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

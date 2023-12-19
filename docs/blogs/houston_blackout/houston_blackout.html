@@ -1030,8 +1030,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-24"><a href="#cb25-24"></a></span>
 <span id="cb25-25"><a href="#cb25-25"></a><span class="co">[</span><span class="ot">Github project repository</span><span class="co">](https://github.com/ramhunte/houston_blackout)</span></span>
 <span id="cb25-26"><a href="#cb25-26"></a></span>
-<span id="cb25-27"><a href="#cb25-27"></a><span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb25-28"><a href="#cb25-28"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-27"><a href="#cb25-27"></a><span class="in">```{r setup, include=TRUE}</span></span>
+<span id="cb25-28"><a href="#cb25-28"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>, <span class="at">fig.align =</span> <span class="st">"center"</span>)</span>
 <span id="cb25-29"><a href="#cb25-29"></a></span>
 <span id="cb25-30"><a href="#cb25-30"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb25-31"><a href="#cb25-31"></a><span class="fu">library</span>(ggspatial)</span>
@@ -1041,504 +1041,504 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-35"><a href="#cb25-35"></a><span class="fu">library</span>(spData)</span>
 <span id="cb25-36"><a href="#cb25-36"></a><span class="fu">library</span>(patchwork)</span>
 <span id="cb25-37"><a href="#cb25-37"></a><span class="fu">library</span>(scales)</span>
-<span id="cb25-38"><a href="#cb25-38"></a></span>
-<span id="cb25-39"><a href="#cb25-39"></a><span class="co"># Setting my filepaths</span></span>
-<span id="cb25-40"><a href="#cb25-40"></a>rootdir <span class="ot">&lt;-</span> (<span class="st">"/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-3-ramhunte"</span>)</span>
-<span id="cb25-41"><a href="#cb25-41"></a>data <span class="ot">&lt;-</span> <span class="fu">file.path</span>(rootdir,<span class="st">"data"</span>)</span>
-<span id="cb25-42"><a href="#cb25-42"></a></span>
-<span id="cb25-43"><a href="#cb25-43"></a><span class="in">```</span></span>
-<span id="cb25-44"><a href="#cb25-44"></a></span>
-<span id="cb25-45"><a href="#cb25-45"></a><span class="fu">## Background</span></span>
-<span id="cb25-46"><a href="#cb25-46"></a></span>
-<span id="cb25-47"><a href="#cb25-47"></a>Natural disasters oftentimes occur unpredictably and rapidly, and the severity of them can vary widely. Specifically in the Southern United States, major storms (like Hurricane Katrina) can have devastating and long lasting consequences on communities.<span class="ot">[^1]</span> "In February 2021, the state of Texas suffered a major power crisis, which came about as a result of three severe winter storms sweeping across the United States on February 10--11, 13--17, and 15--20."<span class="ot">[^2]</span>. While these storms seem like once in a blue moon events, they are becoming much more of a normal occurrence. More importantly, storms do not impact all communities the same, and therefore it is critical that we incorporate racial justice components to our lines of environmental analysese to understand how we can mitigate marginalized groups from being disproportianately harmed from climate change.</span>
-<span id="cb25-48"><a href="#cb25-48"></a></span>
-<span id="cb25-49"><a href="#cb25-49"></a><span class="ot">[^1]</span>:LaJoie, A. S., Sprang, G., &amp; McKinney, W. P. (2010). Long‐term effects of Hurricane Katrina on the psychological well‐being of evacuees. Disasters, 34(4), 1031-1044.</span>
-<span id="cb25-50"><a href="#cb25-50"></a></span>
-<span id="cb25-51"><a href="#cb25-51"></a><span class="ot">[^2]: </span>Wikipedia. 2021. "2021 Texas power crisis." Last modified October</span>
-<span id="cb25-52"><a href="#cb25-52"></a>    2, 2021. <span class="ot">&lt;https://en.wikipedia.org/wiki/2021_Texas_power_crisis&gt;</span>.</span>
+<span id="cb25-38"><a href="#cb25-38"></a><span class="in">```</span></span>
+<span id="cb25-39"><a href="#cb25-39"></a></span>
+<span id="cb25-40"><a href="#cb25-40"></a></span>
+<span id="cb25-41"><a href="#cb25-41"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb25-42"><a href="#cb25-42"></a><span class="co"># Setting my filepaths</span></span>
+<span id="cb25-43"><a href="#cb25-43"></a>rootdir <span class="ot">&lt;-</span> (<span class="st">"/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-3-ramhunte"</span>)</span>
+<span id="cb25-44"><a href="#cb25-44"></a>data <span class="ot">&lt;-</span> <span class="fu">file.path</span>(rootdir,<span class="st">"data"</span>)</span>
+<span id="cb25-45"><a href="#cb25-45"></a></span>
+<span id="cb25-46"><a href="#cb25-46"></a><span class="in">```</span></span>
+<span id="cb25-47"><a href="#cb25-47"></a></span>
+<span id="cb25-48"><a href="#cb25-48"></a><span class="fu">## Background</span></span>
+<span id="cb25-49"><a href="#cb25-49"></a></span>
+<span id="cb25-50"><a href="#cb25-50"></a>Natural disasters oftentimes occur unpredictably and rapidly, and the severity of them can vary widely. Specifically in the Southern United States, major storms (like Hurricane Katrina) can have devastating and long lasting consequences on communities.<span class="ot">[^1]</span> "In February 2021, the state of Texas suffered a major power crisis, which came about as a result of three severe winter storms sweeping across the United States on February 10--11, 13--17, and 15--20."<span class="ot">[^2]</span>. While these storms seem like once in a blue moon events, they are becoming much more of a normal occurrence. More importantly, storms do not impact all communities the same, and therefore it is critical that we incorporate racial justice components to our lines of environmental analysese to understand how we can mitigate marginalized groups from being disproportianately harmed from climate change.</span>
+<span id="cb25-51"><a href="#cb25-51"></a></span>
+<span id="cb25-52"><a href="#cb25-52"></a><span class="ot">[^1]</span>:LaJoie, A. S., Sprang, G., &amp; McKinney, W. P. (2010). Long‐term effects of Hurricane Katrina on the psychological well‐being of evacuees. Disasters, 34(4), 1031-1044.</span>
 <span id="cb25-53"><a href="#cb25-53"></a></span>
-<span id="cb25-54"><a href="#cb25-54"></a><span class="fu">## Goal </span></span>
-<span id="cb25-55"><a href="#cb25-55"></a>The goal of this study is to try and answer the question: **Which communities in Houston experienced blackouts from the February 2021 storms, and did they vary by socioeconomic status?** Other studies have shown that not only do lower socioeconomic status communities experience more intense consequences of natural disaster, but they also don't always receive the same degree of aid following one.<span class="ot">[^2]</span></span>
+<span id="cb25-54"><a href="#cb25-54"></a><span class="ot">[^2]: </span>Wikipedia. 2021. "2021 Texas power crisis." Last modified October</span>
+<span id="cb25-55"><a href="#cb25-55"></a>    2, 2021. <span class="ot">&lt;https://en.wikipedia.org/wiki/2021_Texas_power_crisis&gt;</span>.</span>
 <span id="cb25-56"><a href="#cb25-56"></a></span>
-<span id="cb25-57"><a href="#cb25-57"></a><span class="ot">[^2]: </span>Hess, D. B. (2005). Access to employment for adults in poverty in the Buffalo-Niagara region. Urban Studies, 42(7), 1177-1200.</span>
-<span id="cb25-58"><a href="#cb25-58"></a></span>
-<span id="cb25-59"><a href="#cb25-59"></a>By identifying the total number of houses in Houston that lost power and overlaying socioeconomic data to these homes, we can begin to look at these underlying patterns of potential environmental injustice. These types of studies are becoming critically important as climate change continues to increase the frequency of severe storms including intense precipitation events throughout Texas<span class="ot">[^3]</span> as not all communities are affected the same. We need to look at how communities of varying socioeconomic status are impacted as a result.</span>
-<span id="cb25-60"><a href="#cb25-60"></a></span>
-<span id="cb25-61"><a href="#cb25-61"></a><span class="ot">[^3]: </span>Li, Z., Li, X., Wang, Y., &amp; Quiring, S. M. (2019). Impact of climate change on precipitation patterns in Houston, Texas, USA. Anthropocene, 25, 100193.</span>
-<span id="cb25-62"><a href="#cb25-62"></a></span>
-<span id="cb25-63"><a href="#cb25-63"></a><span class="fu">## Approach</span></span>
-<span id="cb25-64"><a href="#cb25-64"></a></span>
-<span id="cb25-65"><a href="#cb25-65"></a>I used remotely-sensed night lights data from before and after the storms to estimate power outages. Data was acquired from the [Visible Infrared Imaging Radiometer Suite</span>
-<span id="cb25-66"><a href="#cb25-66"></a>(VIIRS)](https://en.wikipedia.org/wiki/Visible_Infrared_Imaging_Radiometer_Suite)</span>
-<span id="cb25-67"><a href="#cb25-67"></a>from the Suomi satellite. I used the VNP46A1 tolook for variation in night lights before and after the storm as a way of identifying areas that lost electric power as a result of the storms. Furthermore, data containing the physical boundaires and area of buildings and roads is needed to spatially join to areas that lost power. I gathered this data from <span class="co">[</span><span class="ot">OpenStreetMap</span><span class="co">](https://www.openstreetmap.org/#map=4/38.01/-95.84)</span> providing high resolution data on the structural layout of the city. Finally, we need to join this data with socioeconomic factor data pertaining to all the communities in Houston affected by the blackouts. I pulled this data from the US Census Bureau (see <span class="in">`Readme`</span> file) that shows block group county level information on various socioeconomic characterisitcs.</span>
-<span id="cb25-68"><a href="#cb25-68"></a></span>
-<span id="cb25-69"><a href="#cb25-69"></a>These types of analysis require a variety of different tools to carry out from satellite images and census data to finalized maps. Some of the most important tools in carrying out this analysis include:</span>
-<span id="cb25-70"><a href="#cb25-70"></a><span class="ss">* </span>loading, transforming, and wrangling vector/raster data</span>
-<span id="cb25-71"><a href="#cb25-71"></a><span class="ss">* </span>raster operations to identify blackout areas from satellite imagery</span>
-<span id="cb25-72"><a href="#cb25-72"></a><span class="ss">* </span>vector operations to isolate affected buildings and remove interference (road lights)</span>
-<span id="cb25-73"><a href="#cb25-73"></a><span class="ss">* </span>spatial joins of regions experiencing blackouts and the total number of untis within them</span>
-<span id="cb25-74"><a href="#cb25-74"></a></span>
-<span id="cb25-75"><a href="#cb25-75"></a><span class="fu">### Data</span></span>
-<span id="cb25-76"><a href="#cb25-76"></a></span>
-<span id="cb25-77"><a href="#cb25-77"></a><span class="fu">#### Night lights</span></span>
-<span id="cb25-78"><a href="#cb25-78"></a></span>
-<span id="cb25-79"><a href="#cb25-79"></a>Using NASA's Worldview to find data pre and post storm, I found satellite images recorded on</span>
-<span id="cb25-80"><a href="#cb25-80"></a>2021-02-07 and 2021-02-16 that provided two clear, contrasting images to</span>
-<span id="cb25-81"><a href="#cb25-81"></a>visualize the extent of the power outage in Texas.</span>
-<span id="cb25-82"><a href="#cb25-82"></a>VIIRS data is distributed through NASA's <span class="co">[</span><span class="ot">Level-1 and Atmospheric Archive &amp; Distribution System Distributed Active Archive Center (LAADS DAAC)</span><span class="co">](https://ladsweb.modaps.eosdis.nasa.gov/)</span>. Many NASA Earth data</span>
-<span id="cb25-83"><a href="#cb25-83"></a>products are distributed in 10x10 degree tiles in sinusoidal equal-area</span>
-<span id="cb25-84"><a href="#cb25-84"></a>projection that are identified by their horizontal and vertical</span>
-<span id="cb25-85"><a href="#cb25-85"></a>position in the grid. Houston lies on the border of tiles h08v05 and</span>
-<span id="cb25-86"><a href="#cb25-86"></a>h08v06, and so I downloaded two tiles per date to ensure the whole city was being included.</span>
-<span id="cb25-87"><a href="#cb25-87"></a>These data are stored in the <span class="in">`VNP46A1`</span> folder:</span>
-<span id="cb25-88"><a href="#cb25-88"></a></span>
-<span id="cb25-89"><a href="#cb25-89"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021038.h08v05.001.2021039064328.h5.tif`</span>: tile h08v05,</span>
-<span id="cb25-90"><a href="#cb25-90"></a>    collected on 2021-02-07\</span>
-<span id="cb25-91"><a href="#cb25-91"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021038.h08v06.001.2021039064329.h5.tif`</span>: tile h08v06,</span>
-<span id="cb25-92"><a href="#cb25-92"></a>    collected on 2021-02-07\</span>
-<span id="cb25-93"><a href="#cb25-93"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021047.h08v05.001.2021048091106.h5.tif`</span>: tile h08v05,</span>
-<span id="cb25-94"><a href="#cb25-94"></a>    collected on 2021-02-16\</span>
-<span id="cb25-95"><a href="#cb25-95"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021047.h08v06.001.2021048091105.h5.tif`</span>: tile h08v06,</span>
-<span id="cb25-96"><a href="#cb25-96"></a>    collected on 2021-02-16</span>
-<span id="cb25-97"><a href="#cb25-97"></a></span>
-<span id="cb25-98"><a href="#cb25-98"></a><span class="fu">#### Roads</span></span>
-<span id="cb25-99"><a href="#cb25-99"></a></span>
-<span id="cb25-100"><a href="#cb25-100"></a>One issue with night light data is that light pollution can interfere with detecting patterns of interest. Highways make up much of the night lights seen from space (see Google's <span class="co">[</span><span class="ot">Earth at Night</span><span class="co">](https://earth.google.com/web/@27.44405464,-84.7693044,206.63660162a,8916361.52264659d,35y,0h,0t,0r/data=CiQSIhIgMGY3ZTJkYzdlOGExMTFlNjk5MGQ2ZjgxOGQ2OWE2ZTc)</span>).</span>
-<span id="cb25-101"><a href="#cb25-101"></a>Therefore, it is important to minimize falsely identifying areas with reduced traffic as areas</span>
-<span id="cb25-102"><a href="#cb25-102"></a>without power.</span>
-<span id="cb25-103"><a href="#cb25-103"></a><span class="co">[</span><span class="ot">OpenStreetMap (OSM)</span><span class="co">](https://planet.openstreetmap.org/)</span> is a</span>
-<span id="cb25-104"><a href="#cb25-104"></a>collaborative project which creates publicly available geographic data</span>
-<span id="cb25-105"><a href="#cb25-105"></a>of the world. I used [Geofabrik's download</span>
-<span id="cb25-106"><a href="#cb25-106"></a>sites](https://download.geofabrik.de/) to retrieve a shapefile of all</span>
-<span id="cb25-107"><a href="#cb25-107"></a>highways in Texas and prepared a Geopackage (<span class="in">`.gpkg`</span> file) containing</span>
-<span id="cb25-108"><a href="#cb25-108"></a>just the subset of roads that intersect the Houston metropolitan area.</span>
-<span id="cb25-109"><a href="#cb25-109"></a></span>
-<span id="cb25-110"><a href="#cb25-110"></a><span class="ss">-   </span><span class="in">`gis_osm_roads_free_1.gpkg`</span></span>
-<span id="cb25-111"><a href="#cb25-111"></a></span>
-<span id="cb25-112"><a href="#cb25-112"></a><span class="fu">#### Houses</span></span>
-<span id="cb25-113"><a href="#cb25-113"></a></span>
-<span id="cb25-114"><a href="#cb25-114"></a>I also obtained building data from OpenStreetMap. Again, I downloaded</span>
-<span id="cb25-115"><a href="#cb25-115"></a>from Geofabrick and prepared a GeoPackage containing only houses in the</span>
-<span id="cb25-116"><a href="#cb25-116"></a>Houston metropolitan area.\</span>
-<span id="cb25-117"><a href="#cb25-117"></a></span>
-<span id="cb25-118"><a href="#cb25-118"></a><span class="ss">-   </span><span class="in">`gis_osm_buildings_a_free_1.gpkg`</span></span>
-<span id="cb25-119"><a href="#cb25-119"></a></span>
-<span id="cb25-120"><a href="#cb25-120"></a><span class="fu">#### Socioeconomic</span></span>
-<span id="cb25-121"><a href="#cb25-121"></a></span>
-<span id="cb25-122"><a href="#cb25-122"></a>I used data from the [U.S. Census Bureau's American</span>
-<span id="cb25-123"><a href="#cb25-123"></a>Community Survey](https://www.census.gov/programs-surveys/acs) for</span>
-<span id="cb25-124"><a href="#cb25-124"></a>census tracts in 2019 to reoresent socioeconomic data of different regions of Houston. The *folder* <span class="in">`ACS_2019_5YR_TRACT_48.gdb`</span> is an</span>
-<span id="cb25-125"><a href="#cb25-125"></a>ArcGIS ["file</span>
-<span id="cb25-126"><a href="#cb25-126"></a>geodatabase"](https://desktop.arcgis.com/en/arcmap/latest/manage-data/administer-file-gdbs/file-geodatabases.htm),</span>
-<span id="cb25-127"><a href="#cb25-127"></a>a multi-file proprietary format that's roughly analogous to a GeoPackage</span>
-<span id="cb25-128"><a href="#cb25-128"></a>file.</span>
-<span id="cb25-129"><a href="#cb25-129"></a>Each layer contains a subset of the fields documents in the [ACS</span>
-<span id="cb25-130"><a href="#cb25-130"></a>metadata](https://www2.census.gov/geo/docs/maps-data/data/tiger/prejoined/ACSMetadata2011.txt).</span>
-<span id="cb25-131"><a href="#cb25-131"></a>The geodatabase contains a layer holding the geometry information,</span>
-<span id="cb25-132"><a href="#cb25-132"></a>separate from the layers holding the ACS attributes. You have to combine</span>
-<span id="cb25-133"><a href="#cb25-133"></a>the geometry with the attributes to get a feature layer that <span class="in">`sf`</span> can</span>
-<span id="cb25-134"><a href="#cb25-134"></a>use.</span>
-<span id="cb25-135"><a href="#cb25-135"></a></span>
-<span id="cb25-136"><a href="#cb25-136"></a></span>
-<span id="cb25-137"><a href="#cb25-137"></a><span class="fu">## Analysis</span></span>
+<span id="cb25-57"><a href="#cb25-57"></a><span class="fu">## Goal </span></span>
+<span id="cb25-58"><a href="#cb25-58"></a>The goal of this study is to try and answer the question: **Which communities in Houston experienced blackouts from the February 2021 storms, and did they vary by socioeconomic status?** Other studies have shown that not only do lower socioeconomic status communities experience more intense consequences of natural disaster, but they also don't always receive the same degree of aid following one.<span class="ot">[^2]</span></span>
+<span id="cb25-59"><a href="#cb25-59"></a></span>
+<span id="cb25-60"><a href="#cb25-60"></a><span class="ot">[^2]: </span>Hess, D. B. (2005). Access to employment for adults in poverty in the Buffalo-Niagara region. Urban Studies, 42(7), 1177-1200.</span>
+<span id="cb25-61"><a href="#cb25-61"></a></span>
+<span id="cb25-62"><a href="#cb25-62"></a>By identifying the total number of houses in Houston that lost power and overlaying socioeconomic data to these homes, we can begin to look at these underlying patterns of potential environmental injustice. These types of studies are becoming critically important as climate change continues to increase the frequency of severe storms including intense precipitation events throughout Texas<span class="ot">[^3]</span> as not all communities are affected the same. We need to look at how communities of varying socioeconomic status are impacted as a result.</span>
+<span id="cb25-63"><a href="#cb25-63"></a></span>
+<span id="cb25-64"><a href="#cb25-64"></a><span class="ot">[^3]: </span>Li, Z., Li, X., Wang, Y., &amp; Quiring, S. M. (2019). Impact of climate change on precipitation patterns in Houston, Texas, USA. Anthropocene, 25, 100193.</span>
+<span id="cb25-65"><a href="#cb25-65"></a></span>
+<span id="cb25-66"><a href="#cb25-66"></a><span class="fu">## Approach</span></span>
+<span id="cb25-67"><a href="#cb25-67"></a></span>
+<span id="cb25-68"><a href="#cb25-68"></a>I used remotely-sensed night lights data from before and after the storms to estimate power outages. Data was acquired from the [Visible Infrared Imaging Radiometer Suite</span>
+<span id="cb25-69"><a href="#cb25-69"></a>(VIIRS)](https://en.wikipedia.org/wiki/Visible_Infrared_Imaging_Radiometer_Suite)</span>
+<span id="cb25-70"><a href="#cb25-70"></a>from the Suomi satellite. I used the VNP46A1 tolook for variation in night lights before and after the storm as a way of identifying areas that lost electric power as a result of the storms. Furthermore, data containing the physical boundaires and area of buildings and roads is needed to spatially join to areas that lost power. I gathered this data from <span class="co">[</span><span class="ot">OpenStreetMap</span><span class="co">](https://www.openstreetmap.org/#map=4/38.01/-95.84)</span> providing high resolution data on the structural layout of the city. Finally, we need to join this data with socioeconomic factor data pertaining to all the communities in Houston affected by the blackouts. I pulled this data from the US Census Bureau (see <span class="in">`Readme`</span> file) that shows block group county level information on various socioeconomic characterisitcs.</span>
+<span id="cb25-71"><a href="#cb25-71"></a></span>
+<span id="cb25-72"><a href="#cb25-72"></a>These types of analysis require a variety of different tools to carry out from satellite images and census data to finalized maps. Some of the most important tools in carrying out this analysis include:</span>
+<span id="cb25-73"><a href="#cb25-73"></a><span class="ss">* </span>loading, transforming, and wrangling vector/raster data</span>
+<span id="cb25-74"><a href="#cb25-74"></a><span class="ss">* </span>raster operations to identify blackout areas from satellite imagery</span>
+<span id="cb25-75"><a href="#cb25-75"></a><span class="ss">* </span>vector operations to isolate affected buildings and remove interference (road lights)</span>
+<span id="cb25-76"><a href="#cb25-76"></a><span class="ss">* </span>spatial joins of regions experiencing blackouts and the total number of untis within them</span>
+<span id="cb25-77"><a href="#cb25-77"></a></span>
+<span id="cb25-78"><a href="#cb25-78"></a><span class="fu">### Data</span></span>
+<span id="cb25-79"><a href="#cb25-79"></a></span>
+<span id="cb25-80"><a href="#cb25-80"></a><span class="fu">#### Night lights</span></span>
+<span id="cb25-81"><a href="#cb25-81"></a></span>
+<span id="cb25-82"><a href="#cb25-82"></a>Using NASA's Worldview to find data pre and post storm, I found satellite images recorded on</span>
+<span id="cb25-83"><a href="#cb25-83"></a>2021-02-07 and 2021-02-16 that provided two clear, contrasting images to</span>
+<span id="cb25-84"><a href="#cb25-84"></a>visualize the extent of the power outage in Texas.</span>
+<span id="cb25-85"><a href="#cb25-85"></a>VIIRS data is distributed through NASA's <span class="co">[</span><span class="ot">Level-1 and Atmospheric Archive &amp; Distribution System Distributed Active Archive Center (LAADS DAAC)</span><span class="co">](https://ladsweb.modaps.eosdis.nasa.gov/)</span>. Many NASA Earth data</span>
+<span id="cb25-86"><a href="#cb25-86"></a>products are distributed in 10x10 degree tiles in sinusoidal equal-area</span>
+<span id="cb25-87"><a href="#cb25-87"></a>projection that are identified by their horizontal and vertical</span>
+<span id="cb25-88"><a href="#cb25-88"></a>position in the grid. Houston lies on the border of tiles h08v05 and</span>
+<span id="cb25-89"><a href="#cb25-89"></a>h08v06, and so I downloaded two tiles per date to ensure the whole city was being included.</span>
+<span id="cb25-90"><a href="#cb25-90"></a>These data are stored in the <span class="in">`VNP46A1`</span> folder:</span>
+<span id="cb25-91"><a href="#cb25-91"></a></span>
+<span id="cb25-92"><a href="#cb25-92"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021038.h08v05.001.2021039064328.h5.tif`</span>: tile h08v05,</span>
+<span id="cb25-93"><a href="#cb25-93"></a>    collected on 2021-02-07\</span>
+<span id="cb25-94"><a href="#cb25-94"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021038.h08v06.001.2021039064329.h5.tif`</span>: tile h08v06,</span>
+<span id="cb25-95"><a href="#cb25-95"></a>    collected on 2021-02-07\</span>
+<span id="cb25-96"><a href="#cb25-96"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021047.h08v05.001.2021048091106.h5.tif`</span>: tile h08v05,</span>
+<span id="cb25-97"><a href="#cb25-97"></a>    collected on 2021-02-16\</span>
+<span id="cb25-98"><a href="#cb25-98"></a><span class="ss">-   </span><span class="in">`VNP46A1.A2021047.h08v06.001.2021048091105.h5.tif`</span>: tile h08v06,</span>
+<span id="cb25-99"><a href="#cb25-99"></a>    collected on 2021-02-16</span>
+<span id="cb25-100"><a href="#cb25-100"></a></span>
+<span id="cb25-101"><a href="#cb25-101"></a><span class="fu">#### Roads</span></span>
+<span id="cb25-102"><a href="#cb25-102"></a></span>
+<span id="cb25-103"><a href="#cb25-103"></a>One issue with night light data is that light pollution can interfere with detecting patterns of interest. Highways make up much of the night lights seen from space (see Google's <span class="co">[</span><span class="ot">Earth at Night</span><span class="co">](https://earth.google.com/web/@27.44405464,-84.7693044,206.63660162a,8916361.52264659d,35y,0h,0t,0r/data=CiQSIhIgMGY3ZTJkYzdlOGExMTFlNjk5MGQ2ZjgxOGQ2OWE2ZTc)</span>).</span>
+<span id="cb25-104"><a href="#cb25-104"></a>Therefore, it is important to minimize falsely identifying areas with reduced traffic as areas</span>
+<span id="cb25-105"><a href="#cb25-105"></a>without power.</span>
+<span id="cb25-106"><a href="#cb25-106"></a><span class="co">[</span><span class="ot">OpenStreetMap (OSM)</span><span class="co">](https://planet.openstreetmap.org/)</span> is a</span>
+<span id="cb25-107"><a href="#cb25-107"></a>collaborative project which creates publicly available geographic data</span>
+<span id="cb25-108"><a href="#cb25-108"></a>of the world. I used [Geofabrik's download</span>
+<span id="cb25-109"><a href="#cb25-109"></a>sites](https://download.geofabrik.de/) to retrieve a shapefile of all</span>
+<span id="cb25-110"><a href="#cb25-110"></a>highways in Texas and prepared a Geopackage (<span class="in">`.gpkg`</span> file) containing</span>
+<span id="cb25-111"><a href="#cb25-111"></a>just the subset of roads that intersect the Houston metropolitan area.</span>
+<span id="cb25-112"><a href="#cb25-112"></a></span>
+<span id="cb25-113"><a href="#cb25-113"></a><span class="ss">-   </span><span class="in">`gis_osm_roads_free_1.gpkg`</span></span>
+<span id="cb25-114"><a href="#cb25-114"></a></span>
+<span id="cb25-115"><a href="#cb25-115"></a><span class="fu">#### Houses</span></span>
+<span id="cb25-116"><a href="#cb25-116"></a></span>
+<span id="cb25-117"><a href="#cb25-117"></a>I also obtained building data from OpenStreetMap. Again, I downloaded</span>
+<span id="cb25-118"><a href="#cb25-118"></a>from Geofabrick and prepared a GeoPackage containing only houses in the</span>
+<span id="cb25-119"><a href="#cb25-119"></a>Houston metropolitan area.\</span>
+<span id="cb25-120"><a href="#cb25-120"></a></span>
+<span id="cb25-121"><a href="#cb25-121"></a><span class="ss">-   </span><span class="in">`gis_osm_buildings_a_free_1.gpkg`</span></span>
+<span id="cb25-122"><a href="#cb25-122"></a></span>
+<span id="cb25-123"><a href="#cb25-123"></a><span class="fu">#### Socioeconomic</span></span>
+<span id="cb25-124"><a href="#cb25-124"></a></span>
+<span id="cb25-125"><a href="#cb25-125"></a>I used data from the [U.S. Census Bureau's American</span>
+<span id="cb25-126"><a href="#cb25-126"></a>Community Survey](https://www.census.gov/programs-surveys/acs) for</span>
+<span id="cb25-127"><a href="#cb25-127"></a>census tracts in 2019 to reoresent socioeconomic data of different regions of Houston. The *folder* <span class="in">`ACS_2019_5YR_TRACT_48.gdb`</span> is an</span>
+<span id="cb25-128"><a href="#cb25-128"></a>ArcGIS ["file</span>
+<span id="cb25-129"><a href="#cb25-129"></a>geodatabase"](https://desktop.arcgis.com/en/arcmap/latest/manage-data/administer-file-gdbs/file-geodatabases.htm),</span>
+<span id="cb25-130"><a href="#cb25-130"></a>a multi-file proprietary format that's roughly analogous to a GeoPackage</span>
+<span id="cb25-131"><a href="#cb25-131"></a>file.</span>
+<span id="cb25-132"><a href="#cb25-132"></a>Each layer contains a subset of the fields documents in the [ACS</span>
+<span id="cb25-133"><a href="#cb25-133"></a>metadata](https://www2.census.gov/geo/docs/maps-data/data/tiger/prejoined/ACSMetadata2011.txt).</span>
+<span id="cb25-134"><a href="#cb25-134"></a>The geodatabase contains a layer holding the geometry information,</span>
+<span id="cb25-135"><a href="#cb25-135"></a>separate from the layers holding the ACS attributes. You have to combine</span>
+<span id="cb25-136"><a href="#cb25-136"></a>the geometry with the attributes to get a feature layer that <span class="in">`sf`</span> can</span>
+<span id="cb25-137"><a href="#cb25-137"></a>use.</span>
 <span id="cb25-138"><a href="#cb25-138"></a></span>
-<span id="cb25-139"><a href="#cb25-139"></a><span class="fu">#### Find locations of blackouts</span></span>
-<span id="cb25-140"><a href="#cb25-140"></a></span>
-<span id="cb25-141"><a href="#cb25-141"></a><span class="fu">##### combine the data </span></span>
-<span id="cb25-142"><a href="#cb25-142"></a></span>
-<span id="cb25-143"><a href="#cb25-143"></a>First, I read in the night lights tiles data and combining them into a single <span class="in">`stars`</span> object for each date (2021-02-07 and 2021-02-16).</span>
-<span id="cb25-144"><a href="#cb25-144"></a></span>
-<span id="cb25-147"><a href="#cb25-147"></a><span class="in">```{r}</span></span>
-<span id="cb25-148"><a href="#cb25-148"></a><span class="co">#reading in raster data </span></span>
-<span id="cb25-149"><a href="#cb25-149"></a>t1 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data, <span class="st">"VNP46A1/VNP46A1.A2021038.h08v05.001.2021039064328.tif"</span>))</span>
-<span id="cb25-150"><a href="#cb25-150"></a>t2 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data,<span class="st">"VNP46A1/VNP46A1.A2021038.h08v06.001.2021039064329.tif"</span>))</span>
-<span id="cb25-151"><a href="#cb25-151"></a>t3 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data,<span class="st">"VNP46A1/VNP46A1.A2021047.h08v05.001.2021048091106.tif"</span>))</span>
-<span id="cb25-152"><a href="#cb25-152"></a>t4 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data,<span class="st">"VNP46A1/VNP46A1.A2021047.h08v06.001.2021048091105.tif"</span>))</span>
-<span id="cb25-153"><a href="#cb25-153"></a></span>
-<span id="cb25-154"><a href="#cb25-154"></a><span class="co">#creating a mosaic of houston raster data for both days </span></span>
-<span id="cb25-155"><a href="#cb25-155"></a>lights_mos1 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(t1, t2)</span>
-<span id="cb25-156"><a href="#cb25-156"></a>lights_mos2 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(t3, t4)</span>
-<span id="cb25-157"><a href="#cb25-157"></a></span>
-<span id="cb25-158"><a href="#cb25-158"></a><span class="co"># plot(lights_mos1)</span></span>
-<span id="cb25-159"><a href="#cb25-159"></a><span class="in">```</span></span>
+<span id="cb25-139"><a href="#cb25-139"></a></span>
+<span id="cb25-140"><a href="#cb25-140"></a><span class="fu">## Analysis</span></span>
+<span id="cb25-141"><a href="#cb25-141"></a></span>
+<span id="cb25-142"><a href="#cb25-142"></a><span class="fu">#### Find locations of blackouts</span></span>
+<span id="cb25-143"><a href="#cb25-143"></a></span>
+<span id="cb25-144"><a href="#cb25-144"></a><span class="fu">##### combine the data </span></span>
+<span id="cb25-145"><a href="#cb25-145"></a></span>
+<span id="cb25-146"><a href="#cb25-146"></a>First, I read in the night lights tiles data and combining them into a single <span class="in">`stars`</span> object for each date (2021-02-07 and 2021-02-16).</span>
+<span id="cb25-147"><a href="#cb25-147"></a></span>
+<span id="cb25-150"><a href="#cb25-150"></a><span class="in">```{r}</span></span>
+<span id="cb25-151"><a href="#cb25-151"></a><span class="co">#reading in raster data </span></span>
+<span id="cb25-152"><a href="#cb25-152"></a>t1 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data, <span class="st">"VNP46A1/VNP46A1.A2021038.h08v05.001.2021039064328.tif"</span>))</span>
+<span id="cb25-153"><a href="#cb25-153"></a>t2 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data,<span class="st">"VNP46A1/VNP46A1.A2021038.h08v06.001.2021039064329.tif"</span>))</span>
+<span id="cb25-154"><a href="#cb25-154"></a>t3 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data,<span class="st">"VNP46A1/VNP46A1.A2021047.h08v05.001.2021048091106.tif"</span>))</span>
+<span id="cb25-155"><a href="#cb25-155"></a>t4 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data,<span class="st">"VNP46A1/VNP46A1.A2021047.h08v06.001.2021048091105.tif"</span>))</span>
+<span id="cb25-156"><a href="#cb25-156"></a></span>
+<span id="cb25-157"><a href="#cb25-157"></a><span class="co">#creating a mosaic of houston raster data for both days </span></span>
+<span id="cb25-158"><a href="#cb25-158"></a>lights_mos1 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(t1, t2)</span>
+<span id="cb25-159"><a href="#cb25-159"></a>lights_mos2 <span class="ot">&lt;-</span> <span class="fu">st_mosaic</span>(t3, t4)</span>
 <span id="cb25-160"><a href="#cb25-160"></a></span>
-<span id="cb25-161"><a href="#cb25-161"></a><span class="fu">##### create a blackout mask</span></span>
-<span id="cb25-162"><a href="#cb25-162"></a></span>
-<span id="cb25-163"><a href="#cb25-163"></a>I then found the change in night lights intensity (presumably) caused by the</span>
-<span id="cb25-164"><a href="#cb25-164"></a>storm. I first reclassified a difference raster, assuming that any location that experienced a drop of more than 200 nW cm^-2^sr^-1^ experienced a blackout. <span class="in">`NA`</span> values were to all locations that experienced a drop of *less* than 200 nW cm^-2^sr^-1^.</span>
+<span id="cb25-161"><a href="#cb25-161"></a><span class="co"># plot(lights_mos1)</span></span>
+<span id="cb25-162"><a href="#cb25-162"></a><span class="in">```</span></span>
+<span id="cb25-163"><a href="#cb25-163"></a></span>
+<span id="cb25-164"><a href="#cb25-164"></a><span class="fu">##### create a blackout mask</span></span>
 <span id="cb25-165"><a href="#cb25-165"></a></span>
-<span id="cb25-168"><a href="#cb25-168"></a><span class="in">```{r}</span></span>
-<span id="cb25-169"><a href="#cb25-169"></a><span class="co">#finding difference in light intensity by subtracting light difference </span></span>
-<span id="cb25-170"><a href="#cb25-170"></a>light_diff <span class="ot">&lt;-</span> lights_mos1 <span class="sc">-</span> lights_mos2</span>
-<span id="cb25-171"><a href="#cb25-171"></a></span>
-<span id="cb25-172"><a href="#cb25-172"></a><span class="co"># plot(light_diff)</span></span>
-<span id="cb25-173"><a href="#cb25-173"></a></span>
-<span id="cb25-174"><a href="#cb25-174"></a><span class="co">#reclassify raster to give NA values to locations that did not experience a blackout</span></span>
-<span id="cb25-175"><a href="#cb25-175"></a>light_diff[light_diff <span class="sc">&lt;</span> <span class="dv">200</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb25-166"><a href="#cb25-166"></a>I then found the change in night lights intensity (presumably) caused by the</span>
+<span id="cb25-167"><a href="#cb25-167"></a>storm. I first reclassified a difference raster, assuming that any location that experienced a drop of more than 200 nW cm^-2^sr^-1^ experienced a blackout. <span class="in">`NA`</span> values were to all locations that experienced a drop of *less* than 200 nW cm^-2^sr^-1^.</span>
+<span id="cb25-168"><a href="#cb25-168"></a></span>
+<span id="cb25-171"><a href="#cb25-171"></a><span class="in">```{r}</span></span>
+<span id="cb25-172"><a href="#cb25-172"></a><span class="co">#finding difference in light intensity by subtracting light difference </span></span>
+<span id="cb25-173"><a href="#cb25-173"></a>light_diff <span class="ot">&lt;-</span> lights_mos1 <span class="sc">-</span> lights_mos2</span>
+<span id="cb25-174"><a href="#cb25-174"></a></span>
+<span id="cb25-175"><a href="#cb25-175"></a><span class="co"># plot(light_diff)</span></span>
 <span id="cb25-176"><a href="#cb25-176"></a></span>
-<span id="cb25-177"><a href="#cb25-177"></a><span class="co"># plot(light_diff)</span></span>
-<span id="cb25-178"><a href="#cb25-178"></a></span>
-<span id="cb25-179"><a href="#cb25-179"></a><span class="in">```</span></span>
-<span id="cb25-180"><a href="#cb25-180"></a></span>
-<span id="cb25-181"><a href="#cb25-181"></a><span class="fu">##### vectorize the mask </span></span>
-<span id="cb25-182"><a href="#cb25-182"></a></span>
-<span id="cb25-183"><a href="#cb25-183"></a>I vectorized the the blackout mask and fixed any invalid geometries using <span class="in">`st_make_valid`</span>. I then inspected it to make sure it was an sf object and to look at its characteristics.</span>
-<span id="cb25-184"><a href="#cb25-184"></a></span>
-<span id="cb25-187"><a href="#cb25-187"></a><span class="in">```{r}</span></span>
-<span id="cb25-188"><a href="#cb25-188"></a><span class="co">#creating a black out mask as a sf object. This creates a mask of geometries that experienced a black out</span></span>
-<span id="cb25-189"><a href="#cb25-189"></a>bo_mask <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(light_diff)</span>
-<span id="cb25-190"><a href="#cb25-190"></a></span>
-<span id="cb25-191"><a href="#cb25-191"></a><span class="co">#making sure geometries are valid</span></span>
-<span id="cb25-192"><a href="#cb25-192"></a><span class="fu">st_make_valid</span>(bo_mask)</span>
+<span id="cb25-177"><a href="#cb25-177"></a><span class="co">#reclassify raster to give NA values to locations that did not experience a blackout</span></span>
+<span id="cb25-178"><a href="#cb25-178"></a>light_diff[light_diff <span class="sc">&lt;</span> <span class="dv">200</span>] <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb25-179"><a href="#cb25-179"></a></span>
+<span id="cb25-180"><a href="#cb25-180"></a><span class="co"># plot(light_diff)</span></span>
+<span id="cb25-181"><a href="#cb25-181"></a></span>
+<span id="cb25-182"><a href="#cb25-182"></a><span class="in">```</span></span>
+<span id="cb25-183"><a href="#cb25-183"></a></span>
+<span id="cb25-184"><a href="#cb25-184"></a><span class="fu">##### vectorize the mask </span></span>
+<span id="cb25-185"><a href="#cb25-185"></a></span>
+<span id="cb25-186"><a href="#cb25-186"></a>I vectorized the the blackout mask and fixed any invalid geometries using <span class="in">`st_make_valid`</span>. I then inspected it to make sure it was an sf object and to look at its characteristics.</span>
+<span id="cb25-187"><a href="#cb25-187"></a></span>
+<span id="cb25-190"><a href="#cb25-190"></a><span class="in">```{r}</span></span>
+<span id="cb25-191"><a href="#cb25-191"></a><span class="co">#creating a black out mask as a sf object. This creates a mask of geometries that experienced a black out</span></span>
+<span id="cb25-192"><a href="#cb25-192"></a>bo_mask <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(light_diff)</span>
 <span id="cb25-193"><a href="#cb25-193"></a></span>
-<span id="cb25-194"><a href="#cb25-194"></a><span class="co">#making sure new object is an sf and inspecting it</span></span>
-<span id="cb25-195"><a href="#cb25-195"></a><span class="fu">class</span>(bo_mask)</span>
-<span id="cb25-196"><a href="#cb25-196"></a><span class="co"># plot(bo_mask)</span></span>
-<span id="cb25-197"><a href="#cb25-197"></a><span class="fu">summary</span>(bo_mask)</span>
-<span id="cb25-198"><a href="#cb25-198"></a><span class="in">```</span></span>
-<span id="cb25-199"><a href="#cb25-199"></a></span>
-<span id="cb25-200"><a href="#cb25-200"></a><span class="fu">##### crop the vectorized map to Houston</span></span>
-<span id="cb25-201"><a href="#cb25-201"></a></span>
-<span id="cb25-202"><a href="#cb25-202"></a>I defined the Houston metropolitan area with the following coordinates: (-96.5, 29), (-96.5, 30.5), (-94.5, 30.5), (-94.5, 29) and then turned them into a polygon using <span class="in">`st_polygon`</span>. A CRS was then added to the polygon to make a simple features collection using <span class="in">`st_sfc()`</span>. Lastly, I cropped (spatially subset) the blackout mask to our region of interest and re-project the cropped blackout dataset to EPSG:3083 (NAD83 / Texas Centric Albers Equal Area).</span>
-<span id="cb25-203"><a href="#cb25-203"></a></span>
-<span id="cb25-206"><a href="#cb25-206"></a><span class="in">```{r}</span></span>
-<span id="cb25-207"><a href="#cb25-207"></a><span class="co">#creating a matrix of coordinates for houston</span></span>
-<span id="cb25-208"><a href="#cb25-208"></a><span class="co">#note: last coordinate need to be same as the first</span></span>
-<span id="cb25-209"><a href="#cb25-209"></a>hstn_cords <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">96.5</span>, <span class="dv">29</span>, <span class="sc">-</span><span class="fl">96.5</span>, <span class="fl">30.5</span>, <span class="sc">-</span><span class="fl">94.5</span>, <span class="fl">30.5</span>, <span class="sc">-</span><span class="fl">94.5</span>, <span class="dv">29</span>, <span class="sc">-</span><span class="fl">96.5</span>, <span class="dv">29</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb25-210"><a href="#cb25-210"></a></span>
-<span id="cb25-211"><a href="#cb25-211"></a><span class="co">#creating a polygon for houston </span></span>
-<span id="cb25-212"><a href="#cb25-212"></a>hstn_poly <span class="ot">&lt;-</span> <span class="fu">st_polygon</span>(<span class="fu">list</span>(hstn_cords))</span>
+<span id="cb25-194"><a href="#cb25-194"></a><span class="co">#making sure geometries are valid</span></span>
+<span id="cb25-195"><a href="#cb25-195"></a><span class="fu">st_make_valid</span>(bo_mask)</span>
+<span id="cb25-196"><a href="#cb25-196"></a></span>
+<span id="cb25-197"><a href="#cb25-197"></a><span class="co">#making sure new object is an sf and inspecting it</span></span>
+<span id="cb25-198"><a href="#cb25-198"></a><span class="fu">class</span>(bo_mask)</span>
+<span id="cb25-199"><a href="#cb25-199"></a><span class="co"># plot(bo_mask)</span></span>
+<span id="cb25-200"><a href="#cb25-200"></a><span class="fu">summary</span>(bo_mask)</span>
+<span id="cb25-201"><a href="#cb25-201"></a><span class="in">```</span></span>
+<span id="cb25-202"><a href="#cb25-202"></a></span>
+<span id="cb25-203"><a href="#cb25-203"></a><span class="fu">##### crop the vectorized map to Houston</span></span>
+<span id="cb25-204"><a href="#cb25-204"></a></span>
+<span id="cb25-205"><a href="#cb25-205"></a>I defined the Houston metropolitan area with the following coordinates: (-96.5, 29), (-96.5, 30.5), (-94.5, 30.5), (-94.5, 29) and then turned them into a polygon using <span class="in">`st_polygon`</span>. A CRS was then added to the polygon to make a simple features collection using <span class="in">`st_sfc()`</span>. Lastly, I cropped (spatially subset) the blackout mask to our region of interest and re-project the cropped blackout dataset to EPSG:3083 (NAD83 / Texas Centric Albers Equal Area).</span>
+<span id="cb25-206"><a href="#cb25-206"></a></span>
+<span id="cb25-209"><a href="#cb25-209"></a><span class="in">```{r}</span></span>
+<span id="cb25-210"><a href="#cb25-210"></a><span class="co">#creating a matrix of coordinates for houston</span></span>
+<span id="cb25-211"><a href="#cb25-211"></a><span class="co">#note: last coordinate need to be same as the first</span></span>
+<span id="cb25-212"><a href="#cb25-212"></a>hstn_cords <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">96.5</span>, <span class="dv">29</span>, <span class="sc">-</span><span class="fl">96.5</span>, <span class="fl">30.5</span>, <span class="sc">-</span><span class="fl">94.5</span>, <span class="fl">30.5</span>, <span class="sc">-</span><span class="fl">94.5</span>, <span class="dv">29</span>, <span class="sc">-</span><span class="fl">96.5</span>, <span class="dv">29</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb25-213"><a href="#cb25-213"></a></span>
-<span id="cb25-214"><a href="#cb25-214"></a><span class="fu">class</span>(hstn_poly)</span>
-<span id="cb25-215"><a href="#cb25-215"></a></span>
-<span id="cb25-216"><a href="#cb25-216"></a><span class="co">#making a simple feature collection using same crs as bo_mask</span></span>
-<span id="cb25-217"><a href="#cb25-217"></a>hstn_sf <span class="ot">&lt;-</span> <span class="fu">st_sfc</span>(hstn_poly, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb25-214"><a href="#cb25-214"></a><span class="co">#creating a polygon for houston </span></span>
+<span id="cb25-215"><a href="#cb25-215"></a>hstn_poly <span class="ot">&lt;-</span> <span class="fu">st_polygon</span>(<span class="fu">list</span>(hstn_cords))</span>
+<span id="cb25-216"><a href="#cb25-216"></a></span>
+<span id="cb25-217"><a href="#cb25-217"></a><span class="fu">class</span>(hstn_poly)</span>
 <span id="cb25-218"><a href="#cb25-218"></a></span>
-<span id="cb25-219"><a href="#cb25-219"></a><span class="fu">class</span>(hstn_sf)</span>
-<span id="cb25-220"><a href="#cb25-220"></a></span>
-<span id="cb25-221"><a href="#cb25-221"></a><span class="co">#cropping black out mask to the houston sf object </span></span>
-<span id="cb25-222"><a href="#cb25-222"></a>bo_mask_houst <span class="ot">&lt;-</span> bo_mask[hstn_sf, ] </span>
+<span id="cb25-219"><a href="#cb25-219"></a><span class="co">#making a simple feature collection using same crs as bo_mask</span></span>
+<span id="cb25-220"><a href="#cb25-220"></a>hstn_sf <span class="ot">&lt;-</span> <span class="fu">st_sfc</span>(hstn_poly, <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb25-221"><a href="#cb25-221"></a></span>
+<span id="cb25-222"><a href="#cb25-222"></a><span class="fu">class</span>(hstn_sf)</span>
 <span id="cb25-223"><a href="#cb25-223"></a></span>
-<span id="cb25-224"><a href="#cb25-224"></a><span class="co">#transforming crs to EPSG:3083 </span></span>
-<span id="cb25-225"><a href="#cb25-225"></a>bo_mask_houst <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bo_mask_houst, <span class="dv">3083</span>)</span>
-<span id="cb25-226"><a href="#cb25-226"></a><span class="in">```</span></span>
-<span id="cb25-227"><a href="#cb25-227"></a></span>
-<span id="cb25-228"><a href="#cb25-228"></a><span class="fu">##### Check #1: Ensurign that the mask function worked</span></span>
-<span id="cb25-229"><a href="#cb25-229"></a><span class="in">```{r, results = TRUE}</span></span>
-<span id="cb25-230"><a href="#cb25-230"></a><span class="do">##### creating a check ######</span></span>
-<span id="cb25-231"><a href="#cb25-231"></a></span>
-<span id="cb25-232"><a href="#cb25-232"></a><span class="fu">cat</span>(<span class="st">"CHECK #1 - see if raster data is masked within Houston:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-233"><a href="#cb25-233"></a></span>
-<span id="cb25-234"><a href="#cb25-234"></a><span class="cf">if</span>(<span class="fu">nrow</span>(bo_mask_houst) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask)) {</span>
-<span id="cb25-235"><a href="#cb25-235"></a>  <span class="fu">cat</span>(<span class="st">"No: mask did not work."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-236"><a href="#cb25-236"></a>} <span class="cf">else</span> {</span>
-<span id="cb25-237"><a href="#cb25-237"></a>  <span class="fu">cat</span>(<span class="st">" Yes, all black out raster data lie within the Houston polygon."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-238"><a href="#cb25-238"></a>}</span>
-<span id="cb25-239"><a href="#cb25-239"></a></span>
-<span id="cb25-240"><a href="#cb25-240"></a><span class="in">```</span></span>
-<span id="cb25-241"><a href="#cb25-241"></a></span>
-<span id="cb25-242"><a href="#cb25-242"></a><span class="kw">&lt;/br&gt;</span> </span>
-<span id="cb25-243"><a href="#cb25-243"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-224"><a href="#cb25-224"></a><span class="co">#cropping black out mask to the houston sf object </span></span>
+<span id="cb25-225"><a href="#cb25-225"></a>bo_mask_houst <span class="ot">&lt;-</span> bo_mask[hstn_sf, ] </span>
+<span id="cb25-226"><a href="#cb25-226"></a></span>
+<span id="cb25-227"><a href="#cb25-227"></a><span class="co">#transforming crs to EPSG:3083 </span></span>
+<span id="cb25-228"><a href="#cb25-228"></a>bo_mask_houst <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(bo_mask_houst, <span class="dv">3083</span>)</span>
+<span id="cb25-229"><a href="#cb25-229"></a><span class="in">```</span></span>
+<span id="cb25-230"><a href="#cb25-230"></a></span>
+<span id="cb25-231"><a href="#cb25-231"></a><span class="fu">##### Check #1: Ensurign that the mask function worked</span></span>
+<span id="cb25-232"><a href="#cb25-232"></a><span class="in">```{r, results = TRUE}</span></span>
+<span id="cb25-233"><a href="#cb25-233"></a><span class="do">##### creating a check ######</span></span>
+<span id="cb25-234"><a href="#cb25-234"></a></span>
+<span id="cb25-235"><a href="#cb25-235"></a><span class="fu">cat</span>(<span class="st">"CHECK #1 - see if raster data is masked within Houston:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-236"><a href="#cb25-236"></a></span>
+<span id="cb25-237"><a href="#cb25-237"></a><span class="cf">if</span>(<span class="fu">nrow</span>(bo_mask_houst) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask)) {</span>
+<span id="cb25-238"><a href="#cb25-238"></a>  <span class="fu">cat</span>(<span class="st">"No: mask did not work."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-239"><a href="#cb25-239"></a>} <span class="cf">else</span> {</span>
+<span id="cb25-240"><a href="#cb25-240"></a>  <span class="fu">cat</span>(<span class="st">" Yes, all black out raster data lie within the Houston polygon."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-241"><a href="#cb25-241"></a>}</span>
+<span id="cb25-242"><a href="#cb25-242"></a></span>
+<span id="cb25-243"><a href="#cb25-243"></a><span class="in">```</span></span>
 <span id="cb25-244"><a href="#cb25-244"></a></span>
-<span id="cb25-245"><a href="#cb25-245"></a><span class="fu">##### exclude highways from blackout mask </span></span>
-<span id="cb25-246"><a href="#cb25-246"></a></span>
-<span id="cb25-247"><a href="#cb25-247"></a>The roads geopackage provoded includes data on roads other than highways.</span>
-<span id="cb25-248"><a href="#cb25-248"></a>However, we can avoid reading in data we don't need by taking advantage</span>
-<span id="cb25-249"><a href="#cb25-249"></a>of <span class="in">`st_read`</span>'s ability to subset using a SQL query. This allows us to save comutational energy by just pulling in relevant data we want.</span>
-<span id="cb25-250"><a href="#cb25-250"></a></span>
-<span id="cb25-251"><a href="#cb25-251"></a>First I defined a SQL query:</span>
-<span id="cb25-252"><a href="#cb25-252"></a></span>
-<span id="cb25-253"><a href="#cb25-253"></a><span class="in">`query &lt;- "SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"`</span></span>
-<span id="cb25-254"><a href="#cb25-254"></a></span>
-<span id="cb25-255"><a href="#cb25-255"></a>I applied to <span class="in">`st_read`</span> to load just highway data from geopackage. I then reprojected the data to EPSG:3083 and identified areas within 200m of all highways using <span class="in">`st_buffer`</span> and dissolved them with <span class="in">`st_union`</span>. Lastly, I find areas that experienced blackouts that are further than 200m from a highway through spatial subsetting using the <span class="in">`st_disjoint`</span> operation.</span>
-<span id="cb25-256"><a href="#cb25-256"></a></span>
+<span id="cb25-245"><a href="#cb25-245"></a><span class="kw">&lt;/br&gt;</span> </span>
+<span id="cb25-246"><a href="#cb25-246"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-247"><a href="#cb25-247"></a></span>
+<span id="cb25-248"><a href="#cb25-248"></a><span class="fu">##### exclude highways from blackout mask </span></span>
+<span id="cb25-249"><a href="#cb25-249"></a></span>
+<span id="cb25-250"><a href="#cb25-250"></a>The roads geopackage provoded includes data on roads other than highways.</span>
+<span id="cb25-251"><a href="#cb25-251"></a>However, we can avoid reading in data we don't need by taking advantage</span>
+<span id="cb25-252"><a href="#cb25-252"></a>of <span class="in">`st_read`</span>'s ability to subset using a SQL query. This allows us to save comutational energy by just pulling in relevant data we want.</span>
+<span id="cb25-253"><a href="#cb25-253"></a></span>
+<span id="cb25-254"><a href="#cb25-254"></a>First I defined a SQL query:</span>
+<span id="cb25-255"><a href="#cb25-255"></a></span>
+<span id="cb25-256"><a href="#cb25-256"></a><span class="in">`query &lt;- "SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"`</span></span>
 <span id="cb25-257"><a href="#cb25-257"></a></span>
-<span id="cb25-258"><a href="#cb25-258"></a><span class="in">```{r, results= TRUE}</span></span>
-<span id="cb25-259"><a href="#cb25-259"></a><span class="co">#assigning a query that pulls highway roads</span></span>
-<span id="cb25-260"><a href="#cb25-260"></a>highway_query <span class="ot">&lt;-</span> <span class="st">"SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"</span></span>
-<span id="cb25-261"><a href="#cb25-261"></a></span>
-<span id="cb25-262"><a href="#cb25-262"></a><span class="co">#reading in highway data </span></span>
-<span id="cb25-263"><a href="#cb25-263"></a>highways <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data,<span class="st">"gis_osm_roads_free_1.gpkg"</span>), <span class="at">query =</span> highway_query, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-258"><a href="#cb25-258"></a>I applied to <span class="in">`st_read`</span> to load just highway data from geopackage. I then reprojected the data to EPSG:3083 and identified areas within 200m of all highways using <span class="in">`st_buffer`</span> and dissolved them with <span class="in">`st_union`</span>. Lastly, I find areas that experienced blackouts that are further than 200m from a highway through spatial subsetting using the <span class="in">`st_disjoint`</span> operation.</span>
+<span id="cb25-259"><a href="#cb25-259"></a></span>
+<span id="cb25-260"><a href="#cb25-260"></a></span>
+<span id="cb25-261"><a href="#cb25-261"></a><span class="in">```{r, results= TRUE}</span></span>
+<span id="cb25-262"><a href="#cb25-262"></a><span class="co">#assigning a query that pulls highway roads</span></span>
+<span id="cb25-263"><a href="#cb25-263"></a>highway_query <span class="ot">&lt;-</span> <span class="st">"SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"</span></span>
 <span id="cb25-264"><a href="#cb25-264"></a></span>
-<span id="cb25-265"><a href="#cb25-265"></a><span class="co">#transforming highways crs to 3083</span></span>
-<span id="cb25-266"><a href="#cb25-266"></a>highways <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(highways, <span class="dv">3083</span>)</span>
+<span id="cb25-265"><a href="#cb25-265"></a><span class="co">#reading in highway data </span></span>
+<span id="cb25-266"><a href="#cb25-266"></a>highways <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data,<span class="st">"gis_osm_roads_free_1.gpkg"</span>), <span class="at">query =</span> highway_query, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb25-267"><a href="#cb25-267"></a></span>
-<span id="cb25-268"><a href="#cb25-268"></a><span class="co">#creating a 200m buffer around highways </span></span>
-<span id="cb25-269"><a href="#cb25-269"></a>high_buff <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(highways, <span class="at">dist =</span> <span class="dv">200</span>)</span>
+<span id="cb25-268"><a href="#cb25-268"></a><span class="co">#transforming highways crs to 3083</span></span>
+<span id="cb25-269"><a href="#cb25-269"></a>highways <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(highways, <span class="dv">3083</span>)</span>
 <span id="cb25-270"><a href="#cb25-270"></a></span>
-<span id="cb25-271"><a href="#cb25-271"></a><span class="co">#dissolveing buffers </span></span>
-<span id="cb25-272"><a href="#cb25-272"></a>high_buff_dis <span class="ot">&lt;-</span> <span class="fu">st_union</span>(high_buff)</span>
+<span id="cb25-271"><a href="#cb25-271"></a><span class="co">#creating a 200m buffer around highways </span></span>
+<span id="cb25-272"><a href="#cb25-272"></a>high_buff <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(highways, <span class="at">dist =</span> <span class="dv">200</span>)</span>
 <span id="cb25-273"><a href="#cb25-273"></a></span>
-<span id="cb25-274"><a href="#cb25-274"></a><span class="co"># plot(high_buff_dis)</span></span>
-<span id="cb25-275"><a href="#cb25-275"></a></span>
-<span id="cb25-276"><a href="#cb25-276"></a><span class="co">#finding areas more than 200m from a highway that experienced a blackout </span></span>
-<span id="cb25-277"><a href="#cb25-277"></a>mask_no_hwy <span class="ot">&lt;-</span> bo_mask_houst[high_buff_dis, op <span class="ot">=</span> st_disjoint]</span>
-<span id="cb25-278"><a href="#cb25-278"></a><span class="in">```</span></span>
-<span id="cb25-279"><a href="#cb25-279"></a></span>
-<span id="cb25-280"><a href="#cb25-280"></a><span class="fu">##### Check #2: see if the highway exclusion mask removed all polygons within the 200m of highways</span></span>
-<span id="cb25-281"><a href="#cb25-281"></a><span class="in">```{r, results= TRUE}</span></span>
-<span id="cb25-282"><a href="#cb25-282"></a><span class="do">#### creating a check #######</span></span>
-<span id="cb25-283"><a href="#cb25-283"></a><span class="fu">cat</span>(<span class="st">"CHECK #2 - see if the highway exclusion mask removed all polygons within the 200m of highways:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-284"><a href="#cb25-284"></a></span>
-<span id="cb25-285"><a href="#cb25-285"></a></span>
-<span id="cb25-286"><a href="#cb25-286"></a><span class="cf">if</span>(<span class="fu">nrow</span>(mask_no_hwy) <span class="sc">+</span> <span class="fu">nrow</span>(bo_mask_houst[high_buff_dis, ]) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask_houst)) {</span>
-<span id="cb25-287"><a href="#cb25-287"></a>  <span class="fu">cat</span>(<span class="st">"Yes, the highway mask removed all polygons within the 200m of highways."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-288"><a href="#cb25-288"></a>  } <span class="cf">else</span> {</span>
-<span id="cb25-289"><a href="#cb25-289"></a>    <span class="fu">cat</span>(<span class="st">"Error! Observations within highway mask are included."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-290"><a href="#cb25-290"></a>  }</span>
-<span id="cb25-291"><a href="#cb25-291"></a></span>
-<span id="cb25-292"><a href="#cb25-292"></a><span class="in">```</span></span>
-<span id="cb25-293"><a href="#cb25-293"></a></span>
-<span id="cb25-294"><a href="#cb25-294"></a><span class="kw">&lt;/br&gt;</span> </span>
-<span id="cb25-295"><a href="#cb25-295"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-274"><a href="#cb25-274"></a><span class="co">#dissolveing buffers </span></span>
+<span id="cb25-275"><a href="#cb25-275"></a>high_buff_dis <span class="ot">&lt;-</span> <span class="fu">st_union</span>(high_buff)</span>
+<span id="cb25-276"><a href="#cb25-276"></a></span>
+<span id="cb25-277"><a href="#cb25-277"></a><span class="co"># plot(high_buff_dis)</span></span>
+<span id="cb25-278"><a href="#cb25-278"></a></span>
+<span id="cb25-279"><a href="#cb25-279"></a><span class="co">#finding areas more than 200m from a highway that experienced a blackout </span></span>
+<span id="cb25-280"><a href="#cb25-280"></a>mask_no_hwy <span class="ot">&lt;-</span> bo_mask_houst[high_buff_dis, op <span class="ot">=</span> st_disjoint]</span>
+<span id="cb25-281"><a href="#cb25-281"></a><span class="in">```</span></span>
+<span id="cb25-282"><a href="#cb25-282"></a></span>
+<span id="cb25-283"><a href="#cb25-283"></a><span class="fu">##### Check #2: see if the highway exclusion mask removed all polygons within the 200m of highways</span></span>
+<span id="cb25-284"><a href="#cb25-284"></a><span class="in">```{r, results= TRUE}</span></span>
+<span id="cb25-285"><a href="#cb25-285"></a><span class="do">#### creating a check #######</span></span>
+<span id="cb25-286"><a href="#cb25-286"></a><span class="fu">cat</span>(<span class="st">"CHECK #2 - see if the highway exclusion mask removed all polygons within the 200m of highways:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-287"><a href="#cb25-287"></a></span>
+<span id="cb25-288"><a href="#cb25-288"></a></span>
+<span id="cb25-289"><a href="#cb25-289"></a><span class="cf">if</span>(<span class="fu">nrow</span>(mask_no_hwy) <span class="sc">+</span> <span class="fu">nrow</span>(bo_mask_houst[high_buff_dis, ]) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask_houst)) {</span>
+<span id="cb25-290"><a href="#cb25-290"></a>  <span class="fu">cat</span>(<span class="st">"Yes, the highway mask removed all polygons within the 200m of highways."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-291"><a href="#cb25-291"></a>  } <span class="cf">else</span> {</span>
+<span id="cb25-292"><a href="#cb25-292"></a>    <span class="fu">cat</span>(<span class="st">"Error! Observations within highway mask are included."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-293"><a href="#cb25-293"></a>  }</span>
+<span id="cb25-294"><a href="#cb25-294"></a></span>
+<span id="cb25-295"><a href="#cb25-295"></a><span class="in">```</span></span>
 <span id="cb25-296"><a href="#cb25-296"></a></span>
-<span id="cb25-297"><a href="#cb25-297"></a><span class="fu">#### Find homes impacted by blackouts</span></span>
-<span id="cb25-298"><a href="#cb25-298"></a></span>
-<span id="cb25-299"><a href="#cb25-299"></a><span class="fu">##### load buildings data </span></span>
-<span id="cb25-300"><a href="#cb25-300"></a></span>
-<span id="cb25-301"><a href="#cb25-301"></a>The buildings dataset was then loaded in using <span class="in">`st_read`</span> and the following SQL query:</span>
-<span id="cb25-302"><a href="#cb25-302"></a></span>
-<span id="cb25-303"><a href="#cb25-303"></a><span class="in">`SELECT *`</span>&nbsp; <span class="in">`FROM gis_osm_buildings_a_free_1`</span></span>
-<span id="cb25-304"><a href="#cb25-304"></a><span class="in">`WHERE (type IS NULL AND name IS NULL)`</span></span>
-<span id="cb25-305"><a href="#cb25-305"></a><span class="in">`OR type in ('residential', 'apartments', 'house', 'static_caravan', 'detached')`</span>\</span>
-<span id="cb25-306"><a href="#cb25-306"></a></span>
-<span id="cb25-307"><a href="#cb25-307"></a>Again, this reduces the amount of data pulled inoto R, saving us time, energy, and storage.</span>
-<span id="cb25-310"><a href="#cb25-310"></a><span class="in">```{r}</span></span>
-<span id="cb25-311"><a href="#cb25-311"></a><span class="co">#making a query for pulling specific building data</span></span>
-<span id="cb25-312"><a href="#cb25-312"></a>buildings_query <span class="ot">&lt;-</span> <span class="st">"SELECT * FROM gis_osm_buildings_a_free_1 WHERE (type IS NULL AND name IS NULL) OR type in ('residential', 'apartments', 'house', 'static_caravan', 'detached')"</span></span>
-<span id="cb25-313"><a href="#cb25-313"></a></span>
-<span id="cb25-314"><a href="#cb25-314"></a><span class="co">#reading in building data </span></span>
-<span id="cb25-315"><a href="#cb25-315"></a>buildings <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"gis_osm_buildings_a_free_1.gpkg"</span>), <span class="at">query =</span> buildings_query, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-297"><a href="#cb25-297"></a><span class="kw">&lt;/br&gt;</span> </span>
+<span id="cb25-298"><a href="#cb25-298"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-299"><a href="#cb25-299"></a></span>
+<span id="cb25-300"><a href="#cb25-300"></a><span class="fu">#### Find homes impacted by blackouts</span></span>
+<span id="cb25-301"><a href="#cb25-301"></a></span>
+<span id="cb25-302"><a href="#cb25-302"></a><span class="fu">##### load buildings data </span></span>
+<span id="cb25-303"><a href="#cb25-303"></a></span>
+<span id="cb25-304"><a href="#cb25-304"></a>The buildings dataset was then loaded in using <span class="in">`st_read`</span> and the following SQL query:</span>
+<span id="cb25-305"><a href="#cb25-305"></a></span>
+<span id="cb25-306"><a href="#cb25-306"></a><span class="in">`SELECT *`</span>&nbsp; <span class="in">`FROM gis_osm_buildings_a_free_1`</span></span>
+<span id="cb25-307"><a href="#cb25-307"></a><span class="in">`WHERE (type IS NULL AND name IS NULL)`</span></span>
+<span id="cb25-308"><a href="#cb25-308"></a><span class="in">`OR type in ('residential', 'apartments', 'house', 'static_caravan', 'detached')`</span>\</span>
+<span id="cb25-309"><a href="#cb25-309"></a></span>
+<span id="cb25-310"><a href="#cb25-310"></a>Again, this reduces the amount of data pulled inoto R, saving us time, energy, and storage.</span>
+<span id="cb25-313"><a href="#cb25-313"></a><span class="in">```{r}</span></span>
+<span id="cb25-314"><a href="#cb25-314"></a><span class="co">#making a query for pulling specific building data</span></span>
+<span id="cb25-315"><a href="#cb25-315"></a>buildings_query <span class="ot">&lt;-</span> <span class="st">"SELECT * FROM gis_osm_buildings_a_free_1 WHERE (type IS NULL AND name IS NULL) OR type in ('residential', 'apartments', 'house', 'static_caravan', 'detached')"</span></span>
 <span id="cb25-316"><a href="#cb25-316"></a></span>
-<span id="cb25-317"><a href="#cb25-317"></a><span class="co">#transforming crs to 3083 </span></span>
-<span id="cb25-318"><a href="#cb25-318"></a>buildings <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(buildings, <span class="dv">3083</span>)</span>
+<span id="cb25-317"><a href="#cb25-317"></a><span class="co">#reading in building data </span></span>
+<span id="cb25-318"><a href="#cb25-318"></a>buildings <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"gis_osm_buildings_a_free_1.gpkg"</span>), <span class="at">query =</span> buildings_query, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb25-319"><a href="#cb25-319"></a></span>
-<span id="cb25-320"><a href="#cb25-320"></a><span class="co"># plot(buildings)</span></span>
-<span id="cb25-321"><a href="#cb25-321"></a><span class="in">```</span></span>
+<span id="cb25-320"><a href="#cb25-320"></a><span class="co">#transforming crs to 3083 </span></span>
+<span id="cb25-321"><a href="#cb25-321"></a>buildings <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(buildings, <span class="dv">3083</span>)</span>
 <span id="cb25-322"><a href="#cb25-322"></a></span>
-<span id="cb25-323"><a href="#cb25-323"></a></span>
-<span id="cb25-324"><a href="#cb25-324"></a><span class="fu">##### find homes in blackout areas </span></span>
+<span id="cb25-323"><a href="#cb25-323"></a><span class="co"># plot(buildings)</span></span>
+<span id="cb25-324"><a href="#cb25-324"></a><span class="in">```</span></span>
 <span id="cb25-325"><a href="#cb25-325"></a></span>
-<span id="cb25-326"><a href="#cb25-326"></a>I then filtered the mask to homes within blackout areas and counted the number of impacted homes.</span>
-<span id="cb25-327"><a href="#cb25-327"></a></span>
-<span id="cb25-328"><a href="#cb25-328"></a><span class="in">```{r, results = TRUE}</span></span>
-<span id="cb25-329"><a href="#cb25-329"></a><span class="co">#subsettign the number of homes experiencing blackouts </span></span>
-<span id="cb25-330"><a href="#cb25-330"></a><span class="co">#I am including areas inside of houston that also extend outside of Houston border using st_intersects</span></span>
-<span id="cb25-331"><a href="#cb25-331"></a>bo_homes <span class="ot">&lt;-</span> buildings[mask_no_hwy, ]</span>
-<span id="cb25-332"><a href="#cb25-332"></a></span>
-<span id="cb25-333"><a href="#cb25-333"></a><span class="co">#counting blackout homes</span></span>
-<span id="cb25-334"><a href="#cb25-334"></a>bo_homes_cnt <span class="ot">&lt;-</span> <span class="fu">comma</span>(<span class="fu">nrow</span>(bo_homes))</span>
+<span id="cb25-326"><a href="#cb25-326"></a></span>
+<span id="cb25-327"><a href="#cb25-327"></a><span class="fu">##### find homes in blackout areas </span></span>
+<span id="cb25-328"><a href="#cb25-328"></a></span>
+<span id="cb25-329"><a href="#cb25-329"></a>I then filtered the mask to homes within blackout areas and counted the number of impacted homes.</span>
+<span id="cb25-330"><a href="#cb25-330"></a></span>
+<span id="cb25-331"><a href="#cb25-331"></a><span class="in">```{r, results = TRUE}</span></span>
+<span id="cb25-332"><a href="#cb25-332"></a><span class="co">#subsettign the number of homes experiencing blackouts </span></span>
+<span id="cb25-333"><a href="#cb25-333"></a><span class="co">#I am including areas inside of houston that also extend outside of Houston border using st_intersects</span></span>
+<span id="cb25-334"><a href="#cb25-334"></a>bo_homes <span class="ot">&lt;-</span> buildings[mask_no_hwy, ]</span>
 <span id="cb25-335"><a href="#cb25-335"></a></span>
-<span id="cb25-336"><a href="#cb25-336"></a><span class="fu">cat</span>(<span class="st">"Number of homes that experienced blackouts during the storm:"</span>, bo_homes_cnt, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-337"><a href="#cb25-337"></a></span>
-<span id="cb25-338"><a href="#cb25-338"></a><span class="in">```</span></span>
-<span id="cb25-339"><a href="#cb25-339"></a></span>
-<span id="cb25-340"><a href="#cb25-340"></a><span class="kw">&lt;/br&gt;</span></span>
-<span id="cb25-341"><a href="#cb25-341"></a></span>
-<span id="cb25-342"><a href="#cb25-342"></a><span class="fu">#### Investigate socioeconomic factors</span></span>
-<span id="cb25-343"><a href="#cb25-343"></a></span>
-<span id="cb25-344"><a href="#cb25-344"></a><span class="fu">##### load ACS data </span></span>
-<span id="cb25-345"><a href="#cb25-345"></a></span>
-<span id="cb25-346"><a href="#cb25-346"></a>First, I read in the geodatabase layers using <span class="in">`st_read()`</span> (geometries are stored in the <span class="in">`ACS_2019_5YR_TRACT_48_TEXAS`</span> layer and income data is stored in the <span class="in">`X19_INCOME`</span> layer).</span>
-<span id="cb25-347"><a href="#cb25-347"></a>For this analysis, I used the median income field <span class="in">`B19013e1`</span> for income.</span>
-<span id="cb25-348"><a href="#cb25-348"></a>Data was then reprojected to EPSG:3083.</span>
-<span id="cb25-349"><a href="#cb25-349"></a></span>
-<span id="cb25-352"><a href="#cb25-352"></a><span class="in">```{r}</span></span>
-<span id="cb25-353"><a href="#cb25-353"></a><span class="co"># reading ACS gdb layers</span></span>
-<span id="cb25-354"><a href="#cb25-354"></a><span class="fu">st_layers</span>(<span class="fu">file.path</span>(data, <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS.gdb"</span>))</span>
-<span id="cb25-355"><a href="#cb25-355"></a></span>
-<span id="cb25-356"><a href="#cb25-356"></a><span class="co"># reading in geometries layer</span></span>
-<span id="cb25-357"><a href="#cb25-357"></a>acs_geoms <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS.gdb"</span>), <span class="at">layer =</span> <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-358"><a href="#cb25-358"></a>  <span class="fu">st_transform</span>(<span class="st">"EPSG:3083"</span>)</span>
-<span id="cb25-359"><a href="#cb25-359"></a></span>
-<span id="cb25-360"><a href="#cb25-360"></a><span class="co"># reading in income layer</span></span>
-<span id="cb25-361"><a href="#cb25-361"></a><span class="co">#selecting just GEOID and median income </span></span>
-<span id="cb25-362"><a href="#cb25-362"></a>acs_income <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS.gdb"</span>), <span class="at">layer =</span> <span class="st">"X19_INCOME"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-363"><a href="#cb25-363"></a>  <span class="fu">select</span>(<span class="at">GEOID_Data =</span> GEOID, <span class="at">med_income =</span> B19013e1)</span>
-<span id="cb25-364"><a href="#cb25-364"></a>  </span>
-<span id="cb25-365"><a href="#cb25-365"></a></span>
-<span id="cb25-366"><a href="#cb25-366"></a></span>
-<span id="cb25-367"><a href="#cb25-367"></a><span class="in">```</span></span>
+<span id="cb25-336"><a href="#cb25-336"></a><span class="co">#counting blackout homes</span></span>
+<span id="cb25-337"><a href="#cb25-337"></a>bo_homes_cnt <span class="ot">&lt;-</span> <span class="fu">comma</span>(<span class="fu">nrow</span>(bo_homes))</span>
+<span id="cb25-338"><a href="#cb25-338"></a></span>
+<span id="cb25-339"><a href="#cb25-339"></a><span class="fu">cat</span>(<span class="st">"Number of homes that experienced blackouts during the storm:"</span>, bo_homes_cnt, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-340"><a href="#cb25-340"></a></span>
+<span id="cb25-341"><a href="#cb25-341"></a><span class="in">```</span></span>
+<span id="cb25-342"><a href="#cb25-342"></a></span>
+<span id="cb25-343"><a href="#cb25-343"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-344"><a href="#cb25-344"></a></span>
+<span id="cb25-345"><a href="#cb25-345"></a><span class="fu">#### Investigate socioeconomic factors</span></span>
+<span id="cb25-346"><a href="#cb25-346"></a></span>
+<span id="cb25-347"><a href="#cb25-347"></a><span class="fu">##### load ACS data </span></span>
+<span id="cb25-348"><a href="#cb25-348"></a></span>
+<span id="cb25-349"><a href="#cb25-349"></a>First, I read in the geodatabase layers using <span class="in">`st_read()`</span> (geometries are stored in the <span class="in">`ACS_2019_5YR_TRACT_48_TEXAS`</span> layer and income data is stored in the <span class="in">`X19_INCOME`</span> layer).</span>
+<span id="cb25-350"><a href="#cb25-350"></a>For this analysis, I used the median income field <span class="in">`B19013e1`</span> for income.</span>
+<span id="cb25-351"><a href="#cb25-351"></a>Data was then reprojected to EPSG:3083.</span>
+<span id="cb25-352"><a href="#cb25-352"></a></span>
+<span id="cb25-355"><a href="#cb25-355"></a><span class="in">```{r}</span></span>
+<span id="cb25-356"><a href="#cb25-356"></a><span class="co"># reading ACS gdb layers</span></span>
+<span id="cb25-357"><a href="#cb25-357"></a><span class="fu">st_layers</span>(<span class="fu">file.path</span>(data, <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS.gdb"</span>))</span>
+<span id="cb25-358"><a href="#cb25-358"></a></span>
+<span id="cb25-359"><a href="#cb25-359"></a><span class="co"># reading in geometries layer</span></span>
+<span id="cb25-360"><a href="#cb25-360"></a>acs_geoms <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS.gdb"</span>), <span class="at">layer =</span> <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-361"><a href="#cb25-361"></a>  <span class="fu">st_transform</span>(<span class="st">"EPSG:3083"</span>)</span>
+<span id="cb25-362"><a href="#cb25-362"></a></span>
+<span id="cb25-363"><a href="#cb25-363"></a><span class="co"># reading in income layer</span></span>
+<span id="cb25-364"><a href="#cb25-364"></a><span class="co">#selecting just GEOID and median income </span></span>
+<span id="cb25-365"><a href="#cb25-365"></a>acs_income <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS.gdb"</span>), <span class="at">layer =</span> <span class="st">"X19_INCOME"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-366"><a href="#cb25-366"></a>  <span class="fu">select</span>(<span class="at">GEOID_Data =</span> GEOID, <span class="at">med_income =</span> B19013e1)</span>
+<span id="cb25-367"><a href="#cb25-367"></a>  </span>
 <span id="cb25-368"><a href="#cb25-368"></a></span>
 <span id="cb25-369"><a href="#cb25-369"></a></span>
-<span id="cb25-370"><a href="#cb25-370"></a></span>
-<span id="cb25-371"><a href="#cb25-371"></a><span class="fu">##### determine which census tracts experienced blackouts </span></span>
+<span id="cb25-370"><a href="#cb25-370"></a><span class="in">```</span></span>
+<span id="cb25-371"><a href="#cb25-371"></a></span>
 <span id="cb25-372"><a href="#cb25-372"></a></span>
-<span id="cb25-373"><a href="#cb25-373"></a>Next, I joined the income data to the census tract geometries uaing a <span class="in">`left_join`</span> function by "ID". This was then spatially joined to the census tract data with buildings determined to be impacted by blackouts using the <span class="in">`st_intersects`</span> operation. Lastly, census tracts that had blackouts were identified.</span>
-<span id="cb25-374"><a href="#cb25-374"></a></span>
-<span id="cb25-375"><a href="#cb25-375"></a><span class="in">```{r, results = TRUE}</span></span>
-<span id="cb25-376"><a href="#cb25-376"></a></span>
-<span id="cb25-377"><a href="#cb25-377"></a><span class="co">#finding out how many and which census tracts experienced a blackout</span></span>
-<span id="cb25-378"><a href="#cb25-378"></a></span>
-<span id="cb25-379"><a href="#cb25-379"></a><span class="co">#joining income data to geometries </span></span>
-<span id="cb25-380"><a href="#cb25-380"></a>acs_join <span class="ot">&lt;-</span> <span class="fu">left_join</span>(acs_geoms, acs_income)</span>
+<span id="cb25-373"><a href="#cb25-373"></a></span>
+<span id="cb25-374"><a href="#cb25-374"></a><span class="fu">##### determine which census tracts experienced blackouts </span></span>
+<span id="cb25-375"><a href="#cb25-375"></a></span>
+<span id="cb25-376"><a href="#cb25-376"></a>Next, I joined the income data to the census tract geometries uaing a <span class="in">`left_join`</span> function by "ID". This was then spatially joined to the census tract data with buildings determined to be impacted by blackouts using the <span class="in">`st_intersects`</span> operation. Lastly, census tracts that had blackouts were identified.</span>
+<span id="cb25-377"><a href="#cb25-377"></a></span>
+<span id="cb25-378"><a href="#cb25-378"></a><span class="in">```{r, results = TRUE}</span></span>
+<span id="cb25-379"><a href="#cb25-379"></a></span>
+<span id="cb25-380"><a href="#cb25-380"></a><span class="co">#finding out how many and which census tracts experienced a blackout</span></span>
 <span id="cb25-381"><a href="#cb25-381"></a></span>
-<span id="cb25-382"><a href="#cb25-382"></a><span class="co"># spatial join census tract data with buildings </span></span>
-<span id="cb25-383"><a href="#cb25-383"></a>spat_join <span class="ot">&lt;-</span> acs_join <span class="sc">%&gt;%</span> </span>
-<span id="cb25-384"><a href="#cb25-384"></a>   <span class="fu">st_filter</span>(bo_homes, <span class="at">.predicate =</span> st_intersects)</span>
-<span id="cb25-385"><a href="#cb25-385"></a></span>
-<span id="cb25-386"><a href="#cb25-386"></a><span class="co"># length(spat_join)</span></span>
-<span id="cb25-387"><a href="#cb25-387"></a><span class="co"># names(spat_join)</span></span>
+<span id="cb25-382"><a href="#cb25-382"></a><span class="co">#joining income data to geometries </span></span>
+<span id="cb25-383"><a href="#cb25-383"></a>acs_join <span class="ot">&lt;-</span> <span class="fu">left_join</span>(acs_geoms, acs_income)</span>
+<span id="cb25-384"><a href="#cb25-384"></a></span>
+<span id="cb25-385"><a href="#cb25-385"></a><span class="co"># spatial join census tract data with buildings </span></span>
+<span id="cb25-386"><a href="#cb25-386"></a>spat_join <span class="ot">&lt;-</span> acs_join <span class="sc">%&gt;%</span> </span>
+<span id="cb25-387"><a href="#cb25-387"></a>   <span class="fu">st_filter</span>(bo_homes, <span class="at">.predicate =</span> st_intersects)</span>
 <span id="cb25-388"><a href="#cb25-388"></a></span>
-<span id="cb25-389"><a href="#cb25-389"></a><span class="co">#census tracts that experience a blackout</span></span>
-<span id="cb25-390"><a href="#cb25-390"></a>bo_tract_list <span class="ot">&lt;-</span> <span class="fu">unique</span>(spat_join<span class="sc">$</span>NAMELSAD)</span>
+<span id="cb25-389"><a href="#cb25-389"></a><span class="co"># length(spat_join)</span></span>
+<span id="cb25-390"><a href="#cb25-390"></a><span class="co"># names(spat_join)</span></span>
 <span id="cb25-391"><a href="#cb25-391"></a></span>
-<span id="cb25-392"><a href="#cb25-392"></a><span class="co">#count of census tracts that experience a blackout</span></span>
-<span id="cb25-393"><a href="#cb25-393"></a>bo_tract_count <span class="ot">&lt;-</span> <span class="fu">length</span>(bo_tract_list)</span>
+<span id="cb25-392"><a href="#cb25-392"></a><span class="co">#census tracts that experience a blackout</span></span>
+<span id="cb25-393"><a href="#cb25-393"></a>bo_tract_list <span class="ot">&lt;-</span> <span class="fu">unique</span>(spat_join<span class="sc">$</span>NAMELSAD)</span>
 <span id="cb25-394"><a href="#cb25-394"></a></span>
-<span id="cb25-395"><a href="#cb25-395"></a></span>
-<span id="cb25-396"><a href="#cb25-396"></a><span class="in">```</span></span>
+<span id="cb25-395"><a href="#cb25-395"></a><span class="co">#count of census tracts that experience a blackout</span></span>
+<span id="cb25-396"><a href="#cb25-396"></a>bo_tract_count <span class="ot">&lt;-</span> <span class="fu">length</span>(bo_tract_list)</span>
 <span id="cb25-397"><a href="#cb25-397"></a></span>
 <span id="cb25-398"><a href="#cb25-398"></a></span>
-<span id="cb25-399"><a href="#cb25-399"></a><span class="fu">##### CHECK #3: making sure only census tracts with homes that experienced a blackout are included:</span></span>
-<span id="cb25-400"><a href="#cb25-400"></a><span class="in">```{r, results = TRUE}</span></span>
-<span id="cb25-401"><a href="#cb25-401"></a><span class="do">### creating a check #####</span></span>
-<span id="cb25-402"><a href="#cb25-402"></a><span class="fu">cat</span>(<span class="st">"CHECK #3 - making sure only census tracts with homes that experienced a blackout are included:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-403"><a href="#cb25-403"></a></span>
-<span id="cb25-404"><a href="#cb25-404"></a><span class="cf">if</span>(<span class="fu">nrow</span>(acs_join) <span class="sc">&gt;</span> <span class="fu">nrow</span>(spat_join)) {</span>
-<span id="cb25-405"><a href="#cb25-405"></a>  <span class="fu">cat</span>(<span class="st">"Yes, only black out census tracts included."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-406"><a href="#cb25-406"></a>} <span class="cf">else</span> {</span>
-<span id="cb25-407"><a href="#cb25-407"></a>  <span class="fu">cat</span>(<span class="st">"No, filter didn't work"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-408"><a href="#cb25-408"></a>}</span>
-<span id="cb25-409"><a href="#cb25-409"></a></span>
-<span id="cb25-410"><a href="#cb25-410"></a><span class="in">```</span></span>
-<span id="cb25-411"><a href="#cb25-411"></a></span>
+<span id="cb25-399"><a href="#cb25-399"></a><span class="in">```</span></span>
+<span id="cb25-400"><a href="#cb25-400"></a></span>
+<span id="cb25-401"><a href="#cb25-401"></a></span>
+<span id="cb25-402"><a href="#cb25-402"></a><span class="fu">##### CHECK #3: making sure only census tracts with homes that experienced a blackout are included:</span></span>
+<span id="cb25-403"><a href="#cb25-403"></a><span class="in">```{r, results = TRUE}</span></span>
+<span id="cb25-404"><a href="#cb25-404"></a><span class="do">### creating a check #####</span></span>
+<span id="cb25-405"><a href="#cb25-405"></a><span class="fu">cat</span>(<span class="st">"CHECK #3 - making sure only census tracts with homes that experienced a blackout are included:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-406"><a href="#cb25-406"></a></span>
+<span id="cb25-407"><a href="#cb25-407"></a><span class="cf">if</span>(<span class="fu">nrow</span>(acs_join) <span class="sc">&gt;</span> <span class="fu">nrow</span>(spat_join)) {</span>
+<span id="cb25-408"><a href="#cb25-408"></a>  <span class="fu">cat</span>(<span class="st">"Yes, only black out census tracts included."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-409"><a href="#cb25-409"></a>} <span class="cf">else</span> {</span>
+<span id="cb25-410"><a href="#cb25-410"></a>  <span class="fu">cat</span>(<span class="st">"No, filter didn't work"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-411"><a href="#cb25-411"></a>}</span>
 <span id="cb25-412"><a href="#cb25-412"></a></span>
-<span id="cb25-413"><a href="#cb25-413"></a></span>
-<span id="cb25-414"><a href="#cb25-414"></a><span class="fu">##### compare incomes of impacted tracts to unimpacted tracts </span></span>
+<span id="cb25-413"><a href="#cb25-413"></a><span class="in">```</span></span>
+<span id="cb25-414"><a href="#cb25-414"></a></span>
 <span id="cb25-415"><a href="#cb25-415"></a></span>
-<span id="cb25-416"><a href="#cb25-416"></a>Finally, I created a map of median income by census tract and designated which tracts experienced blackouts. I then plot the distribution of income in impacted and nonimpacted tracts to visualize what the spread of the community income looked like.</span>
-<span id="cb25-417"><a href="#cb25-417"></a></span>
-<span id="cb25-418"><a href="#cb25-418"></a><span class="in">```{r, out.width = "100%", fig.align = "center",fig.cap = "**Figure 1. Median income of census tracts in Houston, TX that experienced blackouts in February 2021.** Map **A** shows all census tracts in Houston area, were tracts that experienced a blackout color coded by the median income of houslholds within the tracts. Brighter colored tracts have higher median incomes where darker colored tracts have lower. Map **B** shows an inset map of where Houston is located in the state of Texas."  }</span></span>
-<span id="cb25-419"><a href="#cb25-419"></a></span>
+<span id="cb25-416"><a href="#cb25-416"></a></span>
+<span id="cb25-417"><a href="#cb25-417"></a><span class="fu">##### compare incomes of impacted tracts to unimpacted tracts </span></span>
+<span id="cb25-418"><a href="#cb25-418"></a></span>
+<span id="cb25-419"><a href="#cb25-419"></a>Finally, I created a map of median income by census tract and designated which tracts experienced blackouts. I then plot the distribution of income in impacted and nonimpacted tracts to visualize what the spread of the community income looked like.</span>
 <span id="cb25-420"><a href="#cb25-420"></a></span>
-<span id="cb25-421"><a href="#cb25-421"></a><span class="co"># In this section, I am mapping the median income of affected census tracts from the black out to visually show what the income of affected areas are in Houston</span></span>
+<span id="cb25-421"><a href="#cb25-421"></a><span class="in">```{r, out.width = "100%", fig.align = "center",fig.cap = "**Figure 1. Median income of census tracts in Houston, TX that experienced blackouts in February 2021.** Map **A** shows all census tracts in Houston area, were tracts that experienced a blackout color coded by the median income of houslholds within the tracts. Brighter colored tracts have higher median incomes where darker colored tracts have lower. Map **B** shows an inset map of where Houston is located in the state of Texas."  }</span></span>
 <span id="cb25-422"><a href="#cb25-422"></a></span>
-<span id="cb25-423"><a href="#cb25-423"></a><span class="co">#check census tract crs</span></span>
-<span id="cb25-424"><a href="#cb25-424"></a><span class="fu">st_crs</span>(acs_join)</span>
+<span id="cb25-423"><a href="#cb25-423"></a></span>
+<span id="cb25-424"><a href="#cb25-424"></a><span class="co"># In this section, I am mapping the median income of affected census tracts from the black out to visually show what the income of affected areas are in Houston</span></span>
 <span id="cb25-425"><a href="#cb25-425"></a></span>
-<span id="cb25-426"><a href="#cb25-426"></a><span class="co">#transform Houston polygon crs to match census tract crs</span></span>
-<span id="cb25-427"><a href="#cb25-427"></a>hstn_3083 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(hstn_sf, <span class="dv">3083</span>)</span>
+<span id="cb25-426"><a href="#cb25-426"></a><span class="co">#check census tract crs</span></span>
+<span id="cb25-427"><a href="#cb25-427"></a><span class="fu">st_crs</span>(acs_join)</span>
 <span id="cb25-428"><a href="#cb25-428"></a></span>
-<span id="cb25-429"><a href="#cb25-429"></a><span class="co"># masking census tracts to houston</span></span>
-<span id="cb25-430"><a href="#cb25-430"></a>tract_mask <span class="ot">&lt;-</span> acs_join[hstn_3083, ]</span>
+<span id="cb25-429"><a href="#cb25-429"></a><span class="co">#transform Houston polygon crs to match census tract crs</span></span>
+<span id="cb25-430"><a href="#cb25-430"></a>hstn_3083 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(hstn_sf, <span class="dv">3083</span>)</span>
 <span id="cb25-431"><a href="#cb25-431"></a></span>
-<span id="cb25-432"><a href="#cb25-432"></a><span class="co">#making a new column saying whether or not tracts was a black out or not</span></span>
-<span id="cb25-433"><a href="#cb25-433"></a>tract_mask <span class="ot">&lt;-</span> tract_mask <span class="sc">%&gt;%</span> </span>
-<span id="cb25-434"><a href="#cb25-434"></a>  <span class="fu">mutate</span>(<span class="at">blackout =</span> <span class="fu">ifelse</span>(NAMELSAD <span class="sc">%in%</span> bo_tract_list, <span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>))</span>
-<span id="cb25-435"><a href="#cb25-435"></a></span>
-<span id="cb25-436"><a href="#cb25-436"></a></span>
-<span id="cb25-437"><a href="#cb25-437"></a></span>
-<span id="cb25-438"><a href="#cb25-438"></a><span class="co"># mapping median income of census tracts that experienced blackouts</span></span>
+<span id="cb25-432"><a href="#cb25-432"></a><span class="co"># masking census tracts to houston</span></span>
+<span id="cb25-433"><a href="#cb25-433"></a>tract_mask <span class="ot">&lt;-</span> acs_join[hstn_3083, ]</span>
+<span id="cb25-434"><a href="#cb25-434"></a></span>
+<span id="cb25-435"><a href="#cb25-435"></a><span class="co">#making a new column saying whether or not tracts was a black out or not</span></span>
+<span id="cb25-436"><a href="#cb25-436"></a>tract_mask <span class="ot">&lt;-</span> tract_mask <span class="sc">%&gt;%</span> </span>
+<span id="cb25-437"><a href="#cb25-437"></a>  <span class="fu">mutate</span>(<span class="at">blackout =</span> <span class="fu">ifelse</span>(NAMELSAD <span class="sc">%in%</span> bo_tract_list, <span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>))</span>
+<span id="cb25-438"><a href="#cb25-438"></a></span>
 <span id="cb25-439"><a href="#cb25-439"></a></span>
-<span id="cb25-440"><a href="#cb25-440"></a><span class="co"># getting a polygon of texas </span></span>
-<span id="cb25-441"><a href="#cb25-441"></a>texas <span class="ot">&lt;-</span> us_states <span class="sc">%&gt;%</span> </span>
-<span id="cb25-442"><a href="#cb25-442"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Texas"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-443"><a href="#cb25-443"></a>  <span class="fu">st_transform</span>(<span class="dv">3083</span>)</span>
-<span id="cb25-444"><a href="#cb25-444"></a></span>
-<span id="cb25-445"><a href="#cb25-445"></a><span class="co">#making an inset map of texas with Houston filled in red  </span></span>
-<span id="cb25-446"><a href="#cb25-446"></a>inset_map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-447"><a href="#cb25-447"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> texas) <span class="sc">+</span> </span>
-<span id="cb25-448"><a href="#cb25-448"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> hstn_3083, <span class="at">fill =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
-<span id="cb25-449"><a href="#cb25-449"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb25-450"><a href="#cb25-450"></a>   <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb25-451"><a href="#cb25-451"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb25-452"><a href="#cb25-452"></a>  <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb25-453"><a href="#cb25-453"></a>  <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())</span>
-<span id="cb25-454"><a href="#cb25-454"></a></span>
-<span id="cb25-455"><a href="#cb25-455"></a></span>
-<span id="cb25-456"><a href="#cb25-456"></a><span class="co">#creating a main map of census tracts that experienced blackouts by color </span></span>
-<span id="cb25-457"><a href="#cb25-457"></a>main_map <span class="ot">&lt;-</span></span>
-<span id="cb25-458"><a href="#cb25-458"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-459"><a href="#cb25-459"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> tract_mask, <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
-<span id="cb25-460"><a href="#cb25-460"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> spat_join, <span class="fu">aes</span>(<span class="at">fill =</span> med_income)) <span class="sc">+</span></span>
-<span id="cb25-461"><a href="#cb25-461"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb25-462"><a href="#cb25-462"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"Median Income ($)"</span>) <span class="sc">+</span></span>
-<span id="cb25-463"><a href="#cb25-463"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-464"><a href="#cb25-464"></a>  <span class="fu">annotation_scale</span>(<span class="at">plot_unit =</span> <span class="st">"m"</span>, <span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
-<span id="cb25-465"><a href="#cb25-465"></a>  <span class="fu">theme</span>( <span class="at">legend.position=</span> <span class="fu">c</span>(<span class="fl">1.25</span>, .<span class="dv">75</span>),</span>
-<span id="cb25-466"><a href="#cb25-466"></a>         <span class="at">plot.margin=</span><span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,.<span class="dv">5</span>,<span class="dv">1</span>),<span class="st">"cm"</span>)) <span class="sc">+</span></span>
-<span id="cb25-467"><a href="#cb25-467"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"bl"</span>,</span>
-<span id="cb25-468"><a href="#cb25-468"></a>                         <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="fl">0.05</span>, <span class="st">"in"</span>),</span>
-<span id="cb25-469"><a href="#cb25-469"></a>                         <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"in"</span>),</span>
-<span id="cb25-470"><a href="#cb25-470"></a>                         <span class="at">style =</span> ggspatial<span class="sc">::</span><span class="fu">north_arrow_minimal</span>())</span>
-<span id="cb25-471"><a href="#cb25-471"></a></span>
-<span id="cb25-472"><a href="#cb25-472"></a><span class="co">#combining main and inset map </span></span>
-<span id="cb25-473"><a href="#cb25-473"></a> comb_map <span class="ot">&lt;-</span> main_map <span class="sc">+</span> </span>
-<span id="cb25-474"><a href="#cb25-474"></a>    <span class="fu">inset_element</span>(inset_map, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.4</span>, <span class="fl">1.4</span>, .<span class="dv">9</span>) <span class="sc">+</span></span>
-<span id="cb25-475"><a href="#cb25-475"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
-<span id="cb25-476"><a href="#cb25-476"></a> </span>
-<span id="cb25-477"><a href="#cb25-477"></a> comb_map</span>
-<span id="cb25-478"><a href="#cb25-478"></a></span>
-<span id="cb25-479"><a href="#cb25-479"></a></span>
-<span id="cb25-480"><a href="#cb25-480"></a></span>
-<span id="cb25-481"><a href="#cb25-481"></a><span class="in">```</span></span>
+<span id="cb25-440"><a href="#cb25-440"></a></span>
+<span id="cb25-441"><a href="#cb25-441"></a><span class="co"># mapping median income of census tracts that experienced blackouts</span></span>
+<span id="cb25-442"><a href="#cb25-442"></a></span>
+<span id="cb25-443"><a href="#cb25-443"></a><span class="co"># getting a polygon of texas </span></span>
+<span id="cb25-444"><a href="#cb25-444"></a>texas <span class="ot">&lt;-</span> us_states <span class="sc">%&gt;%</span> </span>
+<span id="cb25-445"><a href="#cb25-445"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Texas"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-446"><a href="#cb25-446"></a>  <span class="fu">st_transform</span>(<span class="dv">3083</span>)</span>
+<span id="cb25-447"><a href="#cb25-447"></a></span>
+<span id="cb25-448"><a href="#cb25-448"></a><span class="co">#making an inset map of texas with Houston filled in red  </span></span>
+<span id="cb25-449"><a href="#cb25-449"></a>inset_map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb25-450"><a href="#cb25-450"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> texas) <span class="sc">+</span> </span>
+<span id="cb25-451"><a href="#cb25-451"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> hstn_3083, <span class="at">fill =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
+<span id="cb25-452"><a href="#cb25-452"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb25-453"><a href="#cb25-453"></a>   <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb25-454"><a href="#cb25-454"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb25-455"><a href="#cb25-455"></a>  <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb25-456"><a href="#cb25-456"></a>  <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb25-457"><a href="#cb25-457"></a></span>
+<span id="cb25-458"><a href="#cb25-458"></a></span>
+<span id="cb25-459"><a href="#cb25-459"></a><span class="co">#creating a main map of census tracts that experienced blackouts by color </span></span>
+<span id="cb25-460"><a href="#cb25-460"></a>main_map <span class="ot">&lt;-</span></span>
+<span id="cb25-461"><a href="#cb25-461"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb25-462"><a href="#cb25-462"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> tract_mask, <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
+<span id="cb25-463"><a href="#cb25-463"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> spat_join, <span class="fu">aes</span>(<span class="at">fill =</span> med_income)) <span class="sc">+</span></span>
+<span id="cb25-464"><a href="#cb25-464"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb25-465"><a href="#cb25-465"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"Median Income ($)"</span>) <span class="sc">+</span></span>
+<span id="cb25-466"><a href="#cb25-466"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb25-467"><a href="#cb25-467"></a>  <span class="fu">annotation_scale</span>(<span class="at">plot_unit =</span> <span class="st">"m"</span>, <span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
+<span id="cb25-468"><a href="#cb25-468"></a>  <span class="fu">theme</span>( <span class="at">legend.position=</span> <span class="fu">c</span>(<span class="fl">1.25</span>, .<span class="dv">75</span>),</span>
+<span id="cb25-469"><a href="#cb25-469"></a>         <span class="at">plot.margin=</span><span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,.<span class="dv">5</span>,<span class="dv">1</span>),<span class="st">"cm"</span>)) <span class="sc">+</span></span>
+<span id="cb25-470"><a href="#cb25-470"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"bl"</span>,</span>
+<span id="cb25-471"><a href="#cb25-471"></a>                         <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="fl">0.05</span>, <span class="st">"in"</span>),</span>
+<span id="cb25-472"><a href="#cb25-472"></a>                         <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"in"</span>),</span>
+<span id="cb25-473"><a href="#cb25-473"></a>                         <span class="at">style =</span> ggspatial<span class="sc">::</span><span class="fu">north_arrow_minimal</span>())</span>
+<span id="cb25-474"><a href="#cb25-474"></a></span>
+<span id="cb25-475"><a href="#cb25-475"></a><span class="co">#combining main and inset map </span></span>
+<span id="cb25-476"><a href="#cb25-476"></a> comb_map <span class="ot">&lt;-</span> main_map <span class="sc">+</span> </span>
+<span id="cb25-477"><a href="#cb25-477"></a>    <span class="fu">inset_element</span>(inset_map, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.4</span>, <span class="fl">1.4</span>, .<span class="dv">9</span>) <span class="sc">+</span></span>
+<span id="cb25-478"><a href="#cb25-478"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
+<span id="cb25-479"><a href="#cb25-479"></a> </span>
+<span id="cb25-480"><a href="#cb25-480"></a> comb_map</span>
+<span id="cb25-481"><a href="#cb25-481"></a></span>
 <span id="cb25-482"><a href="#cb25-482"></a></span>
-<span id="cb25-483"><a href="#cb25-483"></a><span class="kw">&lt;/br&gt;</span> </span>
-<span id="cb25-484"><a href="#cb25-484"></a></span>
+<span id="cb25-483"><a href="#cb25-483"></a></span>
+<span id="cb25-484"><a href="#cb25-484"></a><span class="in">```</span></span>
 <span id="cb25-485"><a href="#cb25-485"></a></span>
-<span id="cb25-486"><a href="#cb25-486"></a><span class="in">```{r, fig.align = 'center', fig.cap = "**Figure 2. Median houshold income distribution of census tracts in blackout vs non-blackout areas in Houston, 2021.** The first plot **A** shows a histogram of the distribution of median income in both groups of tracts. The frequency is concentrated just under $50,000 for both groups. Data is abnormally distributed with a long right tail, indiating most housholds are lower income with some higher income households drawing the tail right. Plot **B** shows a whisker plot of median distribution. Boxes represent the inter quartile range (IQR, 50% of the data), and the line inside each box represents the median. The whiskers represent 1.5 times the length of the IQR, with some outliers falling above the whiskers." }</span></span>
+<span id="cb25-486"><a href="#cb25-486"></a><span class="kw">&lt;/br&gt;</span> </span>
 <span id="cb25-487"><a href="#cb25-487"></a></span>
-<span id="cb25-488"><a href="#cb25-488"></a><span class="co"># here I am creating a histogram and box plot to compare the median incomes of affected and unaffected tracts</span></span>
-<span id="cb25-489"><a href="#cb25-489"></a></span>
-<span id="cb25-490"><a href="#cb25-490"></a><span class="co">#first, calculate median of median incomes for both groups </span></span>
-<span id="cb25-491"><a href="#cb25-491"></a>meds <span class="ot">&lt;-</span> tract_mask <span class="sc">%&gt;%</span> </span>
-<span id="cb25-492"><a href="#cb25-492"></a>  <span class="fu">group_by</span>(blackout) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-493"><a href="#cb25-493"></a>  <span class="fu">summarize</span>(<span class="at">med_med_income =</span> <span class="fu">median</span>(med_income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-494"><a href="#cb25-494"></a>  <span class="fu">st_drop_geometry</span>()</span>
-<span id="cb25-495"><a href="#cb25-495"></a></span>
-<span id="cb25-496"><a href="#cb25-496"></a></span>
-<span id="cb25-497"><a href="#cb25-497"></a><span class="co">#creating a histogram of income distribution </span></span>
-<span id="cb25-498"><a href="#cb25-498"></a>hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tract_mask, <span class="fu">aes</span>(<span class="at">x =</span> med_income, <span class="at">fill =</span> blackout)) <span class="sc">+</span></span>
-<span id="cb25-499"><a href="#cb25-499"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">65</span>) <span class="sc">+</span></span>
-<span id="cb25-500"><a href="#cb25-500"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Median income ($)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span></span>
-<span id="cb25-501"><a href="#cb25-501"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-502"><a href="#cb25-502"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb25-503"><a href="#cb25-503"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> meds, <span class="fu">aes</span>(<span class="at">x =</span> med_med_income, <span class="at">xend =</span> med_med_income, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">80</span>, <span class="at">color =</span> blackout), <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb25-504"><a href="#cb25-504"></a>  <span class="co"># geom_vline(data = meds, aes(xintercept = med_med_income, color = blackout), linetype = "dashed") +</span></span>
-<span id="cb25-505"><a href="#cb25-505"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"lightblue"</span>, <span class="st">"orange"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span> )) <span class="sc">+</span></span>
-<span id="cb25-506"><a href="#cb25-506"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Median"</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"blue"</span>, <span class="st">"orange3"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span> )) </span>
-<span id="cb25-507"><a href="#cb25-507"></a>  <span class="co"># coord_cartesian(ylim = c(0, 75))</span></span>
-<span id="cb25-508"><a href="#cb25-508"></a>  </span>
-<span id="cb25-509"><a href="#cb25-509"></a>  </span>
-<span id="cb25-510"><a href="#cb25-510"></a><span class="co">#creating a boxplot of median income distribution </span></span>
-<span id="cb25-511"><a href="#cb25-511"></a>box_p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tract_mask, <span class="fu">aes</span>(<span class="at">x =</span> blackout, <span class="at">y =</span> med_income, <span class="at">fill =</span> blackout)) <span class="sc">+</span></span>
-<span id="cb25-512"><a href="#cb25-512"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb25-513"><a href="#cb25-513"></a>  <span class="co"># geom_jitter(width = 0.2, alpha = 0.5, color = "grey") +  </span></span>
-<span id="cb25-514"><a href="#cb25-514"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Median Income ($)"</span>, <span class="at">x =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb25-515"><a href="#cb25-515"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-516"><a href="#cb25-516"></a>  <span class="fu">scale_fill_manual</span>( <span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"lightblue"</span>, <span class="st">"orange"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span>)) <span class="sc">+</span></span>
-<span id="cb25-517"><a href="#cb25-517"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"No blackouts"</span>, <span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"Blackouts"</span>)) </span>
-<span id="cb25-518"><a href="#cb25-518"></a></span>
-<span id="cb25-519"><a href="#cb25-519"></a></span>
-<span id="cb25-520"><a href="#cb25-520"></a><span class="co">#adding up plots into one using patchwork</span></span>
-<span id="cb25-521"><a href="#cb25-521"></a>patched <span class="ot">&lt;-</span> hist <span class="sc">+</span> box_p <span class="sc">+</span> </span>
-<span id="cb25-522"><a href="#cb25-522"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>) <span class="sc">+</span></span>
-<span id="cb25-523"><a href="#cb25-523"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">&amp;</span></span>
-<span id="cb25-524"><a href="#cb25-524"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb25-525"><a href="#cb25-525"></a></span>
-<span id="cb25-526"><a href="#cb25-526"></a>patched</span>
-<span id="cb25-527"><a href="#cb25-527"></a></span>
+<span id="cb25-488"><a href="#cb25-488"></a></span>
+<span id="cb25-489"><a href="#cb25-489"></a><span class="in">```{r, fig.align = 'center', fig.cap = "**Figure 2. Median houshold income distribution of census tracts in blackout vs non-blackout areas in Houston, 2021.** The first plot **A** shows a histogram of the distribution of median income in both groups of tracts. The frequency is concentrated just under $50,000 for both groups. Data is abnormally distributed with a long right tail, indiating most housholds are lower income with some higher income households drawing the tail right. Plot **B** shows a whisker plot of median distribution. Boxes represent the inter quartile range (IQR, 50% of the data), and the line inside each box represents the median. The whiskers represent 1.5 times the length of the IQR, with some outliers falling above the whiskers." }</span></span>
+<span id="cb25-490"><a href="#cb25-490"></a></span>
+<span id="cb25-491"><a href="#cb25-491"></a><span class="co"># here I am creating a histogram and box plot to compare the median incomes of affected and unaffected tracts</span></span>
+<span id="cb25-492"><a href="#cb25-492"></a></span>
+<span id="cb25-493"><a href="#cb25-493"></a><span class="co">#first, calculate median of median incomes for both groups </span></span>
+<span id="cb25-494"><a href="#cb25-494"></a>meds <span class="ot">&lt;-</span> tract_mask <span class="sc">%&gt;%</span> </span>
+<span id="cb25-495"><a href="#cb25-495"></a>  <span class="fu">group_by</span>(blackout) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-496"><a href="#cb25-496"></a>  <span class="fu">summarize</span>(<span class="at">med_med_income =</span> <span class="fu">median</span>(med_income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-497"><a href="#cb25-497"></a>  <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb25-498"><a href="#cb25-498"></a></span>
+<span id="cb25-499"><a href="#cb25-499"></a></span>
+<span id="cb25-500"><a href="#cb25-500"></a><span class="co">#creating a histogram of income distribution </span></span>
+<span id="cb25-501"><a href="#cb25-501"></a>hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tract_mask, <span class="fu">aes</span>(<span class="at">x =</span> med_income, <span class="at">fill =</span> blackout)) <span class="sc">+</span></span>
+<span id="cb25-502"><a href="#cb25-502"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">65</span>) <span class="sc">+</span></span>
+<span id="cb25-503"><a href="#cb25-503"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Median income ($)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span></span>
+<span id="cb25-504"><a href="#cb25-504"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb25-505"><a href="#cb25-505"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb25-506"><a href="#cb25-506"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> meds, <span class="fu">aes</span>(<span class="at">x =</span> med_med_income, <span class="at">xend =</span> med_med_income, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">80</span>, <span class="at">color =</span> blackout), <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb25-507"><a href="#cb25-507"></a>  <span class="co"># geom_vline(data = meds, aes(xintercept = med_med_income, color = blackout), linetype = "dashed") +</span></span>
+<span id="cb25-508"><a href="#cb25-508"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"lightblue"</span>, <span class="st">"orange"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span> )) <span class="sc">+</span></span>
+<span id="cb25-509"><a href="#cb25-509"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Median"</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"blue"</span>, <span class="st">"orange3"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span> )) </span>
+<span id="cb25-510"><a href="#cb25-510"></a>  <span class="co"># coord_cartesian(ylim = c(0, 75))</span></span>
+<span id="cb25-511"><a href="#cb25-511"></a>  </span>
+<span id="cb25-512"><a href="#cb25-512"></a>  </span>
+<span id="cb25-513"><a href="#cb25-513"></a><span class="co">#creating a boxplot of median income distribution </span></span>
+<span id="cb25-514"><a href="#cb25-514"></a>box_p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tract_mask, <span class="fu">aes</span>(<span class="at">x =</span> blackout, <span class="at">y =</span> med_income, <span class="at">fill =</span> blackout)) <span class="sc">+</span></span>
+<span id="cb25-515"><a href="#cb25-515"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-516"><a href="#cb25-516"></a>  <span class="co"># geom_jitter(width = 0.2, alpha = 0.5, color = "grey") +  </span></span>
+<span id="cb25-517"><a href="#cb25-517"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Median Income ($)"</span>, <span class="at">x =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb25-518"><a href="#cb25-518"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb25-519"><a href="#cb25-519"></a>  <span class="fu">scale_fill_manual</span>( <span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"lightblue"</span>, <span class="st">"orange"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span>)) <span class="sc">+</span></span>
+<span id="cb25-520"><a href="#cb25-520"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"No blackouts"</span>, <span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"Blackouts"</span>)) </span>
+<span id="cb25-521"><a href="#cb25-521"></a></span>
+<span id="cb25-522"><a href="#cb25-522"></a></span>
+<span id="cb25-523"><a href="#cb25-523"></a><span class="co">#adding up plots into one using patchwork</span></span>
+<span id="cb25-524"><a href="#cb25-524"></a>patched <span class="ot">&lt;-</span> hist <span class="sc">+</span> box_p <span class="sc">+</span> </span>
+<span id="cb25-525"><a href="#cb25-525"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>) <span class="sc">+</span></span>
+<span id="cb25-526"><a href="#cb25-526"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">&amp;</span></span>
+<span id="cb25-527"><a href="#cb25-527"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
 <span id="cb25-528"><a href="#cb25-528"></a></span>
-<span id="cb25-529"><a href="#cb25-529"></a><span class="in">```</span></span>
+<span id="cb25-529"><a href="#cb25-529"></a>patched</span>
 <span id="cb25-530"><a href="#cb25-530"></a></span>
 <span id="cb25-531"><a href="#cb25-531"></a></span>
-<span id="cb25-532"><a href="#cb25-532"></a></span>
-<span id="cb25-533"><a href="#cb25-533"></a><span class="fu">### Conclusion</span></span>
+<span id="cb25-532"><a href="#cb25-532"></a><span class="in">```</span></span>
+<span id="cb25-533"><a href="#cb25-533"></a></span>
 <span id="cb25-534"><a href="#cb25-534"></a></span>
-<span id="cb25-535"><a href="#cb25-535"></a>Overall, these results show that census tracts had a similar median</span>
-<span id="cb25-536"><a href="#cb25-536"></a>income distribution regardless of whether or not they experienced a</span>
-<span id="cb25-537"><a href="#cb25-537"></a>black out in the February 2021 storm, but income was slightly higher for tracts that experienced a blackout than those that did not. The median of the census tract median income distribution was $<span class="in">`r prettyNum(round(meds[1,2]), big.mark=",")`</span> for non-blackout tracts and </span>
-<span id="cb25-538"><a href="#cb25-538"></a>$<span class="in">`r prettyNum(round(meds[2,2]), big.mark=",")`</span> for blackout tracts. The majority of the income</span>
-<span id="cb25-539"><a href="#cb25-539"></a>distribution is centered at about $35,000 - </span>
-<span id="cb25-540"><a href="#cb25-540"></a>$45,000, with some outliers in the</span>
-<span id="cb25-541"><a href="#cb25-541"></a>\$200,000 + range. Some of the limitations of the study are that the</span>
-<span id="cb25-542"><a href="#cb25-542"></a>census tracts don't represent how many homes experienced a black out or</span>
-<span id="cb25-543"><a href="#cb25-543"></a>how long the black out was experienced for. These factors could have</span>
-<span id="cb25-544"><a href="#cb25-544"></a>underlying socioeconomic patterns that we can't see here which could explain why certain tracts experienced blackouts for the duration that they did. This should be an area for future investigation to strengthen the results found in this study.</span>
-<span id="cb25-545"><a href="#cb25-545"></a></span>
-<span id="cb25-546"><a href="#cb25-546"></a></span>
-<span id="cb25-547"><a href="#cb25-547"></a></span>
+<span id="cb25-535"><a href="#cb25-535"></a></span>
+<span id="cb25-536"><a href="#cb25-536"></a><span class="fu">### Conclusion</span></span>
+<span id="cb25-537"><a href="#cb25-537"></a></span>
+<span id="cb25-538"><a href="#cb25-538"></a>Overall, these results show that census tracts had a similar median</span>
+<span id="cb25-539"><a href="#cb25-539"></a>income distribution regardless of whether or not they experienced a</span>
+<span id="cb25-540"><a href="#cb25-540"></a>black out in the February 2021 storm, but income was slightly higher for tracts that experienced a blackout than those that did not. The median of the census tract median income distribution was $<span class="in">`r prettyNum(round(meds[1,2]), big.mark=",")`</span> for non-blackout tracts and </span>
+<span id="cb25-541"><a href="#cb25-541"></a>$<span class="in">`r prettyNum(round(meds[2,2]), big.mark=",")`</span> for blackout tracts. The majority of the income</span>
+<span id="cb25-542"><a href="#cb25-542"></a>distribution is centered at about $35,000 - </span>
+<span id="cb25-543"><a href="#cb25-543"></a>$45,000, with some outliers in the</span>
+<span id="cb25-544"><a href="#cb25-544"></a>\$200,000 + range. Some of the limitations of the study are that the</span>
+<span id="cb25-545"><a href="#cb25-545"></a>census tracts don't represent how many homes experienced a black out or</span>
+<span id="cb25-546"><a href="#cb25-546"></a>how long the black out was experienced for. These factors could have</span>
+<span id="cb25-547"><a href="#cb25-547"></a>underlying socioeconomic patterns that we can't see here which could explain why certain tracts experienced blackouts for the duration that they did. This should be an area for future investigation to strengthen the results found in this study.</span>
 <span id="cb25-548"><a href="#cb25-548"></a></span>
 <span id="cb25-549"><a href="#cb25-549"></a></span>
 <span id="cb25-550"><a href="#cb25-550"></a></span>
@@ -1556,6 +1556,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-562"><a href="#cb25-562"></a></span>
 <span id="cb25-563"><a href="#cb25-563"></a></span>
 <span id="cb25-564"><a href="#cb25-564"></a></span>
+<span id="cb25-565"><a href="#cb25-565"></a></span>
+<span id="cb25-566"><a href="#cb25-566"></a></span>
+<span id="cb25-567"><a href="#cb25-567"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -24,8 +24,8 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 [Github project repository](https://github.com/ramhunte/houston_blackout)
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE)
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.align = "center")
 
 library(tidyverse)
 library(ggspatial)
@@ -35,7 +35,10 @@ library(spDataLarge)
 library(spData)
 library(patchwork)
 library(scales)
+```
 
+
+```{r setup, include=FALSE}
 # Setting my filepaths
 rootdir <- ("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-3-ramhunte")
 data <- file.path(rootdir,"data")
