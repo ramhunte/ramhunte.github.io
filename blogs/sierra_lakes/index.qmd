@@ -23,7 +23,7 @@ toc: true
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.align = "center")
 
 
@@ -41,8 +41,10 @@ library(gridExtra)
 library(ggpubr)
 library(sjPlot)
 library(leaflet)
+```
 
 
+```{r setup, include=FALSE}
 source("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_222/sierra_lakes_analysis/blog_script.R")
 ```
 
