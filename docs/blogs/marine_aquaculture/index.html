@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -93,7 +93,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -285,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-messages="false">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#loading in and preparing the data in raster format </span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># reading in west coast eez shape file </span></span>
@@ -327,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I then created a check to ensure that the extent, resolution, and CRS of bathymetry and temperature raster layers matched.</p>
 <div class="cell">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># finding mean temperature raster data in celsius and aligning resolutions and extents of rasters</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#findig mean of sst rasters</span></span>
@@ -353,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Extent, resolution, and CRS of bathymetry and temprature raster layers match:</code></pre>
 </div>
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">if</span>(<span class="fu">ext</span>(resamp_bath) <span class="sc">==</span> <span class="fu">ext</span>(cels_sst) <span class="sc">&amp;</span> </span>
 <span id="cb4-2"><a href="#cb4-2"></a>   <span class="fu">st_crs</span>(resamp_bath)<span class="sc">$</span>epsg <span class="sc">==</span> <span class="fu">st_crs</span>(cels_sst)<span class="sc">$</span>epsg <span class="sc">&amp;</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>   <span class="co"># resolution has more than one responses, so we need to make sure that both are true </span></span>
@@ -373,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In order to find suitable locations for marine aquaculture, I first needed to find locations that were suitable in terms of both SST and depth. This involved reclassifying the SST and depth data into locations that are suitable for Oysters by assigning a <code>1</code> or a <code>NA</code> value to suitable and unsuitable habitats. I then multiplied the two rasters to look for locations that satisfy both SST and depth conditions (raster cells where <code>1</code> values overlapped) using the <code>lapp()</code> function. Lastly, I created a check to ensure that the masked ideal layer only showed overlapping ideal depth and temperature conditions.</p>
 <div class="cell">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#reclassifying temperature and bathymetry raster data, and then overlaying the layers to find ideal habitat </span></span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
@@ -415,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Masked ideal layer only shows overlapping ideal depth and temperature conditons:</code></pre>
 </div>
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">if</span>(<span class="fu">all</span>(</span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">values</span>(ideal_layer <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">values</span>(ideal_stack[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="dv">1</span>),</span>
 <span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">values</span>(ideal_layer <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">values</span>(ideal_stack[[<span class="dv">2</span>]] <span class="sc">==</span> <span class="dv">1</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) {</span>
@@ -440,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#here we are calculating the total area of suitable habitat and the percent area of suitable habitat for each EEZ</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co">#read in EEZ data </span></span>
@@ -473,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Finally, I created two maps showing 1) the total suitable oyster aquaculture habitat area by region, and 2) the percent suitable oyster aquaculture habitat area by region:</p>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># pulling in states/base map layer for mapping EEZ's</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>states <span class="ot">&lt;-</span> us_states</span>
 <span id="cb11-3"><a href="#cb11-3"></a></span>
@@ -520,7 +521,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#plotting the total suitable area of ideal habitat for oysters in each EEZ</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> west_coast, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#E4CA74"</span>) <span class="sc">+</span></span>
@@ -562,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After having identified the potential suitable habitat for oyster aquaculture, I wanted to expand this workflow to easily make maps for other species requirements. I created a function that can accept any species name, temperature, and depth ranges, and it will create two replicated maps for the given species.</p>
 <div class="cell">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#creating a function that shows the ideal species habitat using species name,  temperature, and depth as inputs </span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>ideal_crib_for_a_species <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">species =</span> <span class="st">"NAME"</span>, depth_min, depth_max, temp_min, temp_max) {</span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="co"># depth reclassification</span></span>
@@ -648,7 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I wanted to test out this function on kelp crabs (<em>Pugettia producta</em>) as they are widely dispersed and could potentially make a good candidate for aquaculture. Data on the Kelp Crab was obtained from <a href="https://www.sealifebase.ca/search.php">SeaLifeBase</a> which presents habitat information on thousands of species. Lets take a look:</p>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>code</summary>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ideal_crib_for_a_species</span>(<span class="st">"Kelp Crab"</span>, <span class="at">depth_min =</span> <span class="sc">-</span><span class="dv">98</span>, <span class="at">depth_max =</span>  <span class="dv">0</span>, <span class="at">temp_min =</span> <span class="fl">7.8</span>, <span class="at">temp_max =</span>  <span class="fl">12.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
