@@ -43,7 +43,6 @@ library(sjPlot)
 library(leaflet)
 ```
 
-
 ```{r setup, include=FALSE}
 source("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_222/sierra_lakes_analysis/blog_script.R")
 ```
