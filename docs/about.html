@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -46,7 +46,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -55,8 +61,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -67,9 +75,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./images/logo.png" alt="" class="navbar-logo">
     </a>
@@ -81,42 +89,42 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" rel="" target="" aria-current="page">
- <span class="menu-text">About</span></a>
+    <a class="nav-link active" href="./about.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html" rel="" target="">
- <span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="./resume.html"> 
+<span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blogs.html" rel="" target="">
- <span class="menu-text">My Blog</span></a>
+    <a class="nav-link" href="./blogs.html"> 
+<span class="menu-text">My Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ramhunte" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ramhunte"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ramhunte@bren.ucsb.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:rmhunter999@gmail.com"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -135,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -143,7 +151,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <hr class="custom-line">
 <h4 class="anchored">
@@ -151,66 +161,69 @@ a snapshot of my life
 </h4>
 <p><img src="images/baja.jpeg" class="img-fluid"></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Bio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Interests</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Hobbies</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Bio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Data Science</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Hobbies</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <h4 class="anchored">
 Background
 </h4>
-<p>Born and raised in Laguna Beach, CA, my admiration of the natural world was fostered in the blue waters of the Pacific ocean, where I frequently surfed and swam with the local inhabitants of the kelp forests. I started to venture out to the Sierra Nevada mountains where I learned to sit in in awe of its sharp granite and alpine lakes. Upon graduating high school, my connection to the environment brought me to northern California’s redwood forests where I attended the University of California, Santa Cruz. My education in Ecology and Evolutionary Biology, as well as Environmental Studies, planted initial seed of what would become my career as a scientist.</p>
-<p>During my undergrad, I worked as lab and field techs doing whatever research jobs spoke to me at the time. One of my favorite experiences was camping out on a remote island in Baja California where I studied desert lizard and insect communities in cacti forests. I also worked quite a bit in Big Sur, analyzing the coastal California Steelhead communities and diets. And of course, I will never forget living in Puerto Rico for 3 months collecting microscopic protozoans in some harsh conditions. These experiences made me ever more curious, and were crucial in developing my skills in observing the natural world.</p>
-<p>Upon graduating in 3 years, I moved to Mammoth Lakes in 2021 to pursue rock climbing, skiing, backpacking, and working as a freshwater ecologist at the <a href="https://vesr.nrs.ucsb.edu/about">Sierra Nevada Aquatic Research Center (SNARL)</a>. I frequented streams in the eastern Sierra doing field and lab work, with the goal of contributing to the scientific knowledge of benthic macroinvertebrate community ecology. I learned many of the skills that shape a successful scientist and make one really look at the world in a critical way. And I might have had a bit too much fun romping around in the mountains when he wasn’t working. My passion for learning drew me back to the coast in 2022 to start a masters program in the Bren School of Environmental Science and Management at UCSB where I remain today.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>Born and raised in Laguna Beach, CA, my admiration of the natural world was fostered in the blue waters of the Pacific ocean, where I frequently surfed and swam with the local inhabitants of the kelp forests. I started to venture out to the Sierra Nevada mountains where I learned to sit in in awe of its sharp granite and alpine lakes. I attended the University of California, Santa Cruz studying Ecology and Evolutionary Biology (B.S.), as well as Environmental Studies (B.A.), where my career as a scientist began. During my undergrad, I worked as lab and field techs doing whatever research jobs spoke to me at the time. One of my favorite experiences was camping out on a remote island in Baja California where I studied desert lizard and insect communities in cacti forests. I also worked quite a bit in Big Sur, analyzing the coastal California Steelhead communities and diets. And of course, I will never forget living in Puerto Rico for 3 months collecting microscopic protozoans in some harsh conditions. These experiences made me ever more curious, and set the foundation of my Data Science career path.</p>
+<p>Upon graduating in 3 years, I moved to Mammoth Lakes in 2021 to pursue rock climbing, skiing, backpacking, and working as a freshwater ecologist at the <a href="https://vesr.nrs.ucsb.edu/about">Sierra Nevada Aquatic Research Center (SNARL)</a>. I learned many of the skills that shape a successful scientist and make one really look at the world in a critical way. And I might have had a bit too much fun romping around in the mountains when he wasn’t working.</p>
+<p>My passion for learning drew me back to the coast in 2022 where I completed my Masters in Environmental Science and Management at the Bren School UCSB. I became trained in technical Data Science tools and approaches here where I worked for <a href="https://www.noaa.gov/">National Oceanic and Atmospheric Administration (NOAA) Fisheries</a> as a data manager. I created a robust geospatial cost model to estimate restoration costs of salmon habitat restoration. Furthermore, I worked as a data scientist intern for <a href="https://www.nature.org/en-us/">The Nature Conservancy</a> in 2023 where I programmed logistic regression models to identify invasive species behavioral responses to predator cues. Working for both NOAA and TNC, along with intensive coursework in data science taught me the skills that would eventually become the foundation in my career as a Data Scientist</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/pr.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Field work in Puerto Rico</figcaption>
+<figcaption>Field work in Puerto Rico</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/liz.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Holding a desert iguana in Baja California</figcaption>
+<figcaption>Holding a desert iguana in Baja California</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/microbes.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Some beautiful microbes from Puerto Rico</figcaption>
+<figcaption>Some beautiful microbes from Puerto Rico</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/big_sur.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Field work in Big Sur, CA</figcaption>
+<figcaption>Field work in Big Sur, CA</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/rock_glacier.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Sampling a rock glacier stream in the Sierras</figcaption>
+<figcaption>Sampling a rock glacier stream in the Sierras</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/lab.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Working in the lab at UCSC</figcaption>
+<figcaption>Working in the lab at UCSC</figcaption>
 </figure>
 </div>
 </div>
@@ -221,101 +234,95 @@ Background
 <h4 class="anchored">
 Environmental Data Science
 </h4>
-<p>While I am passionate about a variety of environmental topics, one underlying theme keeps the gears in my mind spinning: Environmental Data Science. Grappling, extracting, analyzing, and visualizing data are ways that one can make sense of the world around them, and that is just what I like to do. I serves as the data manager for his masters group project working with the <a href="https://www.noaa.gov/">National Oceanic and Atmospheric Administration (NOAA)</a> where my team and I are modeling the costs of various Puget Sound Chinook habitat restorations methods. I have also been working with <a href="https://www.nature.org/en-us/">The Nature Conservancy</a> where I am strengthening their Channel Islands Biosecurity team.</p>
-<p>Aside from my masters work, I am particularly interested in working with big data to extract meaningful patterns and insights on how we can improve the state of the environment. Sometimes this looks like modeling the occupancy of invasive rats in Southern California that serve as threats to endemic species. Other times it looks like predicting the effects of a carbon tax on consumer and supplier demand of goods. Regardless of the task, as long as it involves working with data and contributes to solving environmental problems, you will usually get my attention.</p>
+<p>Grappling, extracting, analyzing, and visualizing data are ways that one can make sense of the world around them, and that is just what I like to do. I served as the data manager for his masters group project working with the <a href="https://www.noaa.gov/">National Oceanic and Atmospheric Administration (NOAA) Fisheries</a>. Here, I designed extensive spatial models in R/QGIS utilizing heterogeneous vector/raster data to estimate forest ecosystem restoration costs in the Puget Sound. Aside from designing the spatial modeling leveraging remotely sensed imagery, I managed the project GitHub repository, metadata construction/archival, and developed a highly interactive Shinyapp dashboard (HTML, CSS, R) to visualize and communicate our findings. I also interned with <a href="https://www.nature.org/en-us/">The Nature Conservancy</a> as a biosecurity data scientist working on collecting, analyzing, and modeling field collected data while mentoring an undergraduate. I fitted logistic regression models utilizing environmental covariate data collected using QGIS and am publishing a first-authored paper with TNC.</p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <h4 class="anchored">
 In my free time . . .
 </h4>
-<p>Equally as strong as my love for nature is my desire to immerse myself in it. Some of my favorite activities include: rock climbing, surfing, paragliding, spearfishing, running, backpacking, and practicing yoga. While I know I can’t do them all every day, I try my best to at least one of them… or 3. Here are some of my favorite memories over the years.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p>While much of my life passion lies within Data Science, and hence being on my computer, I enjoy getting outside equally as much. Some of my favorite activities include: rock climbing, surfing, paragliding, spearfishing, running, backpacking, and practicing yoga. While I know I can’t do them all every day, I try my best to at least one of them… or 3. Here are some of my favorite memories over the years.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/backpack.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Mountaineering trip up Matterhorn Peak in the Sierra Nevada mountains</figcaption>
+<figcaption>Mountaineering trip up Matterhorn Peak in the Sierra Nevada mountains</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/el_cap.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Preparing for a multiday ascent up El Capitan, Yosemite</figcaption>
+<figcaption>Preparing for a multiday ascent up El Capitan, Yosemite</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/zod.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Big wall climbing on El Capitan, Yosemite</figcaption>
+<figcaption>Big wall climbing on El Capitan, Yosemite</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/nose.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Big wall climbing on El Capitan, Yosemite</figcaption>
+<figcaption>Surfing in California</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/surf.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Big wall climbing on El Capitan, Yosemite</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/touring.jpeg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Snack during a backcountry ski tour</figcaption>
+<figcaption>Snack during a backcountry ski tour</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/beach.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Beach day in Kauai</figcaption>
+<figcaption>Beach day in Kauai</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/glide.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Paragliding in the eastern Sierra Nevada mountains</figcaption>
+<figcaption>Paragliding in the eastern Sierra Nevada mountains</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/lpp.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Climbing Lone Pine Peak, California</figcaption>
+<figcaption>Climbing Lone Pine Peak, California</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/sunset.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Camping in Big Sur</figcaption>
+<figcaption>Camping in Big Sur</figcaption>
 </figure>
 </div>
 </div>
@@ -407,10 +414,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -420,8 +444,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -433,7 +466,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -477,6 +633,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -502,6 +659,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -583,6 +766,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

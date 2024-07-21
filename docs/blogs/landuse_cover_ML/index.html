@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -105,9 +112,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../images/logo.png" alt="" class="navbar-logo">
     </a>
@@ -119,42 +126,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html" rel="" target="">
- <span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogs.html" rel="" target="">
- <span class="menu-text">My Blog</span></a>
+    <a class="nav-link" href="../../blogs.html"> 
+<span class="menu-text">My Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ramhunte" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ramhunte"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ramhunte@bren.ucsb.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:rmhunter999@gmail.com"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -202,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -222,7 +229,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="overview" class="level1">
 <h1>Overview</h1>
@@ -265,8 +274,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="load-packages-and-set-working-directory">Load packages and set working directory</h4>
 <p>Because this project required working with both vector and raster data, I used both <code>sf</code> and <code>terra</code> packages in my workflow. To train our classification decision tree and plot the results, I used the <code>rpart</code> and <code>rpart.plot</code> packages.</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>, <span class="at">fig.align =</span> <span class="st">"center"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(sf)</span>
@@ -283,8 +292,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="load-landsat-data">Load Landsat data</h4>
 <p>First, I created a raster stack based on the 6 bands I worked with. Each file name ends with the band number (e.g.&nbsp;<code>B1.tif</code>). Band 6 corresponds to thermal data, which we will not be working with for this analysis, so it was not included in the data. To create a raster stack, I made a list of the files that I wanted to work with and read them all in at once using the <code>rast</code> function. The names of the layers were then updated to match the spectral bands and plot a true color image to see what we’re working with.</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># list files for each band, including the full file path</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">file.path</span>(data, <span class="st">"landsat-data/"</span>), <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -305,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -315,8 +324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="load-study-area">Load study area</h4>
 <p>I wanted to constrain the analysis to the southern portion of the county where there was training data, so I read in a file that defines the region of interest (ROI). I made sure that both CRS from the shape file and the Landsat data matched.</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># read in shapefile for southern portion of SB county</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>SB_county_south <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"SB_county_south.shp"</span>))</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -331,8 +340,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="crop-and-mask-landsat-data-to-study-area">Crop and mask Landsat data to study area</h4>
 <p>Next, I cropped and masked the Landsat data to the study area. This reduced the amount of data that needed to be worked with and therefore saves computational time and energy. Furthermore, I removed objects that I no longer was going to be working with using the <code>rm()</code> function to save space (optional).</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># crop Landsat scene to the extent of the SB county shapefile</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>landsat_cropped <span class="ot">&lt;-</span> <span class="fu">crop</span>(landsat, SB_county_south)</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -347,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -357,8 +366,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="convert-landsat-values-to-reflectance">Convert Landsat values to reflectance</h4>
 <p>Next, I converted the values in the raster stack to correspond to reflectance values. To do so, I first removed erroneous values and applied any <a href="https://www.usgs.gov/faqs/how-do-i-use-scale-factor-landsat-level-2-science-products#:~:text=Landsat%20Collection%202%20surface%20temperature,the%20scale%20factor%20is%20applied.">scaling factors</a> to convert to reflectance. In this case, I worked with <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">Landsat Collection 2</a>. The valid range of pixel values for this collection is 7,273-43,636, with a multiplicative scale factor of 0.0000275 and an additive scale factor of -0.2. So I reclassified any erroneous values as <code>NA</code> and updated the values for each pixel based on the scaling factors. Now the pixel values should range from 0-100%.</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">summary</span>(landsat_masked)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co"># reclassify erroneous values as NA</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>rcl <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">7273</span>, <span class="cn">NA</span>,</span>
@@ -379,12 +388,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># check values are 0 - 100</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="fu">summary</span>(landsat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -397,8 +406,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="extract-reflectance-values-for-training-data">Extract reflectance values for training data</h4>
 <p>Here, I loaded in the shapefile identifying different locations within the study area as containing one of the 4 land cover types. I then extracted the spectral values at each site to create a data frame that relates land cover types to their spectral reflectance.</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># read in and transform training data</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>training_data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"trainingdata.shp"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">st_transform</span>(., <span class="at">crs =</span> <span class="fu">st_crs</span>(landsat))</span>
@@ -408,12 +417,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># extract reflectance values at training sites</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>training_data_values <span class="ot">&lt;-</span> <span class="fu">extract</span>(landsat, training_data, <span class="at">df =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-3"><a href="#cb8-3"></a></span>
@@ -435,8 +444,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p>
 <p>To understand how the decision tree will classify pixels, I first plotted the results. The decision tree is comprised of a hierarchy of binary decisions. Each decision rule has 2 outcomes based on a conditional statement pertaining to values in each spectral band.</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># establish model formula</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a></span>
 <span id="cb9-3"><a href="#cb9-3"></a>SB_formula <span class="ot">&lt;-</span> type <span class="sc">~</span> red <span class="sc">+</span> green <span class="sc">+</span> blue <span class="sc">+</span> NIR <span class="sc">+</span> SWIR1 <span class="sc">+</span> SWIR2</span>
@@ -453,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -463,8 +472,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="apply-decision-tree">Apply decision tree</h4>
 <p>After making the decision tree, I applied it to the entire image. The <code>terra</code> package includes a <code>predict()</code> function that allows you to apply a model to the data. In order for this to work properly, the names of the layers needed to match the column names of the predictors I used to train our decision tree. The <code>predict()</code> function then returns a raster layer with integer values. These integer values correspond to the <em>factor levels</em> in the training data. To figure out what category each integer corresponded to, I then inspected the levels of the training data.</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># classify image based on decision tree</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>SB_classification <span class="ot">&lt;-</span> <span class="fu">predict</span>(landsat, SB_decision_tree, <span class="at">type =</span> <span class="st">"class"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a></span>
@@ -477,8 +486,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="plot-results">Plot results</h4>
 <p>Finally, I plotted the results to check out the land cover map.</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># plot results</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">tm_shape</span>(SB_classification) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">tm_raster</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -486,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -634,10 +643,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -647,8 +673,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -660,7 +695,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -704,6 +862,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -729,6 +888,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -858,21 +1043,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-68"><a href="#cb12-68"></a>Because this project required working with both vector and raster data, I used both <span class="in">`sf`</span> and <span class="in">`terra`</span> packages in my workflow. To train our classification decision tree and plot the results, I used the <span class="in">`rpart`</span> and <span class="in">`rpart.plot`</span> packages.</span>
 <span id="cb12-69"><a href="#cb12-69"></a></span>
 <span id="cb12-70"><a href="#cb12-70"></a><span class="in">```{r include=TRUE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb12-71"><a href="#cb12-71"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>, <span class="at">fig.align =</span> <span class="st">"center"</span>)</span>
+<span id="cb12-71"><a href="#cb12-71"></a><span class="in">knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.align = "center")</span></span>
 <span id="cb12-72"><a href="#cb12-72"></a></span>
-<span id="cb12-73"><a href="#cb12-73"></a><span class="fu">library</span>(sf)</span>
-<span id="cb12-74"><a href="#cb12-74"></a><span class="fu">library</span>(terra)</span>
-<span id="cb12-75"><a href="#cb12-75"></a><span class="fu">library</span>(here)</span>
-<span id="cb12-76"><a href="#cb12-76"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb12-77"><a href="#cb12-77"></a><span class="fu">library</span>(rpart)</span>
-<span id="cb12-78"><a href="#cb12-78"></a><span class="fu">library</span>(rpart.plot)</span>
-<span id="cb12-79"><a href="#cb12-79"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb12-73"><a href="#cb12-73"></a><span class="in">library(sf)</span></span>
+<span id="cb12-74"><a href="#cb12-74"></a><span class="in">library(terra)</span></span>
+<span id="cb12-75"><a href="#cb12-75"></a><span class="in">library(here)</span></span>
+<span id="cb12-76"><a href="#cb12-76"></a><span class="in">library(dplyr)</span></span>
+<span id="cb12-77"><a href="#cb12-77"></a><span class="in">library(rpart)</span></span>
+<span id="cb12-78"><a href="#cb12-78"></a><span class="in">library(rpart.plot)</span></span>
+<span id="cb12-79"><a href="#cb12-79"></a><span class="in">library(tmap)</span></span>
 <span id="cb12-80"><a href="#cb12-80"></a><span class="in">```</span></span>
 <span id="cb12-81"><a href="#cb12-81"></a></span>
 <span id="cb12-82"><a href="#cb12-82"></a></span>
 <span id="cb12-83"><a href="#cb12-83"></a><span class="in">```{r include=FALSE, message=FALSE, warning=FALSE}</span></span>
-<span id="cb12-84"><a href="#cb12-84"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb12-85"><a href="#cb12-85"></a>data <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/week9/data"</span>)</span>
+<span id="cb12-84"><a href="#cb12-84"></a><span class="in">rm(list = ls())</span></span>
+<span id="cb12-85"><a href="#cb12-85"></a><span class="in">data &lt;- file.path("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/week9/data")</span></span>
 <span id="cb12-86"><a href="#cb12-86"></a><span class="in">```</span></span>
 <span id="cb12-87"><a href="#cb12-87"></a></span>
 <span id="cb12-88"><a href="#cb12-88"></a><span class="fu">#### Load Landsat data</span></span>
@@ -880,22 +1065,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-90"><a href="#cb12-90"></a>First, I created a raster stack based on the 6 bands I worked with. Each file name ends with the band number (e.g. <span class="in">`B1.tif`</span>). Band 6 corresponds to thermal data, which we will not be working with for this analysis, so it was not included in the data. To create a raster stack, I made a list of the files that I wanted to work with and read them all in at once using the <span class="in">`rast`</span> function. The names of the layers were then updated to match the spectral bands and plot a true color image to see what we're working with.</span>
 <span id="cb12-91"><a href="#cb12-91"></a></span>
 <span id="cb12-92"><a href="#cb12-92"></a><span class="in">```{r include=TRUE}</span></span>
-<span id="cb12-93"><a href="#cb12-93"></a><span class="co"># list files for each band, including the full file path</span></span>
-<span id="cb12-94"><a href="#cb12-94"></a>filelist <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">file.path</span>(data, <span class="st">"landsat-data/"</span>), <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-93"><a href="#cb12-93"></a><span class="in"># list files for each band, including the full file path</span></span>
+<span id="cb12-94"><a href="#cb12-94"></a><span class="in">filelist &lt;- list.files(file.path(data, "landsat-data/"), full.names = TRUE)</span></span>
 <span id="cb12-95"><a href="#cb12-95"></a></span>
-<span id="cb12-96"><a href="#cb12-96"></a><span class="co"># read in and store as a raster stack</span></span>
+<span id="cb12-96"><a href="#cb12-96"></a><span class="in"># read in and store as a raster stack</span></span>
 <span id="cb12-97"><a href="#cb12-97"></a></span>
-<span id="cb12-98"><a href="#cb12-98"></a>landsat <span class="ot">&lt;-</span> <span class="fu">rast</span>(filelist)</span>
-<span id="cb12-99"><a href="#cb12-99"></a>landsat</span>
+<span id="cb12-98"><a href="#cb12-98"></a><span class="in">landsat &lt;- rast(filelist)</span></span>
+<span id="cb12-99"><a href="#cb12-99"></a><span class="in">landsat</span></span>
 <span id="cb12-100"><a href="#cb12-100"></a></span>
-<span id="cb12-101"><a href="#cb12-101"></a><span class="co"># update layer names to match band</span></span>
+<span id="cb12-101"><a href="#cb12-101"></a><span class="in"># update layer names to match band</span></span>
 <span id="cb12-102"><a href="#cb12-102"></a></span>
-<span id="cb12-103"><a href="#cb12-103"></a><span class="fu">names</span>(landsat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"NIR"</span>, <span class="st">"SWIR1"</span>, <span class="st">"SWIR2"</span>)</span>
-<span id="cb12-104"><a href="#cb12-104"></a>landsat</span>
+<span id="cb12-103"><a href="#cb12-103"></a><span class="in">names(landsat) &lt;- c("blue", "green", "red", "NIR", "SWIR1", "SWIR2")</span></span>
+<span id="cb12-104"><a href="#cb12-104"></a><span class="in">landsat</span></span>
 <span id="cb12-105"><a href="#cb12-105"></a></span>
-<span id="cb12-106"><a href="#cb12-106"></a><span class="co"># plot true color image</span></span>
+<span id="cb12-106"><a href="#cb12-106"></a><span class="in"># plot true color image</span></span>
 <span id="cb12-107"><a href="#cb12-107"></a></span>
-<span id="cb12-108"><a href="#cb12-108"></a><span class="fu">plotRGB</span>(landsat, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span>
+<span id="cb12-108"><a href="#cb12-108"></a><span class="in">plotRGB(landsat, r = 3, g = 2, blue = 1, stretch = "lin")</span></span>
 <span id="cb12-109"><a href="#cb12-109"></a><span class="in">```</span></span>
 <span id="cb12-110"><a href="#cb12-110"></a></span>
 <span id="cb12-111"><a href="#cb12-111"></a><span class="fu">#### Load study area</span></span>
@@ -904,13 +1089,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-114"><a href="#cb12-114"></a></span>
 <span id="cb12-115"><a href="#cb12-115"></a><span class="in">```{r include=TRUE}</span></span>
 <span id="cb12-116"><a href="#cb12-116"></a></span>
-<span id="cb12-117"><a href="#cb12-117"></a><span class="co"># read in shapefile for southern portion of SB county</span></span>
-<span id="cb12-118"><a href="#cb12-118"></a>SB_county_south <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"SB_county_south.shp"</span>))</span>
+<span id="cb12-117"><a href="#cb12-117"></a><span class="in"># read in shapefile for southern portion of SB county</span></span>
+<span id="cb12-118"><a href="#cb12-118"></a><span class="in">SB_county_south &lt;- st_read(file.path(data, "SB_county_south.shp"))</span></span>
 <span id="cb12-119"><a href="#cb12-119"></a></span>
-<span id="cb12-120"><a href="#cb12-120"></a><span class="co"># project to match the Landsat data</span></span>
-<span id="cb12-121"><a href="#cb12-121"></a>SB_county_south <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(SB_county_south, <span class="at">crs =</span> <span class="fu">st_crs</span>(landsat))</span>
+<span id="cb12-120"><a href="#cb12-120"></a><span class="in"># project to match the Landsat data</span></span>
+<span id="cb12-121"><a href="#cb12-121"></a><span class="in">SB_county_south &lt;- st_transform(SB_county_south, crs = st_crs(landsat))</span></span>
 <span id="cb12-122"><a href="#cb12-122"></a></span>
-<span id="cb12-123"><a href="#cb12-123"></a><span class="co"># plot(SB_county_south)</span></span>
+<span id="cb12-123"><a href="#cb12-123"></a><span class="in"># plot(SB_county_south)</span></span>
 <span id="cb12-124"><a href="#cb12-124"></a><span class="in">```</span></span>
 <span id="cb12-125"><a href="#cb12-125"></a></span>
 <span id="cb12-126"><a href="#cb12-126"></a><span class="fu">#### Crop and mask Landsat data to study area</span></span>
@@ -919,16 +1104,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-129"><a href="#cb12-129"></a></span>
 <span id="cb12-130"><a href="#cb12-130"></a><span class="in">```{r include=TRUE}</span></span>
 <span id="cb12-131"><a href="#cb12-131"></a></span>
-<span id="cb12-132"><a href="#cb12-132"></a><span class="co"># crop Landsat scene to the extent of the SB county shapefile</span></span>
-<span id="cb12-133"><a href="#cb12-133"></a>landsat_cropped <span class="ot">&lt;-</span> <span class="fu">crop</span>(landsat, SB_county_south)</span>
+<span id="cb12-132"><a href="#cb12-132"></a><span class="in"># crop Landsat scene to the extent of the SB county shapefile</span></span>
+<span id="cb12-133"><a href="#cb12-133"></a><span class="in">landsat_cropped &lt;- crop(landsat, SB_county_south)</span></span>
 <span id="cb12-134"><a href="#cb12-134"></a></span>
-<span id="cb12-135"><a href="#cb12-135"></a><span class="co"># mask the raster to southern portion of SB county</span></span>
-<span id="cb12-136"><a href="#cb12-136"></a>landsat_masked <span class="ot">&lt;-</span> <span class="fu">mask</span>(landsat_cropped, SB_county_south)</span>
+<span id="cb12-135"><a href="#cb12-135"></a><span class="in"># mask the raster to southern portion of SB county</span></span>
+<span id="cb12-136"><a href="#cb12-136"></a><span class="in">landsat_masked &lt;- mask(landsat_cropped, SB_county_south)</span></span>
 <span id="cb12-137"><a href="#cb12-137"></a></span>
-<span id="cb12-138"><a href="#cb12-138"></a><span class="co"># remove unnecessary object from environment</span></span>
-<span id="cb12-139"><a href="#cb12-139"></a><span class="fu">rm</span>(landsat, landsat_cropped, SB_county_south)</span>
+<span id="cb12-138"><a href="#cb12-138"></a><span class="in"># remove unnecessary object from environment</span></span>
+<span id="cb12-139"><a href="#cb12-139"></a><span class="in">rm(landsat, landsat_cropped, SB_county_south)</span></span>
 <span id="cb12-140"><a href="#cb12-140"></a></span>
-<span id="cb12-141"><a href="#cb12-141"></a><span class="fu">plotRGB</span>(landsat_masked, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">blue =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span>
+<span id="cb12-141"><a href="#cb12-141"></a><span class="in">plotRGB(landsat_masked, r = 3, g = 2, blue = 1, stretch = "lin")</span></span>
 <span id="cb12-142"><a href="#cb12-142"></a><span class="in">```</span></span>
 <span id="cb12-143"><a href="#cb12-143"></a></span>
 <span id="cb12-144"><a href="#cb12-144"></a><span class="fu">#### Convert Landsat values to reflectance</span></span>
@@ -936,25 +1121,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-146"><a href="#cb12-146"></a>Next, I converted the values in the raster stack to correspond to reflectance values. To do so, I first removed erroneous values and applied any <span class="co">[</span><span class="ot">scaling factors</span><span class="co">](https://www.usgs.gov/faqs/how-do-i-use-scale-factor-landsat-level-2-science-products#:~:text=Landsat%20Collection%202%20surface%20temperature,the%20scale%20factor%20is%20applied.)</span> to convert to reflectance. In this case, I worked with <span class="co">[</span><span class="ot">Landsat Collection 2</span><span class="co">](https://www.usgs.gov/landsat-missions/landsat-collection-2)</span>. The valid range of pixel values for this collection is 7,273-43,636, with a multiplicative scale factor of 0.0000275 and an additive scale factor of -0.2. So I reclassified any erroneous values as <span class="in">`NA`</span> and updated the values for each pixel based on the scaling factors. Now the pixel values should range from 0-100%.</span>
 <span id="cb12-147"><a href="#cb12-147"></a></span>
 <span id="cb12-148"><a href="#cb12-148"></a><span class="in">```{r include=TRUE}</span></span>
-<span id="cb12-149"><a href="#cb12-149"></a><span class="fu">summary</span>(landsat_masked)</span>
-<span id="cb12-150"><a href="#cb12-150"></a><span class="co"># reclassify erroneous values as NA</span></span>
-<span id="cb12-151"><a href="#cb12-151"></a>rcl <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">7273</span>, <span class="cn">NA</span>,</span>
-<span id="cb12-152"><a href="#cb12-152"></a>         <span class="dv">43636</span>, <span class="cn">Inf</span>, <span class="cn">NA</span>), </span>
-<span id="cb12-153"><a href="#cb12-153"></a>        <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-149"><a href="#cb12-149"></a><span class="in">summary(landsat_masked)</span></span>
+<span id="cb12-150"><a href="#cb12-150"></a><span class="in"># reclassify erroneous values as NA</span></span>
+<span id="cb12-151"><a href="#cb12-151"></a><span class="in">rcl &lt;- matrix(c(-Inf, 7273, NA,</span></span>
+<span id="cb12-152"><a href="#cb12-152"></a><span class="in">         43636, Inf, NA), </span></span>
+<span id="cb12-153"><a href="#cb12-153"></a><span class="in">        ncol = 3, byrow = TRUE)</span></span>
 <span id="cb12-154"><a href="#cb12-154"></a></span>
 <span id="cb12-155"><a href="#cb12-155"></a></span>
-<span id="cb12-156"><a href="#cb12-156"></a>landsat <span class="ot">&lt;-</span> <span class="fu">classify</span>(landsat_masked, <span class="at">rcl =</span> rcl)</span>
+<span id="cb12-156"><a href="#cb12-156"></a><span class="in">landsat &lt;- classify(landsat_masked, rcl = rcl)</span></span>
 <span id="cb12-157"><a href="#cb12-157"></a></span>
-<span id="cb12-158"><a href="#cb12-158"></a><span class="co"># adjust values based on scaling factor</span></span>
+<span id="cb12-158"><a href="#cb12-158"></a><span class="in"># adjust values based on scaling factor</span></span>
 <span id="cb12-159"><a href="#cb12-159"></a></span>
-<span id="cb12-160"><a href="#cb12-160"></a>landsat <span class="ot">&lt;-</span> (landsat <span class="sc">*</span> <span class="fl">0.0000275</span> <span class="sc">-</span> <span class="fl">0.2</span>)<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb12-161"><a href="#cb12-161"></a><span class="fu">summary</span>(landsat)</span>
+<span id="cb12-160"><a href="#cb12-160"></a><span class="in">landsat &lt;- (landsat * 0.0000275 - 0.2)*100</span></span>
+<span id="cb12-161"><a href="#cb12-161"></a><span class="in">summary(landsat)</span></span>
 <span id="cb12-162"><a href="#cb12-162"></a></span>
-<span id="cb12-163"><a href="#cb12-163"></a><span class="co"># plot true color image to check results</span></span>
-<span id="cb12-164"><a href="#cb12-164"></a><span class="fu">plotRGB</span>(landsat, <span class="at">r =</span> <span class="dv">3</span>, <span class="at">g =</span> <span class="dv">2</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">stretch =</span> <span class="st">"lin"</span>)</span>
+<span id="cb12-163"><a href="#cb12-163"></a><span class="in"># plot true color image to check results</span></span>
+<span id="cb12-164"><a href="#cb12-164"></a><span class="in">plotRGB(landsat, r = 3, g = 2, b = 1, stretch = "lin")</span></span>
 <span id="cb12-165"><a href="#cb12-165"></a></span>
-<span id="cb12-166"><a href="#cb12-166"></a><span class="co"># check values are 0 - 100</span></span>
-<span id="cb12-167"><a href="#cb12-167"></a><span class="fu">summary</span>(landsat)</span>
+<span id="cb12-166"><a href="#cb12-166"></a><span class="in"># check values are 0 - 100</span></span>
+<span id="cb12-167"><a href="#cb12-167"></a><span class="in">summary(landsat)</span></span>
 <span id="cb12-168"><a href="#cb12-168"></a><span class="in">```</span></span>
 <span id="cb12-169"><a href="#cb12-169"></a></span>
 <span id="cb12-170"><a href="#cb12-170"></a><span class="fu">## Classify image</span></span>
@@ -964,24 +1149,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-174"><a href="#cb12-174"></a>Here, I loaded in the shapefile identifying different locations within the study area as containing one of the 4 land cover types. I then extracted the spectral values at each site to create a data frame that relates land cover types to their spectral reflectance.</span>
 <span id="cb12-175"><a href="#cb12-175"></a></span>
 <span id="cb12-176"><a href="#cb12-176"></a><span class="in">```{r include=TRUE}</span></span>
-<span id="cb12-177"><a href="#cb12-177"></a><span class="co"># read in and transform training data</span></span>
-<span id="cb12-178"><a href="#cb12-178"></a>training_data <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"trainingdata.shp"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-179"><a href="#cb12-179"></a>  <span class="fu">st_transform</span>(., <span class="at">crs =</span> <span class="fu">st_crs</span>(landsat))</span>
-<span id="cb12-180"><a href="#cb12-180"></a><span class="co">#plot</span></span>
-<span id="cb12-181"><a href="#cb12-181"></a><span class="fu">plot</span>(training_data)</span>
+<span id="cb12-177"><a href="#cb12-177"></a><span class="in"># read in and transform training data</span></span>
+<span id="cb12-178"><a href="#cb12-178"></a><span class="in">training_data &lt;- st_read(file.path(data, "trainingdata.shp")) %&gt;% </span></span>
+<span id="cb12-179"><a href="#cb12-179"></a><span class="in">  st_transform(., crs = st_crs(landsat))</span></span>
+<span id="cb12-180"><a href="#cb12-180"></a><span class="in">#plot</span></span>
+<span id="cb12-181"><a href="#cb12-181"></a><span class="in">plot(training_data)</span></span>
 <span id="cb12-182"><a href="#cb12-182"></a></span>
-<span id="cb12-183"><a href="#cb12-183"></a><span class="co"># extract reflectance values at training sites</span></span>
-<span id="cb12-184"><a href="#cb12-184"></a>training_data_values <span class="ot">&lt;-</span> <span class="fu">extract</span>(landsat, training_data, <span class="at">df =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-183"><a href="#cb12-183"></a><span class="in"># extract reflectance values at training sites</span></span>
+<span id="cb12-184"><a href="#cb12-184"></a><span class="in">training_data_values &lt;- extract(landsat, training_data, df = TRUE)</span></span>
 <span id="cb12-185"><a href="#cb12-185"></a></span>
-<span id="cb12-186"><a href="#cb12-186"></a><span class="co"># convert training data to data frame</span></span>
-<span id="cb12-187"><a href="#cb12-187"></a>training_data_attributes <span class="ot">&lt;-</span> training_data <span class="sc">%&gt;%</span> </span>
-<span id="cb12-188"><a href="#cb12-188"></a>  <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb12-186"><a href="#cb12-186"></a><span class="in"># convert training data to data frame</span></span>
+<span id="cb12-187"><a href="#cb12-187"></a><span class="in">training_data_attributes &lt;- training_data %&gt;% </span></span>
+<span id="cb12-188"><a href="#cb12-188"></a><span class="in">  st_drop_geometry()</span></span>
 <span id="cb12-189"><a href="#cb12-189"></a></span>
-<span id="cb12-190"><a href="#cb12-190"></a><span class="co"># join training data attributes and extracted reflectance values</span></span>
+<span id="cb12-190"><a href="#cb12-190"></a><span class="in"># join training data attributes and extracted reflectance values</span></span>
 <span id="cb12-191"><a href="#cb12-191"></a></span>
-<span id="cb12-192"><a href="#cb12-192"></a>SB_training_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(training_data_values, training_data_attributes,</span>
-<span id="cb12-193"><a href="#cb12-193"></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ID"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-194"><a href="#cb12-194"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">as.factor</span>(type))</span>
+<span id="cb12-192"><a href="#cb12-192"></a><span class="in">SB_training_data &lt;- left_join(training_data_values, training_data_attributes,</span></span>
+<span id="cb12-193"><a href="#cb12-193"></a><span class="in">          by = c("ID" = "id")) %&gt;% </span></span>
+<span id="cb12-194"><a href="#cb12-194"></a><span class="in">  mutate(type = as.factor(type))</span></span>
 <span id="cb12-195"><a href="#cb12-195"></a></span>
 <span id="cb12-196"><a href="#cb12-196"></a></span>
 <span id="cb12-197"><a href="#cb12-197"></a><span class="in">```</span></span>
@@ -993,18 +1178,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-203"><a href="#cb12-203"></a>To understand how the decision tree will classify pixels, I first plotted the results. The decision tree is comprised of a hierarchy of binary decisions. Each decision rule has 2 outcomes based on a conditional statement pertaining to values in each spectral band.</span>
 <span id="cb12-204"><a href="#cb12-204"></a></span>
 <span id="cb12-205"><a href="#cb12-205"></a><span class="in">```{r include=TRUE}</span></span>
-<span id="cb12-206"><a href="#cb12-206"></a><span class="co"># establish model formula</span></span>
+<span id="cb12-206"><a href="#cb12-206"></a><span class="in"># establish model formula</span></span>
 <span id="cb12-207"><a href="#cb12-207"></a></span>
-<span id="cb12-208"><a href="#cb12-208"></a>SB_formula <span class="ot">&lt;-</span> type <span class="sc">~</span> red <span class="sc">+</span> green <span class="sc">+</span> blue <span class="sc">+</span> NIR <span class="sc">+</span> SWIR1 <span class="sc">+</span> SWIR2</span>
+<span id="cb12-208"><a href="#cb12-208"></a><span class="in">SB_formula &lt;- type ~ red + green + blue + NIR + SWIR1 + SWIR2</span></span>
 <span id="cb12-209"><a href="#cb12-209"></a></span>
-<span id="cb12-210"><a href="#cb12-210"></a><span class="co"># train decision tree</span></span>
-<span id="cb12-211"><a href="#cb12-211"></a>SB_decision_tree <span class="ot">&lt;-</span> <span class="fu">rpart</span>(<span class="at">formula =</span> SB_formula,</span>
-<span id="cb12-212"><a href="#cb12-212"></a>      <span class="at">data =</span> SB_training_data, </span>
-<span id="cb12-213"><a href="#cb12-213"></a>      <span class="at">method =</span> <span class="st">"class"</span>, </span>
-<span id="cb12-214"><a href="#cb12-214"></a>      <span class="at">na.action =</span> na.omit)</span>
+<span id="cb12-210"><a href="#cb12-210"></a><span class="in"># train decision tree</span></span>
+<span id="cb12-211"><a href="#cb12-211"></a><span class="in">SB_decision_tree &lt;- rpart(formula = SB_formula,</span></span>
+<span id="cb12-212"><a href="#cb12-212"></a><span class="in">      data = SB_training_data, </span></span>
+<span id="cb12-213"><a href="#cb12-213"></a><span class="in">      method = "class", </span></span>
+<span id="cb12-214"><a href="#cb12-214"></a><span class="in">      na.action = na.omit)</span></span>
 <span id="cb12-215"><a href="#cb12-215"></a></span>
-<span id="cb12-216"><a href="#cb12-216"></a><span class="co"># plot decision tree</span></span>
-<span id="cb12-217"><a href="#cb12-217"></a><span class="fu">prp</span>(SB_decision_tree)</span>
+<span id="cb12-216"><a href="#cb12-216"></a><span class="in"># plot decision tree</span></span>
+<span id="cb12-217"><a href="#cb12-217"></a><span class="in">prp(SB_decision_tree)</span></span>
 <span id="cb12-218"><a href="#cb12-218"></a></span>
 <span id="cb12-219"><a href="#cb12-219"></a></span>
 <span id="cb12-220"><a href="#cb12-220"></a></span>
@@ -1015,11 +1200,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-225"><a href="#cb12-225"></a>After making the decision tree, I applied it to the entire image. The <span class="in">`terra`</span> package includes a <span class="in">`predict()`</span> function that allows you to apply a model to the data. In order for this to work properly, the names of the layers needed to match the column names of the predictors I used to train our decision tree. The <span class="in">`predict()`</span> function then returns a raster layer with integer values. These integer values correspond to the *factor levels* in the training data. To figure out what category each integer corresponded to, I then inspected the levels of the training data.</span>
 <span id="cb12-226"><a href="#cb12-226"></a></span>
 <span id="cb12-227"><a href="#cb12-227"></a><span class="in">```{r include=TRUE}</span></span>
-<span id="cb12-228"><a href="#cb12-228"></a><span class="co"># classify image based on decision tree</span></span>
-<span id="cb12-229"><a href="#cb12-229"></a>SB_classification <span class="ot">&lt;-</span> <span class="fu">predict</span>(landsat, SB_decision_tree, <span class="at">type =</span> <span class="st">"class"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-228"><a href="#cb12-228"></a><span class="in"># classify image based on decision tree</span></span>
+<span id="cb12-229"><a href="#cb12-229"></a><span class="in">SB_classification &lt;- predict(landsat, SB_decision_tree, type = "class", na.rm = TRUE)</span></span>
 <span id="cb12-230"><a href="#cb12-230"></a></span>
-<span id="cb12-231"><a href="#cb12-231"></a><span class="co"># inspect level to understand the order of classes in prediction</span></span>
-<span id="cb12-232"><a href="#cb12-232"></a>SB_classification</span>
+<span id="cb12-231"><a href="#cb12-231"></a><span class="in"># inspect level to understand the order of classes in prediction</span></span>
+<span id="cb12-232"><a href="#cb12-232"></a><span class="in">SB_classification</span></span>
 <span id="cb12-233"><a href="#cb12-233"></a></span>
 <span id="cb12-234"><a href="#cb12-234"></a><span class="in">```</span></span>
 <span id="cb12-235"><a href="#cb12-235"></a></span>
@@ -1061,6 +1246,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

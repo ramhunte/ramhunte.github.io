@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,8 +98,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -104,9 +112,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../images/logo.png" alt="" class="navbar-logo">
     </a>
@@ -118,42 +126,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html" rel="" target="">
- <span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogs.html" rel="" target="">
- <span class="menu-text">My Blog</span></a>
+    <a class="nav-link" href="../../blogs.html"> 
+<span class="menu-text">My Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ramhunte" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ramhunte"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ramhunte@bren.ucsb.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:rmhunter999@gmail.com"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -198,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -218,7 +226,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p><a href="https://github.com/ramhunte/houston_blackout">Github project repository</a></p>
 <section id="background" class="level2">
@@ -278,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="combine-the-data">combine the data</h5>
 <p>First, I read in the night lights tiles data and combining them into a single <code>stars</code> object for each date (2021-02-07 and 2021-02-16).</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#reading in raster data </span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>t1 <span class="ot">=</span> <span class="fu">read_stars</span>(<span class="fu">file.path</span>(data, <span class="st">"VNP46A1/VNP46A1.A2021038.h08v05.001.2021039064328.tif"</span>))</span>
@@ -298,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="create-a-blackout-mask">create a blackout mask</h5>
 <p>I then found the change in night lights intensity (presumably) caused by the storm. I first reclassified a difference raster, assuming that any location that experienced a drop of more than 200 nW cm<sup>-2</sup>sr<sup>-1</sup> experienced a blackout. <code>NA</code> values were to all locations that experienced a drop of <em>less</em> than 200 nW cm<sup>-2</sup>sr<sup>-1</sup>.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#finding difference in light intensity by subtracting light difference </span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>light_diff <span class="ot">&lt;-</span> lights_mos1 <span class="sc">-</span> lights_mos2</span>
@@ -316,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="vectorize-the-mask">vectorize the mask</h5>
 <p>I vectorized the the blackout mask and fixed any invalid geometries using <code>st_make_valid</code>. I then inspected it to make sure it was an sf object and to look at its characteristics.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#creating a black out mask as a sf object. This creates a mask of geometries that experienced a black out</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>bo_mask <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(light_diff)</span>
@@ -335,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="crop-the-vectorized-map-to-houston">crop the vectorized map to Houston</h5>
 <p>I defined the Houston metropolitan area with the following coordinates: (-96.5, 29), (-96.5, 30.5), (-94.5, 30.5), (-94.5, 29) and then turned them into a polygon using <code>st_polygon</code>. A CRS was then added to the polygon to make a simple features collection using <code>st_sfc()</code>. Lastly, I cropped (spatially subset) the blackout mask to our region of interest and re-project the cropped blackout dataset to EPSG:3083 (NAD83 / Texas Centric Albers Equal Area).</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#creating a matrix of coordinates for houston</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#note: last coordinate need to be same as the first</span></span>
@@ -362,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="check-1-ensurign-that-the-mask-function-worked" class="level5">
 <h5 class="anchored" data-anchor-id="check-1-ensurign-that-the-mask-function-worked">Check #1: Ensurign that the mask function worked</h5>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="do">##### creating a check ######</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
@@ -371,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>CHECK #1 - see if raster data is masked within Houston: </code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">if</span>(<span class="fu">nrow</span>(bo_mask_houst) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask)) {</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">cat</span>(<span class="st">"No: mask did not work."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -392,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>query &lt;- "SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"</code></p>
 <p>I applied to <code>st_read</code> to load just highway data from geopackage. I then reprojected the data to EPSG:3083 and identified areas within 200m of all highways using <code>st_buffer</code> and dissolved them with <code>st_union</code>. Lastly, I find areas that experienced blackouts that are further than 200m from a highway through spatial subsetting using the <code>st_disjoint</code> operation.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#assigning a query that pulls highway roads</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>highway_query <span class="ot">&lt;-</span> <span class="st">"SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"</span></span>
@@ -419,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="check-2-see-if-the-highway-exclusion-mask-removed-all-polygons-within-the-200m-of-highways" class="level5">
 <h5 class="anchored" data-anchor-id="check-2-see-if-the-highway-exclusion-mask-removed-all-polygons-within-the-200m-of-highways">Check #2: see if the highway exclusion mask removed all polygons within the 200m of highways</h5>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="do">#### creating a check #######</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="fu">cat</span>(<span class="st">"CHECK #2 - see if the highway exclusion mask removed all polygons within the 200m of highways:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -427,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>CHECK #2 - see if the highway exclusion mask removed all polygons within the 200m of highways: </code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">if</span>(<span class="fu">nrow</span>(mask_no_hwy) <span class="sc">+</span> <span class="fu">nrow</span>(bo_mask_houst[high_buff_dis, ]) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask_houst)) {</span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">cat</span>(<span class="st">"Yes, the highway mask removed all polygons within the 200m of highways."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -451,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p>
 <p>Again, this reduces the amount of data pulled inoto R, saving us time, energy, and storage.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#making a query for pulling specific building data</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>buildings_query <span class="ot">&lt;-</span> <span class="st">"SELECT * FROM gis_osm_buildings_a_free_1 WHERE (type IS NULL AND name IS NULL) OR type in ('residential', 'apartments', 'house', 'static_caravan', 'detached')"</span></span>
@@ -470,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="find-homes-in-blackout-areas">find homes in blackout areas</h5>
 <p>I then filtered the mask to homes within blackout areas and counted the number of impacted homes.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#subsettign the number of homes experiencing blackouts </span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co">#I am including areas inside of houston that also extend outside of Houston border using st_intersects</span></span>
@@ -494,7 +504,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="load-acs-data">load ACS data</h5>
 <p>First, I read in the geodatabase layers using <code>st_read()</code> (geometries are stored in the <code>ACS_2019_5YR_TRACT_48_TEXAS</code> layer and income data is stored in the <code>X19_INCOME</code> layer). For this analysis, I used the median income field <code>B19013e1</code> for income. Data was then reprojected to EPSG:3083.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># reading ACS gdb layers</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">st_layers</span>(<span class="fu">file.path</span>(data, <span class="st">"ACS_2019_5YR_TRACT_48_TEXAS.gdb"</span>))</span>
@@ -514,7 +524,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="determine-which-census-tracts-experienced-blackouts">determine which census tracts experienced blackouts</h5>
 <p>Next, I joined the income data to the census tract geometries uaing a <code>left_join</code> function by “ID”. This was then spatially joined to the census tract data with buildings determined to be impacted by blackouts using the <code>st_intersects</code> operation. Lastly, census tracts that had blackouts were identified.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#finding out how many and which census tracts experienced a blackout</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a></span>
@@ -539,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="check-3-making-sure-only-census-tracts-with-homes-that-experienced-a-blackout-are-included" class="level5">
 <h5 class="anchored" data-anchor-id="check-3-making-sure-only-census-tracts-with-homes-that-experienced-a-blackout-are-included">CHECK #3: making sure only census tracts with homes that experienced a blackout are included:</h5>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="do">### creating a check #####</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="fu">cat</span>(<span class="st">"CHECK #3 - making sure only census tracts with homes that experienced a blackout are included:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -547,7 +557,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>CHECK #3 - making sure only census tracts with homes that experienced a blackout are included: </code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">if</span>(<span class="fu">nrow</span>(acs_join) <span class="sc">&gt;</span> <span class="fu">nrow</span>(spat_join)) {</span>
 <span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">cat</span>(<span class="st">"Yes, only black out census tracts included."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -564,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="compare-incomes-of-impacted-tracts-to-unimpacted-tracts">compare incomes of impacted tracts to unimpacted tracts</h5>
 <p>Finally, I created a map of median income by census tract and designated which tracts experienced blackouts. I then plot the distribution of income in impacted and nonimpacted tracts to visualize what the spread of the community income looked like.</p>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># In this section, I am mapping the median income of affected census tracts from the black out to visually show what the income of affected areas are in Houston</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
@@ -628,14 +638,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="houston_blackout_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption"><strong>Figure 1. Median income of census tracts in Houston, TX that experienced blackouts in February 2021.</strong> Map <strong>A</strong> shows all census tracts in Houston area, were tracts that experienced a blackout color coded by the median income of houslholds within the tracts. Brighter colored tracts have higher median incomes where darker colored tracts have lower. Map <strong>B</strong> shows an inset map of where Houston is located in the state of Texas.</figcaption>
+<figcaption><strong>Figure 1. Median income of census tracts in Houston, TX that experienced blackouts in February 2021.</strong> Map <strong>A</strong> shows all census tracts in Houston area, were tracts that experienced a blackout color coded by the median income of houslholds within the tracts. Brighter colored tracts have higher median incomes where darker colored tracts have lower. Map <strong>B</strong> shows an inset map of where Houston is located in the state of Texas.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># here I am creating a histogram and box plot to compare the median incomes of affected and unaffected tracts</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a></span>
@@ -681,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="houston_blackout_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption"><strong>Figure 2. Median houshold income distribution of census tracts in blackout vs non-blackout areas in Houston, 2021.</strong> The first plot <strong>A</strong> shows a histogram of the distribution of median income in both groups of tracts. The frequency is concentrated just under $50,000 for both groups. Data is abnormally distributed with a long right tail, indiating most housholds are lower income with some higher income households drawing the tail right. Plot <strong>B</strong> shows a whisker plot of median distribution. Boxes represent the inter quartile range (IQR, 50% of the data), and the line inside each box represents the median. The whiskers represent 1.5 times the length of the IQR, with some outliers falling above the whiskers.</figcaption>
+<figcaption><strong>Figure 2. Median houshold income distribution of census tracts in blackout vs non-blackout areas in Houston, 2021.</strong> The first plot <strong>A</strong> shows a histogram of the distribution of median income in both groups of tracts. The frequency is concentrated just under $50,000 for both groups. Data is abnormally distributed with a long right tail, indiating most housholds are lower income with some higher income households drawing the tail right. Plot <strong>B</strong> shows a whisker plot of median distribution. Boxes represent the inter quartile range (IQR, 50% of the data), and the line inside each box represents the median. The whiskers represent 1.5 times the length of the IQR, with some outliers falling above the whiskers.</figcaption>
 </figure>
 </div>
 </div>
@@ -708,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li id="fn3"><p>Hess, D. B. (2005). Access to employment for adults in poverty in the Buffalo-Niagara region. Urban Studies, 42(7), 1177-1200.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Li, Z., Li, X., Wang, Y., &amp; Quiring, S. M. (2019). Impact of climate change on precipitation patterns in Houston, Texas, USA. Anthropocene, 25, 100193.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{hunter2023,
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{hunter2023,
   author = {Hunter, Raymond},
   title = {A {Spatial} {Analysis} of {Houston} {Blackouts} and the
     {Communities} It {Affected}},
@@ -850,10 +860,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -863,8 +890,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -876,7 +912,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -920,6 +1079,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -945,6 +1105,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1031,23 +1217,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-25"><a href="#cb25-25"></a><span class="co">[</span><span class="ot">Github project repository</span><span class="co">](https://github.com/ramhunte/houston_blackout)</span></span>
 <span id="cb25-26"><a href="#cb25-26"></a></span>
 <span id="cb25-27"><a href="#cb25-27"></a><span class="in">```{r setup, include=TRUE}</span></span>
-<span id="cb25-28"><a href="#cb25-28"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>, <span class="at">fig.align =</span> <span class="st">"center"</span>)</span>
+<span id="cb25-28"><a href="#cb25-28"></a><span class="in">knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.align = "center")</span></span>
 <span id="cb25-29"><a href="#cb25-29"></a></span>
-<span id="cb25-30"><a href="#cb25-30"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb25-31"><a href="#cb25-31"></a><span class="fu">library</span>(ggspatial)</span>
-<span id="cb25-32"><a href="#cb25-32"></a><span class="fu">library</span>(sf)</span>
-<span id="cb25-33"><a href="#cb25-33"></a><span class="fu">library</span>(stars)</span>
-<span id="cb25-34"><a href="#cb25-34"></a><span class="fu">library</span>(spDataLarge)</span>
-<span id="cb25-35"><a href="#cb25-35"></a><span class="fu">library</span>(spData)</span>
-<span id="cb25-36"><a href="#cb25-36"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb25-37"><a href="#cb25-37"></a><span class="fu">library</span>(scales)</span>
+<span id="cb25-30"><a href="#cb25-30"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb25-31"><a href="#cb25-31"></a><span class="in">library(ggspatial)</span></span>
+<span id="cb25-32"><a href="#cb25-32"></a><span class="in">library(sf)</span></span>
+<span id="cb25-33"><a href="#cb25-33"></a><span class="in">library(stars)</span></span>
+<span id="cb25-34"><a href="#cb25-34"></a><span class="in">library(spDataLarge)</span></span>
+<span id="cb25-35"><a href="#cb25-35"></a><span class="in">library(spData)</span></span>
+<span id="cb25-36"><a href="#cb25-36"></a><span class="in">library(patchwork)</span></span>
+<span id="cb25-37"><a href="#cb25-37"></a><span class="in">library(scales)</span></span>
 <span id="cb25-38"><a href="#cb25-38"></a><span class="in">```</span></span>
 <span id="cb25-39"><a href="#cb25-39"></a></span>
 <span id="cb25-40"><a href="#cb25-40"></a></span>
 <span id="cb25-41"><a href="#cb25-41"></a><span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb25-42"><a href="#cb25-42"></a><span class="co"># Setting my filepaths</span></span>
-<span id="cb25-43"><a href="#cb25-43"></a>rootdir <span class="ot">&lt;-</span> (<span class="st">"/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-3-ramhunte"</span>)</span>
-<span id="cb25-44"><a href="#cb25-44"></a>data <span class="ot">&lt;-</span> <span class="fu">file.path</span>(rootdir,<span class="st">"data"</span>)</span>
+<span id="cb25-42"><a href="#cb25-42"></a><span class="in"># Setting my filepaths</span></span>
+<span id="cb25-43"><a href="#cb25-43"></a><span class="in">rootdir &lt;- ("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-3-ramhunte")</span></span>
+<span id="cb25-44"><a href="#cb25-44"></a><span class="in">data &lt;- file.path(rootdir,"data")</span></span>
 <span id="cb25-45"><a href="#cb25-45"></a></span>
 <span id="cb25-46"><a href="#cb25-46"></a><span class="in">```</span></span>
 <span id="cb25-47"><a href="#cb25-47"></a></span>
@@ -1228,20 +1414,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-230"><a href="#cb25-230"></a></span>
 <span id="cb25-231"><a href="#cb25-231"></a><span class="fu">##### Check #1: Ensurign that the mask function worked</span></span>
 <span id="cb25-232"><a href="#cb25-232"></a><span class="in">```{r, results = TRUE}</span></span>
-<span id="cb25-233"><a href="#cb25-233"></a><span class="do">##### creating a check ######</span></span>
+<span id="cb25-233"><a href="#cb25-233"></a><span class="in">##### creating a check ######</span></span>
 <span id="cb25-234"><a href="#cb25-234"></a></span>
-<span id="cb25-235"><a href="#cb25-235"></a><span class="fu">cat</span>(<span class="st">"CHECK #1 - see if raster data is masked within Houston:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-235"><a href="#cb25-235"></a><span class="in">cat("CHECK #1 - see if raster data is masked within Houston:", "\n")</span></span>
 <span id="cb25-236"><a href="#cb25-236"></a></span>
-<span id="cb25-237"><a href="#cb25-237"></a><span class="cf">if</span>(<span class="fu">nrow</span>(bo_mask_houst) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask)) {</span>
-<span id="cb25-238"><a href="#cb25-238"></a>  <span class="fu">cat</span>(<span class="st">"No: mask did not work."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-239"><a href="#cb25-239"></a>} <span class="cf">else</span> {</span>
-<span id="cb25-240"><a href="#cb25-240"></a>  <span class="fu">cat</span>(<span class="st">" Yes, all black out raster data lie within the Houston polygon."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-241"><a href="#cb25-241"></a>}</span>
+<span id="cb25-237"><a href="#cb25-237"></a><span class="in">if(nrow(bo_mask_houst) == nrow(bo_mask)) {</span></span>
+<span id="cb25-238"><a href="#cb25-238"></a><span class="in">  cat("No: mask did not work.", "\n")</span></span>
+<span id="cb25-239"><a href="#cb25-239"></a><span class="in">} else {</span></span>
+<span id="cb25-240"><a href="#cb25-240"></a><span class="in">  cat(" Yes, all black out raster data lie within the Houston polygon.", "\n")</span></span>
+<span id="cb25-241"><a href="#cb25-241"></a><span class="in">}</span></span>
 <span id="cb25-242"><a href="#cb25-242"></a></span>
 <span id="cb25-243"><a href="#cb25-243"></a><span class="in">```</span></span>
 <span id="cb25-244"><a href="#cb25-244"></a></span>
-<span id="cb25-245"><a href="#cb25-245"></a><span class="kw">&lt;/br&gt;</span> </span>
-<span id="cb25-246"><a href="#cb25-246"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-245"><a href="#cb25-245"></a>&lt;/br&gt; </span>
+<span id="cb25-246"><a href="#cb25-246"></a>&lt;/br&gt;</span>
 <span id="cb25-247"><a href="#cb25-247"></a></span>
 <span id="cb25-248"><a href="#cb25-248"></a><span class="fu">##### exclude highways from blackout mask </span></span>
 <span id="cb25-249"><a href="#cb25-249"></a></span>
@@ -1257,43 +1443,43 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-259"><a href="#cb25-259"></a></span>
 <span id="cb25-260"><a href="#cb25-260"></a></span>
 <span id="cb25-261"><a href="#cb25-261"></a><span class="in">```{r, results= TRUE}</span></span>
-<span id="cb25-262"><a href="#cb25-262"></a><span class="co">#assigning a query that pulls highway roads</span></span>
-<span id="cb25-263"><a href="#cb25-263"></a>highway_query <span class="ot">&lt;-</span> <span class="st">"SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"</span></span>
+<span id="cb25-262"><a href="#cb25-262"></a><span class="in">#assigning a query that pulls highway roads</span></span>
+<span id="cb25-263"><a href="#cb25-263"></a><span class="in">highway_query &lt;- "SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"</span></span>
 <span id="cb25-264"><a href="#cb25-264"></a></span>
-<span id="cb25-265"><a href="#cb25-265"></a><span class="co">#reading in highway data </span></span>
-<span id="cb25-266"><a href="#cb25-266"></a>highways <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data,<span class="st">"gis_osm_roads_free_1.gpkg"</span>), <span class="at">query =</span> highway_query, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-265"><a href="#cb25-265"></a><span class="in">#reading in highway data </span></span>
+<span id="cb25-266"><a href="#cb25-266"></a><span class="in">highways &lt;- st_read(file.path(data,"gis_osm_roads_free_1.gpkg"), query = highway_query, quiet = TRUE)</span></span>
 <span id="cb25-267"><a href="#cb25-267"></a></span>
-<span id="cb25-268"><a href="#cb25-268"></a><span class="co">#transforming highways crs to 3083</span></span>
-<span id="cb25-269"><a href="#cb25-269"></a>highways <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(highways, <span class="dv">3083</span>)</span>
+<span id="cb25-268"><a href="#cb25-268"></a><span class="in">#transforming highways crs to 3083</span></span>
+<span id="cb25-269"><a href="#cb25-269"></a><span class="in">highways &lt;- st_transform(highways, 3083)</span></span>
 <span id="cb25-270"><a href="#cb25-270"></a></span>
-<span id="cb25-271"><a href="#cb25-271"></a><span class="co">#creating a 200m buffer around highways </span></span>
-<span id="cb25-272"><a href="#cb25-272"></a>high_buff <span class="ot">&lt;-</span> <span class="fu">st_buffer</span>(highways, <span class="at">dist =</span> <span class="dv">200</span>)</span>
+<span id="cb25-271"><a href="#cb25-271"></a><span class="in">#creating a 200m buffer around highways </span></span>
+<span id="cb25-272"><a href="#cb25-272"></a><span class="in">high_buff &lt;- st_buffer(highways, dist = 200)</span></span>
 <span id="cb25-273"><a href="#cb25-273"></a></span>
-<span id="cb25-274"><a href="#cb25-274"></a><span class="co">#dissolveing buffers </span></span>
-<span id="cb25-275"><a href="#cb25-275"></a>high_buff_dis <span class="ot">&lt;-</span> <span class="fu">st_union</span>(high_buff)</span>
+<span id="cb25-274"><a href="#cb25-274"></a><span class="in">#dissolveing buffers </span></span>
+<span id="cb25-275"><a href="#cb25-275"></a><span class="in">high_buff_dis &lt;- st_union(high_buff)</span></span>
 <span id="cb25-276"><a href="#cb25-276"></a></span>
-<span id="cb25-277"><a href="#cb25-277"></a><span class="co"># plot(high_buff_dis)</span></span>
+<span id="cb25-277"><a href="#cb25-277"></a><span class="in"># plot(high_buff_dis)</span></span>
 <span id="cb25-278"><a href="#cb25-278"></a></span>
-<span id="cb25-279"><a href="#cb25-279"></a><span class="co">#finding areas more than 200m from a highway that experienced a blackout </span></span>
-<span id="cb25-280"><a href="#cb25-280"></a>mask_no_hwy <span class="ot">&lt;-</span> bo_mask_houst[high_buff_dis, op <span class="ot">=</span> st_disjoint]</span>
+<span id="cb25-279"><a href="#cb25-279"></a><span class="in">#finding areas more than 200m from a highway that experienced a blackout </span></span>
+<span id="cb25-280"><a href="#cb25-280"></a><span class="in">mask_no_hwy &lt;- bo_mask_houst[high_buff_dis, op = st_disjoint]</span></span>
 <span id="cb25-281"><a href="#cb25-281"></a><span class="in">```</span></span>
 <span id="cb25-282"><a href="#cb25-282"></a></span>
 <span id="cb25-283"><a href="#cb25-283"></a><span class="fu">##### Check #2: see if the highway exclusion mask removed all polygons within the 200m of highways</span></span>
 <span id="cb25-284"><a href="#cb25-284"></a><span class="in">```{r, results= TRUE}</span></span>
-<span id="cb25-285"><a href="#cb25-285"></a><span class="do">#### creating a check #######</span></span>
-<span id="cb25-286"><a href="#cb25-286"></a><span class="fu">cat</span>(<span class="st">"CHECK #2 - see if the highway exclusion mask removed all polygons within the 200m of highways:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-285"><a href="#cb25-285"></a><span class="in">#### creating a check #######</span></span>
+<span id="cb25-286"><a href="#cb25-286"></a><span class="in">cat("CHECK #2 - see if the highway exclusion mask removed all polygons within the 200m of highways:", "\n")</span></span>
 <span id="cb25-287"><a href="#cb25-287"></a></span>
 <span id="cb25-288"><a href="#cb25-288"></a></span>
-<span id="cb25-289"><a href="#cb25-289"></a><span class="cf">if</span>(<span class="fu">nrow</span>(mask_no_hwy) <span class="sc">+</span> <span class="fu">nrow</span>(bo_mask_houst[high_buff_dis, ]) <span class="sc">==</span> <span class="fu">nrow</span>(bo_mask_houst)) {</span>
-<span id="cb25-290"><a href="#cb25-290"></a>  <span class="fu">cat</span>(<span class="st">"Yes, the highway mask removed all polygons within the 200m of highways."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-291"><a href="#cb25-291"></a>  } <span class="cf">else</span> {</span>
-<span id="cb25-292"><a href="#cb25-292"></a>    <span class="fu">cat</span>(<span class="st">"Error! Observations within highway mask are included."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-293"><a href="#cb25-293"></a>  }</span>
+<span id="cb25-289"><a href="#cb25-289"></a><span class="in">if(nrow(mask_no_hwy) + nrow(bo_mask_houst[high_buff_dis, ]) == nrow(bo_mask_houst)) {</span></span>
+<span id="cb25-290"><a href="#cb25-290"></a><span class="in">  cat("Yes, the highway mask removed all polygons within the 200m of highways.", "\n")</span></span>
+<span id="cb25-291"><a href="#cb25-291"></a><span class="in">  } else {</span></span>
+<span id="cb25-292"><a href="#cb25-292"></a><span class="in">    cat("Error! Observations within highway mask are included.", "\n")</span></span>
+<span id="cb25-293"><a href="#cb25-293"></a><span class="in">  }</span></span>
 <span id="cb25-294"><a href="#cb25-294"></a></span>
 <span id="cb25-295"><a href="#cb25-295"></a><span class="in">```</span></span>
 <span id="cb25-296"><a href="#cb25-296"></a></span>
-<span id="cb25-297"><a href="#cb25-297"></a><span class="kw">&lt;/br&gt;</span> </span>
-<span id="cb25-298"><a href="#cb25-298"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-297"><a href="#cb25-297"></a>&lt;/br&gt; </span>
+<span id="cb25-298"><a href="#cb25-298"></a>&lt;/br&gt;</span>
 <span id="cb25-299"><a href="#cb25-299"></a></span>
 <span id="cb25-300"><a href="#cb25-300"></a><span class="fu">#### Find homes impacted by blackouts</span></span>
 <span id="cb25-301"><a href="#cb25-301"></a></span>
@@ -1325,18 +1511,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-329"><a href="#cb25-329"></a>I then filtered the mask to homes within blackout areas and counted the number of impacted homes.</span>
 <span id="cb25-330"><a href="#cb25-330"></a></span>
 <span id="cb25-331"><a href="#cb25-331"></a><span class="in">```{r, results = TRUE}</span></span>
-<span id="cb25-332"><a href="#cb25-332"></a><span class="co">#subsettign the number of homes experiencing blackouts </span></span>
-<span id="cb25-333"><a href="#cb25-333"></a><span class="co">#I am including areas inside of houston that also extend outside of Houston border using st_intersects</span></span>
-<span id="cb25-334"><a href="#cb25-334"></a>bo_homes <span class="ot">&lt;-</span> buildings[mask_no_hwy, ]</span>
+<span id="cb25-332"><a href="#cb25-332"></a><span class="in">#subsettign the number of homes experiencing blackouts </span></span>
+<span id="cb25-333"><a href="#cb25-333"></a><span class="in">#I am including areas inside of houston that also extend outside of Houston border using st_intersects</span></span>
+<span id="cb25-334"><a href="#cb25-334"></a><span class="in">bo_homes &lt;- buildings[mask_no_hwy, ]</span></span>
 <span id="cb25-335"><a href="#cb25-335"></a></span>
-<span id="cb25-336"><a href="#cb25-336"></a><span class="co">#counting blackout homes</span></span>
-<span id="cb25-337"><a href="#cb25-337"></a>bo_homes_cnt <span class="ot">&lt;-</span> <span class="fu">comma</span>(<span class="fu">nrow</span>(bo_homes))</span>
+<span id="cb25-336"><a href="#cb25-336"></a><span class="in">#counting blackout homes</span></span>
+<span id="cb25-337"><a href="#cb25-337"></a><span class="in">bo_homes_cnt &lt;- comma(nrow(bo_homes))</span></span>
 <span id="cb25-338"><a href="#cb25-338"></a></span>
-<span id="cb25-339"><a href="#cb25-339"></a><span class="fu">cat</span>(<span class="st">"Number of homes that experienced blackouts during the storm:"</span>, bo_homes_cnt, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-339"><a href="#cb25-339"></a><span class="in">cat("Number of homes that experienced blackouts during the storm:", bo_homes_cnt, "\n")</span></span>
 <span id="cb25-340"><a href="#cb25-340"></a></span>
 <span id="cb25-341"><a href="#cb25-341"></a><span class="in">```</span></span>
 <span id="cb25-342"><a href="#cb25-342"></a></span>
-<span id="cb25-343"><a href="#cb25-343"></a><span class="kw">&lt;/br&gt;</span></span>
+<span id="cb25-343"><a href="#cb25-343"></a>&lt;/br&gt;</span>
 <span id="cb25-344"><a href="#cb25-344"></a></span>
 <span id="cb25-345"><a href="#cb25-345"></a><span class="fu">#### Investigate socioeconomic factors</span></span>
 <span id="cb25-346"><a href="#cb25-346"></a></span>
@@ -1371,23 +1557,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-377"><a href="#cb25-377"></a></span>
 <span id="cb25-378"><a href="#cb25-378"></a><span class="in">```{r, results = TRUE}</span></span>
 <span id="cb25-379"><a href="#cb25-379"></a></span>
-<span id="cb25-380"><a href="#cb25-380"></a><span class="co">#finding out how many and which census tracts experienced a blackout</span></span>
+<span id="cb25-380"><a href="#cb25-380"></a><span class="in">#finding out how many and which census tracts experienced a blackout</span></span>
 <span id="cb25-381"><a href="#cb25-381"></a></span>
-<span id="cb25-382"><a href="#cb25-382"></a><span class="co">#joining income data to geometries </span></span>
-<span id="cb25-383"><a href="#cb25-383"></a>acs_join <span class="ot">&lt;-</span> <span class="fu">left_join</span>(acs_geoms, acs_income)</span>
+<span id="cb25-382"><a href="#cb25-382"></a><span class="in">#joining income data to geometries </span></span>
+<span id="cb25-383"><a href="#cb25-383"></a><span class="in">acs_join &lt;- left_join(acs_geoms, acs_income)</span></span>
 <span id="cb25-384"><a href="#cb25-384"></a></span>
-<span id="cb25-385"><a href="#cb25-385"></a><span class="co"># spatial join census tract data with buildings </span></span>
-<span id="cb25-386"><a href="#cb25-386"></a>spat_join <span class="ot">&lt;-</span> acs_join <span class="sc">%&gt;%</span> </span>
-<span id="cb25-387"><a href="#cb25-387"></a>   <span class="fu">st_filter</span>(bo_homes, <span class="at">.predicate =</span> st_intersects)</span>
+<span id="cb25-385"><a href="#cb25-385"></a><span class="in"># spatial join census tract data with buildings </span></span>
+<span id="cb25-386"><a href="#cb25-386"></a><span class="in">spat_join &lt;- acs_join %&gt;% </span></span>
+<span id="cb25-387"><a href="#cb25-387"></a><span class="in">   st_filter(bo_homes, .predicate = st_intersects)</span></span>
 <span id="cb25-388"><a href="#cb25-388"></a></span>
-<span id="cb25-389"><a href="#cb25-389"></a><span class="co"># length(spat_join)</span></span>
-<span id="cb25-390"><a href="#cb25-390"></a><span class="co"># names(spat_join)</span></span>
+<span id="cb25-389"><a href="#cb25-389"></a><span class="in"># length(spat_join)</span></span>
+<span id="cb25-390"><a href="#cb25-390"></a><span class="in"># names(spat_join)</span></span>
 <span id="cb25-391"><a href="#cb25-391"></a></span>
-<span id="cb25-392"><a href="#cb25-392"></a><span class="co">#census tracts that experience a blackout</span></span>
-<span id="cb25-393"><a href="#cb25-393"></a>bo_tract_list <span class="ot">&lt;-</span> <span class="fu">unique</span>(spat_join<span class="sc">$</span>NAMELSAD)</span>
+<span id="cb25-392"><a href="#cb25-392"></a><span class="in">#census tracts that experience a blackout</span></span>
+<span id="cb25-393"><a href="#cb25-393"></a><span class="in">bo_tract_list &lt;- unique(spat_join$NAMELSAD)</span></span>
 <span id="cb25-394"><a href="#cb25-394"></a></span>
-<span id="cb25-395"><a href="#cb25-395"></a><span class="co">#count of census tracts that experience a blackout</span></span>
-<span id="cb25-396"><a href="#cb25-396"></a>bo_tract_count <span class="ot">&lt;-</span> <span class="fu">length</span>(bo_tract_list)</span>
+<span id="cb25-395"><a href="#cb25-395"></a><span class="in">#count of census tracts that experience a blackout</span></span>
+<span id="cb25-396"><a href="#cb25-396"></a><span class="in">bo_tract_count &lt;- length(bo_tract_list)</span></span>
 <span id="cb25-397"><a href="#cb25-397"></a></span>
 <span id="cb25-398"><a href="#cb25-398"></a></span>
 <span id="cb25-399"><a href="#cb25-399"></a><span class="in">```</span></span>
@@ -1395,14 +1581,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-401"><a href="#cb25-401"></a></span>
 <span id="cb25-402"><a href="#cb25-402"></a><span class="fu">##### CHECK #3: making sure only census tracts with homes that experienced a blackout are included:</span></span>
 <span id="cb25-403"><a href="#cb25-403"></a><span class="in">```{r, results = TRUE}</span></span>
-<span id="cb25-404"><a href="#cb25-404"></a><span class="do">### creating a check #####</span></span>
-<span id="cb25-405"><a href="#cb25-405"></a><span class="fu">cat</span>(<span class="st">"CHECK #3 - making sure only census tracts with homes that experienced a blackout are included:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-404"><a href="#cb25-404"></a><span class="in">### creating a check #####</span></span>
+<span id="cb25-405"><a href="#cb25-405"></a><span class="in">cat("CHECK #3 - making sure only census tracts with homes that experienced a blackout are included:", "\n")</span></span>
 <span id="cb25-406"><a href="#cb25-406"></a></span>
-<span id="cb25-407"><a href="#cb25-407"></a><span class="cf">if</span>(<span class="fu">nrow</span>(acs_join) <span class="sc">&gt;</span> <span class="fu">nrow</span>(spat_join)) {</span>
-<span id="cb25-408"><a href="#cb25-408"></a>  <span class="fu">cat</span>(<span class="st">"Yes, only black out census tracts included."</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-409"><a href="#cb25-409"></a>} <span class="cf">else</span> {</span>
-<span id="cb25-410"><a href="#cb25-410"></a>  <span class="fu">cat</span>(<span class="st">"No, filter didn't work"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb25-411"><a href="#cb25-411"></a>}</span>
+<span id="cb25-407"><a href="#cb25-407"></a><span class="in">if(nrow(acs_join) &gt; nrow(spat_join)) {</span></span>
+<span id="cb25-408"><a href="#cb25-408"></a><span class="in">  cat("Yes, only black out census tracts included.", "\n")</span></span>
+<span id="cb25-409"><a href="#cb25-409"></a><span class="in">} else {</span></span>
+<span id="cb25-410"><a href="#cb25-410"></a><span class="in">  cat("No, filter didn't work", "\n")</span></span>
+<span id="cb25-411"><a href="#cb25-411"></a><span class="in">}</span></span>
 <span id="cb25-412"><a href="#cb25-412"></a></span>
 <span id="cb25-413"><a href="#cb25-413"></a><span class="in">```</span></span>
 <span id="cb25-414"><a href="#cb25-414"></a></span>
@@ -1415,112 +1601,112 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-421"><a href="#cb25-421"></a><span class="in">```{r, out.width = "100%", fig.align = "center",fig.cap = "**Figure 1. Median income of census tracts in Houston, TX that experienced blackouts in February 2021.** Map **A** shows all census tracts in Houston area, were tracts that experienced a blackout color coded by the median income of houslholds within the tracts. Brighter colored tracts have higher median incomes where darker colored tracts have lower. Map **B** shows an inset map of where Houston is located in the state of Texas."  }</span></span>
 <span id="cb25-422"><a href="#cb25-422"></a></span>
 <span id="cb25-423"><a href="#cb25-423"></a></span>
-<span id="cb25-424"><a href="#cb25-424"></a><span class="co"># In this section, I am mapping the median income of affected census tracts from the black out to visually show what the income of affected areas are in Houston</span></span>
+<span id="cb25-424"><a href="#cb25-424"></a><span class="in"># In this section, I am mapping the median income of affected census tracts from the black out to visually show what the income of affected areas are in Houston</span></span>
 <span id="cb25-425"><a href="#cb25-425"></a></span>
-<span id="cb25-426"><a href="#cb25-426"></a><span class="co">#check census tract crs</span></span>
-<span id="cb25-427"><a href="#cb25-427"></a><span class="fu">st_crs</span>(acs_join)</span>
+<span id="cb25-426"><a href="#cb25-426"></a><span class="in">#check census tract crs</span></span>
+<span id="cb25-427"><a href="#cb25-427"></a><span class="in">st_crs(acs_join)</span></span>
 <span id="cb25-428"><a href="#cb25-428"></a></span>
-<span id="cb25-429"><a href="#cb25-429"></a><span class="co">#transform Houston polygon crs to match census tract crs</span></span>
-<span id="cb25-430"><a href="#cb25-430"></a>hstn_3083 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(hstn_sf, <span class="dv">3083</span>)</span>
+<span id="cb25-429"><a href="#cb25-429"></a><span class="in">#transform Houston polygon crs to match census tract crs</span></span>
+<span id="cb25-430"><a href="#cb25-430"></a><span class="in">hstn_3083 &lt;- st_transform(hstn_sf, 3083)</span></span>
 <span id="cb25-431"><a href="#cb25-431"></a></span>
-<span id="cb25-432"><a href="#cb25-432"></a><span class="co"># masking census tracts to houston</span></span>
-<span id="cb25-433"><a href="#cb25-433"></a>tract_mask <span class="ot">&lt;-</span> acs_join[hstn_3083, ]</span>
+<span id="cb25-432"><a href="#cb25-432"></a><span class="in"># masking census tracts to houston</span></span>
+<span id="cb25-433"><a href="#cb25-433"></a><span class="in">tract_mask &lt;- acs_join[hstn_3083, ]</span></span>
 <span id="cb25-434"><a href="#cb25-434"></a></span>
-<span id="cb25-435"><a href="#cb25-435"></a><span class="co">#making a new column saying whether or not tracts was a black out or not</span></span>
-<span id="cb25-436"><a href="#cb25-436"></a>tract_mask <span class="ot">&lt;-</span> tract_mask <span class="sc">%&gt;%</span> </span>
-<span id="cb25-437"><a href="#cb25-437"></a>  <span class="fu">mutate</span>(<span class="at">blackout =</span> <span class="fu">ifelse</span>(NAMELSAD <span class="sc">%in%</span> bo_tract_list, <span class="st">"TRUE"</span>, <span class="st">"FALSE"</span>))</span>
+<span id="cb25-435"><a href="#cb25-435"></a><span class="in">#making a new column saying whether or not tracts was a black out or not</span></span>
+<span id="cb25-436"><a href="#cb25-436"></a><span class="in">tract_mask &lt;- tract_mask %&gt;% </span></span>
+<span id="cb25-437"><a href="#cb25-437"></a><span class="in">  mutate(blackout = ifelse(NAMELSAD %in% bo_tract_list, "TRUE", "FALSE"))</span></span>
 <span id="cb25-438"><a href="#cb25-438"></a></span>
 <span id="cb25-439"><a href="#cb25-439"></a></span>
 <span id="cb25-440"><a href="#cb25-440"></a></span>
-<span id="cb25-441"><a href="#cb25-441"></a><span class="co"># mapping median income of census tracts that experienced blackouts</span></span>
+<span id="cb25-441"><a href="#cb25-441"></a><span class="in"># mapping median income of census tracts that experienced blackouts</span></span>
 <span id="cb25-442"><a href="#cb25-442"></a></span>
-<span id="cb25-443"><a href="#cb25-443"></a><span class="co"># getting a polygon of texas </span></span>
-<span id="cb25-444"><a href="#cb25-444"></a>texas <span class="ot">&lt;-</span> us_states <span class="sc">%&gt;%</span> </span>
-<span id="cb25-445"><a href="#cb25-445"></a>  <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"Texas"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-446"><a href="#cb25-446"></a>  <span class="fu">st_transform</span>(<span class="dv">3083</span>)</span>
+<span id="cb25-443"><a href="#cb25-443"></a><span class="in"># getting a polygon of texas </span></span>
+<span id="cb25-444"><a href="#cb25-444"></a><span class="in">texas &lt;- us_states %&gt;% </span></span>
+<span id="cb25-445"><a href="#cb25-445"></a><span class="in">  filter(NAME == "Texas") %&gt;% </span></span>
+<span id="cb25-446"><a href="#cb25-446"></a><span class="in">  st_transform(3083)</span></span>
 <span id="cb25-447"><a href="#cb25-447"></a></span>
-<span id="cb25-448"><a href="#cb25-448"></a><span class="co">#making an inset map of texas with Houston filled in red  </span></span>
-<span id="cb25-449"><a href="#cb25-449"></a>inset_map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-450"><a href="#cb25-450"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> texas) <span class="sc">+</span> </span>
-<span id="cb25-451"><a href="#cb25-451"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> hstn_3083, <span class="at">fill =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
-<span id="cb25-452"><a href="#cb25-452"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb25-453"><a href="#cb25-453"></a>   <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb25-454"><a href="#cb25-454"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb25-455"><a href="#cb25-455"></a>  <span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb25-456"><a href="#cb25-456"></a>  <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb25-448"><a href="#cb25-448"></a><span class="in">#making an inset map of texas with Houston filled in red  </span></span>
+<span id="cb25-449"><a href="#cb25-449"></a><span class="in">inset_map &lt;- ggplot() +</span></span>
+<span id="cb25-450"><a href="#cb25-450"></a><span class="in">  geom_sf(data = texas) + </span></span>
+<span id="cb25-451"><a href="#cb25-451"></a><span class="in">  geom_sf(data = hstn_3083, fill = "red") + </span></span>
+<span id="cb25-452"><a href="#cb25-452"></a><span class="in">  theme_bw() +</span></span>
+<span id="cb25-453"><a href="#cb25-453"></a><span class="in">   theme(axis.text = element_blank(),</span></span>
+<span id="cb25-454"><a href="#cb25-454"></a><span class="in">        axis.ticks = element_blank(),</span></span>
+<span id="cb25-455"><a href="#cb25-455"></a><span class="in">  panel.grid.major = element_blank(),</span></span>
+<span id="cb25-456"><a href="#cb25-456"></a><span class="in">  panel.grid.minor = element_blank())</span></span>
 <span id="cb25-457"><a href="#cb25-457"></a></span>
 <span id="cb25-458"><a href="#cb25-458"></a></span>
-<span id="cb25-459"><a href="#cb25-459"></a><span class="co">#creating a main map of census tracts that experienced blackouts by color </span></span>
-<span id="cb25-460"><a href="#cb25-460"></a>main_map <span class="ot">&lt;-</span></span>
-<span id="cb25-461"><a href="#cb25-461"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-462"><a href="#cb25-462"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> tract_mask, <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
-<span id="cb25-463"><a href="#cb25-463"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> spat_join, <span class="fu">aes</span>(<span class="at">fill =</span> med_income)) <span class="sc">+</span></span>
-<span id="cb25-464"><a href="#cb25-464"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb25-465"><a href="#cb25-465"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"Median Income ($)"</span>) <span class="sc">+</span></span>
-<span id="cb25-466"><a href="#cb25-466"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-467"><a href="#cb25-467"></a>  <span class="fu">annotation_scale</span>(<span class="at">plot_unit =</span> <span class="st">"m"</span>, <span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
-<span id="cb25-468"><a href="#cb25-468"></a>  <span class="fu">theme</span>( <span class="at">legend.position=</span> <span class="fu">c</span>(<span class="fl">1.25</span>, .<span class="dv">75</span>),</span>
-<span id="cb25-469"><a href="#cb25-469"></a>         <span class="at">plot.margin=</span><span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,.<span class="dv">5</span>,<span class="dv">1</span>),<span class="st">"cm"</span>)) <span class="sc">+</span></span>
-<span id="cb25-470"><a href="#cb25-470"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"bl"</span>,</span>
-<span id="cb25-471"><a href="#cb25-471"></a>                         <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="fl">0.05</span>, <span class="st">"in"</span>),</span>
-<span id="cb25-472"><a href="#cb25-472"></a>                         <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"in"</span>),</span>
-<span id="cb25-473"><a href="#cb25-473"></a>                         <span class="at">style =</span> ggspatial<span class="sc">::</span><span class="fu">north_arrow_minimal</span>())</span>
+<span id="cb25-459"><a href="#cb25-459"></a><span class="in">#creating a main map of census tracts that experienced blackouts by color </span></span>
+<span id="cb25-460"><a href="#cb25-460"></a><span class="in">main_map &lt;-</span></span>
+<span id="cb25-461"><a href="#cb25-461"></a><span class="in">  ggplot() +</span></span>
+<span id="cb25-462"><a href="#cb25-462"></a><span class="in">  geom_sf(data = tract_mask, color = "lightgrey") +</span></span>
+<span id="cb25-463"><a href="#cb25-463"></a><span class="in">  geom_sf(data = spat_join, aes(fill = med_income)) +</span></span>
+<span id="cb25-464"><a href="#cb25-464"></a><span class="in">  scale_fill_viridis_c() +</span></span>
+<span id="cb25-465"><a href="#cb25-465"></a><span class="in">  labs(fill = "Median Income ($)") +</span></span>
+<span id="cb25-466"><a href="#cb25-466"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb25-467"><a href="#cb25-467"></a><span class="in">  annotation_scale(plot_unit = "m", location = "bl") +</span></span>
+<span id="cb25-468"><a href="#cb25-468"></a><span class="in">  theme( legend.position= c(1.25, .75),</span></span>
+<span id="cb25-469"><a href="#cb25-469"></a><span class="in">         plot.margin=unit(c(1,6,.5,1),"cm")) +</span></span>
+<span id="cb25-470"><a href="#cb25-470"></a><span class="in">  annotation_north_arrow(location = "bl",</span></span>
+<span id="cb25-471"><a href="#cb25-471"></a><span class="in">                         pad_x = unit(0.05, "in"),</span></span>
+<span id="cb25-472"><a href="#cb25-472"></a><span class="in">                         pad_y = unit(0.3, "in"),</span></span>
+<span id="cb25-473"><a href="#cb25-473"></a><span class="in">                         style = ggspatial::north_arrow_minimal())</span></span>
 <span id="cb25-474"><a href="#cb25-474"></a></span>
-<span id="cb25-475"><a href="#cb25-475"></a><span class="co">#combining main and inset map </span></span>
-<span id="cb25-476"><a href="#cb25-476"></a> comb_map <span class="ot">&lt;-</span> main_map <span class="sc">+</span> </span>
-<span id="cb25-477"><a href="#cb25-477"></a>    <span class="fu">inset_element</span>(inset_map, <span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.4</span>, <span class="fl">1.4</span>, .<span class="dv">9</span>) <span class="sc">+</span></span>
-<span id="cb25-478"><a href="#cb25-478"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
-<span id="cb25-479"><a href="#cb25-479"></a> </span>
-<span id="cb25-480"><a href="#cb25-480"></a> comb_map</span>
+<span id="cb25-475"><a href="#cb25-475"></a><span class="in">#combining main and inset map </span></span>
+<span id="cb25-476"><a href="#cb25-476"></a><span class="in"> comb_map &lt;- main_map + </span></span>
+<span id="cb25-477"><a href="#cb25-477"></a><span class="in">    inset_element(inset_map, 1, -0.4, 1.4, .9) +</span></span>
+<span id="cb25-478"><a href="#cb25-478"></a><span class="in">  plot_annotation(tag_levels = "A")</span></span>
+<span id="cb25-479"><a href="#cb25-479"></a><span class="in"> </span></span>
+<span id="cb25-480"><a href="#cb25-480"></a><span class="in"> comb_map</span></span>
 <span id="cb25-481"><a href="#cb25-481"></a></span>
 <span id="cb25-482"><a href="#cb25-482"></a></span>
 <span id="cb25-483"><a href="#cb25-483"></a></span>
 <span id="cb25-484"><a href="#cb25-484"></a><span class="in">```</span></span>
 <span id="cb25-485"><a href="#cb25-485"></a></span>
-<span id="cb25-486"><a href="#cb25-486"></a><span class="kw">&lt;/br&gt;</span> </span>
+<span id="cb25-486"><a href="#cb25-486"></a>&lt;/br&gt; </span>
 <span id="cb25-487"><a href="#cb25-487"></a></span>
 <span id="cb25-488"><a href="#cb25-488"></a></span>
 <span id="cb25-489"><a href="#cb25-489"></a><span class="in">```{r, fig.align = 'center', fig.cap = "**Figure 2. Median houshold income distribution of census tracts in blackout vs non-blackout areas in Houston, 2021.** The first plot **A** shows a histogram of the distribution of median income in both groups of tracts. The frequency is concentrated just under $50,000 for both groups. Data is abnormally distributed with a long right tail, indiating most housholds are lower income with some higher income households drawing the tail right. Plot **B** shows a whisker plot of median distribution. Boxes represent the inter quartile range (IQR, 50% of the data), and the line inside each box represents the median. The whiskers represent 1.5 times the length of the IQR, with some outliers falling above the whiskers." }</span></span>
 <span id="cb25-490"><a href="#cb25-490"></a></span>
-<span id="cb25-491"><a href="#cb25-491"></a><span class="co"># here I am creating a histogram and box plot to compare the median incomes of affected and unaffected tracts</span></span>
+<span id="cb25-491"><a href="#cb25-491"></a><span class="in"># here I am creating a histogram and box plot to compare the median incomes of affected and unaffected tracts</span></span>
 <span id="cb25-492"><a href="#cb25-492"></a></span>
-<span id="cb25-493"><a href="#cb25-493"></a><span class="co">#first, calculate median of median incomes for both groups </span></span>
-<span id="cb25-494"><a href="#cb25-494"></a>meds <span class="ot">&lt;-</span> tract_mask <span class="sc">%&gt;%</span> </span>
-<span id="cb25-495"><a href="#cb25-495"></a>  <span class="fu">group_by</span>(blackout) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-496"><a href="#cb25-496"></a>  <span class="fu">summarize</span>(<span class="at">med_med_income =</span> <span class="fu">median</span>(med_income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-497"><a href="#cb25-497"></a>  <span class="fu">st_drop_geometry</span>()</span>
+<span id="cb25-493"><a href="#cb25-493"></a><span class="in">#first, calculate median of median incomes for both groups </span></span>
+<span id="cb25-494"><a href="#cb25-494"></a><span class="in">meds &lt;- tract_mask %&gt;% </span></span>
+<span id="cb25-495"><a href="#cb25-495"></a><span class="in">  group_by(blackout) %&gt;% </span></span>
+<span id="cb25-496"><a href="#cb25-496"></a><span class="in">  summarize(med_med_income = median(med_income, na.rm = TRUE)) %&gt;% </span></span>
+<span id="cb25-497"><a href="#cb25-497"></a><span class="in">  st_drop_geometry()</span></span>
 <span id="cb25-498"><a href="#cb25-498"></a></span>
 <span id="cb25-499"><a href="#cb25-499"></a></span>
-<span id="cb25-500"><a href="#cb25-500"></a><span class="co">#creating a histogram of income distribution </span></span>
-<span id="cb25-501"><a href="#cb25-501"></a>hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tract_mask, <span class="fu">aes</span>(<span class="at">x =</span> med_income, <span class="at">fill =</span> blackout)) <span class="sc">+</span></span>
-<span id="cb25-502"><a href="#cb25-502"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">65</span>) <span class="sc">+</span></span>
-<span id="cb25-503"><a href="#cb25-503"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Median income ($)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span></span>
-<span id="cb25-504"><a href="#cb25-504"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-505"><a href="#cb25-505"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb25-506"><a href="#cb25-506"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> meds, <span class="fu">aes</span>(<span class="at">x =</span> med_med_income, <span class="at">xend =</span> med_med_income, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">80</span>, <span class="at">color =</span> blackout), <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb25-507"><a href="#cb25-507"></a>  <span class="co"># geom_vline(data = meds, aes(xintercept = med_med_income, color = blackout), linetype = "dashed") +</span></span>
-<span id="cb25-508"><a href="#cb25-508"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"lightblue"</span>, <span class="st">"orange"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span> )) <span class="sc">+</span></span>
-<span id="cb25-509"><a href="#cb25-509"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Median"</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"blue"</span>, <span class="st">"orange3"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span> )) </span>
-<span id="cb25-510"><a href="#cb25-510"></a>  <span class="co"># coord_cartesian(ylim = c(0, 75))</span></span>
-<span id="cb25-511"><a href="#cb25-511"></a>  </span>
-<span id="cb25-512"><a href="#cb25-512"></a>  </span>
-<span id="cb25-513"><a href="#cb25-513"></a><span class="co">#creating a boxplot of median income distribution </span></span>
-<span id="cb25-514"><a href="#cb25-514"></a>box_p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tract_mask, <span class="fu">aes</span>(<span class="at">x =</span> blackout, <span class="at">y =</span> med_income, <span class="at">fill =</span> blackout)) <span class="sc">+</span></span>
-<span id="cb25-515"><a href="#cb25-515"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb25-516"><a href="#cb25-516"></a>  <span class="co"># geom_jitter(width = 0.2, alpha = 0.5, color = "grey") +  </span></span>
-<span id="cb25-517"><a href="#cb25-517"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Median Income ($)"</span>, <span class="at">x =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb25-518"><a href="#cb25-518"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb25-519"><a href="#cb25-519"></a>  <span class="fu">scale_fill_manual</span>( <span class="at">name =</span> <span class="st">""</span>, <span class="at">values =</span> <span class="fu">c</span>( <span class="st">"lightblue"</span>, <span class="st">"orange"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No blackouts"</span>, <span class="st">"Blackouts"</span>)) <span class="sc">+</span></span>
-<span id="cb25-520"><a href="#cb25-520"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"No blackouts"</span>, <span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"Blackouts"</span>)) </span>
+<span id="cb25-500"><a href="#cb25-500"></a><span class="in">#creating a histogram of income distribution </span></span>
+<span id="cb25-501"><a href="#cb25-501"></a><span class="in">hist &lt;- ggplot(tract_mask, aes(x = med_income, fill = blackout)) +</span></span>
+<span id="cb25-502"><a href="#cb25-502"></a><span class="in">  geom_histogram(bins = 65) +</span></span>
+<span id="cb25-503"><a href="#cb25-503"></a><span class="in">  labs(x = "Median income ($)", y = "Frequency") +</span></span>
+<span id="cb25-504"><a href="#cb25-504"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb25-505"><a href="#cb25-505"></a><span class="in">  theme(legend.position = "bottom") +</span></span>
+<span id="cb25-506"><a href="#cb25-506"></a><span class="in">  geom_segment(data = meds, aes(x = med_med_income, xend = med_med_income, y = 0, yend = 80, color = blackout), linetype = "dashed") +</span></span>
+<span id="cb25-507"><a href="#cb25-507"></a><span class="in">  # geom_vline(data = meds, aes(xintercept = med_med_income, color = blackout), linetype = "dashed") +</span></span>
+<span id="cb25-508"><a href="#cb25-508"></a><span class="in">  scale_fill_manual(name = "", values = c( "lightblue", "orange"), labels = c("No blackouts", "Blackouts" )) +</span></span>
+<span id="cb25-509"><a href="#cb25-509"></a><span class="in">  scale_color_manual(name = "Median", values = c( "blue", "orange3"), labels = c("No blackouts", "Blackouts" )) </span></span>
+<span id="cb25-510"><a href="#cb25-510"></a><span class="in">  # coord_cartesian(ylim = c(0, 75))</span></span>
+<span id="cb25-511"><a href="#cb25-511"></a><span class="in">  </span></span>
+<span id="cb25-512"><a href="#cb25-512"></a><span class="in">  </span></span>
+<span id="cb25-513"><a href="#cb25-513"></a><span class="in">#creating a boxplot of median income distribution </span></span>
+<span id="cb25-514"><a href="#cb25-514"></a><span class="in">box_p &lt;- ggplot(tract_mask, aes(x = blackout, y = med_income, fill = blackout)) +</span></span>
+<span id="cb25-515"><a href="#cb25-515"></a><span class="in">  geom_boxplot(width = 0.5, show.legend = FALSE) +</span></span>
+<span id="cb25-516"><a href="#cb25-516"></a><span class="in">  # geom_jitter(width = 0.2, alpha = 0.5, color = "grey") +  </span></span>
+<span id="cb25-517"><a href="#cb25-517"></a><span class="in">  labs(y = "Median Income ($)", x = "") +</span></span>
+<span id="cb25-518"><a href="#cb25-518"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb25-519"><a href="#cb25-519"></a><span class="in">  scale_fill_manual( name = "", values = c( "lightblue", "orange"), labels = c("No blackouts", "Blackouts")) +</span></span>
+<span id="cb25-520"><a href="#cb25-520"></a><span class="in">  scale_x_discrete(labels = c("FALSE" = "No blackouts", "TRUE" = "Blackouts")) </span></span>
 <span id="cb25-521"><a href="#cb25-521"></a></span>
 <span id="cb25-522"><a href="#cb25-522"></a></span>
-<span id="cb25-523"><a href="#cb25-523"></a><span class="co">#adding up plots into one using patchwork</span></span>
-<span id="cb25-524"><a href="#cb25-524"></a>patched <span class="ot">&lt;-</span> hist <span class="sc">+</span> box_p <span class="sc">+</span> </span>
-<span id="cb25-525"><a href="#cb25-525"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>) <span class="sc">+</span></span>
-<span id="cb25-526"><a href="#cb25-526"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>) <span class="sc">&amp;</span></span>
-<span id="cb25-527"><a href="#cb25-527"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb25-523"><a href="#cb25-523"></a><span class="in">#adding up plots into one using patchwork</span></span>
+<span id="cb25-524"><a href="#cb25-524"></a><span class="in">patched &lt;- hist + box_p + </span></span>
+<span id="cb25-525"><a href="#cb25-525"></a><span class="in">  plot_annotation(tag_levels = "A") +</span></span>
+<span id="cb25-526"><a href="#cb25-526"></a><span class="in">  plot_layout(guides = "collect") &amp;</span></span>
+<span id="cb25-527"><a href="#cb25-527"></a><span class="in">  theme(legend.position = "bottom")</span></span>
 <span id="cb25-528"><a href="#cb25-528"></a></span>
-<span id="cb25-529"><a href="#cb25-529"></a>patched</span>
+<span id="cb25-529"><a href="#cb25-529"></a><span class="in">patched</span></span>
 <span id="cb25-530"><a href="#cb25-530"></a></span>
 <span id="cb25-531"><a href="#cb25-531"></a></span>
 <span id="cb25-532"><a href="#cb25-532"></a><span class="in">```</span></span>
@@ -1583,6 +1769,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

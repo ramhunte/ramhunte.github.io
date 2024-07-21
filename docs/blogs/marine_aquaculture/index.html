@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -105,9 +112,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../images/logo.png" alt="" class="navbar-logo">
     </a>
@@ -119,42 +126,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html" rel="" target="">
- <span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogs.html" rel="" target="">
- <span class="menu-text">My Blog</span></a>
+    <a class="nav-link" href="../../blogs.html"> 
+<span class="menu-text">My Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ramhunte" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ramhunte"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ramhunte@bren.ucsb.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:rmhunter999@gmail.com"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -197,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Author</div>
@@ -217,7 +224,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p><a href="https://github.com/ramhunte/marine_aquaculture">Github Project Repository</a></p>
 <section id="background" class="level2">
@@ -285,8 +294,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 </ul>
 <div class="cell" data-messages="false">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#loading in and preparing the data in raster format </span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># reading in west coast eez shape file </span></span>
@@ -327,8 +336,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>I then created a check to ensure that the extent, resolution, and CRS of bathymetry and temperature raster layers matched.</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># finding mean temperature raster data in celsius and aligning resolutions and extents of rasters</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#findig mean of sst rasters</span></span>
@@ -353,8 +362,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>Extent, resolution, and CRS of bathymetry and temprature raster layers match:</code></pre>
 </div>
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">if</span>(<span class="fu">ext</span>(resamp_bath) <span class="sc">==</span> <span class="fu">ext</span>(cels_sst) <span class="sc">&amp;</span> </span>
 <span id="cb4-2"><a href="#cb4-2"></a>   <span class="fu">st_crs</span>(resamp_bath)<span class="sc">$</span>epsg <span class="sc">==</span> <span class="fu">st_crs</span>(cels_sst)<span class="sc">$</span>epsg <span class="sc">&amp;</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>   <span class="co"># resolution has more than one responses, so we need to make sure that both are true </span></span>
@@ -373,8 +382,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="finding-suitable-locations">Finding suitable locations</h4>
 <p>In order to find suitable locations for marine aquaculture, I first needed to find locations that were suitable in terms of both SST and depth. This involved reclassifying the SST and depth data into locations that are suitable for Oysters by assigning a <code>1</code> or a <code>NA</code> value to suitable and unsuitable habitats. I then multiplied the two rasters to look for locations that satisfy both SST and depth conditions (raster cells where <code>1</code> values overlapped) using the <code>lapp()</code> function. Lastly, I created a check to ensure that the masked ideal layer only showed overlapping ideal depth and temperature conditions.</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#reclassifying temperature and bathymetry raster data, and then overlaying the layers to find ideal habitat </span></span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
@@ -415,8 +424,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>Masked ideal layer only shows overlapping ideal depth and temperature conditons:</code></pre>
 </div>
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">if</span>(<span class="fu">all</span>(</span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">values</span>(ideal_layer <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">values</span>(ideal_stack[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="dv">1</span>),</span>
 <span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">values</span>(ideal_layer <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">values</span>(ideal_stack[[<span class="dv">2</span>]] <span class="sc">==</span> <span class="dv">1</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) {</span>
@@ -440,8 +449,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Step 4: join this data with the eez data and create new columns with the total eez area, the toal suitable habitat in each eez, and the percent suitable habitat by eez</li>
 </ul>
 <div class="cell">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#here we are calculating the total area of suitable habitat and the percent area of suitable habitat for each EEZ</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co">#read in EEZ data </span></span>
@@ -473,8 +482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="visualize-results">Visualize results</h4>
 <p>Finally, I created two maps showing 1) the total suitable oyster aquaculture habitat area by region, and 2) the percent suitable oyster aquaculture habitat area by region:</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># pulling in states/base map layer for mapping EEZ's</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>states <span class="ot">&lt;-</span> us_states</span>
 <span id="cb11-3"><a href="#cb11-3"></a></span>
@@ -514,14 +523,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption"><strong>Figure 1. % Suitable Oyster Aquaculture Habitat of West Coast Exclusive Economic Zones in the US</strong>. Shows the percent of ideal oyster aquaculture habitat by exclusive economic zones along the west coast. Washington shows the highest % suitable habitat, followed by Central and Southern California.</figcaption>
+<figcaption><strong>Figure 1. % Suitable Oyster Aquaculture Habitat of West Coast Exclusive Economic Zones in the US</strong>. Shows the percent of ideal oyster aquaculture habitat by exclusive economic zones along the west coast. Washington shows the highest % suitable habitat, followed by Central and Southern California.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">#plotting the total suitable area of ideal habitat for oysters in each EEZ</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> west_coast, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#E4CA74"</span>) <span class="sc">+</span></span>
@@ -552,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption"><strong>Figure 2. Suitable Oyster Aquaculture Habitat Area by West Coast Exclusive Economic Zones in the US</strong>. Shows the total area (km<sup>2</sup>) of ideal oyster farming habitat by exclusive economic zones along the West Coast. Central California shows the highest total suitable area, followed by Souther California and Washington.</figcaption>
+<figcaption><strong>Figure 2. Suitable Oyster Aquaculture Habitat Area by West Coast Exclusive Economic Zones in the US</strong>. Shows the total area (km<sup>2</sup>) of ideal oyster farming habitat by exclusive economic zones along the West Coast. Central California shows the highest total suitable area, followed by Souther California and Washington.</figcaption>
 </figure>
 </div>
 </div>
@@ -562,8 +571,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="expanding-to-other-species">Expanding to other species</h4>
 <p>After having identified the potential suitable habitat for oyster aquaculture, I wanted to expand this workflow to easily make maps for other species requirements. I created a function that can accept any species name, temperature, and depth ranges, and it will create two replicated maps for the given species.</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#creating a function that shows the ideal species habitat using species name,  temperature, and depth as inputs </span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>ideal_crib_for_a_species <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">species =</span> <span class="st">"NAME"</span>, depth_min, depth_max, temp_min, temp_max) {</span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="co"># depth reclassification</span></span>
@@ -648,21 +657,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>I wanted to test out this function on kelp crabs (<em>Pugettia producta</em>) as they are widely dispersed and could potentially make a good candidate for aquaculture. Data on the Kelp Crab was obtained from <a href="https://www.sealifebase.ca/search.php">SeaLifeBase</a> which presents habitat information on thousands of species. Lets take a look:</p>
 <div class="cell" data-layout-align="center">
-<details>
-<summary>Code</summary>
+<details class="code-fold">
+<summary>code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ideal_crib_for_a_species</span>(<span class="st">"Kelp Crab"</span>, <span class="at">depth_min =</span> <span class="sc">-</span><span class="dv">98</span>, <span class="at">depth_max =</span>  <span class="dv">0</span>, <span class="at">temp_min =</span> <span class="fl">7.8</span>, <span class="at">temp_max =</span>  <span class="fl">12.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -814,10 +823,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -827,8 +853,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -840,7 +875,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -884,6 +1042,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -909,6 +1068,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1039,22 +1224,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-69"><a href="#cb15-69"></a><span class="fu">## Analysis</span></span>
 <span id="cb15-70"><a href="#cb15-70"></a></span>
 <span id="cb15-71"><a href="#cb15-71"></a><span class="in">```{r setup, include=TRUE}</span></span>
-<span id="cb15-72"><a href="#cb15-72"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">results =</span> <span class="cn">FALSE</span>, <span class="at">fig.align =</span> <span class="st">"center"</span>)</span>
+<span id="cb15-72"><a href="#cb15-72"></a><span class="in">knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.align = "center")</span></span>
 <span id="cb15-73"><a href="#cb15-73"></a></span>
-<span id="cb15-74"><a href="#cb15-74"></a><span class="co">#necessary packages</span></span>
-<span id="cb15-75"><a href="#cb15-75"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb15-76"><a href="#cb15-76"></a><span class="fu">library</span>(ggspatial)</span>
-<span id="cb15-77"><a href="#cb15-77"></a><span class="fu">library</span>(sf)</span>
-<span id="cb15-78"><a href="#cb15-78"></a><span class="fu">library</span>(terra)</span>
-<span id="cb15-79"><a href="#cb15-79"></a><span class="fu">library</span>(spDataLarge)</span>
-<span id="cb15-80"><a href="#cb15-80"></a><span class="fu">library</span>(spData)</span>
-<span id="cb15-81"><a href="#cb15-81"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb15-82"><a href="#cb15-82"></a><span class="fu">library</span>(scales)</span>
+<span id="cb15-74"><a href="#cb15-74"></a><span class="in">#necessary packages</span></span>
+<span id="cb15-75"><a href="#cb15-75"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb15-76"><a href="#cb15-76"></a><span class="in">library(ggspatial)</span></span>
+<span id="cb15-77"><a href="#cb15-77"></a><span class="in">library(sf)</span></span>
+<span id="cb15-78"><a href="#cb15-78"></a><span class="in">library(terra)</span></span>
+<span id="cb15-79"><a href="#cb15-79"></a><span class="in">library(spDataLarge)</span></span>
+<span id="cb15-80"><a href="#cb15-80"></a><span class="in">library(spData)</span></span>
+<span id="cb15-81"><a href="#cb15-81"></a><span class="in">library(patchwork)</span></span>
+<span id="cb15-82"><a href="#cb15-82"></a><span class="in">library(scales)</span></span>
 <span id="cb15-83"><a href="#cb15-83"></a><span class="in">```</span></span>
 <span id="cb15-84"><a href="#cb15-84"></a></span>
 <span id="cb15-85"><a href="#cb15-85"></a></span>
 <span id="cb15-86"><a href="#cb15-86"></a><span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb15-87"><a href="#cb15-87"></a>data <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-4-ramhunte/data"</span>)</span>
+<span id="cb15-87"><a href="#cb15-87"></a><span class="in">data &lt;- file.path("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-4-ramhunte/data")</span></span>
 <span id="cb15-88"><a href="#cb15-88"></a><span class="in">```</span></span>
 <span id="cb15-89"><a href="#cb15-89"></a></span>
 <span id="cb15-90"><a href="#cb15-90"></a><span class="fu">#### Prepare data</span></span>
@@ -1073,26 +1258,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-103"><a href="#cb15-103"></a><span class="ss">-   </span>checking that data are in the same coordinate reference system\</span>
 <span id="cb15-104"><a href="#cb15-104"></a></span>
 <span id="cb15-105"><a href="#cb15-105"></a><span class="in">```{r include=TRUE, warning=FALSE, messages=FALSE, results = FALSE}</span></span>
-<span id="cb15-106"><a href="#cb15-106"></a><span class="co">#loading in and preparing the data in raster format </span></span>
+<span id="cb15-106"><a href="#cb15-106"></a><span class="in">#loading in and preparing the data in raster format </span></span>
 <span id="cb15-107"><a href="#cb15-107"></a></span>
-<span id="cb15-108"><a href="#cb15-108"></a><span class="co"># reading in west coast eez shape file </span></span>
-<span id="cb15-109"><a href="#cb15-109"></a>eez <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"wc_regions_clean.shp"</span>))</span>
+<span id="cb15-108"><a href="#cb15-108"></a><span class="in"># reading in west coast eez shape file </span></span>
+<span id="cb15-109"><a href="#cb15-109"></a><span class="in">eez &lt;- st_read(file.path(data, "wc_regions_clean.shp"))</span></span>
 <span id="cb15-110"><a href="#cb15-110"></a></span>
-<span id="cb15-111"><a href="#cb15-111"></a><span class="co">#read in SST raster data as a stack</span></span>
-<span id="cb15-112"><a href="#cb15-112"></a>stack <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">c</span>(<span class="fu">file.path</span>(data, <span class="st">"average_annual_sst_2008.tif"</span>), </span>
-<span id="cb15-113"><a href="#cb15-113"></a>                <span class="fu">file.path</span>(data, <span class="st">"average_annual_sst_2009.tif"</span>), </span>
-<span id="cb15-114"><a href="#cb15-114"></a>                <span class="fu">file.path</span>(data, <span class="st">"average_annual_sst_2010.tif"</span>), </span>
-<span id="cb15-115"><a href="#cb15-115"></a>                <span class="fu">file.path</span>(data, <span class="st">"average_annual_sst_2011.tif"</span>), </span>
-<span id="cb15-116"><a href="#cb15-116"></a>                <span class="fu">file.path</span>(data, <span class="st">"average_annual_sst_2012.tif"</span>)))</span>
+<span id="cb15-111"><a href="#cb15-111"></a><span class="in">#read in SST raster data as a stack</span></span>
+<span id="cb15-112"><a href="#cb15-112"></a><span class="in">stack &lt;- rast(c(file.path(data, "average_annual_sst_2008.tif"), </span></span>
+<span id="cb15-113"><a href="#cb15-113"></a><span class="in">                file.path(data, "average_annual_sst_2009.tif"), </span></span>
+<span id="cb15-114"><a href="#cb15-114"></a><span class="in">                file.path(data, "average_annual_sst_2010.tif"), </span></span>
+<span id="cb15-115"><a href="#cb15-115"></a><span class="in">                file.path(data, "average_annual_sst_2011.tif"), </span></span>
+<span id="cb15-116"><a href="#cb15-116"></a><span class="in">                file.path(data, "average_annual_sst_2012.tif")))</span></span>
 <span id="cb15-117"><a href="#cb15-117"></a></span>
-<span id="cb15-118"><a href="#cb15-118"></a><span class="co">#changing CRS</span></span>
-<span id="cb15-119"><a href="#cb15-119"></a>stack <span class="ot">&lt;-</span> <span class="fu">project</span>(stack, <span class="st">"epsg:4326"</span>)</span>
+<span id="cb15-118"><a href="#cb15-118"></a><span class="in">#changing CRS</span></span>
+<span id="cb15-119"><a href="#cb15-119"></a><span class="in">stack &lt;- project(stack, "epsg:4326")</span></span>
 <span id="cb15-120"><a href="#cb15-120"></a></span>
-<span id="cb15-121"><a href="#cb15-121"></a><span class="co">#read in bathymetry data </span></span>
-<span id="cb15-122"><a href="#cb15-122"></a>bath <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="fu">file.path</span>(data, <span class="st">"depth.tif"</span>))</span>
+<span id="cb15-121"><a href="#cb15-121"></a><span class="in">#read in bathymetry data </span></span>
+<span id="cb15-122"><a href="#cb15-122"></a><span class="in">bath &lt;- rast(file.path(data, "depth.tif"))</span></span>
 <span id="cb15-123"><a href="#cb15-123"></a></span>
-<span id="cb15-124"><a href="#cb15-124"></a><span class="co"># plot(stack)</span></span>
-<span id="cb15-125"><a href="#cb15-125"></a><span class="co"># plot(bath)</span></span>
+<span id="cb15-124"><a href="#cb15-124"></a><span class="in"># plot(stack)</span></span>
+<span id="cb15-125"><a href="#cb15-125"></a><span class="in"># plot(bath)</span></span>
 <span id="cb15-126"><a href="#cb15-126"></a><span class="in">```</span></span>
 <span id="cb15-127"><a href="#cb15-127"></a></span>
 <span id="cb15-128"><a href="#cb15-128"></a><span class="fu">#### Process data</span></span>
@@ -1110,35 +1295,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-140"><a href="#cb15-140"></a>I then created a check to ensure that the extent, resolution, and CRS of bathymetry and temperature raster layers matched.</span>
 <span id="cb15-141"><a href="#cb15-141"></a></span>
 <span id="cb15-142"><a href="#cb15-142"></a><span class="in">```{r processing data, results = TRUE}</span></span>
-<span id="cb15-143"><a href="#cb15-143"></a><span class="co"># finding mean temperature raster data in celsius and aligning resolutions and extents of rasters</span></span>
+<span id="cb15-143"><a href="#cb15-143"></a><span class="in"># finding mean temperature raster data in celsius and aligning resolutions and extents of rasters</span></span>
 <span id="cb15-144"><a href="#cb15-144"></a></span>
-<span id="cb15-145"><a href="#cb15-145"></a><span class="co">#findig mean of sst rasters</span></span>
-<span id="cb15-146"><a href="#cb15-146"></a>mean_sst <span class="ot">&lt;-</span> <span class="fu">mean</span>(stack)</span>
-<span id="cb15-147"><a href="#cb15-147"></a><span class="co"># plot(mean_sst)</span></span>
+<span id="cb15-145"><a href="#cb15-145"></a><span class="in">#findig mean of sst rasters</span></span>
+<span id="cb15-146"><a href="#cb15-146"></a><span class="in">mean_sst &lt;- mean(stack)</span></span>
+<span id="cb15-147"><a href="#cb15-147"></a><span class="in"># plot(mean_sst)</span></span>
 <span id="cb15-148"><a href="#cb15-148"></a></span>
-<span id="cb15-149"><a href="#cb15-149"></a><span class="co">#finding temp in celsius</span></span>
-<span id="cb15-150"><a href="#cb15-150"></a>cels_sst <span class="ot">&lt;-</span> mean_sst <span class="sc">-</span> <span class="fl">273.15</span></span>
+<span id="cb15-149"><a href="#cb15-149"></a><span class="in">#finding temp in celsius</span></span>
+<span id="cb15-150"><a href="#cb15-150"></a><span class="in">cels_sst &lt;- mean_sst - 273.15</span></span>
 <span id="cb15-151"><a href="#cb15-151"></a></span>
-<span id="cb15-152"><a href="#cb15-152"></a><span class="co">#cropping depth raster to sst</span></span>
-<span id="cb15-153"><a href="#cb15-153"></a>crop_bath <span class="ot">&lt;-</span> <span class="fu">crop</span>(bath, cels_sst)</span>
-<span id="cb15-154"><a href="#cb15-154"></a><span class="co"># plot(crop_bath)</span></span>
+<span id="cb15-152"><a href="#cb15-152"></a><span class="in">#cropping depth raster to sst</span></span>
+<span id="cb15-153"><a href="#cb15-153"></a><span class="in">crop_bath &lt;- crop(bath, cels_sst)</span></span>
+<span id="cb15-154"><a href="#cb15-154"></a><span class="in"># plot(crop_bath)</span></span>
 <span id="cb15-155"><a href="#cb15-155"></a></span>
-<span id="cb15-156"><a href="#cb15-156"></a><span class="co">#resampling bath layer to match resolution of celsius</span></span>
-<span id="cb15-157"><a href="#cb15-157"></a>resamp_bath <span class="ot">&lt;-</span> <span class="fu">resample</span>(crop_bath, cels_sst, <span class="at">method =</span> <span class="st">"near"</span>)</span>
+<span id="cb15-156"><a href="#cb15-156"></a><span class="in">#resampling bath layer to match resolution of celsius</span></span>
+<span id="cb15-157"><a href="#cb15-157"></a><span class="in">resamp_bath &lt;- resample(crop_bath, cels_sst, method = "near")</span></span>
 <span id="cb15-158"><a href="#cb15-158"></a></span>
-<span id="cb15-159"><a href="#cb15-159"></a><span class="co"># plot(reclass_bath)</span></span>
+<span id="cb15-159"><a href="#cb15-159"></a><span class="in"># plot(reclass_bath)</span></span>
 <span id="cb15-160"><a href="#cb15-160"></a></span>
-<span id="cb15-161"><a href="#cb15-161"></a>                  <span class="do">####### creating a check #######</span></span>
-<span id="cb15-162"><a href="#cb15-162"></a><span class="fu">cat</span>(<span class="st">"Extent, resolution, and CRS of bathymetry and temprature raster layers match:"</span>)</span>
+<span id="cb15-161"><a href="#cb15-161"></a><span class="in">                  ####### creating a check #######</span></span>
+<span id="cb15-162"><a href="#cb15-162"></a><span class="in">cat("Extent, resolution, and CRS of bathymetry and temprature raster layers match:")</span></span>
 <span id="cb15-163"><a href="#cb15-163"></a></span>
-<span id="cb15-164"><a href="#cb15-164"></a><span class="cf">if</span>(<span class="fu">ext</span>(resamp_bath) <span class="sc">==</span> <span class="fu">ext</span>(cels_sst) <span class="sc">&amp;</span> </span>
-<span id="cb15-165"><a href="#cb15-165"></a>   <span class="fu">st_crs</span>(resamp_bath)<span class="sc">$</span>epsg <span class="sc">==</span> <span class="fu">st_crs</span>(cels_sst)<span class="sc">$</span>epsg <span class="sc">&amp;</span></span>
-<span id="cb15-166"><a href="#cb15-166"></a>   <span class="co"># resolution has more than one responses, so we need to make sure that both are true </span></span>
-<span id="cb15-167"><a href="#cb15-167"></a>   <span class="fu">all</span>(<span class="fu">res</span>(resamp_bath) <span class="sc">==</span> <span class="fu">res</span>(cels_sst))) {</span>
-<span id="cb15-168"><a href="#cb15-168"></a>  <span class="fu">cat</span>(<span class="st">"TRUE"</span>)</span>
-<span id="cb15-169"><a href="#cb15-169"></a>} <span class="cf">else</span>{</span>
-<span id="cb15-170"><a href="#cb15-170"></a>  <span class="fu">cat</span>(<span class="st">"FALSE"</span>)</span>
-<span id="cb15-171"><a href="#cb15-171"></a>}</span>
+<span id="cb15-164"><a href="#cb15-164"></a><span class="in">if(ext(resamp_bath) == ext(cels_sst) &amp; </span></span>
+<span id="cb15-165"><a href="#cb15-165"></a><span class="in">   st_crs(resamp_bath)$epsg == st_crs(cels_sst)$epsg &amp;</span></span>
+<span id="cb15-166"><a href="#cb15-166"></a><span class="in">   # resolution has more than one responses, so we need to make sure that both are true </span></span>
+<span id="cb15-167"><a href="#cb15-167"></a><span class="in">   all(res(resamp_bath) == res(cels_sst))) {</span></span>
+<span id="cb15-168"><a href="#cb15-168"></a><span class="in">  cat("TRUE")</span></span>
+<span id="cb15-169"><a href="#cb15-169"></a><span class="in">} else{</span></span>
+<span id="cb15-170"><a href="#cb15-170"></a><span class="in">  cat("FALSE")</span></span>
+<span id="cb15-171"><a href="#cb15-171"></a><span class="in">}</span></span>
 <span id="cb15-172"><a href="#cb15-172"></a></span>
 <span id="cb15-173"><a href="#cb15-173"></a><span class="in">```</span></span>
 <span id="cb15-174"><a href="#cb15-174"></a></span>
@@ -1147,49 +1332,49 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-177"><a href="#cb15-177"></a>In order to find suitable locations for marine aquaculture, I first needed to find locations that were suitable in terms of both SST and depth. This involved reclassifying the SST and depth data into locations that are suitable for Oysters by assigning a <span class="in">`1`</span> or a <span class="in">`NA`</span> value to suitable and unsuitable habitats. I then multiplied the two rasters to look for locations that satisfy both SST and depth conditions (raster cells where <span class="in">`1`</span> values overlapped) using the <span class="in">`lapp()`</span> function. Lastly, I created a check to ensure that the masked ideal layer only showed overlapping ideal depth and temperature conditions.</span>
 <span id="cb15-178"><a href="#cb15-178"></a></span>
 <span id="cb15-179"><a href="#cb15-179"></a><span class="in">```{r, include=TRUE, results = TRUE}</span></span>
-<span id="cb15-180"><a href="#cb15-180"></a><span class="co">#reclassifying temperature and bathymetry raster data, and then overlaying the layers to find ideal habitat </span></span>
+<span id="cb15-180"><a href="#cb15-180"></a><span class="in">#reclassifying temperature and bathymetry raster data, and then overlaying the layers to find ideal habitat </span></span>
 <span id="cb15-181"><a href="#cb15-181"></a></span>
 <span id="cb15-182"><a href="#cb15-182"></a></span>
-<span id="cb15-183"><a href="#cb15-183"></a><span class="co"># reclassify temp raster to NA or 1 if in 11-30C temp range </span></span>
-<span id="cb15-184"><a href="#cb15-184"></a>rcl_temp <span class="ot">&lt;-</span> <span class="fu">classify</span>(cels_sst, <span class="at">rcl =</span> </span>
-<span id="cb15-185"><a href="#cb15-185"></a>                      <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="dv">11</span>, <span class="cn">NA</span>, </span>
-<span id="cb15-186"><a href="#cb15-186"></a>                      <span class="dv">11</span>, <span class="dv">30</span>, <span class="dv">1</span>, </span>
-<span id="cb15-187"><a href="#cb15-187"></a>                      <span class="dv">30</span>, <span class="cn">Inf</span>, <span class="cn">NA</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb15-188"><a href="#cb15-188"></a><span class="co"># plot(rcl_temp)</span></span>
+<span id="cb15-183"><a href="#cb15-183"></a><span class="in"># reclassify temp raster to NA or 1 if in 11-30C temp range </span></span>
+<span id="cb15-184"><a href="#cb15-184"></a><span class="in">rcl_temp &lt;- classify(cels_sst, rcl = </span></span>
+<span id="cb15-185"><a href="#cb15-185"></a><span class="in">                      matrix(c(-Inf, 11, NA, </span></span>
+<span id="cb15-186"><a href="#cb15-186"></a><span class="in">                      11, 30, 1, </span></span>
+<span id="cb15-187"><a href="#cb15-187"></a><span class="in">                      30, Inf, NA), ncol = 3, byrow = TRUE))</span></span>
+<span id="cb15-188"><a href="#cb15-188"></a><span class="in"># plot(rcl_temp)</span></span>
 <span id="cb15-189"><a href="#cb15-189"></a></span>
-<span id="cb15-190"><a href="#cb15-190"></a><span class="co"># reclassify bathymetry data (0-70 meters below sea level)</span></span>
-<span id="cb15-191"><a href="#cb15-191"></a>rcl_bath <span class="ot">&lt;-</span> <span class="fu">classify</span>(resamp_bath, <span class="at">rcl =</span> </span>
-<span id="cb15-192"><a href="#cb15-192"></a>                      <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, <span class="sc">-</span><span class="dv">70</span>, <span class="cn">NA</span>, </span>
-<span id="cb15-193"><a href="#cb15-193"></a>                      <span class="sc">-</span><span class="dv">70</span>, <span class="dv">0</span>, <span class="dv">1</span>, </span>
-<span id="cb15-194"><a href="#cb15-194"></a>                      <span class="dv">0</span>, <span class="cn">Inf</span>, <span class="cn">NA</span>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb15-195"><a href="#cb15-195"></a><span class="co"># plot(rcl_bath)</span></span>
+<span id="cb15-190"><a href="#cb15-190"></a><span class="in"># reclassify bathymetry data (0-70 meters below sea level)</span></span>
+<span id="cb15-191"><a href="#cb15-191"></a><span class="in">rcl_bath &lt;- classify(resamp_bath, rcl = </span></span>
+<span id="cb15-192"><a href="#cb15-192"></a><span class="in">                      matrix(c(-Inf, -70, NA, </span></span>
+<span id="cb15-193"><a href="#cb15-193"></a><span class="in">                      -70, 0, 1, </span></span>
+<span id="cb15-194"><a href="#cb15-194"></a><span class="in">                      0, Inf, NA), ncol = 3, byrow = TRUE))</span></span>
+<span id="cb15-195"><a href="#cb15-195"></a><span class="in"># plot(rcl_bath)</span></span>
 <span id="cb15-196"><a href="#cb15-196"></a></span>
-<span id="cb15-197"><a href="#cb15-197"></a><span class="co">#creating a raster stack</span></span>
-<span id="cb15-198"><a href="#cb15-198"></a>ideal_stack <span class="ot">&lt;-</span> <span class="fu">c</span>(rcl_temp, rcl_bath)</span>
+<span id="cb15-197"><a href="#cb15-197"></a><span class="in">#creating a raster stack</span></span>
+<span id="cb15-198"><a href="#cb15-198"></a><span class="in">ideal_stack &lt;- c(rcl_temp, rcl_bath)</span></span>
 <span id="cb15-199"><a href="#cb15-199"></a></span>
-<span id="cb15-200"><a href="#cb15-200"></a><span class="co">#renaming rasters in stack</span></span>
-<span id="cb15-201"><a href="#cb15-201"></a><span class="fu">names</span>(ideal_stack) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"temperature"</span>, <span class="st">"depth"</span>)</span>
+<span id="cb15-200"><a href="#cb15-200"></a><span class="in">#renaming rasters in stack</span></span>
+<span id="cb15-201"><a href="#cb15-201"></a><span class="in">names(ideal_stack) &lt;- c("temperature", "depth")</span></span>
 <span id="cb15-202"><a href="#cb15-202"></a></span>
-<span id="cb15-203"><a href="#cb15-203"></a><span class="co">#creating a multiplication function </span></span>
-<span id="cb15-204"><a href="#cb15-204"></a>multiply <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y){</span>
-<span id="cb15-205"><a href="#cb15-205"></a>  <span class="fu">return</span>(x<span class="sc">*</span>y)</span>
-<span id="cb15-206"><a href="#cb15-206"></a>}</span>
+<span id="cb15-203"><a href="#cb15-203"></a><span class="in">#creating a multiplication function </span></span>
+<span id="cb15-204"><a href="#cb15-204"></a><span class="in">multiply &lt;- function(x,y){</span></span>
+<span id="cb15-205"><a href="#cb15-205"></a><span class="in">  return(x*y)</span></span>
+<span id="cb15-206"><a href="#cb15-206"></a><span class="in">}</span></span>
 <span id="cb15-207"><a href="#cb15-207"></a></span>
-<span id="cb15-208"><a href="#cb15-208"></a><span class="co"># multiplying layers to get just cells = 1 (ideal depth and temp )</span></span>
-<span id="cb15-209"><a href="#cb15-209"></a>ideal_layer <span class="ot">&lt;-</span> <span class="fu">lapp</span>(ideal_stack[[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]], <span class="at">fun =</span> multiply)</span>
+<span id="cb15-208"><a href="#cb15-208"></a><span class="in"># multiplying layers to get just cells = 1 (ideal depth and temp )</span></span>
+<span id="cb15-209"><a href="#cb15-209"></a><span class="in">ideal_layer &lt;- lapp(ideal_stack[[c(1,2)]], fun = multiply)</span></span>
 <span id="cb15-210"><a href="#cb15-210"></a></span>
-<span id="cb15-211"><a href="#cb15-211"></a><span class="co"># plot(ideal_layer)</span></span>
+<span id="cb15-211"><a href="#cb15-211"></a><span class="in"># plot(ideal_layer)</span></span>
 <span id="cb15-212"><a href="#cb15-212"></a></span>
-<span id="cb15-213"><a href="#cb15-213"></a>              <span class="do">################### Check ###############</span></span>
-<span id="cb15-214"><a href="#cb15-214"></a><span class="co">#checking to make sure ideal layer is only showing areas where the temp and depth are in ideal range</span></span>
-<span id="cb15-215"><a href="#cb15-215"></a><span class="fu">cat</span>(<span class="st">"Masked ideal layer only shows overlapping ideal depth and temperature conditons:"</span>)</span>
-<span id="cb15-216"><a href="#cb15-216"></a><span class="cf">if</span>(<span class="fu">all</span>(</span>
-<span id="cb15-217"><a href="#cb15-217"></a>  <span class="fu">values</span>(ideal_layer <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">values</span>(ideal_stack[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="dv">1</span>),</span>
-<span id="cb15-218"><a href="#cb15-218"></a>  <span class="fu">values</span>(ideal_layer <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">==</span> <span class="fu">values</span>(ideal_stack[[<span class="dv">2</span>]] <span class="sc">==</span> <span class="dv">1</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb15-219"><a href="#cb15-219"></a>  <span class="fu">cat</span>(<span class="st">"TRUE"</span>)</span>
-<span id="cb15-220"><a href="#cb15-220"></a>} <span class="cf">else</span>{</span>
-<span id="cb15-221"><a href="#cb15-221"></a>  <span class="fu">cat</span>(<span class="st">"FALSE"</span>)</span>
-<span id="cb15-222"><a href="#cb15-222"></a>}</span>
+<span id="cb15-213"><a href="#cb15-213"></a><span class="in">              ################### Check ###############</span></span>
+<span id="cb15-214"><a href="#cb15-214"></a><span class="in">#checking to make sure ideal layer is only showing areas where the temp and depth are in ideal range</span></span>
+<span id="cb15-215"><a href="#cb15-215"></a><span class="in">cat("Masked ideal layer only shows overlapping ideal depth and temperature conditons:")</span></span>
+<span id="cb15-216"><a href="#cb15-216"></a><span class="in">if(all(</span></span>
+<span id="cb15-217"><a href="#cb15-217"></a><span class="in">  values(ideal_layer == 1) == values(ideal_stack[[1]] == 1),</span></span>
+<span id="cb15-218"><a href="#cb15-218"></a><span class="in">  values(ideal_layer == 1) == values(ideal_stack[[2]] == 1), na.rm = TRUE)) {</span></span>
+<span id="cb15-219"><a href="#cb15-219"></a><span class="in">  cat("TRUE")</span></span>
+<span id="cb15-220"><a href="#cb15-220"></a><span class="in">} else{</span></span>
+<span id="cb15-221"><a href="#cb15-221"></a><span class="in">  cat("FALSE")</span></span>
+<span id="cb15-222"><a href="#cb15-222"></a><span class="in">}</span></span>
 <span id="cb15-223"><a href="#cb15-223"></a></span>
 <span id="cb15-224"><a href="#cb15-224"></a><span class="in">```</span></span>
 <span id="cb15-225"><a href="#cb15-225"></a></span>
@@ -1203,30 +1388,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-233"><a href="#cb15-233"></a><span class="ss">-   </span>Step 4: join this data with the eez data and create new columns with the total eez area, the toal suitable habitat in each eez, and the percent suitable habitat by eez</span>
 <span id="cb15-234"><a href="#cb15-234"></a></span>
 <span id="cb15-235"><a href="#cb15-235"></a><span class="in">```{r include=TRUE}</span></span>
-<span id="cb15-236"><a href="#cb15-236"></a><span class="co">#here we are calculating the total area of suitable habitat and the percent area of suitable habitat for each EEZ</span></span>
+<span id="cb15-236"><a href="#cb15-236"></a><span class="in">#here we are calculating the total area of suitable habitat and the percent area of suitable habitat for each EEZ</span></span>
 <span id="cb15-237"><a href="#cb15-237"></a></span>
-<span id="cb15-238"><a href="#cb15-238"></a><span class="co">#read in EEZ data </span></span>
-<span id="cb15-239"><a href="#cb15-239"></a>eez <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">file.path</span>(data, <span class="st">"wc_regions_clean.shp"</span>))</span>
+<span id="cb15-238"><a href="#cb15-238"></a><span class="in">#read in EEZ data </span></span>
+<span id="cb15-239"><a href="#cb15-239"></a><span class="in">eez &lt;- st_read(file.path(data, "wc_regions_clean.shp"))</span></span>
 <span id="cb15-240"><a href="#cb15-240"></a></span>
-<span id="cb15-241"><a href="#cb15-241"></a><span class="co">#rasterizing polygon data with ideal locations by region and masking it to ideal locations</span></span>
-<span id="cb15-242"><a href="#cb15-242"></a>eez_mask <span class="ot">&lt;-</span> <span class="fu">rasterize</span>(eez, ideal_layer, <span class="at">field =</span> <span class="st">"rgn"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-243"><a href="#cb15-243"></a>  terra<span class="sc">::</span><span class="fu">crop</span>(ideal_layer, <span class="at">mask =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-244"><a href="#cb15-244"></a><span class="co"># plot(eez_mask)</span></span>
+<span id="cb15-241"><a href="#cb15-241"></a><span class="in">#rasterizing polygon data with ideal locations by region and masking it to ideal locations</span></span>
+<span id="cb15-242"><a href="#cb15-242"></a><span class="in">eez_mask &lt;- rasterize(eez, ideal_layer, field = "rgn") %&gt;% </span></span>
+<span id="cb15-243"><a href="#cb15-243"></a><span class="in">  terra::crop(ideal_layer, mask = TRUE)</span></span>
+<span id="cb15-244"><a href="#cb15-244"></a><span class="in"># plot(eez_mask)</span></span>
 <span id="cb15-245"><a href="#cb15-245"></a></span>
-<span id="cb15-246"><a href="#cb15-246"></a><span class="co">#find area of raster cells </span></span>
-<span id="cb15-247"><a href="#cb15-247"></a>cell_area <span class="ot">&lt;-</span> <span class="fu">cellSize</span>(eez_mask, <span class="at">unit =</span> <span class="st">"km"</span>)</span>
-<span id="cb15-248"><a href="#cb15-248"></a><span class="co"># plot(cell_area)</span></span>
+<span id="cb15-246"><a href="#cb15-246"></a><span class="in">#find area of raster cells </span></span>
+<span id="cb15-247"><a href="#cb15-247"></a><span class="in">cell_area &lt;- cellSize(eez_mask, unit = "km")</span></span>
+<span id="cb15-248"><a href="#cb15-248"></a><span class="in"># plot(cell_area)</span></span>
 <span id="cb15-249"><a href="#cb15-249"></a></span>
-<span id="cb15-250"><a href="#cb15-250"></a><span class="co">#calculate the total area of km2 by region</span></span>
-<span id="cb15-251"><a href="#cb15-251"></a>ideal_area <span class="ot">&lt;-</span> <span class="fu">zonal</span>(cell_area, eez_mask, <span class="at">fun =</span> <span class="st">"sum"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-250"><a href="#cb15-250"></a><span class="in">#calculate the total area of km2 by region</span></span>
+<span id="cb15-251"><a href="#cb15-251"></a><span class="in">ideal_area &lt;- zonal(cell_area, eez_mask, fun = "sum", na.rm = TRUE)</span></span>
 <span id="cb15-252"><a href="#cb15-252"></a></span>
-<span id="cb15-253"><a href="#cb15-253"></a><span class="co">#joining ideal area data w/ eez vector data </span></span>
-<span id="cb15-254"><a href="#cb15-254"></a>joined_eez <span class="ot">&lt;-</span> <span class="fu">left_join</span>(eez, </span>
-<span id="cb15-255"><a href="#cb15-255"></a>            ideal_area, </span>
-<span id="cb15-256"><a href="#cb15-256"></a>            <span class="at">by =</span> <span class="st">"rgn"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-257"><a href="#cb15-257"></a>  <span class="fu">mutate</span>(<span class="at">ideal_area_km2 =</span> area, </span>
-<span id="cb15-258"><a href="#cb15-258"></a>         <span class="at">perc_ideal =</span> (ideal_area_km2<span class="sc">/</span>area_km2)<span class="sc">*</span><span class="dv">100</span>, </span>
-<span id="cb15-259"><a href="#cb15-259"></a>         <span class="at">.before =</span> geometry)</span>
+<span id="cb15-253"><a href="#cb15-253"></a><span class="in">#joining ideal area data w/ eez vector data </span></span>
+<span id="cb15-254"><a href="#cb15-254"></a><span class="in">joined_eez &lt;- left_join(eez, </span></span>
+<span id="cb15-255"><a href="#cb15-255"></a><span class="in">            ideal_area, </span></span>
+<span id="cb15-256"><a href="#cb15-256"></a><span class="in">            by = "rgn") %&gt;% </span></span>
+<span id="cb15-257"><a href="#cb15-257"></a><span class="in">  mutate(ideal_area_km2 = area, </span></span>
+<span id="cb15-258"><a href="#cb15-258"></a><span class="in">         perc_ideal = (ideal_area_km2/area_km2)*100, </span></span>
+<span id="cb15-259"><a href="#cb15-259"></a><span class="in">         .before = geometry)</span></span>
 <span id="cb15-260"><a href="#cb15-260"></a></span>
 <span id="cb15-261"><a href="#cb15-261"></a><span class="in">```</span></span>
 <span id="cb15-262"><a href="#cb15-262"></a></span>
@@ -1236,71 +1421,71 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-266"><a href="#cb15-266"></a></span>
 <span id="cb15-267"><a href="#cb15-267"></a><span class="in">```{r, include=TRUE, out.width = "100%", fig.align = "center", fig.cap="**Figure 1. % Suitable Oyster Aquaculture Habitat of \nWest Coast Exclusive Economic Zones in the US**. Shows the percent of ideal oyster aquaculture habitat by exclusive economic zones along the west coast. Washington shows the highest % suitable habitat, followed by Central and Southern California."}</span></span>
 <span id="cb15-268"><a href="#cb15-268"></a></span>
-<span id="cb15-269"><a href="#cb15-269"></a><span class="co"># pulling in states/base map layer for mapping EEZ's</span></span>
-<span id="cb15-270"><a href="#cb15-270"></a>states <span class="ot">&lt;-</span> us_states</span>
+<span id="cb15-269"><a href="#cb15-269"></a><span class="in"># pulling in states/base map layer for mapping EEZ's</span></span>
+<span id="cb15-270"><a href="#cb15-270"></a><span class="in">states &lt;- us_states</span></span>
 <span id="cb15-271"><a href="#cb15-271"></a></span>
-<span id="cb15-272"><a href="#cb15-272"></a><span class="co">#choosing just the west coast regions</span></span>
-<span id="cb15-273"><a href="#cb15-273"></a>west_coast <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(us_states) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-274"><a href="#cb15-274"></a>  <span class="fu">filter</span>(REGION <span class="sc">==</span> <span class="st">"West"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-275"><a href="#cb15-275"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="fu">st_crs</span>(joined_eez))</span>
+<span id="cb15-272"><a href="#cb15-272"></a><span class="in">#choosing just the west coast regions</span></span>
+<span id="cb15-273"><a href="#cb15-273"></a><span class="in">west_coast &lt;- st_sf(us_states) %&gt;% </span></span>
+<span id="cb15-274"><a href="#cb15-274"></a><span class="in">  filter(REGION == "West") %&gt;% </span></span>
+<span id="cb15-275"><a href="#cb15-275"></a><span class="in">  st_transform(crs = st_crs(joined_eez))</span></span>
 <span id="cb15-276"><a href="#cb15-276"></a></span>
 <span id="cb15-277"><a href="#cb15-277"></a></span>
-<span id="cb15-278"><a href="#cb15-278"></a><span class="co">#plotting the percent suitable area of ideal habitat for oysters for each EEZ</span></span>
-<span id="cb15-279"><a href="#cb15-279"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb15-280"><a href="#cb15-280"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> west_coast, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#E4CA74"</span>) <span class="sc">+</span></span>
-<span id="cb15-281"><a href="#cb15-281"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> joined_eez, <span class="fu">aes</span>(<span class="at">fill =</span> perc_ideal)) <span class="sc">+</span></span>
-<span id="cb15-282"><a href="#cb15-282"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb15-283"><a href="#cb15-283"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"% Suitable Oyster Aquaculture Habitat of West </span><span class="sc">\n</span><span class="st">Coast Exclusive Economic Zones in the US"</span>, <span class="at">y =</span> <span class="st">"Longitude"</span>, <span class="at">x =</span> <span class="st">"Latitude"</span>, <span class="at">fill =</span> <span class="fu">expression</span>(<span class="st">"% Suitable Area"</span>)) <span class="sc">+</span></span>
-<span id="cb15-284"><a href="#cb15-284"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb15-285"><a href="#cb15-285"></a>  <span class="fu">theme</span>(</span>
-<span id="cb15-286"><a href="#cb15-286"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightblue3"</span>), </span>
-<span id="cb15-287"><a href="#cb15-287"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb15-288"><a href="#cb15-288"></a>    <span class="co"># panel.grid.major = element_blank(),</span></span>
-<span id="cb15-289"><a href="#cb15-289"></a>   <span class="co"># panel.grid.minor = element_blank()) +</span></span>
-<span id="cb15-290"><a href="#cb15-290"></a>     <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">132.5</span>, <span class="sc">-</span><span class="fl">114.5</span>)) <span class="sc">+</span></span>
-<span id="cb15-291"><a href="#cb15-291"></a>   <span class="fu">annotation_scale</span>( <span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
-<span id="cb15-292"><a href="#cb15-292"></a>  <span class="co"># theme( legend.position= "bottom") +</span></span>
-<span id="cb15-293"><a href="#cb15-293"></a>         <span class="co"># plot.margin=unit(c(1,6,.5,1),"cm")) +</span></span>
-<span id="cb15-294"><a href="#cb15-294"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"bl"</span>,</span>
-<span id="cb15-295"><a href="#cb15-295"></a>                         <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="fl">0.05</span>, <span class="st">"in"</span>),</span>
-<span id="cb15-296"><a href="#cb15-296"></a>                         <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"in"</span>),</span>
-<span id="cb15-297"><a href="#cb15-297"></a>                         <span class="at">style =</span> ggspatial<span class="sc">::</span><span class="fu">north_arrow_minimal</span>()) <span class="sc">+</span></span>
-<span id="cb15-298"><a href="#cb15-298"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">121</span>, <span class="at">y =</span> <span class="fl">32.5</span>, <span class="at">label =</span> <span class="st">"Southern CA"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb15-299"><a href="#cb15-299"></a>   <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">124</span>, <span class="at">y =</span> <span class="dv">36</span>, <span class="at">label =</span> <span class="st">"Central CA"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb15-300"><a href="#cb15-300"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">126.5</span>, <span class="at">y =</span> <span class="dv">40</span>, <span class="at">label =</span> <span class="st">"Northern CA"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
-<span id="cb15-301"><a href="#cb15-301"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">126.5</span>, <span class="at">y =</span> <span class="dv">44</span>, <span class="at">label =</span> <span class="st">"Oregon"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
-<span id="cb15-302"><a href="#cb15-302"></a>      <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">126.5</span>, <span class="at">y =</span> <span class="fl">46.7</span>, <span class="at">label =</span> <span class="st">"Washington"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"black"</span>) </span>
+<span id="cb15-278"><a href="#cb15-278"></a><span class="in">#plotting the percent suitable area of ideal habitat for oysters for each EEZ</span></span>
+<span id="cb15-279"><a href="#cb15-279"></a><span class="in">ggplot() +</span></span>
+<span id="cb15-280"><a href="#cb15-280"></a><span class="in">  geom_sf(data = west_coast, color = "black", fill = "#E4CA74") +</span></span>
+<span id="cb15-281"><a href="#cb15-281"></a><span class="in">  geom_sf(data = joined_eez, aes(fill = perc_ideal)) +</span></span>
+<span id="cb15-282"><a href="#cb15-282"></a><span class="in">  scale_fill_viridis_c() +</span></span>
+<span id="cb15-283"><a href="#cb15-283"></a><span class="in">  labs(title = "% Suitable Oyster Aquaculture Habitat of West \nCoast Exclusive Economic Zones in the US", y = "Longitude", x = "Latitude", fill = expression("% Suitable Area")) +</span></span>
+<span id="cb15-284"><a href="#cb15-284"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb15-285"><a href="#cb15-285"></a><span class="in">  theme(</span></span>
+<span id="cb15-286"><a href="#cb15-286"></a><span class="in">    panel.background = element_rect(fill = "lightblue3"), </span></span>
+<span id="cb15-287"><a href="#cb15-287"></a><span class="in">    plot.title = element_text(size = 12, hjust = 0.5)) +</span></span>
+<span id="cb15-288"><a href="#cb15-288"></a><span class="in">    # panel.grid.major = element_blank(),</span></span>
+<span id="cb15-289"><a href="#cb15-289"></a><span class="in">   # panel.grid.minor = element_blank()) +</span></span>
+<span id="cb15-290"><a href="#cb15-290"></a><span class="in">     coord_sf(xlim = c(-132.5, -114.5)) +</span></span>
+<span id="cb15-291"><a href="#cb15-291"></a><span class="in">   annotation_scale( location = "bl") +</span></span>
+<span id="cb15-292"><a href="#cb15-292"></a><span class="in">  # theme( legend.position= "bottom") +</span></span>
+<span id="cb15-293"><a href="#cb15-293"></a><span class="in">         # plot.margin=unit(c(1,6,.5,1),"cm")) +</span></span>
+<span id="cb15-294"><a href="#cb15-294"></a><span class="in">  annotation_north_arrow(location = "bl",</span></span>
+<span id="cb15-295"><a href="#cb15-295"></a><span class="in">                         pad_x = unit(0.05, "in"),</span></span>
+<span id="cb15-296"><a href="#cb15-296"></a><span class="in">                         pad_y = unit(0.3, "in"),</span></span>
+<span id="cb15-297"><a href="#cb15-297"></a><span class="in">                         style = ggspatial::north_arrow_minimal()) +</span></span>
+<span id="cb15-298"><a href="#cb15-298"></a><span class="in">  annotate("text", x = -121, y = 32.5, label = "Southern CA", size = 2, color = "black") +</span></span>
+<span id="cb15-299"><a href="#cb15-299"></a><span class="in">   annotate("text", x = -124, y = 36, label = "Central CA", size = 2, color = "black") +</span></span>
+<span id="cb15-300"><a href="#cb15-300"></a><span class="in">  annotate("text", x = -126.5, y = 40, label = "Northern CA", size = 2, color = "lightgrey") +</span></span>
+<span id="cb15-301"><a href="#cb15-301"></a><span class="in">    annotate("text", x = -126.5, y = 44, label = "Oregon", size = 2, color = "lightgrey") +</span></span>
+<span id="cb15-302"><a href="#cb15-302"></a><span class="in">      annotate("text", x = -126.5, y = 46.7, label = "Washington", size = 2, color = "black") </span></span>
 <span id="cb15-303"><a href="#cb15-303"></a></span>
 <span id="cb15-304"><a href="#cb15-304"></a><span class="in">```</span></span>
 <span id="cb15-305"><a href="#cb15-305"></a></span>
 <span id="cb15-306"><a href="#cb15-306"></a><span class="in">```{r, include = TRUE, out.width = "100%", fig.align = "center", fig.cap = "**Figure 2. Suitable Oyster Aquaculture Habitat Area by West \nCoast Exclusive Economic Zones in the US**. Shows the total area (km^2^) of ideal oyster farming habitat by exclusive economic zones along the West Coast. Central California shows the highest total suitable area, followed by Souther California and Washington."}</span></span>
 <span id="cb15-307"><a href="#cb15-307"></a></span>
 <span id="cb15-308"><a href="#cb15-308"></a></span>
-<span id="cb15-309"><a href="#cb15-309"></a><span class="co">#plotting the total suitable area of ideal habitat for oysters in each EEZ</span></span>
-<span id="cb15-310"><a href="#cb15-310"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb15-311"><a href="#cb15-311"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> west_coast, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#E4CA74"</span>) <span class="sc">+</span></span>
-<span id="cb15-312"><a href="#cb15-312"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> joined_eez, <span class="fu">aes</span>(<span class="at">fill =</span> ideal_area_km2)) <span class="sc">+</span></span>
-<span id="cb15-313"><a href="#cb15-313"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb15-314"><a href="#cb15-314"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Suitable Oyster Aquaculture Habitat Area by West </span><span class="sc">\n</span><span class="st">Coast Exclusive Economic Zones in the US"</span>, <span class="at">y =</span> <span class="st">"Longitude"</span>, <span class="at">x =</span> <span class="st">"Latitude"</span>, <span class="at">fill =</span> <span class="fu">expression</span>(<span class="st">"Total Suitable Area (km"</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="st">")"</span>)) <span class="sc">+</span></span>
-<span id="cb15-315"><a href="#cb15-315"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb15-316"><a href="#cb15-316"></a>  <span class="fu">theme</span>(</span>
-<span id="cb15-317"><a href="#cb15-317"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightblue3"</span>), </span>
-<span id="cb15-318"><a href="#cb15-318"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb15-319"><a href="#cb15-319"></a>    <span class="co"># panel.grid.major = element_blank(),</span></span>
-<span id="cb15-320"><a href="#cb15-320"></a>   <span class="co"># panel.grid.minor = element_blank()) +</span></span>
-<span id="cb15-321"><a href="#cb15-321"></a>     <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">132.5</span>, <span class="sc">-</span><span class="fl">114.5</span>)) <span class="sc">+</span></span>
-<span id="cb15-322"><a href="#cb15-322"></a>   <span class="fu">annotation_scale</span>( <span class="at">location =</span> <span class="st">"bl"</span>) <span class="sc">+</span></span>
-<span id="cb15-323"><a href="#cb15-323"></a>  <span class="co"># theme( legend.position= "bottom") +</span></span>
-<span id="cb15-324"><a href="#cb15-324"></a>         <span class="co"># plot.margin=unit(c(1,6,.5,1),"cm")) +</span></span>
-<span id="cb15-325"><a href="#cb15-325"></a>  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"bl"</span>,</span>
-<span id="cb15-326"><a href="#cb15-326"></a>                         <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="fl">0.05</span>, <span class="st">"in"</span>),</span>
-<span id="cb15-327"><a href="#cb15-327"></a>                         <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"in"</span>),</span>
-<span id="cb15-328"><a href="#cb15-328"></a>                         <span class="at">style =</span> ggspatial<span class="sc">::</span><span class="fu">north_arrow_minimal</span>()) <span class="sc">+</span></span>
-<span id="cb15-329"><a href="#cb15-329"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">121</span>, <span class="at">y =</span> <span class="fl">32.5</span>, <span class="at">label =</span> <span class="st">"Southern CA"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb15-330"><a href="#cb15-330"></a>   <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">124</span>, <span class="at">y =</span> <span class="dv">36</span>, <span class="at">label =</span> <span class="st">"Central CA"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb15-331"><a href="#cb15-331"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">126.5</span>, <span class="at">y =</span> <span class="dv">40</span>, <span class="at">label =</span> <span class="st">"Northern CA"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
-<span id="cb15-332"><a href="#cb15-332"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">126.5</span>, <span class="at">y =</span> <span class="dv">44</span>, <span class="at">label =</span> <span class="st">"Oregon"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
-<span id="cb15-333"><a href="#cb15-333"></a>      <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="fl">126.5</span>, <span class="at">y =</span> <span class="fl">46.7</span>, <span class="at">label =</span> <span class="st">"Washington"</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"lightgrey"</span>) </span>
+<span id="cb15-309"><a href="#cb15-309"></a><span class="in">#plotting the total suitable area of ideal habitat for oysters in each EEZ</span></span>
+<span id="cb15-310"><a href="#cb15-310"></a><span class="in">ggplot() +</span></span>
+<span id="cb15-311"><a href="#cb15-311"></a><span class="in">  geom_sf(data = west_coast, color = "black", fill = "#E4CA74") +</span></span>
+<span id="cb15-312"><a href="#cb15-312"></a><span class="in">  geom_sf(data = joined_eez, aes(fill = ideal_area_km2)) +</span></span>
+<span id="cb15-313"><a href="#cb15-313"></a><span class="in">  scale_fill_viridis_c() +</span></span>
+<span id="cb15-314"><a href="#cb15-314"></a><span class="in">  labs(title = "Suitable Oyster Aquaculture Habitat Area by West \nCoast Exclusive Economic Zones in the US", y = "Longitude", x = "Latitude", fill = expression("Total Suitable Area (km"^2*")")) +</span></span>
+<span id="cb15-315"><a href="#cb15-315"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb15-316"><a href="#cb15-316"></a><span class="in">  theme(</span></span>
+<span id="cb15-317"><a href="#cb15-317"></a><span class="in">    panel.background = element_rect(fill = "lightblue3"), </span></span>
+<span id="cb15-318"><a href="#cb15-318"></a><span class="in">    plot.title = element_text(size = 12, hjust = 0.5)) +</span></span>
+<span id="cb15-319"><a href="#cb15-319"></a><span class="in">    # panel.grid.major = element_blank(),</span></span>
+<span id="cb15-320"><a href="#cb15-320"></a><span class="in">   # panel.grid.minor = element_blank()) +</span></span>
+<span id="cb15-321"><a href="#cb15-321"></a><span class="in">     coord_sf(xlim = c(-132.5, -114.5)) +</span></span>
+<span id="cb15-322"><a href="#cb15-322"></a><span class="in">   annotation_scale( location = "bl") +</span></span>
+<span id="cb15-323"><a href="#cb15-323"></a><span class="in">  # theme( legend.position= "bottom") +</span></span>
+<span id="cb15-324"><a href="#cb15-324"></a><span class="in">         # plot.margin=unit(c(1,6,.5,1),"cm")) +</span></span>
+<span id="cb15-325"><a href="#cb15-325"></a><span class="in">  annotation_north_arrow(location = "bl",</span></span>
+<span id="cb15-326"><a href="#cb15-326"></a><span class="in">                         pad_x = unit(0.05, "in"),</span></span>
+<span id="cb15-327"><a href="#cb15-327"></a><span class="in">                         pad_y = unit(0.3, "in"),</span></span>
+<span id="cb15-328"><a href="#cb15-328"></a><span class="in">                         style = ggspatial::north_arrow_minimal()) +</span></span>
+<span id="cb15-329"><a href="#cb15-329"></a><span class="in">  annotate("text", x = -121, y = 32.5, label = "Southern CA", size = 2, color = "black") +</span></span>
+<span id="cb15-330"><a href="#cb15-330"></a><span class="in">   annotate("text", x = -124, y = 36, label = "Central CA", size = 2, color = "black") +</span></span>
+<span id="cb15-331"><a href="#cb15-331"></a><span class="in">  annotate("text", x = -126.5, y = 40, label = "Northern CA", size = 2, color = "lightgrey") +</span></span>
+<span id="cb15-332"><a href="#cb15-332"></a><span class="in">    annotate("text", x = -126.5, y = 44, label = "Oregon", size = 2, color = "lightgrey") +</span></span>
+<span id="cb15-333"><a href="#cb15-333"></a><span class="in">      annotate("text", x = -126.5, y = 46.7, label = "Washington", size = 2, color = "lightgrey") </span></span>
 <span id="cb15-334"><a href="#cb15-334"></a></span>
 <span id="cb15-335"><a href="#cb15-335"></a></span>
 <span id="cb15-336"><a href="#cb15-336"></a></span>
@@ -1396,7 +1581,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-428"><a href="#cb15-428"></a>I wanted to test out this function on kelp crabs (*Pugettia producta*) as they are widely dispersed and could potentially make a good candidate for aquaculture. Data on the Kelp Crab was obtained from <span class="co">[</span><span class="ot">SeaLifeBase</span><span class="co">](https://www.sealifebase.ca/search.php)</span> which presents habitat information on thousands of species. Lets take a look:</span>
 <span id="cb15-429"><a href="#cb15-429"></a></span>
 <span id="cb15-430"><a href="#cb15-430"></a><span class="in">```{r, out.width = "100%", fig.align = "center"}</span></span>
-<span id="cb15-431"><a href="#cb15-431"></a><span class="fu">ideal_crib_for_a_species</span>(<span class="st">"Kelp Crab"</span>, <span class="at">depth_min =</span> <span class="sc">-</span><span class="dv">98</span>, <span class="at">depth_max =</span>  <span class="dv">0</span>, <span class="at">temp_min =</span> <span class="fl">7.8</span>, <span class="at">temp_max =</span>  <span class="fl">12.8</span>)</span>
+<span id="cb15-431"><a href="#cb15-431"></a><span class="in">ideal_crib_for_a_species("Kelp Crab", depth_min = -98, depth_max =  0, temp_min = 7.8, temp_max =  12.8)</span></span>
 <span id="cb15-432"><a href="#cb15-432"></a><span class="in">```</span></span>
 <span id="cb15-433"><a href="#cb15-433"></a></span>
 <span id="cb15-434"><a href="#cb15-434"></a>And there you have it! This is how I used spatial analysis tools in R to figure out where potential oyster (and any other species) aquaculture might be by EEZ along the west coast of the United States.</span>
@@ -1424,6 +1609,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Raymond Hunter">
+<meta name="dcterms.date" content="2024-04-03">
+<meta name="description" content="What makes our water undrinkable?">
+
+<title>Using Machine Learning to Predict Water Potability</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/logo.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blogs.html"> 
+<span class="menu-text">My Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/raymond-hunter-90a8081a7/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ramhunte"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:rmhunter999@gmail.com"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#wrangling-the-data" id="toc-wrangling-the-data" class="nav-link" data-scroll-target="#wrangling-the-data">Wrangling the Data</a>
+  <ul class="collapse">
+  <li><a href="#cleaning-data" id="toc-cleaning-data" class="nav-link" data-scroll-target="#cleaning-data">Cleaning Data</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#bar-chart" id="toc-bar-chart" class="nav-link" data-scroll-target="#bar-chart">Bar Chart</a></li>
+  </ul></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots">Boxplots</a></li>
+  <li><a href="#correlation-plot" id="toc-correlation-plot" class="nav-link" data-scroll-target="#correlation-plot">Correlation Plot</a></li>
+  </ul></li>
+  <li><a href="#splitting" id="toc-splitting" class="nav-link" data-scroll-target="#splitting">Splitting</a></li>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">Cross validation</a></li>
+  <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting">Model Fitting</a></li>
+  <li><a href="#model-selection-and-performance" id="toc-model-selection-and-performance" class="nav-link" data-scroll-target="#model-selection-and-performance">Model Selection and Performance</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Using Machine Learning to Predict Water Potability</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">ML</div>
+    <div class="quarto-category">Classification</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    What makes our water undrinkable?
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="<https://ramhunte.github.io/">Raymond Hunter</a> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 3, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Water quality is a major threat to health concern that affects billions of people around the globe. There a number of factors in water that can determine whether it is safe to dink or not including both abiotic (non-living) and biotic (living) factors. By understanding the drivers of what makes water <em>potable</em> or safe to drink, we can predict whether whether or not the water is safe by just looking at a select number of attributes of the water. So our question beign asked here is:</p>
+<p><strong>“Can we predict the potability of water based off of it’s chemical characteristics alone?”</strong></p>
+<p>The goal of this analysis is to identify the classification model that predicts water potability the best based off of chemical attributes from water samples. In this analysis, I train various supervised machine learning classification algorithms on a sample of over 3,000 water quality observations. This data is publicly available on <a href="https://www.kaggle.com/datasets/adityakadiwal/water-potability/data">Kaggle</a>. The specific predictor variables included in the models are:</p>
+<ul>
+<li><code>ph</code> (the acidity of the water)</li>
+<li><code>hardness</code> (the concentration of minerals)</li>
+<li><code>solids</code> (concentration of solid material)</li>
+<li><code>chloramines</code> (concentration of chlorine and ammonia compounds)</li>
+<li><code>sulfate</code> (oxidized sulfur concentration)</li>
+<li><code>conductivity</code> (ability of the water to pass an electrical current)</li>
+<li><code>organic_carbon</code> (concentration of organic forms of carbon)</li>
+<li><code>trihalomethanes</code> (byproducts of treating water with organic compounds )</li>
+<li><code>turbidity</code> (cloudiness of water)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/water.jpg" class="img-fluid figure-img"></p>
+<figcaption>Non-potable and potable water</figcaption>
+</figure>
+</div>
+<p><br></p>
+</section>
+<section id="wrangling-the-data" class="level1">
+<h1>Wrangling the Data</h1>
+<p>First, we are going to read in all of the necessary packages that are required for this analysis.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># loading packages</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse) <span class="co"># keeping data clean, tidy, and organized</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(janitor) <span class="co"># for clean_names()</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(patchwork) <span class="co"># stitching together figures</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(corrplot) <span class="co"># correlation plot</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(tidymodels) <span class="co"># making models</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(kknn)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">library</span>(ranger)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="fu">library</span>(recipes)</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="fu">library</span>(yardstick)</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="fu">library</span>(themis) <span class="co"># for upsampling</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="fu">library</span>(vip) <span class="co"># for vip chart </span></span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># making a color pallet for binary outcomes</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>pal <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"0"</span> <span class="ot">=</span> <span class="st">"#1C3738"</span>, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#8BAAAD"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Fortunately, our data is already relatively clean and in tidy format as is. The only things we need to do are to clean up the column names using the <code>clean_names()</code> function in the <code>janitor</code> package and also make our outcome variable <code>potability</code> a factor. Cleaning the names allows us to reformat all of the columsn so they have no spaces or upperase letters. This helps keeps things simple and <em>tidy</em>. Changing the <code>potability</code> column to a factor is important because it is initially read in as a numeric value (0 or 1), but we want it to represent a group (non-potable or potable) so we can use it as a binary group outcome in our models.</p>
+<section id="cleaning-data" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-data">Cleaning Data</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># reading in the data</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>water <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"water_potability.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="co"># cleaning up the column names</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="co"># making potability as a factor </span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">mutate</span>(<span class="at">potability =</span> <span class="fu">factor</span>(potability))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="missing-values">Missing Values</h2>
+<p>We want to also check to see if our data has any missing values first. Missing values can be problematic especially in large quantities. We can do so using the <code>naniar</code> package to plot the missing data across columns using the <code>viz_miss()</code> function.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># looking for missing data </span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>naniar<span class="sc">::</span><span class="fu">vis_miss</span>(water)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption><strong>Figure 1.</strong> Visualizing missing values throughout the data.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see that there are a fair amount of values missing from the <code>ph</code>, <code>sulfate</code>, and <code>trihalomethanes</code> columns. One way to tackle this is to get rid of that data all together, but we would be losing a lot of valuable data from other predictors in doing so. We can address this in our modeling by imputing the data, or filling it with estimated values from different methods. We will come back to this later.</p>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<p>The first step you want to take in making models is exploratory data analysis (EDA). This is the phase where you dive into your data, look at its nooks and crannies, and try to identify potential patterns that could give insight into the steps you will want to take when modeling. Looking at the abundance. distribution, and correlation of the data are all importance steps to take.</p>
+<section id="bar-chart" class="level3">
+<h3 class="anchored" data-anchor-id="bar-chart">Bar Chart</h3>
+<p>The first thing we want to do is check to compare the total counts of our <code>potability</code> outcomes (<code>0</code> = not potable and <code>1</code> = potable). We can do so by simply plotting a barchart:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> water, <span class="fu">aes</span>(<span class="at">x =</span> potability, <span class="at">fill =</span> potability)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"0"</span> <span class="ot">=</span> <span class="st">"#1C3738"</span>, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#8BAAAD"</span>),</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                    <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">""</span>, <span class="at">x =</span> <span class="st">"Potability"</span>, </span>
+<span id="cb4-7"><a href="#cb4-7"></a>       <span class="at">title =</span> <span class="st">"Counts of Water Potability Outcomes in Data"</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb4-10"><a href="#cb4-10"></a>                     <span class="co"># modifying y axis scale </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>                     <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(</span>
+<span id="cb4-12"><a href="#cb4-12"></a>                       <span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>())) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">0</span>, <span class="at">r =</span> <span class="dv">0</span>, </span>
+<span id="cb4-19"><a href="#cb4-19"></a>                                              <span class="at">b =</span> <span class="dv">2</span>, <span class="at">l =</span> <span class="dv">0</span>, <span class="at">unit =</span> <span class="st">"lines"</span>)),</span>
+<span id="cb4-20"><a href="#cb4-20"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption><strong>Figure 2.</strong> A Bar chart showing the total number of observations by potability outcomes (0 = not potable, 1 = potable) in the data set.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We notice that there are significantly more observations with a value of <code>0</code> compared to <code>1</code>. This tells us that we have a class imbalance in the data and may need to do some upsampling (which we will discuss later). Overall, this is not a major challenge, but it tells us that the models may do a better job at predicting non-potable water compared to potable water as there is less data for the latter.</p>
+</section>
+</section>
+<section id="histograms" class="level2">
+<h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
+<p>One great way to investigate our data in the exploratory data analysis is plotting the distribution of our predictors on histograms. Histograms show the distribution and frequency of observations in a data set. The allow us to check and see if it is normally distributed, roughly where the center fo the data is, how wide the spread is, and if there are outliers skewing the data.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># making a histogram function</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>hist_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, x_lab) {</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> water , <span class="fu">aes</span>(<span class="at">x =</span> x,  <span class="at">fill =</span> potability)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">"Potability "</span>, <span class="at">values =</span> pal) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>   <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb5-7"><a href="#cb5-7"></a>                     <span class="co"># modifying y axis scale </span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>                     <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(</span>
+<span id="cb5-9"><a href="#cb5-9"></a>                       <span class="at">scale_cut =</span> scales<span class="sc">::</span><span class="fu">cut_short_scale</span>())) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>  <span class="fu">labs</span>(<span class="at">x =</span> x_lab, <span class="at">y =</span> <span class="st">""</span>)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>}</span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># making individual histograms </span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>solids_hist <span class="ot">&lt;-</span> <span class="fu">hist_fun</span>(<span class="at">x =</span> water<span class="sc">$</span>solids, <span class="at">x_lab =</span> <span class="st">"Solids"</span> )</span>
+<span id="cb5-17"><a href="#cb5-17"></a>ph_hist <span class="ot">&lt;-</span> <span class="fu">hist_fun</span>(<span class="at">x =</span> water<span class="sc">$</span>ph, <span class="at">x_lab =</span> <span class="st">"pH"</span> )</span>
+<span id="cb5-18"><a href="#cb5-18"></a>hard_hist <span class="ot">&lt;-</span> <span class="fu">hist_fun</span>(<span class="at">x =</span> water<span class="sc">$</span>hardness, <span class="at">x_lab =</span> <span class="st">"Hardness"</span> )</span>
+<span id="cb5-19"><a href="#cb5-19"></a>oc_hist <span class="ot">&lt;-</span> <span class="fu">hist_fun</span>(<span class="at">x =</span> water<span class="sc">$</span>organic_carbon, <span class="at">x_lab =</span> <span class="st">"Organic Carbon"</span> )</span>
+<span id="cb5-20"><a href="#cb5-20"></a></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="co"># combining</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>hist <span class="ot">&lt;-</span> (solids_hist <span class="sc">+</span> ph_hist)<span class="sc">/</span>(hard_hist <span class="sc">+</span> oc_hist) <span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24"></a>              <span class="at">heights =</span> <span class="dv">5</span>) <span class="sc">&amp;</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a></span>
+<span id="cb5-28"><a href="#cb5-28"></a>hist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption><strong>Figure 3.</strong> Histograms showing total solids, pH, hardness, and organic carbon by potability in water samples.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The histograms show that <code>solids</code>, <code>ph</code>, <code>hardness</code>, and <code>organic_carbon</code> all appear to be normally distributed. <code>solids</code> has a slight right skew, indicating that there may be some more high solid concentrations than lower in our sample as a result of some outliers. Overall, these distributions appear to be similarly distributed regardless of potability. This indicates that</p>
+</section>
+<section id="boxplots" class="level2">
+<h2 class="anchored" data-anchor-id="boxplots">Boxplots</h2>
+<p>Another way we can check the distribution of our data is by making boxplots. They provide a bit more insight into the spread of the data by providing the median, quartile ranges, and outliers of the data. It provides some more summary statistics that we can use to directly compare our data.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># boxplot function</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>box_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(y, y_lab) {</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> water , <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> potability,  <span class="at">fill =</span> potability)) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="st">"Potability "</span>, <span class="at">values =</span> pal) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>   <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> y_lab) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  <span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-13"><a href="#cb6-13"></a>  <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb6-14"><a href="#cb6-14"></a>}</span>
+<span id="cb6-15"><a href="#cb6-15"></a></span>
+<span id="cb6-16"><a href="#cb6-16"></a>chlor_box <span class="ot">&lt;-</span> <span class="fu">box_fun</span>(water<span class="sc">$</span>chloramines, <span class="at">y_lab =</span> <span class="st">"Chloramines"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a>sulf_box <span class="ot">&lt;-</span> <span class="fu">box_fun</span>(water<span class="sc">$</span>sulfate, <span class="at">y_lab =</span> <span class="st">"Sulfate"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18"></a>cond_box <span class="ot">&lt;-</span> <span class="fu">box_fun</span>(water<span class="sc">$</span>conductivity, <span class="at">y_lab =</span> <span class="st">"Conductivity"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19"></a>tri_box <span class="ot">&lt;-</span> <span class="fu">box_fun</span>(water<span class="sc">$</span>trihalomethanes, <span class="at">y_lab =</span> <span class="st">"Trihalomethanes"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20"></a></span>
+<span id="cb6-21"><a href="#cb6-21"></a></span>
+<span id="cb6-22"><a href="#cb6-22"></a></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co"># combining</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a>box <span class="ot">&lt;-</span> (chlor_box <span class="sc">+</span> sulf_box)<span class="sc">/</span>(cond_box <span class="sc">+</span> tri_box) <span class="sc">+</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>,</span>
+<span id="cb6-26"><a href="#cb6-26"></a>              <span class="at">heights =</span> <span class="dv">5</span>) <span class="sc">&amp;</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) </span>
+<span id="cb6-28"><a href="#cb6-28"></a></span>
+<span id="cb6-29"><a href="#cb6-29"></a>box</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption><strong>Figure 4.</strong> Boxplots showing the distribution of cholarmine, sulfate, conductivity, and trihalomethane in water samples.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>As you can see, the <code>chloramines</code>, <code>sulfate</code>, <code>conductivity</code>, and <code>trihalomethanes</code> variables all appear to have similar distributions regardless of the water is potable. However, this does not entirely mean that they will not be important predicotr variables in our models. We can see that quartile ranges of potable and non-potable data line up evenly for each variable with a bit wider of a spread for <code>chloramines</code> and <code>sulfate</code> that are classified as potable.</p>
+</section>
+<section id="correlation-plot" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-plot">Correlation Plot</h2>
+<p>We then need to check for correlation/collinearity between predictor variables as this could cause issues with our models. Collinearity arises when two or more predictor variables are highly correlated with one another. This can lead to difficulty in interpreting individual coefficients and inflated magnitudes as well as decrease predictability accuracy. Therefore, we want to make sure our data does not have any highly correlated predictors.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>water <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"complete.obs"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="co"># corrplot(type = "lower", method = "shade", order = "AOE", diag = TRUE)</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">corrplot</span>( <span class="at">addrect =</span> <span class="dv">2</span>, <span class="at">tl.col=</span><span class="st">"black"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption><strong>Figure.5.</strong> Correlation plot showing the correlation of all continuous water potability predictor variables. There is little to know correlation between variables.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Our correlation plot shows that there is minimal to little correlation between predictor variables in this data set. <code>Sulfates</code> have a slight negative relationship with <code>hardness</code> and <code>solids</code> and <code>ph</code> has a slight positive relationship with <code>hardness</code> and negative relationship with <code>solids</code>. These are overall very small and not strong enough to consider collinearity an issue.</p>
+</section>
+</section>
+<section id="splitting" class="level1">
+<h1>Splitting</h1>
+<p>Our next step is to start preparing the data to fit our models. The first thing we have to do is split our data into both training and testing data. The training data is going to be used to actually train and fit our models. It is the data that the models learn from to create their parameters or coefficients that can be used to then make predictions about new data. The way that we test the performance of these models is by predicting the outcome of the testing data observations and comparing it to the actual outcome. In other words, we use the testing data as new or unseen data that we can use our models to make predictions on and gauge its performance using different metrics.</p>
+<p>I use a 75%-25% random split to create the training and testing data sets. We want the majority of our data to be training data (75%) to ensure that the model has substantial observations to work with. However, we need to ensure that we retain enough data as unseen/new data (25%) to actually test our models with. There is another issue that we have to consider when splitting our data however. That issue is that we want our outcome variable to be equally represented across both training and testing data sets, yet a random split could cause an imbalance of the non-potable (<code>0</code>) and potable (<code>1</code>) outcomes being represented in the two different data sets. In other words, the majority of the the <code>0</code>’s could end up in one data set and the <code>1</code>’s in another due to random chance. This would then cause issues as our models might be trained to predict one outcome much better than another outcome leading to poor model performance. We can account for this by stratifying out data in the split by the outcome variable <code>potability</code>.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">set.seed</span>(<span class="dv">4298</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># splitting ----</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># splitting using a 75-25 ratio of training to testing data </span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>water_split <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(water, <span class="at">prop =</span> <span class="fl">0.75</span>,</span>
+<span id="cb8-6"><a href="#cb8-6"></a>                                <span class="co"># stratifying on the outcome (potability)</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>                                <span class="at">strata =</span> potability)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># assining the split data to their respective data frame's</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>water_train <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(water_split)</span>
+<span id="cb8-11"><a href="#cb8-11"></a>water_test <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(water_split)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="cross-validation" class="level1">
+<h1>Cross validation</h1>
+<p>One other problem with our current set up is that training data error is not a good estimate of testing data error. When we fit a model on the training data, the model likely will have a much lower error rate or higher performance on the training data than it will when we make predictions on the testing data. This is because the model is prone to overfit the training data itself, and it is therefore a poor indication of how how the model will perform on unseen/testing data. And once we make predicitons using the testing data, we can no longer go back and adjust our model as this become unethical. This leads us to a position where we need to gauge what the testing error might be before making prdictions on the testing data set.</p>
+<p>Fortunately, we have <em>k-folds</em> cross validation for this. K-fold cross-validation is a fundamental technique in machine learning used to evaluate the performance of predictive models accurately. It works by dividing the training dataset into <em>k</em> equal-sized <em>folds</em>. Each fold is used as a mini training set, except for one, which serves as a <em>validation</em> set. This process is repeated <em>k</em> times, with each fold taking turns as the validation set. By iterating through all <em>k</em> folds, we obtain <em>k</em> estimates of the model’s performance. This technique helps prevent overfitting, makes efficient use of the available data, and facilitates hyperparameter tuning, ultimately leading to more reliable model evaluation and selection.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># making folds ----</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#cross validation with 5 folds</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>water_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(water_train, <span class="at">v =</span> <span class="dv">5</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>water_folds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#  5-fold cross-validation 
+# A tibble: 5 × 2
+  splits             id   
+  &lt;list&gt;             &lt;chr&gt;
+1 &lt;split [1964/492]&gt; Fold1
+2 &lt;split [1965/491]&gt; Fold2
+3 &lt;split [1965/491]&gt; Fold3
+4 &lt;split [1965/491]&gt; Fold4
+5 &lt;split [1965/491]&gt; Fold5</code></pre>
+</div>
+</div>
+</section>
+<section id="model-fitting" class="level1">
+<h1>Model Fitting</h1>
+<p>Before we fit our models, we need to make a recipe or instructions on what ingredients to include in our models. We can do so by specifying what predictor variables to include. Lets add in all of our predictors variables to see how far it can take us. Feature selection will be taken care of by some models like Elastic Nets, so we will just include them all here. We also have missing data in the <code>ph</code>, <code>trihalomethanes</code>, and <code>sulfate</code> variables. We can address this by <em>imputing</em> or replacing those <code>NA</code> values with an estimated value from a linear regression between the variable we want to impute and another variable of interest. Because there is a correlation between <code>ph</code> and <code>hardness</code> as well as <code>sulfate</code> and <code>solids</code>, we will use these variables in a linear regression to impute the missing data. However, there does not appear to be a linear relationship between <code>trihalomethanes</code> and any other variable, so we are using a <em>k nearest neighbors or knn</em> approach to impute these (we will discuss knn in detail later).</p>
+<p>Furthermore, we discussed upsampling our <code>potability</code> outcomes as we have significantly more observations classified as <code>0</code> than we do <code>1</code>. Upsampling essentially randomly selects observations from the less frequent class to repeat in our data so that we end up with an equal number of outcome observations. It is important to include this here so that our models can train equally on both outcomes. The last thing we need to do is center and scale our variables so that they can be more easily comparable and interpretation. This reduces the effect of large outliers and variables with high variance which can skew the model because of their large magnitude. It is a way of correcting for variables with high variation in their data and make our results more accurate and interperetable.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># setting up a recipe </span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>recipe <span class="ot">&lt;-</span> recipes<span class="sc">::</span><span class="fu">recipe</span>(potability <span class="sc">~</span> ph <span class="sc">+</span> hardness <span class="sc">+</span> solids <span class="sc">+</span> chloramines <span class="sc">+</span> sulfate <span class="sc">+</span> conductivity <span class="sc">+</span> organic_carbon <span class="sc">+</span> trihalomethanes <span class="sc">+</span> turbidity , </span>
+<span id="cb11-3"><a href="#cb11-3"></a>                          <span class="at">data =</span> water_train) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="co"># imputing missing data</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">step_impute_linear</span>(ph, <span class="at">impute_with =</span> <span class="fu">imp_vars</span>(hardness)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">step_impute_knn</span>(trihalomethanes, <span class="at">impute_with =</span> <span class="fu">imp_vars</span>(<span class="fu">all_predictors</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="fu">step_impute_linear</span>(sulfate, <span class="at">impute_with =</span> <span class="fu">imp_vars</span>(solids)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="co"># upsample data to make sure 0 and 1 are represented equally</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">step_upsample</span>(potability, <span class="at">over_ratio =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>  <span class="co">#center ans scaling</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>())</span>
+<span id="cb11-12"><a href="#cb11-12"></a></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="co"># checking that the recipe works </span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="fu">prep</span>(recipe) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-15"><a href="#cb11-15"></a>  <span class="fu">bake</span>(water_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,456 × 10
+         ph hardness solids chloramines sulfate conductivity organic_carbon
+      &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;
+ 1  0.00285    0.238 -0.162      0.0924  0.955         1.69         -1.20  
+ 2 -2.24      -2.13  -0.399     -0.338   0.0888        2.04          0.247 
+ 3  0.675      0.846 -0.259      1.37    0.0557       -0.116         0.757 
+ 4  1.34      -0.509 -0.470     -0.395  -0.653        -0.366        -0.845 
+ 5 -0.999     -0.282  0.709      0.251  -0.197        -1.83         -1.80  
+ 6  1.03       0.190 -0.942     -1.68   -0.841         0.577        -0.602 
+ 7 -0.233     -2.46  -0.875      0.418  -1.80         -0.478        -0.499 
+ 8  0.592      0.672 -0.384      0.616   0.0853       -0.791         0.0501
+ 9  0.0231    -1.28  -0.388     -2.30   -1.42         -0.994         0.474 
+10 -0.148     -1.48   0.554     -0.206  -0.948        -0.597         1.51  
+# ℹ 2,446 more rows
+# ℹ 3 more variables: trihalomethanes &lt;dbl&gt;, turbidity &lt;dbl&gt;, potability &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>I chose four different models to fit for binary classification:</p>
+<p><strong>1) Logistic Regression</strong></p>
+<p>Logistic regression takes a binary classification approach (0,1) to model the probability of the outcome of the dependent variable given the values of included predictor variables. I assumes a linear relationship between the independent variables and the log odds of the dependent variable. It estimates the probability that the outcome will occur, and then we determine which group that will fall under (0,1) depending on what we set the threshold to be which we set to be 50% in this case. We can interpret the coefficient of the variables to be the effect of the variable on the log odds of the dependent variable. Because there are no <em>hyperparameters</em>, or other model settings that are not learned from the data, we have nothing to <em>tune</em>, or iterate through multiple combinations of.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># making logistic regression model</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>log_mod <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">set_engine</span>(<span class="st">"glm"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co"># workflow</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>log_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">add_recipe</span>(recipe) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">add_model</span>(log_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>**2) Elastic Net</p>
+<p>We are also going to fit the data to an elastic net model which combines regularization techniques (L1 = Lasso and L2 = Ridge). The L1 regularization introduces sparsity by penalizing the absolute value or size of the coefficients. It is a form of feature selection that can shrink irrelevant predictors down to 0. On the other hand, L2 penalizes the square of the coefficients which can shrink predictor coefficients very small but never down to 0. The L2 portion helps control and minimize the impact of multicollinearity better than L1. The goal of doing this is to prevent overfitting and also improve overall performance that we might not get with just logisitc regression. We tune <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\lambda\)</span> or the <code>mixture</code> and the <code>penalty</code> which control the ratio or balance of L1 and L2 in our model. When <span class="math inline">\(\alpha\)</span> is = 1, then we have a pure Lasso regularization, and we have a pure Ridge regularization when it is = 0. <span class="math inline">\(\Lambda\)</span> is essentially the overall strength or the amount of regularization we are applying. In tuning these hyperparameters, we can find a balance between sparsity and reduction in multicollinearity. The downside with this is that it can lead to decreased interpretability compared to logistic regression.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># setting up elastic net model</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>en_mod <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>(<span class="at">mixture =</span> <span class="fu">tune</span>(), </span>
+<span id="cb14-3"><a href="#cb14-3"></a>                       <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># setting up workflow </span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>en_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-9"><a href="#cb14-9"></a>  <span class="fu">add_recipe</span>(recipe) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="fu">add_model</span>(en_mod)</span>
+<span id="cb14-11"><a href="#cb14-11"></a></span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="co"># setting up grid </span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>en_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">3</span>),</span>
+<span id="cb14-14"><a href="#cb14-14"></a>                                <span class="at">trans =</span> <span class="fu">identity_trans</span>()),</span>
+<span id="cb14-15"><a href="#cb14-15"></a>                        <span class="co"># mix range  = c(0,1) with 10 levels for </span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>                        <span class="fu">mixture</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)), </span>
+<span id="cb14-17"><a href="#cb14-17"></a>                        <span class="at">levels =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>3) K Nearest Neighbors (KNN)</strong></p>
+<p>KNN is another model type that we are going to fit. It is a non-parametric classification model which relies on neighboring data points to make a classification or decision boundary which forms a decision rule. A new data point is assigned a classification depending on it <em>k</em> number of nearest neighbors. We can tune the hyperparameter <em>k</em>, or <code>neighbors</code>, to figure out what the optimal number of neighbors is to determine our decision boundary. KNN is quite robust to noisy data as well which makes it a wis model to choose. One downside is though that it has poor interpretability as it does not have direct interpretable model parameters which logistic regression does.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># creating a KNN classification model using knn engine</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>knn_mod <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(<span class="at">neighbors =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>    parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"classification"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># adding log model and recipe together in a work flow</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>knn_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">add_model</span>(knn_mod) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">add_recipe</span>(recipe)</span>
+<span id="cb15-11"><a href="#cb15-11"></a></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co"># setting up knn tuning grid</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a>knn_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">neighbors</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>)), </span>
+<span id="cb15-14"><a href="#cb15-14"></a>                         <span class="at">levels =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>4) Random Forest</strong></p>
+<p>Random forests are among some of the favorite algorithms in binary classification due to their high performance. A random forest takes an ensemble learning approach that builds numerous small and shallow trees from a random number of predictors that is specified. Each tree independently predicts the class of the data points it encounters. It then chooses the most common class among all the trees to determine the predicted value after training on the predictor variables. Each tree independently predicts the class of the data point it encounters are aggregated at the end and the mode is chosen as the predicted class. This approach overall reduces overfitting by including a large number of trees.</p>
+<p>To maximize performance from a random tree, we can tune a number of hyperparameters in the models. The first one is the number of trees (<code>trees</code>). This adjust the number of trees that are used to make predictions with before aggregating. The second is the number of randomly selcted predictors to choose from, or <code>mtry</code>. This specifies the range of how many randomly selected variables can be included in each small tree. Lastly, we have the number of observations that can be left in a terminal node before the tree node stops dividing further, or <code>min_n</code>.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># random forest</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>rf_mod <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mtry =</span> <span class="fu">tune</span>(), </span>
+<span id="cb16-3"><a href="#cb16-3"></a>                           <span class="at">trees =</span> <span class="fu">tune</span>(), </span>
+<span id="cb16-4"><a href="#cb16-4"></a>                           <span class="at">min_n =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>, <span class="at">importance =</span> <span class="st">"impurity"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co"># workflow</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>rf_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">add_model</span>(rf_mod) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-11"><a href="#cb16-11"></a>  <span class="fu">add_recipe</span>(recipe)</span>
+<span id="cb16-12"><a href="#cb16-12"></a></span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="co"># setting up grid </span></span>
+<span id="cb16-14"><a href="#cb16-14"></a>rf_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">mtry</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>)), </span>
+<span id="cb16-15"><a href="#cb16-15"></a>                        <span class="fu">trees</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">400</span>)),</span>
+<span id="cb16-16"><a href="#cb16-16"></a>                        <span class="fu">min_n</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">26</span>)),</span>
+<span id="cb16-17"><a href="#cb16-17"></a>                        <span class="at">levels =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Now that we’ve set up all our tuning grids, we can proceed to tune and fit our specified models to the cross-validation folds. Note that we do not tune anything for logistic regression, so the process looks slightly different and more simple.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># logistic regression (doesnt need tuning)</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>log_res <span class="ot">&lt;-</span> <span class="fu">fit_resamples</span>(log_wflow, water_folds)</span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># en tuning</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>en_grid_tune <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
+<span id="cb17-6"><a href="#cb17-6"></a>  en_wflow,</span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="at">resamples =</span> water_folds,</span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="at">grid =</span> en_grid</span>
+<span id="cb17-9"><a href="#cb17-9"></a>)</span>
+<span id="cb17-10"><a href="#cb17-10"></a></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="co"># knn tuning</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a>knn_grid_tune <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
+<span id="cb17-13"><a href="#cb17-13"></a>  knn_wflow,</span>
+<span id="cb17-14"><a href="#cb17-14"></a>  <span class="at">grid =</span> knn_grid,</span>
+<span id="cb17-15"><a href="#cb17-15"></a>  <span class="at">resamples =</span> water_folds)</span>
+<span id="cb17-16"><a href="#cb17-16"></a></span>
+<span id="cb17-17"><a href="#cb17-17"></a><span class="co"># rf tuning</span></span>
+<span id="cb17-18"><a href="#cb17-18"></a>rf_grid_tune <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
+<span id="cb17-19"><a href="#cb17-19"></a>  rf_wflow,</span>
+<span id="cb17-20"><a href="#cb17-20"></a>  <span class="at">resamples =</span> water_folds,</span>
+<span id="cb17-21"><a href="#cb17-21"></a>  <span class="at">grid =</span> rf_grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="model-selection-and-performance" class="level1">
+<h1>Model Selection and Performance</h1>
+<p>Now that we have fitted all of our models, we need to compare their performances so we can pick our best model. One metric that we can use is measuring the area under the <em>Receiver Operating Characteristic (ROC)</em> curve. This plot can tell us what the true positive rate (sensitivity) is against the false positive rate (1 - sensetivity) where a higher ROC value (0-1) represents a better performance. A value of 1 indicates a perfect model with impeccable performance, and a value of 0.5 means that the model performed no better than a random coin toss.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># select top model</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co"># logistic regression</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">collect_metrics</span>(log_res) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">"roc_auc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  .metric .estimator  mean     n std_err .config             
+  &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 roc_auc binary     0.506     5  0.0147 Preprocessor1_Model1</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># elastic net</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">show_best</span>(en_grid_tune, </span>
+<span id="cb20-3"><a href="#cb20-3"></a>            <span class="at">metric =</span> <span class="st">"roc_auc"</span>, <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  penalty mixture .metric .estimator  mean     n std_err .config               
+    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                 
+1    0.01       0 roc_auc binary     0.505     5  0.0146 Preprocessor1_Model001</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># knn</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">show_best</span>(knn_grid_tune, </span>
+<span id="cb22-3"><a href="#cb22-3"></a>            <span class="at">metric =</span> <span class="st">"roc_auc"</span>, <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 7
+  neighbors .metric .estimator  mean     n std_err .config              
+      &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
+1        10 roc_auc binary     0.593     5 0.00862 Preprocessor1_Model10</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># random forest</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">show_best</span>(rf_grid_tune, </span>
+<span id="cb24-3"><a href="#cb24-3"></a>            <span class="at">metric =</span> <span class="st">"roc_auc"</span>, <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 9
+   mtry trees min_n .metric .estimator  mean     n std_err .config              
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
+1     8   285    19 roc_auc binary     0.647     5 0.00861 Preprocessor1_Model2…</code></pre>
+</div>
+</div>
+<p>Here we can see that the random forest model with 8 randomly selected predictors (<code>mtry</code>), 228 trees (<code>trees</code>), and a minimum of 26 observations in a terminal node (<code>min_n</code>) performed the best resulting in a mean ROC area under the curve value of 0.646 averaged over the 5 folds. However, this ROC value represents the cross validation error and is just used as proxy of the testing error. Testing error is a better metric to use for model performance as it tells us how well the model predicts unseen, new data. To get our testing error, we first need to finalize our workflow by fitting this model to our entire training data. This allows us to utilize all of the training data we have to train our selected best model. Next, we will use this fitted model to predict the outcome of the testing data that was set aside at the initial split. We can then get the ROC value of the testing data as our estimate of how the model performs on new, unseen data and plot it on an ROC curve.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># finalizing workflow</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>rf_mod_final <span class="ot">&lt;-</span> <span class="fu">finalize_workflow</span>(rf_wflow,</span>
+<span id="cb26-3"><a href="#cb26-3"></a>                                   <span class="fu">select_best</span>(rf_grid_tune))</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co"># fitting model to entire training data</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>rf_mod_final_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(rf_mod_final, water_train)</span>
+<span id="cb26-7"><a href="#cb26-7"></a></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="co">#predicting and getting rmse</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a>rf_mod_final_test <span class="ot">&lt;-</span> <span class="fu">augment</span>(rf_mod_final_fit, water_test) </span>
+<span id="cb26-10"><a href="#cb26-10"></a></span>
+<span id="cb26-11"><a href="#cb26-11"></a>rf_mod_final_test <span class="sc">%&gt;%</span> </span>
+<span id="cb26-12"><a href="#cb26-12"></a>  <span class="fu">roc_auc</span>(potability, .pred_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  .metric .estimator .estimate
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 roc_auc binary         0.652</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">roc_curve</span>(rf_mod_final_test, <span class="at">truth =</span> potability, .pred_0) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption><strong>Figure 6.</strong> An ROC curve of the best performing random forest model.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>This final ROC value comes out to be 0.66, so our model has some predictive ability. However, an ROC value of 1 says that the model predicts perfectly, so our model is still quite a ways from having a high performance. It is much closer to an ROC value of 0.5 which says the model performs no better than a random coin toss telling us that it has quite a low predictive performance overall. We can also see that in this area under the ROC curve. A higher performing model with a high ROC value would show a much more curved/arced line reaching a <code>sensitivity</code> close to 1 relatively quickly on the x axis. However, we see a very shallow and gradual incline with a small area under the ROC curve indicating mediocre performance.</p>
+<p>We then want to look at how important the different variables were in determining their overall significance in predicting potability. We can do so by creating a <em>variable of importance (VIP)</em> graph.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># making a variable importance </span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>rf_mod_final_fit <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">vip</span>() <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption><strong>Figure 7.</strong> A variable of importance (VIP) graph highlighting the variables of importnace in descendign order from top to bottom.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Our variable of importance figure tells us that <code>ph</code> and <code>sulfate</code> were the most important predictors in predicting water potability followed by <code>hardness</code>, <code>chloramines</code>, and <code>solids</code>. The remaining variables <code>conductivity</code>m <code>turbidity</code>, <code>trihalomethanes</code>, and <code>organic_carbon</code> appeared to contribute little meaning to the predictability of <code>potability</code>.</p>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+<p>In conclusion, our models did a relatively poor job at predicting water potability with the exception of the best performing random forest model which still performed mediocre at best. We fit four different models to our data using k folds cross validation with 5 folds. The predictor variables included in the data are: 1) logistic regression, 2) elastic net, 3) k nearest neighbors, and 4) random forest. The random forest model was the best performing model (based on it’s ROC value of 0.646 in the cross validation set) followed by k nearest neighbors, elastic net, and logistic regression model. The logistic regression model performed about as well as a random coin toss as it received a ROC value of 0.5. This led us to use our top performing random forest model and train it on all of the training data to then make predictions on the testing data, giving us an ROC score of 0.66.</p>
+<p>Based on the exploratory data analysis, it seemed that potable water and non-potable water observations overlapped quite a bit in the distribution of their prediction predictor variables. This indicated early on that the provided predictor variables might not be very important in determining water potability, so I am not too surprised about the results here. It is likely that there are other variables contributing to the potability of water not included in the sample data such as presence of bacteria or other microbes. In conclusion, <code>ph</code>, <code>hardness</code>, <code>solids</code>, <code>chloramines</code>, <code>sulfate</code>, <code>conductivity</code>, <code>organic_carbon</code>, <code>trihalomethanes</code>, and <code>turbidity</code> are not thw best variables for predicting water potability, and other predictors need to be included to make better performing models. The best way to improve these models would be to collect new samples with additional predictor variables to potentially increase the performance of these models. We might include presence of bacteria or other microbes which</p>
+
+
+<!-- -->
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{hunter2024,
+  author = {Hunter, Raymond},
+  title = {Using {Machine} {Learning} to {Predict} {Water} {Potability}},
+  date = {2024-04-03},
+  url = {</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-hunter2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Hunter, Raymond. 2024. <span>“Using Machine Learning to Predict Water
+Potability.”</span> April 3, 2024. <a href="<https://ramhunte.github.io/blogs/china_fishing/">&lt;https://ramhunte.github.io/blogs/china_fishing/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb30" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a><span class="co">---</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="an">title:</span><span class="co"> "Using Machine Learning to Predict Water Potability"</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="an">description:</span><span class="co"> "What makes our water undrinkable?"</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="an">author:</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="co">  - name: Raymond Hunter </span></span>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="co">    url: &lt;https://ramhunte.github.io/</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="an">date:</span><span class="co"> 4-03-2024</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="co"># bibliography: references.bib</span></span>
+<span id="cb30-9"><a href="#cb30-9"></a><span class="an">citation:</span><span class="co"> </span></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="co">  url: &lt;https://ramhunte.github.io/blogs/china_fishing/</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="co"># image: copepod.jpg</span></span>
+<span id="cb30-12"><a href="#cb30-12"></a><span class="an">categories:</span><span class="co"> [ML, Classification] # self-defined categories</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb30-14"><a href="#cb30-14"></a><span class="co">  html: </span></span>
+<span id="cb30-15"><a href="#cb30-15"></a><span class="co">    code-fold: show </span></span>
+<span id="cb30-16"><a href="#cb30-16"></a><span class="co">    code-copy: true </span></span>
+<span id="cb30-17"><a href="#cb30-17"></a><span class="co">    code-summary: "code" </span></span>
+<span id="cb30-18"><a href="#cb30-18"></a><span class="co">    code-line-numbers: true </span></span>
+<span id="cb30-19"><a href="#cb30-19"></a><span class="co">    code-tools: true </span></span>
+<span id="cb30-20"><a href="#cb30-20"></a><span class="co">    code-block-border-left: true</span></span>
+<span id="cb30-21"><a href="#cb30-21"></a><span class="co">    # embed-resources: true</span></span>
+<span id="cb30-22"><a href="#cb30-22"></a><span class="co">    warning: false</span></span>
+<span id="cb30-23"><a href="#cb30-23"></a><span class="co">    message: false</span></span>
+<span id="cb30-24"><a href="#cb30-24"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb30-25"><a href="#cb30-25"></a><span class="an">draft:</span><span class="co"> false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!</span></span>
+<span id="cb30-26"><a href="#cb30-26"></a><span class="co">---</span></span>
+<span id="cb30-27"><a href="#cb30-27"></a></span>
+<span id="cb30-28"><a href="#cb30-28"></a><span class="fu"># Introduction</span></span>
+<span id="cb30-29"><a href="#cb30-29"></a></span>
+<span id="cb30-30"><a href="#cb30-30"></a>Water quality is a major threat to health concern that affects billions of people around the globe. There a number of factors in water that can determine whether it is safe to dink or not including both abiotic (non-living) and biotic (living) factors. By understanding the drivers of what makes water *potable* or safe to drink, we can predict whether whether or not the water is safe by just looking at a select number of attributes of the water. So our question beign asked here is:</span>
+<span id="cb30-31"><a href="#cb30-31"></a></span>
+<span id="cb30-32"><a href="#cb30-32"></a>**"Can we predict the potability of water based off of it's chemical characteristics alone?"**</span>
+<span id="cb30-33"><a href="#cb30-33"></a></span>
+<span id="cb30-34"><a href="#cb30-34"></a>The goal of this analysis is to identify the classification model that predicts water potability the best based off of chemical attributes from water samples. In this analysis, I train various supervised machine learning classification algorithms on a sample of over 3,000 water quality observations. This data is publicly available on <span class="co">[</span><span class="ot">Kaggle</span><span class="co">](https://www.kaggle.com/datasets/adityakadiwal/water-potability/data)</span>. The specific predictor variables included in the models are:</span>
+<span id="cb30-35"><a href="#cb30-35"></a></span>
+<span id="cb30-36"><a href="#cb30-36"></a><span class="ss">-   </span><span class="in">`ph`</span> (the acidity of the water)</span>
+<span id="cb30-37"><a href="#cb30-37"></a><span class="ss">-   </span><span class="in">`hardness`</span> (the concentration of minerals)</span>
+<span id="cb30-38"><a href="#cb30-38"></a><span class="ss">-   </span><span class="in">`solids`</span> (concentration of solid material)</span>
+<span id="cb30-39"><a href="#cb30-39"></a><span class="ss">-   </span><span class="in">`chloramines`</span> (concentration of chlorine and ammonia compounds)</span>
+<span id="cb30-40"><a href="#cb30-40"></a><span class="ss">-   </span><span class="in">`sulfate`</span> (oxidized sulfur concentration)</span>
+<span id="cb30-41"><a href="#cb30-41"></a><span class="ss">-   </span><span class="in">`conductivity`</span> (ability of the water to pass an electrical current)</span>
+<span id="cb30-42"><a href="#cb30-42"></a><span class="ss">-   </span><span class="in">`organic_carbon`</span> (concentration of organic forms of carbon)</span>
+<span id="cb30-43"><a href="#cb30-43"></a><span class="ss">-   </span><span class="in">`trihalomethanes`</span> (byproducts of treating water with organic compounds )</span>
+<span id="cb30-44"><a href="#cb30-44"></a><span class="ss">-   </span><span class="in">`turbidity`</span> (cloudiness of water)</span>
+<span id="cb30-45"><a href="#cb30-45"></a></span>
+<span id="cb30-46"><a href="#cb30-46"></a><span class="al">![Non-potable and potable water](images/water.jpg)</span></span>
+<span id="cb30-47"><a href="#cb30-47"></a></span>
+<span id="cb30-48"><a href="#cb30-48"></a>&lt;br&gt;</span>
+<span id="cb30-49"><a href="#cb30-49"></a></span>
+<span id="cb30-50"><a href="#cb30-50"></a><span class="fu"># Wrangling the Data</span></span>
+<span id="cb30-51"><a href="#cb30-51"></a></span>
+<span id="cb30-52"><a href="#cb30-52"></a>First, we are going to read in all of the necessary packages that are required for this analysis.</span>
+<span id="cb30-53"><a href="#cb30-53"></a></span>
+<span id="cb30-54"><a href="#cb30-54"></a><span class="in">```{r setup}</span></span>
+<span id="cb30-55"><a href="#cb30-55"></a></span>
+<span id="cb30-56"><a href="#cb30-56"></a><span class="in"># loading packages</span></span>
+<span id="cb30-57"><a href="#cb30-57"></a></span>
+<span id="cb30-58"><a href="#cb30-58"></a><span class="in">library(tidyverse) # keeping data clean, tidy, and organized</span></span>
+<span id="cb30-59"><a href="#cb30-59"></a><span class="in">library(janitor) # for clean_names()</span></span>
+<span id="cb30-60"><a href="#cb30-60"></a><span class="in">library(patchwork) # stitching together figures</span></span>
+<span id="cb30-61"><a href="#cb30-61"></a><span class="in">library(corrplot) # correlation plot</span></span>
+<span id="cb30-62"><a href="#cb30-62"></a><span class="in">library(tidymodels) # making models</span></span>
+<span id="cb30-63"><a href="#cb30-63"></a><span class="in">library(lattice)</span></span>
+<span id="cb30-64"><a href="#cb30-64"></a><span class="in">library(kknn)</span></span>
+<span id="cb30-65"><a href="#cb30-65"></a><span class="in">library(ranger)</span></span>
+<span id="cb30-66"><a href="#cb30-66"></a><span class="in">library(recipes)</span></span>
+<span id="cb30-67"><a href="#cb30-67"></a><span class="in">library(yardstick)</span></span>
+<span id="cb30-68"><a href="#cb30-68"></a><span class="in">library(themis) # for upsampling</span></span>
+<span id="cb30-69"><a href="#cb30-69"></a><span class="in">library(vip) # for vip chart </span></span>
+<span id="cb30-70"><a href="#cb30-70"></a></span>
+<span id="cb30-71"><a href="#cb30-71"></a></span>
+<span id="cb30-72"><a href="#cb30-72"></a><span class="in"># making a color pallet for binary outcomes</span></span>
+<span id="cb30-73"><a href="#cb30-73"></a></span>
+<span id="cb30-74"><a href="#cb30-74"></a><span class="in">pal &lt;- c("0" = "#1C3738", "1" = "#8BAAAD")</span></span>
+<span id="cb30-75"><a href="#cb30-75"></a><span class="in">```</span></span>
+<span id="cb30-76"><a href="#cb30-76"></a></span>
+<span id="cb30-77"><a href="#cb30-77"></a>Fortunately, our data is already relatively clean and in tidy format as is. The only things we need to do are to clean up the column names using the <span class="in">`clean_names()`</span> function in the <span class="in">`janitor`</span> package and also make our outcome variable <span class="in">`potability`</span> a factor. Cleaning the names allows us to reformat all of the columsn so they have no spaces or upperase letters. This helps keeps things simple and *tidy*. Changing the <span class="in">`potability`</span> column to a factor is important because it is initially read in as a numeric value (0 or 1), but we want it to represent a group (non-potable or potable) so we can use it as a binary group outcome in our models.</span>
+<span id="cb30-78"><a href="#cb30-78"></a></span>
+<span id="cb30-79"><a href="#cb30-79"></a><span class="fu">## Cleaning Data</span></span>
+<span id="cb30-80"><a href="#cb30-80"></a></span>
+<span id="cb30-83"><a href="#cb30-83"></a><span class="in">```{r}</span></span>
+<span id="cb30-84"><a href="#cb30-84"></a><span class="co"># reading in the data</span></span>
+<span id="cb30-85"><a href="#cb30-85"></a>water <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"water_potability.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-86"><a href="#cb30-86"></a>  <span class="co"># cleaning up the column names</span></span>
+<span id="cb30-87"><a href="#cb30-87"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-88"><a href="#cb30-88"></a>  <span class="co"># making potability as a factor </span></span>
+<span id="cb30-89"><a href="#cb30-89"></a>  <span class="fu">mutate</span>(<span class="at">potability =</span> <span class="fu">factor</span>(potability))</span>
+<span id="cb30-90"><a href="#cb30-90"></a><span class="in">```</span></span>
+<span id="cb30-91"><a href="#cb30-91"></a></span>
+<span id="cb30-92"><a href="#cb30-92"></a><span class="fu">## Missing Values</span></span>
+<span id="cb30-93"><a href="#cb30-93"></a></span>
+<span id="cb30-94"><a href="#cb30-94"></a>We want to also check to see if our data has any missing values first. Missing values can be problematic especially in large quantities. We can do so using the <span class="in">`naniar`</span> package to plot the missing data across columns using the <span class="in">`viz_miss()`</span> function.</span>
+<span id="cb30-95"><a href="#cb30-95"></a></span>
+<span id="cb30-96"><a href="#cb30-96"></a><span class="in">```{r, fig.cap = "**Figure 1.** Visualizing missing values throughout the data."}</span></span>
+<span id="cb30-97"><a href="#cb30-97"></a><span class="in"># looking for missing data </span></span>
+<span id="cb30-98"><a href="#cb30-98"></a><span class="in">naniar::vis_miss(water)</span></span>
+<span id="cb30-99"><a href="#cb30-99"></a><span class="in">```</span></span>
+<span id="cb30-100"><a href="#cb30-100"></a></span>
+<span id="cb30-101"><a href="#cb30-101"></a>We can see that there are a fair amount of values missing from the <span class="in">`ph`</span>, <span class="in">`sulfate`</span>, and <span class="in">`trihalomethanes`</span> columns. One way to tackle this is to get rid of that data all together, but we would be losing a lot of valuable data from other predictors in doing so. We can address this in our modeling by imputing the data, or filling it with estimated values from different methods. We will come back to this later.</span>
+<span id="cb30-102"><a href="#cb30-102"></a></span>
+<span id="cb30-103"><a href="#cb30-103"></a><span class="fu">## Exploratory Data Analysis</span></span>
+<span id="cb30-104"><a href="#cb30-104"></a></span>
+<span id="cb30-105"><a href="#cb30-105"></a>The first step you want to take in making models is exploratory data analysis (EDA). This is the phase where you dive into your data, look at its nooks and crannies, and try to identify potential patterns that could give insight into the steps you will want to take when modeling. Looking at the abundance. distribution, and correlation of the data are all importance steps to take.</span>
+<span id="cb30-106"><a href="#cb30-106"></a></span>
+<span id="cb30-107"><a href="#cb30-107"></a><span class="fu">### Bar Chart</span></span>
+<span id="cb30-108"><a href="#cb30-108"></a></span>
+<span id="cb30-109"><a href="#cb30-109"></a>The first thing we want to do is check to compare the total counts of our <span class="in">`potability`</span> outcomes (<span class="in">`0`</span> = not potable and <span class="in">`1`</span> = potable). We can do so by simply plotting a barchart:</span>
+<span id="cb30-110"><a href="#cb30-110"></a></span>
+<span id="cb30-111"><a href="#cb30-111"></a><span class="in">```{r, fig.cap = "**Figure 2.** A Bar chart showing the total number of observations by potability outcomes (0 = not potable, 1 = potable) in the data set."}</span></span>
+<span id="cb30-112"><a href="#cb30-112"></a><span class="in">ggplot(data = water, aes(x = potability, fill = potability)) +</span></span>
+<span id="cb30-113"><a href="#cb30-113"></a><span class="in">  geom_bar() +</span></span>
+<span id="cb30-114"><a href="#cb30-114"></a><span class="in">  scale_fill_manual(values = c("0" = "#1C3738", "1" = "#8BAAAD"),</span></span>
+<span id="cb30-115"><a href="#cb30-115"></a><span class="in">                    guide = "none") +</span></span>
+<span id="cb30-116"><a href="#cb30-116"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb30-117"><a href="#cb30-117"></a><span class="in">  labs(y = "", x = "Potability", </span></span>
+<span id="cb30-118"><a href="#cb30-118"></a><span class="in">       title = "Counts of Water Potability Outcomes in Data") +</span></span>
+<span id="cb30-119"><a href="#cb30-119"></a><span class="in">  scale_x_discrete(expand = c(0, 0)) +</span></span>
+<span id="cb30-120"><a href="#cb30-120"></a><span class="in">  scale_y_continuous(expand = c(0, 0),</span></span>
+<span id="cb30-121"><a href="#cb30-121"></a><span class="in">                     # modifying y axis scale </span></span>
+<span id="cb30-122"><a href="#cb30-122"></a><span class="in">                     labels = scales::label_number(</span></span>
+<span id="cb30-123"><a href="#cb30-123"></a><span class="in">                       scale_cut = scales::cut_short_scale())) +</span></span>
+<span id="cb30-124"><a href="#cb30-124"></a><span class="in">  theme(</span></span>
+<span id="cb30-125"><a href="#cb30-125"></a><span class="in">    panel.grid.minor.y = element_blank(),</span></span>
+<span id="cb30-126"><a href="#cb30-126"></a><span class="in">    panel.grid.major.y = element_blank(),</span></span>
+<span id="cb30-127"><a href="#cb30-127"></a><span class="in">    panel.grid.major.x = element_blank(),</span></span>
+<span id="cb30-128"><a href="#cb30-128"></a><span class="in">    plot.title.position = "plot",</span></span>
+<span id="cb30-129"><a href="#cb30-129"></a><span class="in">    plot.title = element_text(margin = margin(t = 0, r = 0, </span></span>
+<span id="cb30-130"><a href="#cb30-130"></a><span class="in">                                              b = 2, l = 0, unit = "lines")),</span></span>
+<span id="cb30-131"><a href="#cb30-131"></a><span class="in">  )</span></span>
+<span id="cb30-132"><a href="#cb30-132"></a></span>
+<span id="cb30-133"><a href="#cb30-133"></a><span class="in">  </span></span>
+<span id="cb30-134"><a href="#cb30-134"></a><span class="in">```</span></span>
+<span id="cb30-135"><a href="#cb30-135"></a></span>
+<span id="cb30-136"><a href="#cb30-136"></a>We notice that there are significantly more observations with a value of <span class="in">`0`</span> compared to <span class="in">`1`</span>. This tells us that we have a class imbalance in the data and may need to do some upsampling (which we will discuss later). Overall, this is not a major challenge, but it tells us that the models may do a better job at predicting non-potable water compared to potable water as there is less data for the latter.</span>
+<span id="cb30-137"><a href="#cb30-137"></a></span>
+<span id="cb30-138"><a href="#cb30-138"></a><span class="fu">## Histograms</span></span>
+<span id="cb30-139"><a href="#cb30-139"></a></span>
+<span id="cb30-140"><a href="#cb30-140"></a>One great way to investigate our data in the exploratory data analysis is plotting the distribution of our predictors on histograms. Histograms show the distribution and frequency of observations in a data set. The allow us to check and see if it is normally distributed, roughly where the center fo the data is, how wide the spread is, and if there are outliers skewing the data.</span>
+<span id="cb30-141"><a href="#cb30-141"></a></span>
+<span id="cb30-142"><a href="#cb30-142"></a><span class="in">```{r, fig.cap = "**Figure 3.** Histograms showing total solids, pH, hardness, and organic carbon by potability in water samples. "}</span></span>
+<span id="cb30-143"><a href="#cb30-143"></a><span class="in"># making a histogram function</span></span>
+<span id="cb30-144"><a href="#cb30-144"></a><span class="in">hist_fun &lt;- function(x, x_lab) {</span></span>
+<span id="cb30-145"><a href="#cb30-145"></a><span class="in">  ggplot(data = water , aes(x = x,  fill = potability)) +</span></span>
+<span id="cb30-146"><a href="#cb30-146"></a><span class="in">  geom_histogram(color = "black", size = .1) +</span></span>
+<span id="cb30-147"><a href="#cb30-147"></a><span class="in">  scale_fill_manual(name = "Potability ", values = pal) +</span></span>
+<span id="cb30-148"><a href="#cb30-148"></a><span class="in">   scale_x_continuous(expand = c(0, 0),</span></span>
+<span id="cb30-149"><a href="#cb30-149"></a><span class="in">                     # modifying y axis scale </span></span>
+<span id="cb30-150"><a href="#cb30-150"></a><span class="in">                     labels = scales::label_number(</span></span>
+<span id="cb30-151"><a href="#cb30-151"></a><span class="in">                       scale_cut = scales::cut_short_scale())) +</span></span>
+<span id="cb30-152"><a href="#cb30-152"></a><span class="in">  scale_y_continuous(expand = c(0, 0)) +</span></span>
+<span id="cb30-153"><a href="#cb30-153"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb30-154"><a href="#cb30-154"></a><span class="in">  labs(x = x_lab, y = "")</span></span>
+<span id="cb30-155"><a href="#cb30-155"></a><span class="in">}</span></span>
+<span id="cb30-156"><a href="#cb30-156"></a></span>
+<span id="cb30-157"><a href="#cb30-157"></a><span class="in"># making individual histograms </span></span>
+<span id="cb30-158"><a href="#cb30-158"></a><span class="in">solids_hist &lt;- hist_fun(x = water$solids, x_lab = "Solids" )</span></span>
+<span id="cb30-159"><a href="#cb30-159"></a><span class="in">ph_hist &lt;- hist_fun(x = water$ph, x_lab = "pH" )</span></span>
+<span id="cb30-160"><a href="#cb30-160"></a><span class="in">hard_hist &lt;- hist_fun(x = water$hardness, x_lab = "Hardness" )</span></span>
+<span id="cb30-161"><a href="#cb30-161"></a><span class="in">oc_hist &lt;- hist_fun(x = water$organic_carbon, x_lab = "Organic Carbon" )</span></span>
+<span id="cb30-162"><a href="#cb30-162"></a></span>
+<span id="cb30-163"><a href="#cb30-163"></a><span class="in"># combining</span></span>
+<span id="cb30-164"><a href="#cb30-164"></a><span class="in">hist &lt;- (solids_hist + ph_hist)/(hard_hist + oc_hist) +</span></span>
+<span id="cb30-165"><a href="#cb30-165"></a><span class="in">  plot_layout(guides = "collect",</span></span>
+<span id="cb30-166"><a href="#cb30-166"></a><span class="in">              heights = 5) &amp;</span></span>
+<span id="cb30-167"><a href="#cb30-167"></a><span class="in">  theme(legend.position = "bottom")</span></span>
+<span id="cb30-168"><a href="#cb30-168"></a></span>
+<span id="cb30-169"><a href="#cb30-169"></a></span>
+<span id="cb30-170"><a href="#cb30-170"></a><span class="in">hist</span></span>
+<span id="cb30-171"><a href="#cb30-171"></a></span>
+<span id="cb30-172"><a href="#cb30-172"></a><span class="in">```</span></span>
+<span id="cb30-173"><a href="#cb30-173"></a></span>
+<span id="cb30-174"><a href="#cb30-174"></a>The histograms show that <span class="in">`solids`</span>, <span class="in">`ph`</span>, <span class="in">`hardness`</span>, and <span class="in">`organic_carbon`</span> all appear to be normally distributed. <span class="in">`solids`</span> has a slight right skew, indicating that there may be some more high solid concentrations than lower in our sample as a result of some outliers. Overall, these distributions appear to be similarly distributed regardless of potability. This indicates that</span>
+<span id="cb30-175"><a href="#cb30-175"></a></span>
+<span id="cb30-176"><a href="#cb30-176"></a><span class="fu">## Boxplots</span></span>
+<span id="cb30-177"><a href="#cb30-177"></a></span>
+<span id="cb30-178"><a href="#cb30-178"></a>Another way we can check the distribution of our data is by making boxplots. They provide a bit more insight into the spread of the data by providing the median, quartile ranges, and outliers of the data. It provides some more summary statistics that we can use to directly compare our data.</span>
+<span id="cb30-179"><a href="#cb30-179"></a></span>
+<span id="cb30-180"><a href="#cb30-180"></a><span class="in">```{r, fig.cap= "**Figure 4.** Boxplots showing the distribution of cholarmine, sulfate, conductivity, and trihalomethane in water samples."}</span></span>
+<span id="cb30-181"><a href="#cb30-181"></a><span class="in"># boxplot function</span></span>
+<span id="cb30-182"><a href="#cb30-182"></a><span class="in">box_fun &lt;- function(y, y_lab) {</span></span>
+<span id="cb30-183"><a href="#cb30-183"></a><span class="in">  ggplot(data = water , aes(y = y, x = potability,  fill = potability)) +</span></span>
+<span id="cb30-184"><a href="#cb30-184"></a><span class="in">  geom_boxplot(color = "black", size = .1) +</span></span>
+<span id="cb30-185"><a href="#cb30-185"></a><span class="in">  scale_fill_manual(name = "Potability ", values = pal) +</span></span>
+<span id="cb30-186"><a href="#cb30-186"></a><span class="in">   scale_y_continuous(expand = c(0, 0)) +</span></span>
+<span id="cb30-187"><a href="#cb30-187"></a><span class="in">  scale_y_continuous(expand = c(0, 0)) +</span></span>
+<span id="cb30-188"><a href="#cb30-188"></a><span class="in">  theme_minimal() +</span></span>
+<span id="cb30-189"><a href="#cb30-189"></a><span class="in">  labs(x = "", y = y_lab) +</span></span>
+<span id="cb30-190"><a href="#cb30-190"></a><span class="in">  theme(</span></span>
+<span id="cb30-191"><a href="#cb30-191"></a><span class="in">  panel.grid.minor.y = element_blank(),</span></span>
+<span id="cb30-192"><a href="#cb30-192"></a><span class="in">    panel.grid.major.x = element_blank(),</span></span>
+<span id="cb30-193"><a href="#cb30-193"></a><span class="in">  axis.text.x = element_blank())</span></span>
+<span id="cb30-194"><a href="#cb30-194"></a><span class="in">}</span></span>
+<span id="cb30-195"><a href="#cb30-195"></a></span>
+<span id="cb30-196"><a href="#cb30-196"></a><span class="in">chlor_box &lt;- box_fun(water$chloramines, y_lab = "Chloramines")</span></span>
+<span id="cb30-197"><a href="#cb30-197"></a><span class="in">sulf_box &lt;- box_fun(water$sulfate, y_lab = "Sulfate")</span></span>
+<span id="cb30-198"><a href="#cb30-198"></a><span class="in">cond_box &lt;- box_fun(water$conductivity, y_lab = "Conductivity")</span></span>
+<span id="cb30-199"><a href="#cb30-199"></a><span class="in">tri_box &lt;- box_fun(water$trihalomethanes, y_lab = "Trihalomethanes")</span></span>
+<span id="cb30-200"><a href="#cb30-200"></a></span>
+<span id="cb30-201"><a href="#cb30-201"></a></span>
+<span id="cb30-202"><a href="#cb30-202"></a></span>
+<span id="cb30-203"><a href="#cb30-203"></a><span class="in"># combining</span></span>
+<span id="cb30-204"><a href="#cb30-204"></a><span class="in">box &lt;- (chlor_box + sulf_box)/(cond_box + tri_box) +</span></span>
+<span id="cb30-205"><a href="#cb30-205"></a><span class="in">  plot_layout(guides = "collect",</span></span>
+<span id="cb30-206"><a href="#cb30-206"></a><span class="in">              heights = 5) &amp;</span></span>
+<span id="cb30-207"><a href="#cb30-207"></a><span class="in">  theme(legend.position = "bottom") </span></span>
+<span id="cb30-208"><a href="#cb30-208"></a></span>
+<span id="cb30-209"><a href="#cb30-209"></a><span class="in">box</span></span>
+<span id="cb30-210"><a href="#cb30-210"></a><span class="in">```</span></span>
+<span id="cb30-211"><a href="#cb30-211"></a></span>
+<span id="cb30-212"><a href="#cb30-212"></a>As you can see, the <span class="in">`chloramines`</span>, <span class="in">`sulfate`</span>, <span class="in">`conductivity`</span>, and <span class="in">`trihalomethanes`</span> variables all appear to have similar distributions regardless of the water is potable. However, this does not entirely mean that they will not be important predicotr variables in our models. We can see that quartile ranges of potable and non-potable data line up evenly for each variable with a bit wider of a spread for <span class="in">`chloramines`</span> and <span class="in">`sulfate`</span> that are classified as potable.</span>
+<span id="cb30-213"><a href="#cb30-213"></a></span>
+<span id="cb30-214"><a href="#cb30-214"></a><span class="fu">## Correlation Plot</span></span>
+<span id="cb30-215"><a href="#cb30-215"></a></span>
+<span id="cb30-216"><a href="#cb30-216"></a>We then need to check for correlation/collinearity between predictor variables as this could cause issues with our models. Collinearity arises when two or more predictor variables are highly correlated with one another. This can lead to difficulty in interpreting individual coefficients and inflated magnitudes as well as decrease predictability accuracy. Therefore, we want to make sure our data does not have any highly correlated predictors.</span>
+<span id="cb30-217"><a href="#cb30-217"></a></span>
+<span id="cb30-218"><a href="#cb30-218"></a><span class="in">```{r, fig.cap="**Figure.5.** Correlation plot showing the correlation of all continuous water potability predictor variables. There is little to know correlation between variables."}</span></span>
+<span id="cb30-219"><a href="#cb30-219"></a><span class="in">water %&gt;% </span></span>
+<span id="cb30-220"><a href="#cb30-220"></a><span class="in">  select_if(is.numeric) %&gt;% </span></span>
+<span id="cb30-221"><a href="#cb30-221"></a><span class="in">  cor(use = "complete.obs") %&gt;% </span></span>
+<span id="cb30-222"><a href="#cb30-222"></a><span class="in">  # corrplot(type = "lower", method = "shade", order = "AOE", diag = TRUE)</span></span>
+<span id="cb30-223"><a href="#cb30-223"></a><span class="in">corrplot( addrect = 2, tl.col="black") </span></span>
+<span id="cb30-224"><a href="#cb30-224"></a><span class="in">```</span></span>
+<span id="cb30-225"><a href="#cb30-225"></a></span>
+<span id="cb30-226"><a href="#cb30-226"></a>Our correlation plot shows that there is minimal to little correlation between predictor variables in this data set. <span class="in">`Sulfates`</span> have a slight negative relationship with <span class="in">`hardness`</span> and <span class="in">`solids`</span> and <span class="in">`ph`</span> has a slight positive relationship with <span class="in">`hardness`</span> and negative relationship with <span class="in">`solids`</span>. These are overall very small and not strong enough to consider collinearity an issue.</span>
+<span id="cb30-227"><a href="#cb30-227"></a></span>
+<span id="cb30-228"><a href="#cb30-228"></a><span class="fu"># Splitting</span></span>
+<span id="cb30-229"><a href="#cb30-229"></a></span>
+<span id="cb30-230"><a href="#cb30-230"></a>Our next step is to start preparing the data to fit our models. The first thing we have to do is split our data into both training and testing data. The training data is going to be used to actually train and fit our models. It is the data that the models learn from to create their parameters or coefficients that can be used to then make predictions about new data. The way that we test the performance of these models is by predicting the outcome of the testing data observations and comparing it to the actual outcome. In other words, we use the testing data as new or unseen data that we can use our models to make predictions on and gauge its performance using different metrics.</span>
+<span id="cb30-231"><a href="#cb30-231"></a></span>
+<span id="cb30-232"><a href="#cb30-232"></a>I use a 75%-25% random split to create the training and testing data sets. We want the majority of our data to be training data (75%) to ensure that the model has substantial observations to work with. However, we need to ensure that we retain enough data as unseen/new data (25%) to actually test our models with. There is another issue that we have to consider when splitting our data however. That issue is that we want our outcome variable to be equally represented across both training and testing data sets, yet a random split could cause an imbalance of the non-potable (<span class="in">`0`</span>) and potable (<span class="in">`1`</span>) outcomes being represented in the two different data sets. In other words, the majority of the the <span class="in">`0`</span>'s could end up in one data set and the <span class="in">`1`</span>'s in another due to random chance. This would then cause issues as our models might be trained to predict one outcome much better than another outcome leading to poor model performance. We can account for this by stratifying out data in the split by the outcome variable <span class="in">`potability`</span>.</span>
+<span id="cb30-233"><a href="#cb30-233"></a></span>
+<span id="cb30-236"><a href="#cb30-236"></a><span class="in">```{r}</span></span>
+<span id="cb30-237"><a href="#cb30-237"></a><span class="fu">set.seed</span>(<span class="dv">4298</span>)</span>
+<span id="cb30-238"><a href="#cb30-238"></a><span class="co"># splitting ----</span></span>
+<span id="cb30-239"><a href="#cb30-239"></a></span>
+<span id="cb30-240"><a href="#cb30-240"></a><span class="co"># splitting using a 75-25 ratio of training to testing data </span></span>
+<span id="cb30-241"><a href="#cb30-241"></a>water_split <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">initial_split</span>(water, <span class="at">prop =</span> <span class="fl">0.75</span>,</span>
+<span id="cb30-242"><a href="#cb30-242"></a>                                <span class="co"># stratifying on the outcome (potability)</span></span>
+<span id="cb30-243"><a href="#cb30-243"></a>                                <span class="at">strata =</span> potability)</span>
+<span id="cb30-244"><a href="#cb30-244"></a></span>
+<span id="cb30-245"><a href="#cb30-245"></a><span class="co"># assining the split data to their respective data frame's</span></span>
+<span id="cb30-246"><a href="#cb30-246"></a>water_train <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">training</span>(water_split)</span>
+<span id="cb30-247"><a href="#cb30-247"></a>water_test <span class="ot">&lt;-</span> rsample<span class="sc">::</span><span class="fu">testing</span>(water_split)</span>
+<span id="cb30-248"><a href="#cb30-248"></a><span class="in">```</span></span>
+<span id="cb30-249"><a href="#cb30-249"></a></span>
+<span id="cb30-250"><a href="#cb30-250"></a><span class="fu"># Cross validation</span></span>
+<span id="cb30-251"><a href="#cb30-251"></a></span>
+<span id="cb30-252"><a href="#cb30-252"></a>One other problem with our current set up is that training data error is not a good estimate of testing data error. When we fit a model on the training data, the model likely will have a much lower error rate or higher performance on the training data than it will when we make predictions on the testing data. This is because the model is prone to overfit the training data itself, and it is therefore a poor indication of how how the model will perform on unseen/testing data. And once we make predicitons using the testing data, we can no longer go back and adjust our model as this become unethical. This leads us to a position where we need to gauge what the testing error might be before making prdictions on the testing data set.</span>
+<span id="cb30-253"><a href="#cb30-253"></a></span>
+<span id="cb30-254"><a href="#cb30-254"></a>Fortunately, we have *k-folds* cross validation for this. K-fold cross-validation is a fundamental technique in machine learning used to evaluate the performance of predictive models accurately. It works by dividing the training dataset into *k* equal-sized *folds*. Each fold is used as a mini training set, except for one, which serves as a *validation* set. This process is repeated *k* times, with each fold taking turns as the validation set. By iterating through all *k* folds, we obtain *k* estimates of the model's performance. This technique helps prevent overfitting, makes efficient use of the available data, and facilitates hyperparameter tuning, ultimately leading to more reliable model evaluation and selection.</span>
+<span id="cb30-255"><a href="#cb30-255"></a></span>
+<span id="cb30-258"><a href="#cb30-258"></a><span class="in">```{r}</span></span>
+<span id="cb30-259"><a href="#cb30-259"></a><span class="co"># making folds ----</span></span>
+<span id="cb30-260"><a href="#cb30-260"></a><span class="co">#cross validation with 5 folds</span></span>
+<span id="cb30-261"><a href="#cb30-261"></a>water_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(water_train, <span class="at">v =</span> <span class="dv">5</span>)</span>
+<span id="cb30-262"><a href="#cb30-262"></a>water_folds</span>
+<span id="cb30-263"><a href="#cb30-263"></a><span class="in">```</span></span>
+<span id="cb30-264"><a href="#cb30-264"></a></span>
+<span id="cb30-265"><a href="#cb30-265"></a><span class="fu"># Model Fitting</span></span>
+<span id="cb30-266"><a href="#cb30-266"></a></span>
+<span id="cb30-267"><a href="#cb30-267"></a>Before we fit our models, we need to make a recipe or instructions on what ingredients to include in our models. We can do so by specifying what predictor variables to include. Lets add in all of our predictors variables to see how far it can take us. Feature selection will be taken care of by some models like Elastic Nets, so we will just include them all here. We also have missing data in the <span class="in">`ph`</span>, <span class="in">`trihalomethanes`</span>, and <span class="in">`sulfate`</span> variables. We can address this by *imputing* or replacing those `NA` values with an estimated value from a linear regression between the variable we want to impute and another variable of interest. Because there is a correlation between `ph` and `hardness` as well as `sulfate` and `solids`, we will use these variables in a linear regression to impute the missing data. However, there does not appear to be a linear relationship between `trihalomethanes` and any other variable, so we are using a *k nearest neighbors or knn* approach to impute these (we will discuss knn in detail later).</span>
+<span id="cb30-268"><a href="#cb30-268"></a></span>
+<span id="cb30-269"><a href="#cb30-269"></a>Furthermore, we discussed upsampling our <span class="in">`potability`</span> outcomes as we have significantly more observations classified as <span class="in">`0`</span> than we do <span class="in">`1`</span>. Upsampling essentially randomly selects observations from the less frequent class to repeat in our data so that we end up with an equal number of outcome observations. It is important to include this here so that our models can train equally on both outcomes. The last thing we need to do is center and scale our variables so that they can be more easily comparable and interpretation. This reduces the effect of large outliers and variables with high variance which can skew the model because of their large magnitude. It is a way of correcting for variables with high variation in their data and make our results more accurate and interperetable.</span>
+<span id="cb30-270"><a href="#cb30-270"></a></span>
+<span id="cb30-273"><a href="#cb30-273"></a><span class="in">```{r}</span></span>
+<span id="cb30-274"><a href="#cb30-274"></a><span class="co"># setting up a recipe </span></span>
+<span id="cb30-275"><a href="#cb30-275"></a>recipe <span class="ot">&lt;-</span> recipes<span class="sc">::</span><span class="fu">recipe</span>(potability <span class="sc">~</span> ph <span class="sc">+</span> hardness <span class="sc">+</span> solids <span class="sc">+</span> chloramines <span class="sc">+</span> sulfate <span class="sc">+</span> conductivity <span class="sc">+</span> organic_carbon <span class="sc">+</span> trihalomethanes <span class="sc">+</span> turbidity , </span>
+<span id="cb30-276"><a href="#cb30-276"></a>                          <span class="at">data =</span> water_train) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-277"><a href="#cb30-277"></a>  <span class="co"># imputing missing data</span></span>
+<span id="cb30-278"><a href="#cb30-278"></a>  <span class="fu">step_impute_linear</span>(ph, <span class="at">impute_with =</span> <span class="fu">imp_vars</span>(hardness)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-279"><a href="#cb30-279"></a>  <span class="fu">step_impute_knn</span>(trihalomethanes, <span class="at">impute_with =</span> <span class="fu">imp_vars</span>(<span class="fu">all_predictors</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-280"><a href="#cb30-280"></a>  <span class="fu">step_impute_linear</span>(sulfate, <span class="at">impute_with =</span> <span class="fu">imp_vars</span>(solids)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-281"><a href="#cb30-281"></a>  <span class="co"># upsample data to make sure 0 and 1 are represented equally</span></span>
+<span id="cb30-282"><a href="#cb30-282"></a>  <span class="fu">step_upsample</span>(potability, <span class="at">over_ratio =</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-283"><a href="#cb30-283"></a>  <span class="co">#center ans scaling</span></span>
+<span id="cb30-284"><a href="#cb30-284"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>())</span>
+<span id="cb30-285"><a href="#cb30-285"></a></span>
+<span id="cb30-286"><a href="#cb30-286"></a><span class="co"># checking that the recipe works </span></span>
+<span id="cb30-287"><a href="#cb30-287"></a><span class="fu">prep</span>(recipe) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-288"><a href="#cb30-288"></a>  <span class="fu">bake</span>(water_train)</span>
+<span id="cb30-289"><a href="#cb30-289"></a><span class="in">```</span></span>
+<span id="cb30-290"><a href="#cb30-290"></a></span>
+<span id="cb30-291"><a href="#cb30-291"></a>I chose four different models to fit for binary classification:</span>
+<span id="cb30-292"><a href="#cb30-292"></a></span>
+<span id="cb30-293"><a href="#cb30-293"></a>**1) Logistic Regression**</span>
+<span id="cb30-294"><a href="#cb30-294"></a></span>
+<span id="cb30-295"><a href="#cb30-295"></a>Logistic regression takes a binary classification approach (0,1) to model the probability of the outcome of the dependent variable given the values of included predictor variables. I assumes a linear relationship between the independent variables and the log odds of the dependent variable. It estimates the probability that the outcome will occur, and then we determine which group that will fall under (0,1) depending on what we set the threshold to be which we set to be 50% in this case. We can interpret the coefficient of the variables to be the effect of the variable on the log odds of the dependent variable. Because there are no *hyperparameters*, or other model settings that are not learned from the data, we have nothing to *tune*, or iterate through multiple combinations of.</span>
+<span id="cb30-296"><a href="#cb30-296"></a></span>
+<span id="cb30-299"><a href="#cb30-299"></a><span class="in">```{r}</span></span>
+<span id="cb30-300"><a href="#cb30-300"></a><span class="co"># making logistic regression model</span></span>
+<span id="cb30-301"><a href="#cb30-301"></a>log_mod <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-302"><a href="#cb30-302"></a>  <span class="fu">set_engine</span>(<span class="st">"glm"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-303"><a href="#cb30-303"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb30-304"><a href="#cb30-304"></a></span>
+<span id="cb30-305"><a href="#cb30-305"></a><span class="co"># workflow</span></span>
+<span id="cb30-306"><a href="#cb30-306"></a>log_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-307"><a href="#cb30-307"></a>  <span class="fu">add_recipe</span>(recipe) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-308"><a href="#cb30-308"></a>  <span class="fu">add_model</span>(log_mod)</span>
+<span id="cb30-309"><a href="#cb30-309"></a><span class="in">```</span></span>
+<span id="cb30-310"><a href="#cb30-310"></a></span>
+<span id="cb30-311"><a href="#cb30-311"></a><span class="sc">\*\*</span>2) Elastic Net</span>
+<span id="cb30-312"><a href="#cb30-312"></a></span>
+<span id="cb30-313"><a href="#cb30-313"></a>We are also going to fit the data to an elastic net model which combines regularization techniques (L1 = Lasso and L2 = Ridge). The L1 regularization introduces sparsity by penalizing the absolute value or size of the coefficients. It is a form of feature selection that can shrink irrelevant predictors down to 0. On the other hand, L2 penalizes the square of the coefficients which can shrink predictor coefficients very small but never down to 0. The L2 portion helps control and minimize the impact of multicollinearity better than L1. The goal of doing this is to prevent overfitting and also improve overall performance that we might not get with just logisitc regression. We tune $\alpha$ and $\lambda$ or the <span class="in">`mixture`</span> and the <span class="in">`penalty`</span> which control the ratio or balance of L1 and L2 in our model. When $\alpha$ is = 1, then we have a pure Lasso regularization, and we have a pure Ridge regularization when it is = 0. $\Lambda$ is essentially the overall strength or the amount of regularization we are applying. In tuning these hyperparameters, we can find a balance between sparsity and reduction in multicollinearity. The downside with this is that it can lead to decreased interpretability compared to logistic regression.</span>
+<span id="cb30-314"><a href="#cb30-314"></a></span>
+<span id="cb30-317"><a href="#cb30-317"></a><span class="in">```{r}</span></span>
+<span id="cb30-318"><a href="#cb30-318"></a><span class="co"># setting up elastic net model</span></span>
+<span id="cb30-319"><a href="#cb30-319"></a>en_mod <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>(<span class="at">mixture =</span> <span class="fu">tune</span>(), </span>
+<span id="cb30-320"><a href="#cb30-320"></a>                       <span class="at">penalty =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-321"><a href="#cb30-321"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-322"><a href="#cb30-322"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb30-323"><a href="#cb30-323"></a></span>
+<span id="cb30-324"><a href="#cb30-324"></a><span class="co"># setting up workflow </span></span>
+<span id="cb30-325"><a href="#cb30-325"></a>en_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-326"><a href="#cb30-326"></a>  <span class="fu">add_recipe</span>(recipe) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-327"><a href="#cb30-327"></a>  <span class="fu">add_model</span>(en_mod)</span>
+<span id="cb30-328"><a href="#cb30-328"></a></span>
+<span id="cb30-329"><a href="#cb30-329"></a><span class="co"># setting up grid </span></span>
+<span id="cb30-330"><a href="#cb30-330"></a>en_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">penalty</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="dv">3</span>),</span>
+<span id="cb30-331"><a href="#cb30-331"></a>                                <span class="at">trans =</span> <span class="fu">identity_trans</span>()),</span>
+<span id="cb30-332"><a href="#cb30-332"></a>                        <span class="co"># mix range  = c(0,1) with 10 levels for </span></span>
+<span id="cb30-333"><a href="#cb30-333"></a>                        <span class="fu">mixture</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)), </span>
+<span id="cb30-334"><a href="#cb30-334"></a>                        <span class="at">levels =</span> <span class="dv">10</span>)</span>
+<span id="cb30-335"><a href="#cb30-335"></a><span class="in">```</span></span>
+<span id="cb30-336"><a href="#cb30-336"></a></span>
+<span id="cb30-337"><a href="#cb30-337"></a>**3) K Nearest Neighbors (KNN)**</span>
+<span id="cb30-338"><a href="#cb30-338"></a></span>
+<span id="cb30-339"><a href="#cb30-339"></a>KNN is another model type that we are going to fit. It is a non-parametric classification model which relies on neighboring data points to make a classification or decision boundary which forms a decision rule. A new data point is assigned a classification depending on it *k* number of nearest neighbors. We can tune the hyperparameter *k*, or <span class="in">`neighbors`</span>, to figure out what the optimal number of neighbors is to determine our decision boundary. KNN is quite robust to noisy data as well which makes it a wis model to choose. One downside is though that it has poor interpretability as it does not have direct interpretable model parameters which logistic regression does.</span>
+<span id="cb30-340"><a href="#cb30-340"></a></span>
+<span id="cb30-343"><a href="#cb30-343"></a><span class="in">```{r}</span></span>
+<span id="cb30-344"><a href="#cb30-344"></a><span class="co"># creating a KNN classification model using knn engine</span></span>
+<span id="cb30-345"><a href="#cb30-345"></a>knn_mod <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(<span class="at">neighbors =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-346"><a href="#cb30-346"></a>    parsnip<span class="sc">::</span><span class="fu">set_mode</span>(<span class="st">"classification"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-347"><a href="#cb30-347"></a>  parsnip<span class="sc">::</span><span class="fu">set_engine</span>(<span class="st">"kknn"</span>)</span>
+<span id="cb30-348"><a href="#cb30-348"></a></span>
+<span id="cb30-349"><a href="#cb30-349"></a></span>
+<span id="cb30-350"><a href="#cb30-350"></a><span class="co"># adding log model and recipe together in a work flow</span></span>
+<span id="cb30-351"><a href="#cb30-351"></a>knn_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-352"><a href="#cb30-352"></a>  <span class="fu">add_model</span>(knn_mod) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-353"><a href="#cb30-353"></a>  <span class="fu">add_recipe</span>(recipe)</span>
+<span id="cb30-354"><a href="#cb30-354"></a></span>
+<span id="cb30-355"><a href="#cb30-355"></a><span class="co"># setting up knn tuning grid</span></span>
+<span id="cb30-356"><a href="#cb30-356"></a>knn_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">neighbors</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>)), </span>
+<span id="cb30-357"><a href="#cb30-357"></a>                         <span class="at">levels =</span> <span class="dv">10</span>)</span>
+<span id="cb30-358"><a href="#cb30-358"></a></span>
+<span id="cb30-359"><a href="#cb30-359"></a><span class="in">```</span></span>
+<span id="cb30-360"><a href="#cb30-360"></a></span>
+<span id="cb30-361"><a href="#cb30-361"></a>**4) Random Forest**</span>
+<span id="cb30-362"><a href="#cb30-362"></a></span>
+<span id="cb30-363"><a href="#cb30-363"></a>Random forests are among some of the favorite algorithms in binary classification due to their high performance. A random forest takes an ensemble learning approach that builds numerous small and shallow trees from a random number of predictors that is specified. Each tree independently predicts the class of the data points it encounters. It then chooses the most common class among all the trees to determine the predicted value after training on the predictor variables. Each tree independently predicts the class of the data point it encounters are aggregated at the end and the mode is chosen as the predicted class. This approach overall reduces overfitting by including a large number of trees.</span>
+<span id="cb30-364"><a href="#cb30-364"></a></span>
+<span id="cb30-365"><a href="#cb30-365"></a>To maximize performance from a random tree, we can tune a number of hyperparameters in the models. The first one is the number of trees (<span class="in">`trees`</span>). This adjust the number of trees that are used to make predictions with before aggregating. The second is the number of randomly selcted predictors to choose from, or <span class="in">`mtry`</span>. This specifies the range of how many randomly selected variables can be included in each small tree. Lastly, we have the number of observations that can be left in a terminal node before the tree node stops dividing further, or <span class="in">`min_n`</span>.</span>
+<span id="cb30-366"><a href="#cb30-366"></a></span>
+<span id="cb30-369"><a href="#cb30-369"></a><span class="in">```{r}</span></span>
+<span id="cb30-370"><a href="#cb30-370"></a><span class="co"># random forest</span></span>
+<span id="cb30-371"><a href="#cb30-371"></a>rf_mod <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mtry =</span> <span class="fu">tune</span>(), </span>
+<span id="cb30-372"><a href="#cb30-372"></a>                           <span class="at">trees =</span> <span class="fu">tune</span>(), </span>
+<span id="cb30-373"><a href="#cb30-373"></a>                           <span class="at">min_n =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb30-374"><a href="#cb30-374"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>, <span class="at">importance =</span> <span class="st">"impurity"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-375"><a href="#cb30-375"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb30-376"><a href="#cb30-376"></a></span>
+<span id="cb30-377"><a href="#cb30-377"></a><span class="co"># workflow</span></span>
+<span id="cb30-378"><a href="#cb30-378"></a>rf_wflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-379"><a href="#cb30-379"></a>  <span class="fu">add_model</span>(rf_mod) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-380"><a href="#cb30-380"></a>  <span class="fu">add_recipe</span>(recipe)</span>
+<span id="cb30-381"><a href="#cb30-381"></a></span>
+<span id="cb30-382"><a href="#cb30-382"></a><span class="co"># setting up grid </span></span>
+<span id="cb30-383"><a href="#cb30-383"></a>rf_grid <span class="ot">&lt;-</span> <span class="fu">grid_regular</span>(<span class="fu">mtry</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">8</span>)), </span>
+<span id="cb30-384"><a href="#cb30-384"></a>                        <span class="fu">trees</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">400</span>)),</span>
+<span id="cb30-385"><a href="#cb30-385"></a>                        <span class="fu">min_n</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">26</span>)),</span>
+<span id="cb30-386"><a href="#cb30-386"></a>                        <span class="at">levels =</span> <span class="dv">8</span>)</span>
+<span id="cb30-387"><a href="#cb30-387"></a></span>
+<span id="cb30-388"><a href="#cb30-388"></a><span class="in">```</span></span>
+<span id="cb30-389"><a href="#cb30-389"></a></span>
+<span id="cb30-390"><a href="#cb30-390"></a>Now that we've set up all our tuning grids, we can proceed to tune and fit our specified models to the cross-validation folds. Note that we do not tune anything for logistic regression, so the process looks slightly different and more simple.</span>
+<span id="cb30-391"><a href="#cb30-391"></a></span>
+<span id="cb30-392"><a href="#cb30-392"></a><span class="in">```{r, eval = FALSE}</span></span>
+<span id="cb30-393"><a href="#cb30-393"></a><span class="in"># logistic regression (doesnt need tuning)</span></span>
+<span id="cb30-394"><a href="#cb30-394"></a><span class="in">log_res &lt;- fit_resamples(log_wflow, water_folds)</span></span>
+<span id="cb30-395"><a href="#cb30-395"></a></span>
+<span id="cb30-396"><a href="#cb30-396"></a><span class="in"># en tuning</span></span>
+<span id="cb30-397"><a href="#cb30-397"></a><span class="in">en_grid_tune &lt;- tune_grid(</span></span>
+<span id="cb30-398"><a href="#cb30-398"></a><span class="in">  en_wflow,</span></span>
+<span id="cb30-399"><a href="#cb30-399"></a><span class="in">  resamples = water_folds,</span></span>
+<span id="cb30-400"><a href="#cb30-400"></a><span class="in">  grid = en_grid</span></span>
+<span id="cb30-401"><a href="#cb30-401"></a><span class="in">)</span></span>
+<span id="cb30-402"><a href="#cb30-402"></a></span>
+<span id="cb30-403"><a href="#cb30-403"></a><span class="in"># knn tuning</span></span>
+<span id="cb30-404"><a href="#cb30-404"></a><span class="in">knn_grid_tune &lt;- tune_grid(</span></span>
+<span id="cb30-405"><a href="#cb30-405"></a><span class="in">  knn_wflow,</span></span>
+<span id="cb30-406"><a href="#cb30-406"></a><span class="in">  grid = knn_grid,</span></span>
+<span id="cb30-407"><a href="#cb30-407"></a><span class="in">  resamples = water_folds)</span></span>
+<span id="cb30-408"><a href="#cb30-408"></a></span>
+<span id="cb30-409"><a href="#cb30-409"></a><span class="in"># rf tuning</span></span>
+<span id="cb30-410"><a href="#cb30-410"></a><span class="in">rf_grid_tune &lt;- tune_grid(</span></span>
+<span id="cb30-411"><a href="#cb30-411"></a><span class="in">  rf_wflow,</span></span>
+<span id="cb30-412"><a href="#cb30-412"></a><span class="in">  resamples = water_folds,</span></span>
+<span id="cb30-413"><a href="#cb30-413"></a><span class="in">  grid = rf_grid)</span></span>
+<span id="cb30-414"><a href="#cb30-414"></a></span>
+<span id="cb30-415"><a href="#cb30-415"></a><span class="in">```</span></span>
+<span id="cb30-416"><a href="#cb30-416"></a></span>
+<span id="cb30-417"><a href="#cb30-417"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb30-418"><a href="#cb30-418"></a></span>
+<span id="cb30-419"><a href="#cb30-419"></a><span class="in"># logistic regression (doesnt need tuning)</span></span>
+<span id="cb30-420"><a href="#cb30-420"></a><span class="in">log_res &lt;- fit_resamples(log_wflow, water_folds)</span></span>
+<span id="cb30-421"><a href="#cb30-421"></a></span>
+<span id="cb30-422"><a href="#cb30-422"></a></span>
+<span id="cb30-423"><a href="#cb30-423"></a><span class="in"># loading in saved data results</span></span>
+<span id="cb30-424"><a href="#cb30-424"></a><span class="in">load("en_grid_tune.rda")</span></span>
+<span id="cb30-425"><a href="#cb30-425"></a><span class="in">load("knn_grid_tune.rda")</span></span>
+<span id="cb30-426"><a href="#cb30-426"></a><span class="in">load("rf_grid_tune.rda")</span></span>
+<span id="cb30-427"><a href="#cb30-427"></a></span>
+<span id="cb30-428"><a href="#cb30-428"></a><span class="in">```</span></span>
+<span id="cb30-429"><a href="#cb30-429"></a></span>
+<span id="cb30-430"><a href="#cb30-430"></a><span class="fu"># Model Selection and Performance</span></span>
+<span id="cb30-431"><a href="#cb30-431"></a></span>
+<span id="cb30-432"><a href="#cb30-432"></a>Now that we have fitted all of our models, we need to compare their performances so we can pick our best model. One metric that we can use is measuring the area under the *Receiver Operating Characteristic (ROC)* curve. This plot can tell us what the true positive rate (sensitivity) is against the false positive rate (1 - sensetivity) where a higher ROC value (0-1) represents a better performance. A value of 1 indicates a perfect model with impeccable performance, and a value of 0.5 means that the model performed no better than a random coin toss.</span>
+<span id="cb30-433"><a href="#cb30-433"></a></span>
+<span id="cb30-436"><a href="#cb30-436"></a><span class="in">```{r}</span></span>
+<span id="cb30-437"><a href="#cb30-437"></a><span class="co"># select top model</span></span>
+<span id="cb30-438"><a href="#cb30-438"></a></span>
+<span id="cb30-439"><a href="#cb30-439"></a><span class="co"># logistic regression</span></span>
+<span id="cb30-440"><a href="#cb30-440"></a><span class="fu">collect_metrics</span>(log_res) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-441"><a href="#cb30-441"></a>  <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">"roc_auc"</span>)</span>
+<span id="cb30-442"><a href="#cb30-442"></a></span>
+<span id="cb30-443"><a href="#cb30-443"></a><span class="co"># elastic net</span></span>
+<span id="cb30-444"><a href="#cb30-444"></a><span class="fu">show_best</span>(en_grid_tune, </span>
+<span id="cb30-445"><a href="#cb30-445"></a>            <span class="at">metric =</span> <span class="st">"roc_auc"</span>, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb30-446"><a href="#cb30-446"></a></span>
+<span id="cb30-447"><a href="#cb30-447"></a><span class="co"># knn</span></span>
+<span id="cb30-448"><a href="#cb30-448"></a><span class="fu">show_best</span>(knn_grid_tune, </span>
+<span id="cb30-449"><a href="#cb30-449"></a>            <span class="at">metric =</span> <span class="st">"roc_auc"</span>, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb30-450"><a href="#cb30-450"></a></span>
+<span id="cb30-451"><a href="#cb30-451"></a><span class="co"># random forest</span></span>
+<span id="cb30-452"><a href="#cb30-452"></a><span class="fu">show_best</span>(rf_grid_tune, </span>
+<span id="cb30-453"><a href="#cb30-453"></a>            <span class="at">metric =</span> <span class="st">"roc_auc"</span>, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb30-454"><a href="#cb30-454"></a><span class="in">```</span></span>
+<span id="cb30-455"><a href="#cb30-455"></a></span>
+<span id="cb30-456"><a href="#cb30-456"></a>Here we can see that the random forest model with 8 randomly selected predictors (<span class="in">`mtry`</span>), 228 trees (<span class="in">`trees`</span>), and a minimum of 26 observations in a terminal node (<span class="in">`min_n`</span>) performed the best resulting in a mean ROC area under the curve value of 0.646 averaged over the 5 folds. However, this ROC value represents the cross validation error and is just used as proxy of the testing error. Testing error is a better metric to use for model performance as it tells us how well the model predicts unseen, new data. To get our testing error, we first need to finalize our workflow by fitting this model to our entire training data. This allows us to utilize all of the training data we have to train our selected best model. Next, we will use this fitted model to predict the outcome of the testing data that was set aside at the initial split. We can then get the ROC value of the testing data as our estimate of how the model performs on new, unseen data and plot it on an ROC curve.</span>
+<span id="cb30-457"><a href="#cb30-457"></a></span>
+<span id="cb30-458"><a href="#cb30-458"></a><span class="in">```{r, fig.cap = "**Figure 6.** An ROC curve of the best performing random forest model."}</span></span>
+<span id="cb30-459"><a href="#cb30-459"></a><span class="in"># finalizing workflow</span></span>
+<span id="cb30-460"><a href="#cb30-460"></a><span class="in">rf_mod_final &lt;- finalize_workflow(rf_wflow,</span></span>
+<span id="cb30-461"><a href="#cb30-461"></a><span class="in">                                   select_best(rf_grid_tune))</span></span>
+<span id="cb30-462"><a href="#cb30-462"></a></span>
+<span id="cb30-463"><a href="#cb30-463"></a><span class="in"># fitting model to entire training data</span></span>
+<span id="cb30-464"><a href="#cb30-464"></a><span class="in">rf_mod_final_fit &lt;- fit(rf_mod_final, water_train)</span></span>
+<span id="cb30-465"><a href="#cb30-465"></a></span>
+<span id="cb30-466"><a href="#cb30-466"></a><span class="in">#predicting and getting rmse</span></span>
+<span id="cb30-467"><a href="#cb30-467"></a><span class="in">rf_mod_final_test &lt;- augment(rf_mod_final_fit, water_test) </span></span>
+<span id="cb30-468"><a href="#cb30-468"></a></span>
+<span id="cb30-469"><a href="#cb30-469"></a><span class="in">rf_mod_final_test %&gt;% </span></span>
+<span id="cb30-470"><a href="#cb30-470"></a><span class="in">  roc_auc(potability, .pred_0)</span></span>
+<span id="cb30-471"><a href="#cb30-471"></a></span>
+<span id="cb30-472"><a href="#cb30-472"></a><span class="in">roc_curve(rf_mod_final_test, truth = potability, .pred_0) %&gt;% </span></span>
+<span id="cb30-473"><a href="#cb30-473"></a><span class="in">  autoplot()</span></span>
+<span id="cb30-474"><a href="#cb30-474"></a><span class="in">```</span></span>
+<span id="cb30-475"><a href="#cb30-475"></a></span>
+<span id="cb30-476"><a href="#cb30-476"></a>This final ROC value comes out to be 0.66, so our model has some predictive ability. However, an ROC value of 1 says that the model predicts perfectly, so our model is still quite a ways from having a high performance. It is much closer to an ROC value of 0.5 which says the model performs no better than a random coin toss telling us that it has quite a low predictive performance overall. We can also see that in this area under the ROC curve. A higher performing model with a high ROC value would show a much more curved/arced line reaching a <span class="in">`sensitivity`</span> close to 1 relatively quickly on the x axis. However, we see a very shallow and gradual incline with a small area under the ROC curve indicating mediocre performance.</span>
+<span id="cb30-477"><a href="#cb30-477"></a></span>
+<span id="cb30-478"><a href="#cb30-478"></a>We then want to look at how important the different variables were in determining their overall significance in predicting potability. We can do so by creating a *variable of importance (VIP)* graph.</span>
+<span id="cb30-479"><a href="#cb30-479"></a></span>
+<span id="cb30-480"><a href="#cb30-480"></a><span class="in">```{r, fig.cap = "**Figure 7.** A variable of importance (VIP) graph highlighting the variables of importnace in descendign order from top to bottom."}</span></span>
+<span id="cb30-481"><a href="#cb30-481"></a><span class="in"># making a variable importance </span></span>
+<span id="cb30-482"><a href="#cb30-482"></a><span class="in">rf_mod_final_fit %&gt;%</span></span>
+<span id="cb30-483"><a href="#cb30-483"></a><span class="in">  extract_fit_parsnip() %&gt;% </span></span>
+<span id="cb30-484"><a href="#cb30-484"></a><span class="in">  vip() +</span></span>
+<span id="cb30-485"><a href="#cb30-485"></a><span class="in">  theme_minimal()</span></span>
+<span id="cb30-486"><a href="#cb30-486"></a><span class="in">```</span></span>
+<span id="cb30-487"><a href="#cb30-487"></a></span>
+<span id="cb30-488"><a href="#cb30-488"></a>Our variable of importance figure tells us that <span class="in">`ph`</span> and <span class="in">`sulfate`</span> were the most important predictors in predicting water potability followed by <span class="in">`hardness`</span>, <span class="in">`chloramines`</span>, and <span class="in">`solids`</span>. The remaining variables <span class="in">`conductivity`</span>m <span class="in">`turbidity`</span>, <span class="in">`trihalomethanes`</span>, and <span class="in">`organic_carbon`</span> appeared to contribute little meaning to the predictability of <span class="in">`potability`</span>.</span>
+<span id="cb30-489"><a href="#cb30-489"></a></span>
+<span id="cb30-490"><a href="#cb30-490"></a><span class="fu"># Conclusions</span></span>
+<span id="cb30-491"><a href="#cb30-491"></a></span>
+<span id="cb30-492"><a href="#cb30-492"></a>In conclusion, our models did a relatively poor job at predicting water potability with the exception of the best performing random forest model which still performed mediocre at best. We fit four different models to our data using k folds cross validation with 5 folds. The predictor variables included in the data are: 1) logistic regression, 2) elastic net, 3) k nearest neighbors, and 4) random forest. The random forest model was the best performing model (based on it's ROC value of 0.646 in the cross validation set) followed by k nearest neighbors, elastic net, and logistic regression model. The logistic regression model performed about as well as a random coin toss as it received a ROC value of 0.5. This led us to use our top performing random forest model and train it on all of the training data to then make predictions on the testing data, giving us an ROC score of 0.66.</span>
+<span id="cb30-493"><a href="#cb30-493"></a></span>
+<span id="cb30-494"><a href="#cb30-494"></a>Based on the exploratory data analysis, it seemed that potable water and non-potable water observations overlapped quite a bit in the distribution of their prediction predictor variables. This indicated early on that the provided predictor variables might not be very important in determining water potability, so I am not too surprised about the results here. It is likely that there are other variables contributing to the potability of water not included in the sample data such as presence of bacteria or other microbes. In conclusion, <span class="in">`ph`</span>, <span class="in">`hardness`</span>, <span class="in">`solids`</span>, <span class="in">`chloramines`</span>, <span class="in">`sulfate`</span>, <span class="in">`conductivity`</span>, <span class="in">`organic_carbon`</span>, <span class="in">`trihalomethanes`</span>, and <span class="in">`turbidity`</span> are not thw best variables for predicting water potability, and other predictors need to be included to make better performing models. The best way to improve these models would be to collect new samples with additional predictor variables to potentially increase the performance of these models. We might include presence of bacteria or other microbes which</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2023, Raymond Hunter
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Made using Quarto
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
