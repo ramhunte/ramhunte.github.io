@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-12-15">
 <meta name="description" content="an investigation of environmental injustice">
 
-<title>A Spatial Analysis of Houston Blackouts and the Communities it Affected</title>
+<title>A Spatial Analysis of Houston Blackouts and the Communtiies it Affected</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,7 +71,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -120,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -160,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -232,22 +231,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><a href="https://github.com/ramhunte/houston_blackout">Github project repository</a></p>
 <section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
+<h2 data-anchor-id="background">Background</h2>
 <p>Natural disasters oftentimes occur unpredictably and rapidly, and the severity of them can vary widely. Specifically in the Southern United States, major storms (like Hurricane Katrina) can have devastating and long lasting consequences on communities.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> “In February 2021, the state of Texas suffered a major power crisis, which came about as a result of three severe winter storms sweeping across the United States on February 10–11, 13–17, and 15–20.”<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. While these storms seem like once in a blue moon events, they are becoming much more of a normal occurrence. More importantly, storms do not impact all communities the same, and therefore it is critical that we incorporate racial justice components to our lines of environmental analysese to understand how we can mitigate marginalized groups from being disproportianately harmed from climate change.</p>
 </section>
 <section id="goal" class="level2">
-<h2 class="anchored" data-anchor-id="goal">Goal</h2>
+<h2 data-anchor-id="goal">Goal</h2>
 <p>The goal of this study is to try and answer the question: <strong>Which communities in Houston experienced blackouts from the February 2021 storms, and did they vary by socioeconomic status?</strong> Other studies have shown that not only do lower socioeconomic status communities experience more intense consequences of natural disaster, but they also don’t always receive the same degree of aid following one.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>By identifying the total number of houses in Houston that lost power and overlaying socioeconomic data to these homes, we can begin to look at these underlying patterns of potential environmental injustice. These types of studies are becoming critically important as climate change continues to increase the frequency of severe storms including intense precipitation events throughout Texas<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> as not all communities are affected the same. We need to look at how communities of varying socioeconomic status are impacted as a result.</p>
 </section>
 <section id="approach" class="level2">
-<h2 class="anchored" data-anchor-id="approach">Approach</h2>
+<h2 data-anchor-id="approach">Approach</h2>
 <p>I used remotely-sensed night lights data from before and after the storms to estimate power outages. Data was acquired from the <a href="https://en.wikipedia.org/wiki/Visible_Infrared_Imaging_Radiometer_Suite">Visible Infrared Imaging Radiometer Suite (VIIRS)</a> from the Suomi satellite. I used the VNP46A1 tolook for variation in night lights before and after the storm as a way of identifying areas that lost electric power as a result of the storms. Furthermore, data containing the physical boundaires and area of buildings and roads is needed to spatially join to areas that lost power. I gathered this data from <a href="https://www.openstreetmap.org/#map=4/38.01/-95.84">OpenStreetMap</a> providing high resolution data on the structural layout of the city. Finally, we need to join this data with socioeconomic factor data pertaining to all the communities in Houston affected by the blackouts. I pulled this data from the US Census Bureau (see <code>Readme</code> file) that shows block group county level information on various socioeconomic characterisitcs.</p>
 <p>These types of analysis require a variety of different tools to carry out from satellite images and census data to finalized maps. Some of the most important tools in carrying out this analysis include: * loading, transforming, and wrangling vector/raster data * raster operations to identify blackout areas from satellite imagery * vector operations to isolate affected buildings and remove interference (road lights) * spatial joins of regions experiencing blackouts and the total number of untis within them</p>
 <section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data">Data</h3>
+<h3 data-anchor-id="data">Data</h3>
 <section id="night-lights" class="level4">
-<h4 class="anchored" data-anchor-id="night-lights">Night lights</h4>
+<h4 data-anchor-id="night-lights">Night lights</h4>
 <p>Using NASA’s Worldview to find data pre and post storm, I found satellite images recorded on 2021-02-07 and 2021-02-16 that provided two clear, contrasting images to visualize the extent of the power outage in Texas. VIIRS data is distributed through NASA’s <a href="https://ladsweb.modaps.eosdis.nasa.gov/">Level-1 and Atmospheric Archive &amp; Distribution System Distributed Active Archive Center (LAADS DAAC)</a>. Many NASA Earth data products are distributed in 10x10 degree tiles in sinusoidal equal-area projection that are identified by their horizontal and vertical position in the grid. Houston lies on the border of tiles h08v05 and h08v06, and so I downloaded two tiles per date to ensure the whole city was being included. These data are stored in the <code>VNP46A1</code> folder:</p>
 <ul>
 <li><code>VNP46A1.A2021038.h08v05.001.2021039064328.h5.tif</code>: tile h08v05, collected on 2021-02-07<br>
@@ -260,14 +259,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="roads" class="level4">
-<h4 class="anchored" data-anchor-id="roads">Roads</h4>
+<h4 data-anchor-id="roads">Roads</h4>
 <p>One issue with night light data is that light pollution can interfere with detecting patterns of interest. Highways make up much of the night lights seen from space (see Google’s <a href="https://earth.google.com/web/@27.44405464,-84.7693044,206.63660162a,8916361.52264659d,35y,0h,0t,0r/data=CiQSIhIgMGY3ZTJkYzdlOGExMTFlNjk5MGQ2ZjgxOGQ2OWE2ZTc">Earth at Night</a>). Therefore, it is important to minimize falsely identifying areas with reduced traffic as areas without power. <a href="https://planet.openstreetmap.org/">OpenStreetMap (OSM)</a> is a collaborative project which creates publicly available geographic data of the world. I used <a href="https://download.geofabrik.de/">Geofabrik’s download sites</a> to retrieve a shapefile of all highways in Texas and prepared a Geopackage (<code>.gpkg</code> file) containing just the subset of roads that intersect the Houston metropolitan area.</p>
 <ul>
 <li><code>gis_osm_roads_free_1.gpkg</code></li>
 </ul>
 </section>
 <section id="houses" class="level4">
-<h4 class="anchored" data-anchor-id="houses">Houses</h4>
+<h4 data-anchor-id="houses">Houses</h4>
 <p>I also obtained building data from OpenStreetMap. Again, I downloaded from Geofabrick and prepared a GeoPackage containing only houses in the Houston metropolitan area.<br>
 </p>
 <ul>
@@ -275,17 +274,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="socioeconomic" class="level4">
-<h4 class="anchored" data-anchor-id="socioeconomic">Socioeconomic</h4>
+<h4 data-anchor-id="socioeconomic">Socioeconomic</h4>
 <p>I used data from the <a href="https://www.census.gov/programs-surveys/acs">U.S. Census Bureau’s American Community Survey</a> for census tracts in 2019 to reoresent socioeconomic data of different regions of Houston. The <em>folder</em> <code>ACS_2019_5YR_TRACT_48.gdb</code> is an ArcGIS <a href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/administer-file-gdbs/file-geodatabases.htm">“file geodatabase”</a>, a multi-file proprietary format that’s roughly analogous to a GeoPackage file. Each layer contains a subset of the fields documents in the <a href="https://www2.census.gov/geo/docs/maps-data/data/tiger/prejoined/ACSMetadata2011.txt">ACS metadata</a>. The geodatabase contains a layer holding the geometry information, separate from the layers holding the ACS attributes. You have to combine the geometry with the attributes to get a feature layer that <code>sf</code> can use.</p>
 </section>
 </section>
 </section>
 <section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<h2 data-anchor-id="analysis">Analysis</h2>
 <section id="find-locations-of-blackouts" class="level4">
-<h4 class="anchored" data-anchor-id="find-locations-of-blackouts">Find locations of blackouts</h4>
+<h4 data-anchor-id="find-locations-of-blackouts">Find locations of blackouts</h4>
 <section id="combine-the-data" class="level5">
-<h5 class="anchored" data-anchor-id="combine-the-data">combine the data</h5>
+<h5 data-anchor-id="combine-the-data">combine the data</h5>
 <p>First, I read in the night lights tiles data and combining them into a single <code>stars</code> object for each date (2021-02-07 and 2021-02-16).</p>
 <div class="cell">
 <details class="code-fold">
@@ -305,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="create-a-blackout-mask" class="level5">
-<h5 class="anchored" data-anchor-id="create-a-blackout-mask">create a blackout mask</h5>
+<h5 data-anchor-id="create-a-blackout-mask">create a blackout mask</h5>
 <p>I then found the change in night lights intensity (presumably) caused by the storm. I first reclassified a difference raster, assuming that any location that experienced a drop of more than 200 nW cm<sup>-2</sup>sr<sup>-1</sup> experienced a blackout. <code>NA</code> values were to all locations that experienced a drop of <em>less</em> than 200 nW cm<sup>-2</sup>sr<sup>-1</sup>.</p>
 <div class="cell">
 <details class="code-fold">
@@ -323,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="vectorize-the-mask" class="level5">
-<h5 class="anchored" data-anchor-id="vectorize-the-mask">vectorize the mask</h5>
+<h5 data-anchor-id="vectorize-the-mask">vectorize the mask</h5>
 <p>I vectorized the the blackout mask and fixed any invalid geometries using <code>st_make_valid</code>. I then inspected it to make sure it was an sf object and to look at its characteristics.</p>
 <div class="cell">
 <details class="code-fold">
@@ -342,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="crop-the-vectorized-map-to-houston" class="level5">
-<h5 class="anchored" data-anchor-id="crop-the-vectorized-map-to-houston">crop the vectorized map to Houston</h5>
+<h5 data-anchor-id="crop-the-vectorized-map-to-houston">crop the vectorized map to Houston</h5>
 <p>I defined the Houston metropolitan area with the following coordinates: (-96.5, 29), (-96.5, 30.5), (-94.5, 30.5), (-94.5, 29) and then turned them into a polygon using <code>st_polygon</code>. A CRS was then added to the polygon to make a simple features collection using <code>st_sfc()</code>. Lastly, I cropped (spatially subset) the blackout mask to our region of interest and re-project the cropped blackout dataset to EPSG:3083 (NAD83 / Texas Centric Albers Equal Area).</p>
 <div class="cell">
 <details class="code-fold">
@@ -370,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="check-1-ensurign-that-the-mask-function-worked" class="level5">
-<h5 class="anchored" data-anchor-id="check-1-ensurign-that-the-mask-function-worked">Check #1: Ensurign that the mask function worked</h5>
+<h5 data-anchor-id="check-1-ensurign-that-the-mask-function-worked">Check #1: Ensurign that the mask function worked</h5>
 <div class="cell">
 <details class="code-fold">
 <summary>code</summary>
@@ -396,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><br> <br></p>
 </section>
 <section id="exclude-highways-from-blackout-mask" class="level5">
-<h5 class="anchored" data-anchor-id="exclude-highways-from-blackout-mask">exclude highways from blackout mask</h5>
+<h5 data-anchor-id="exclude-highways-from-blackout-mask">exclude highways from blackout mask</h5>
 <p>The roads geopackage provoded includes data on roads other than highways. However, we can avoid reading in data we don’t need by taking advantage of <code>st_read</code>’s ability to subset using a SQL query. This allows us to save comutational energy by just pulling in relevant data we want.</p>
 <p>First I defined a SQL query:</p>
 <p><code>query &lt;- "SELECT * FROM gis_osm_roads_free_1 WHERE fclass='motorway'"</code></p>
@@ -427,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="check-2-see-if-the-highway-exclusion-mask-removed-all-polygons-within-the-200m-of-highways" class="level5">
-<h5 class="anchored" data-anchor-id="check-2-see-if-the-highway-exclusion-mask-removed-all-polygons-within-the-200m-of-highways">Check #2: see if the highway exclusion mask removed all polygons within the 200m of highways</h5>
+<h5 data-anchor-id="check-2-see-if-the-highway-exclusion-mask-removed-all-polygons-within-the-200m-of-highways">Check #2: see if the highway exclusion mask removed all polygons within the 200m of highways</h5>
 <div class="cell">
 <details class="code-fold">
 <summary>code</summary>
@@ -453,9 +452,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="find-homes-impacted-by-blackouts" class="level4">
-<h4 class="anchored" data-anchor-id="find-homes-impacted-by-blackouts">Find homes impacted by blackouts</h4>
+<h4 data-anchor-id="find-homes-impacted-by-blackouts">Find homes impacted by blackouts</h4>
 <section id="load-buildings-data" class="level5">
-<h5 class="anchored" data-anchor-id="load-buildings-data">load buildings data</h5>
+<h5 data-anchor-id="load-buildings-data">load buildings data</h5>
 <p>The buildings dataset was then loaded in using <code>st_read</code> and the following SQL query:</p>
 <p><code>SELECT *</code>&nbsp; <code>FROM gis_osm_buildings_a_free_1</code> <code>WHERE (type IS NULL AND name IS NULL)</code> <code>OR type in ('residential', 'apartments', 'house', 'static_caravan', 'detached')</code><br>
 </p>
@@ -477,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="find-homes-in-blackout-areas" class="level5">
-<h5 class="anchored" data-anchor-id="find-homes-in-blackout-areas">find homes in blackout areas</h5>
+<h5 data-anchor-id="find-homes-in-blackout-areas">find homes in blackout areas</h5>
 <p>I then filtered the mask to homes within blackout areas and counted the number of impacted homes.</p>
 <div class="cell">
 <details class="code-fold">
@@ -499,9 +498,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="investigate-socioeconomic-factors" class="level4">
-<h4 class="anchored" data-anchor-id="investigate-socioeconomic-factors">Investigate socioeconomic factors</h4>
+<h4 data-anchor-id="investigate-socioeconomic-factors">Investigate socioeconomic factors</h4>
 <section id="load-acs-data" class="level5">
-<h5 class="anchored" data-anchor-id="load-acs-data">load ACS data</h5>
+<h5 data-anchor-id="load-acs-data">load ACS data</h5>
 <p>First, I read in the geodatabase layers using <code>st_read()</code> (geometries are stored in the <code>ACS_2019_5YR_TRACT_48_TEXAS</code> layer and income data is stored in the <code>X19_INCOME</code> layer). For this analysis, I used the median income field <code>B19013e1</code> for income. Data was then reprojected to EPSG:3083.</p>
 <div class="cell">
 <details class="code-fold">
@@ -521,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="determine-which-census-tracts-experienced-blackouts" class="level5">
-<h5 class="anchored" data-anchor-id="determine-which-census-tracts-experienced-blackouts">determine which census tracts experienced blackouts</h5>
+<h5 data-anchor-id="determine-which-census-tracts-experienced-blackouts">determine which census tracts experienced blackouts</h5>
 <p>Next, I joined the income data to the census tract geometries uaing a <code>left_join</code> function by “ID”. This was then spatially joined to the census tract data with buildings determined to be impacted by blackouts using the <code>st_intersects</code> operation. Lastly, census tracts that had blackouts were identified.</p>
 <div class="cell">
 <details class="code-fold">
@@ -547,7 +546,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="check-3-making-sure-only-census-tracts-with-homes-that-experienced-a-blackout-are-included" class="level5">
-<h5 class="anchored" data-anchor-id="check-3-making-sure-only-census-tracts-with-homes-that-experienced-a-blackout-are-included">CHECK #3: making sure only census tracts with homes that experienced a blackout are included:</h5>
+<h5 data-anchor-id="check-3-making-sure-only-census-tracts-with-homes-that-experienced-a-blackout-are-included">CHECK #3: making sure only census tracts with homes that experienced a blackout are included:</h5>
 <div class="cell">
 <details class="code-fold">
 <summary>code</summary>
@@ -571,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="compare-incomes-of-impacted-tracts-to-unimpacted-tracts" class="level5">
-<h5 class="anchored" data-anchor-id="compare-incomes-of-impacted-tracts-to-unimpacted-tracts">compare incomes of impacted tracts to unimpacted tracts</h5>
+<h5 data-anchor-id="compare-incomes-of-impacted-tracts-to-unimpacted-tracts">compare incomes of impacted tracts to unimpacted tracts</h5>
 <p>Finally, I created a map of median income by census tract and designated which tracts experienced blackouts. I then plot the distribution of income in impacted and nonimpacted tracts to visualize what the spread of the community income looked like.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -700,7 +699,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<h3 data-anchor-id="conclusion">Conclusion</h3>
 <p>Overall, these results show that census tracts had a similar median income distribution regardless of whether or not they experienced a black out in the February 2021 storm, but income was slightly higher for tracts that experienced a blackout than those that did not. The median of the census tract median income distribution was $57,002 for non-blackout tracts and $60,642 for blackout tracts. The majority of the income distribution is centered at about $35,000 - $45,000, with some outliers in the $200,000 + range. Some of the limitations of the study are that the census tracts don’t represent how many homes experienced a black out or how long the black out was experienced for. These factors could have underlying socioeconomic patterns that we can’t see here which could explain why certain tracts experienced blackouts for the duration that they did. This should be an area for fututre investigation to strengthen the results found in this study.</p>
 
 
@@ -750,13 +749,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -765,18 +757,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -808,7 +789,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -867,7 +870,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1745,7 +1748,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-565"><a href="#cb25-565"></a></span>
 <span id="cb25-566"><a href="#cb25-566"></a></span>
 <span id="cb25-567"><a href="#cb25-567"></a></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -1753,7 +1756,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
- Copyright 2023, Raymond Hunter
+ Copyright 2024, Raymond Hunter
   </li>  
 </ul>
     </div>   

@@ -9,9 +9,12 @@ website:
     left: 
       - href: index.qmd
         text: Home
-      - about.qmd
-      - resume.qmd
-      - blogs.qmd
+      - href: about.qmd
+        text: About
+      - href: resume.qmd
+        text: Resume
+      - href: blogs.qmd
+        text: My Blog
     
     right: 
       - icon: linkedin
@@ -24,7 +27,7 @@ website:
  
   page-footer: 
     left: 
-      - "Copyright 2023, Raymond Hunter"
+      - "Copyright 2024, Raymond Hunter"
     right: 
       - "Made using Quarto"
 
@@ -39,6 +42,7 @@ format:
     - styles.scss
     mainfont: Raleway
     toc: false
+    anchor-sections: false
     page-layout: full
 
 editor: visual

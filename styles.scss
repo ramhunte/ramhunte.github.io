@@ -2,8 +2,6 @@
 
 // Fonts
 
-//@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;700&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
 
@@ -23,15 +21,6 @@ $footer-bg: $darkturq; // footer
 $footer-fg: $gray1; // footer foreground
 $link-color: $gold; // hyperlinks 
 
-// Inline code
-//$code-bg: $darkturq; // inline code background color
-//$code-color: $gold; // inline code text color
-
-// Code blocks
-//$code-block-bg: $darkturq; // code block background color
-
-
-
 /*-- scss:rules --*/
 
 h1 {
@@ -43,61 +32,106 @@ h1 {
 h2, h4 {
 letter-spacing: 5px;
 font-weight: 700;
-font-size: 26px;
+font-size: 28px;
 color: $darkturq ;
 }
 
 h3 {
-letter-spacing: 4px;
-font-weight: 500;
+letter-spacing: 1px;
+font-weight: 700;
 font-size: 20px;
 color: $darkturq ;
 }
 
-
-
-
-
-
-
 .title {
   color: $darkturq;
-
 }
 
 .subtitle {
   color: $darkturq;
 }
 
-
-/* Background image of painting */
-/* body {
-/*     background-image: url(images/paint2.jpg);
-/*     background-size: cover; /* Adjust as needed */
-/*     background-repeat: no-repeat; /* Prevent repeating the image */
-/* }
-
-/* Change the font size of tabset tabs */
-.nav-tabs li {
-    font-size: 24px; /* Adjust the font size as needed */
-   linear-gradient: url(images/paint2.jpg);
-   background-color: transparent; 
-}  
-
-
-/* creating a border around the tab content  */
- .tab-content {  
-   border: 3px solid $darkturq;
-}
-
-
-
-
-
-
 .custom-line {
     border-style: solid;
     border-top: 3px solid $darkturq; /* Adjust the width and color as needed */
 }
 
+.button-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin-top: 25px;
+}
 
+.button {
+  color: $gold;
+  border: 2px solid $darkturq;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 25px; 
+  margin-left: 25px;
+}
+
+.banner-container {
+  position: relative;
+  top: -50px;
+  left: 0px;
+  width: 100%;
+}
+
+.banner-image-two{
+  position: absolute;
+  top: -75px;
+  left: 0px;
+  width: 100%;
+  max-width: 150%;
+  height: 380px; /* Set a fixed height for the image */
+  object-fit: cover;
+  z-index: 0;
+}
+
+.center-banner-box {
+  background-color: $darkturq; /* Set the background color to teal */
+  color: $gray1; /* Set the text color to white */
+  position: absolute; /* Position it as needed */
+  top: 175px; /* Adjust top positioning if necessary */
+  width: 35rem;
+  border-radius: 25px;
+  
+}
+
+
+.gray-placeholder-two {
+  background-color: $gray1;
+  padding-top: 150px;
+  padding-bottom: 70px;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.rounded-hover {
+    border-radius: 15px; /* Rounds the edges of the image */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.rounded-hover:hover {
+    transform: scale(1.03); /* Slightly enlarge the image */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow */
+}
+
+
+.about-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.about-image:hover {
+    transform: scale(1.03); /* Slightly enlarge the image */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow */
+}

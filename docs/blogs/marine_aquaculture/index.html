@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,7 +71,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -120,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -160,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -230,11 +229,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><a href="https://github.com/ramhunte/marine_aquaculture">Github Project Repository</a></p>
 <section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
+<h2 data-anchor-id="background">Background</h2>
 <p>Land based meat production poses serious environmental challenges through its contribution to greenhouse gas (GHG) emissions as well as harsh land use impacts. As society progresses further into uncharted waters with climate change, it is critical that we explore alternative options to mitigate GHG emissions. Marine aquaculture is an important practice that has a high potential to transform the way the global food supply operates as a more sustainable protein option than land-based meat production.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> One important study by <a href="https://www.nature.com/articles/s41559-017-0257-9">Gentry et al.</a> mapped the potential for marine aquaculture globally based on multiple constraints, including ship traffic, dissolved oxygen, and bottom depth .<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> This highlighted the true potential of the industry, although it is still far from reaching its capacity.</p>
 </section>
 <section id="objectives" class="level2">
-<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
+<h2 data-anchor-id="objectives">Objectives</h2>
 <p>The purpose of this work flow is to utilize spatial analysis tools to understand how we can identify commercial potential of natural resources. In this analysis, I am looking at how to identify potential marine species habitat suitable for aquaculture along the West Coast of the United States in each of its Exclusive Economic Zones (EEZ). I specifically look at habitat requirements across temperature and depth requirements for oysters (a widely commercially available food source) and then create a function from this analysis that can be applied to any west coast species with a given temperature and depth range and potential for aquaculture. This analysis utilizes a variety of spatial analysis tools to for both vector and raster data. These include:</p>
 <ul>
 <li>spatial subsetting and joins</li>
@@ -247,29 +246,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="approach" class="level2">
-<h2 class="anchored" data-anchor-id="approach">Approach</h2>
+<h2 data-anchor-id="approach">Approach</h2>
 <p>Based on previous research, we know that oysters need the following conditions in order to reach optimal growth rates: - sea surface temperature: 11-30°C - depth: 0-70 meters below sea level</p>
 <p>I used raster and vector data and spatial analysis tools to identify where these ranges overlapped to isolate suitable habitat. Following these steps, I created maps visualizing priority EEZ’s depending on their total and percent suitable aquaculture habitat. I applied this methodology into a function that reproduces the same workflow to find suitable habita for any species with a temperature and depth range that could be potentially grown along the west coast.</p>
 <section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data">Data</h3>
+<h3 data-anchor-id="data">Data</h3>
 <section id="sea-surface-temperature" class="level4">
-<h4 class="anchored" data-anchor-id="sea-surface-temperature">Sea Surface Temperature</h4>
+<h4 data-anchor-id="sea-surface-temperature">Sea Surface Temperature</h4>
 <p>Average annual sea surface temperature (SST) from the years 2008 to 2012 was used to characterize the average sea surface temperature within the region. The data was originally generated from <a href="https://coralreefwatch.noaa.gov/product/5km/index_5km_ssta.php">NOAA’s 5km Daily Global Satellite Sea Surface Temperature Anomaly v3.1</a>.</p>
 </section>
 <section id="bathymetry" class="level4">
-<h4 class="anchored" data-anchor-id="bathymetry">Bathymetry</h4>
+<h4 data-anchor-id="bathymetry">Bathymetry</h4>
 <p>To characterize the depth of the ocean I used the <a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/#area">General Bathymetric Chart of the Oceans (GEBCO)</a>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </section>
 <section id="exclusive-economic-zones" class="level4">
-<h4 class="anchored" data-anchor-id="exclusive-economic-zones">Exclusive Economic Zones</h4>
+<h4 data-anchor-id="exclusive-economic-zones">Exclusive Economic Zones</h4>
 <p>Maritime boundaries were designated using Exclusive Economic Zones off of the west coast of US from <a href="https://www.marineregions.org/eez.php">Marineregions.org</a>.</p>
 </section>
 </section>
 </section>
 <section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<h2 data-anchor-id="analysis">Analysis</h2>
 <section id="prepare-data" class="level4">
-<h4 class="anchored" data-anchor-id="prepare-data">Prepare data</h4>
+<h4 data-anchor-id="prepare-data">Prepare data</h4>
 <p>To start, I loaded in and organized all necessary data and made sure it had the correct coordinate reference system. This involved:</p>
 <ul>
 <li>reading in the shapefile for the West Coast EEZ (<code>wc_regions_clean.shp</code>)<br>
@@ -320,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="process-data" class="level4">
-<h4 class="anchored" data-anchor-id="process-data">Process data</h4>
+<h4 data-anchor-id="process-data">Process data</h4>
 <p>Next, I processed the SST and depth data so that they could be combined. In this case the SST and depth data had slightly different resolutions, extents, and positions. Because I didn’t want to change the underlying depth data, I resampled to match the SST data using the nearest neighbor approach.</p>
 <p>The steps I took can be summarized as follows:</p>
 <ul>
@@ -379,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="finding-suitable-locations" class="level4">
-<h4 class="anchored" data-anchor-id="finding-suitable-locations">Finding suitable locations</h4>
+<h4 data-anchor-id="finding-suitable-locations">Finding suitable locations</h4>
 <p>In order to find suitable locations for marine aquaculture, I first needed to find locations that were suitable in terms of both SST and depth. This involved reclassifying the SST and depth data into locations that are suitable for Oysters by assigning a <code>1</code> or a <code>NA</code> value to suitable and unsuitable habitats. I then multiplied the two rasters to look for locations that satisfy both SST and depth conditions (raster cells where <code>1</code> values overlapped) using the <code>lapp()</code> function. Lastly, I created a check to ensure that the masked ideal layer only showed overlapping ideal depth and temperature conditions.</p>
 <div class="cell">
 <details class="code-fold">
@@ -440,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="determine-the-most-suitable-eez" class="level4">
-<h4 class="anchored" data-anchor-id="determine-the-most-suitable-eez">Determine the most suitable EEZ</h4>
+<h4 data-anchor-id="determine-the-most-suitable-eez">Determine the most suitable EEZ</h4>
 <p>I first needed to determine the total suitable area within each EEZ in order to rank zones by priority. To do so, I found the total area of suitable locations within each EEZ. The steps in which I approached this can be summarized as such:</p>
 <ul>
 <li>Step 1: read in, rasterize, and crop the the eez data to the extent and resolution of the ideal habitat layer</li>
@@ -479,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="visualize-results" class="level4">
-<h4 class="anchored" data-anchor-id="visualize-results">Visualize results</h4>
+<h4 data-anchor-id="visualize-results">Visualize results</h4>
 <p>Finally, I created two maps showing 1) the total suitable oyster aquaculture habitat area by region, and 2) the percent suitable oyster aquaculture habitat area by region:</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -568,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="expanding-to-other-species" class="level4">
-<h4 class="anchored" data-anchor-id="expanding-to-other-species">Expanding to other species</h4>
+<h4 data-anchor-id="expanding-to-other-species">Expanding to other species</h4>
 <p>After having identified the potential suitable habitat for oyster aquaculture, I wanted to expand this workflow to easily make maps for other species requirements. I created a function that can accept any species name, temperature, and depth ranges, and it will create two replicated maps for the given species.</p>
 <div class="cell">
 <details class="code-fold">
@@ -713,13 +712,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -728,18 +720,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -771,7 +752,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -830,7 +833,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1585,7 +1588,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-432"><a href="#cb15-432"></a><span class="in">```</span></span>
 <span id="cb15-433"><a href="#cb15-433"></a></span>
 <span id="cb15-434"><a href="#cb15-434"></a>And there you have it! This is how I used spatial analysis tools in R to figure out where potential oyster (and any other species) aquaculture might be by EEZ along the west coast of the United States.</span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -1593,7 +1596,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
- Copyright 2023, Raymond Hunter
+ Copyright 2024, Raymond Hunter
   </li>  
 </ul>
     </div>   

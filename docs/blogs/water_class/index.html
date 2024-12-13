@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,7 +71,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -105,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -149,7 +148,7 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -189,7 +188,7 @@ window.Quarto = {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -320,7 +319,7 @@ window.Quarto = {
 </div>
 <p>Fortunately, our data is already relatively clean and in tidy format as is. The only things we need to do are to clean up the column names using the <code>clean_names()</code> function in the <code>janitor</code> package and also make our outcome variable <code>potability</code> a factor. Cleaning the names allows us to reformat all of the columsn so they have no spaces or upperase letters. This helps keeps things simple and <em>tidy</em>. Changing the <code>potability</code> column to a factor is important because it is initially read in as a numeric value (0 or 1), but we want it to represent a group (non-potable or potable) so we can use it as a binary group outcome in our models.</p>
 <section id="cleaning-data" class="level2">
-<h2 class="anchored" data-anchor-id="cleaning-data">Cleaning Data</h2>
+<h2 data-anchor-id="cleaning-data">Cleaning Data</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>code</summary>
@@ -334,7 +333,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="missing-values" class="level2">
-<h2 class="anchored" data-anchor-id="missing-values">Missing Values</h2>
+<h2 data-anchor-id="missing-values">Missing Values</h2>
 <p>We want to also check to see if our data has any missing values first. Missing values can be problematic especially in large quantities. We can do so using the <code>naniar</code> package to plot the missing data across columns using the <code>viz_miss()</code> function.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -354,10 +353,10 @@ window.Quarto = {
 <p>We can see that there are a fair amount of values missing from the <code>ph</code>, <code>sulfate</code>, and <code>trihalomethanes</code> columns. One way to tackle this is to get rid of that data all together, but we would be losing a lot of valuable data from other predictors in doing so. We can address this in our modeling by imputing the data, or filling it with estimated values from different methods. We will come back to this later.</p>
 </section>
 <section id="exploratory-data-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<h2 data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
 <p>The first step you want to take in making models is exploratory data analysis (EDA). This is the phase where you dive into your data, look at its nooks and crannies, and try to identify potential patterns that could give insight into the steps you will want to take when modeling. Looking at the abundance. distribution, and correlation of the data are all importance steps to take.</p>
 <section id="bar-chart" class="level3">
-<h3 class="anchored" data-anchor-id="bar-chart">Bar Chart</h3>
+<h3 data-anchor-id="bar-chart">Bar Chart</h3>
 <p>The first thing we want to do is check to compare the total counts of our <code>potability</code> outcomes (<code>0</code> = not potable and <code>1</code> = potable). We can do so by simply plotting a barchart:</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -396,7 +395,7 @@ window.Quarto = {
 </section>
 </section>
 <section id="histograms" class="level2">
-<h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
+<h2 data-anchor-id="histograms">Histograms</h2>
 <p>One great way to investigate our data in the exploratory data analysis is plotting the distribution of our predictors on histograms. Histograms show the distribution and frequency of observations in a data set. The allow us to check and see if it is normally distributed, roughly where the center fo the data is, how wide the spread is, and if there are outliers skewing the data.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -442,7 +441,7 @@ window.Quarto = {
 <p>The histograms show that <code>solids</code>, <code>ph</code>, <code>hardness</code>, and <code>organic_carbon</code> all appear to be normally distributed. <code>solids</code> has a slight right skew, indicating that there may be some more high solid concentrations than lower in our sample as a result of some outliers. Overall, these distributions appear to be similarly distributed regardless of potability. This indicates that</p>
 </section>
 <section id="boxplots" class="level2">
-<h2 class="anchored" data-anchor-id="boxplots">Boxplots</h2>
+<h2 data-anchor-id="boxplots">Boxplots</h2>
 <p>Another way we can check the distribution of our data is by making boxplots. They provide a bit more insight into the spread of the data by providing the median, quartile ranges, and outliers of the data. It provides some more summary statistics that we can use to directly compare our data.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -489,7 +488,7 @@ window.Quarto = {
 <p>As you can see, the <code>chloramines</code>, <code>sulfate</code>, <code>conductivity</code>, and <code>trihalomethanes</code> variables all appear to have similar distributions regardless of the water is potable. However, this does not entirely mean that they will not be important predicotr variables in our models. We can see that quartile ranges of potable and non-potable data line up evenly for each variable with a bit wider of a spread for <code>chloramines</code> and <code>sulfate</code> that are classified as potable.</p>
 </section>
 <section id="correlation-plot" class="level2">
-<h2 class="anchored" data-anchor-id="correlation-plot">Correlation Plot</h2>
+<h2 data-anchor-id="correlation-plot">Correlation Plot</h2>
 <p>We then need to check for correlation/collinearity between predictor variables as this could cause issues with our models. Collinearity arises when two or more predictor variables are highly correlated with one another. This can lead to difficulty in interpreting individual coefficients and inflated magnitudes as well as decrease predictability accuracy. Therefore, we want to make sure our data does not have any highly correlated predictors.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -866,13 +865,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -881,18 +873,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -924,7 +905,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -983,7 +986,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1782,7 +1785,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-492"><a href="#cb30-492"></a>In conclusion, our models did a relatively poor job at predicting water potability with the exception of the best performing random forest model which still performed mediocre at best. We fit four different models to our data using k folds cross validation with 5 folds. The predictor variables included in the data are: 1) logistic regression, 2) elastic net, 3) k nearest neighbors, and 4) random forest. The random forest model was the best performing model (based on it's ROC value of 0.646 in the cross validation set) followed by k nearest neighbors, elastic net, and logistic regression model. The logistic regression model performed about as well as a random coin toss as it received a ROC value of 0.5. This led us to use our top performing random forest model and train it on all of the training data to then make predictions on the testing data, giving us an ROC score of 0.66.</span>
 <span id="cb30-493"><a href="#cb30-493"></a></span>
 <span id="cb30-494"><a href="#cb30-494"></a>Based on the exploratory data analysis, it seemed that potable water and non-potable water observations overlapped quite a bit in the distribution of their prediction predictor variables. This indicated early on that the provided predictor variables might not be very important in determining water potability, so I am not too surprised about the results here. It is likely that there are other variables contributing to the potability of water not included in the sample data such as presence of bacteria or other microbes. In conclusion, <span class="in">`ph`</span>, <span class="in">`hardness`</span>, <span class="in">`solids`</span>, <span class="in">`chloramines`</span>, <span class="in">`sulfate`</span>, <span class="in">`conductivity`</span>, <span class="in">`organic_carbon`</span>, <span class="in">`trihalomethanes`</span>, and <span class="in">`turbidity`</span> are not thw best variables for predicting water potability, and other predictors need to be included to make better performing models. The best way to improve these models would be to collect new samples with additional predictor variables to potentially increase the performance of these models. We might include presence of bacteria or other microbes which</span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -1790,7 +1793,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
- Copyright 2023, Raymond Hunter
+ Copyright 2024, Raymond Hunter
   </li>  
 </ul>
     </div>   

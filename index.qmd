@@ -1,10 +1,10 @@
 ---
 title: "Raymond Hunter"
 subtitle: "Data Scientist | Geospatial Analyst"
-image: images/headshot.jpg
+image: images/headshot3.jpg
 about:
   template: trestles
-  image-shape: rounded
+  image-shape: round
   image-width: 20em
   links:
     - icon: linkedin
@@ -18,16 +18,17 @@ about:
       href: mailto:rmhunter999@gmail.com
 ---
 
-![](images/big_pine.jpg)
-
 ## Hello World!
 
-Out of the infinite amount of content available on the web, you have stumbled upon a little screenshot of my life on a computer screen. Whoohoo! My name is Raymond (I go by Ray), and I created this personal website using Quarto in R Studio to show off some of the things that are important to me in my academic and professional career. Here, I am sharing some skills, experiences, and hobbies that have molded me into the nature loving, data enthusiast that I am today.
+<hr class="custom-line">
 
-I have a graduate level background in Data Science, attaining my Masters of Environmental Science and Management (MESM) degree from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara and degrees in Ecology and Evolutionary Biology (B.S.) and Environmental Studies (B.A.) from UC Santa Cruz. While my work has been quite diverse, I am highly skilled in utilizing geospatial analysis and modeling to solve and understand environmental isses. Some of my favorite tools to use are R/RStudio, Python, SQL, and QGIS. I enjoy various outdoor activities when not squinting my eyes at error messages.
+Out of the infinite amount of content available on the web, you have stumbled upon a little screenshot of my life on a computer screen. Whoohoo! My name is Ray, and I created this personal website using Quarto to share a bit about who I am and what I do including the skills, experiences, and hobbies that have molded me into the nature loving, data enthusiast that I am today.
+
+An Environmental Data Scientist by training, I focus in coastal conservation projects having worked on data-driven projects with [NOAA Fisheries](https://www.fisheries.noaa.gov/) and [TNC](https://www.nature.org/en-us/) in recent years. I hold a Masters of Environmental Science and Management (MESM) degree from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara, a B.S.in Ecology and Evolutionary Biology, and B.A. in Environmental Studies from UC Santa Cruz. I enjoy various outdoor activities when not squinting my eyes at error messages.
 
 Enjoy!
 
 <hr class="custom-line">
 
 *"Not all those who wonder are lost"* - Gandalf the Grey
+

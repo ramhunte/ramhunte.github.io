@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,7 +71,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -120,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -160,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -249,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>water</li>
 </ul>
 <section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<h2 data-anchor-id="summary">Summary</h2>
 <p>My approach to this analysis can be summed up in 5 steps:</p>
 <ul>
 <li>Step 1: load and process Landsat scene data</li>
@@ -260,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
+<h2 data-anchor-id="data">Data</h2>
 <p><strong>Landsat 5 Thematic Mapper</strong></p>
 <p>Data was obtained from <a href="https://www.usgs.gov/landsat-missions/landsat-5">Landsat 5</a>, including 1 scene from September 25, 2007. The specific spectral bands being used are: 1, 2, 3, 4, 5, 7 from the collection 2 surface reflectance product.</p>
 <p><strong>Study area and training data</strong> A polygon representing southern Santa Barbara county was used as the overall study site. I also used polygons of regions within Santa Barbara representing training sites, including character string with land cover type. The decision tree derived from the training data is then applied to the entire Santa Barbara county polygon to create predictions of landuse cover for the whole region.</p>
@@ -269,9 +268,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="workflow" class="level1">
 <h1>Workflow</h1>
 <section id="process-data" class="level2">
-<h2 class="anchored" data-anchor-id="process-data">Process data</h2>
+<h2 data-anchor-id="process-data">Process data</h2>
 <section id="load-packages-and-set-working-directory" class="level4">
-<h4 class="anchored" data-anchor-id="load-packages-and-set-working-directory">Load packages and set working directory</h4>
+<h4 data-anchor-id="load-packages-and-set-working-directory">Load packages and set working directory</h4>
 <p>Because this project required working with both vector and raster data, I used both <code>sf</code> and <code>terra</code> packages in my workflow. To train our classification decision tree and plot the results, I used the <code>rpart</code> and <code>rpart.plot</code> packages.</p>
 <div class="cell">
 <details class="code-fold">
@@ -289,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="load-landsat-data" class="level4">
-<h4 class="anchored" data-anchor-id="load-landsat-data">Load Landsat data</h4>
+<h4 data-anchor-id="load-landsat-data">Load Landsat data</h4>
 <p>First, I created a raster stack based on the 6 bands I worked with. Each file name ends with the band number (e.g.&nbsp;<code>B1.tif</code>). Band 6 corresponds to thermal data, which we will not be working with for this analysis, so it was not included in the data. To create a raster stack, I made a list of the files that I wanted to work with and read them all in at once using the <code>rast</code> function. The names of the layers were then updated to match the spectral bands and plot a true color image to see what we’re working with.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -321,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="load-study-area" class="level4">
-<h4 class="anchored" data-anchor-id="load-study-area">Load study area</h4>
+<h4 data-anchor-id="load-study-area">Load study area</h4>
 <p>I wanted to constrain the analysis to the southern portion of the county where there was training data, so I read in a file that defines the region of interest (ROI). I made sure that both CRS from the shape file and the Landsat data matched.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -337,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="crop-and-mask-landsat-data-to-study-area" class="level4">
-<h4 class="anchored" data-anchor-id="crop-and-mask-landsat-data-to-study-area">Crop and mask Landsat data to study area</h4>
+<h4 data-anchor-id="crop-and-mask-landsat-data-to-study-area">Crop and mask Landsat data to study area</h4>
 <p>Next, I cropped and masked the Landsat data to the study area. This reduced the amount of data that needed to be worked with and therefore saves computational time and energy. Furthermore, I removed objects that I no longer was going to be working with using the <code>rm()</code> function to save space (optional).</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -363,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="convert-landsat-values-to-reflectance" class="level4">
-<h4 class="anchored" data-anchor-id="convert-landsat-values-to-reflectance">Convert Landsat values to reflectance</h4>
+<h4 data-anchor-id="convert-landsat-values-to-reflectance">Convert Landsat values to reflectance</h4>
 <p>Next, I converted the values in the raster stack to correspond to reflectance values. To do so, I first removed erroneous values and applied any <a href="https://www.usgs.gov/faqs/how-do-i-use-scale-factor-landsat-level-2-science-products#:~:text=Landsat%20Collection%202%20surface%20temperature,the%20scale%20factor%20is%20applied.">scaling factors</a> to convert to reflectance. In this case, I worked with <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">Landsat Collection 2</a>. The valid range of pixel values for this collection is 7,273-43,636, with a multiplicative scale factor of 0.0000275 and an additive scale factor of -0.2. So I reclassified any erroneous values as <code>NA</code> and updated the values for each pixel based on the scaling factors. Now the pixel values should range from 0-100%.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -401,9 +400,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="classify-image" class="level2">
-<h2 class="anchored" data-anchor-id="classify-image">Classify image</h2>
+<h2 data-anchor-id="classify-image">Classify image</h2>
 <section id="extract-reflectance-values-for-training-data" class="level4">
-<h4 class="anchored" data-anchor-id="extract-reflectance-values-for-training-data">Extract reflectance values for training data</h4>
+<h4 data-anchor-id="extract-reflectance-values-for-training-data">Extract reflectance values for training data</h4>
 <p>Here, I loaded in the shapefile identifying different locations within the study area as containing one of the 4 land cover types. I then extracted the spectral values at each site to create a data frame that relates land cover types to their spectral reflectance.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -439,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="train-decision-tree-classifier" class="level4">
-<h4 class="anchored" data-anchor-id="train-decision-tree-classifier">Train decision tree classifier</h4>
+<h4 data-anchor-id="train-decision-tree-classifier">Train decision tree classifier</h4>
 <p>To train the decision tree, I first needed to establish a model formula (i.e.&nbsp;what the response and predictor variables are). The <code>rpart</code> function implements the <a href="https://medium.com/geekculture/decision-trees-with-cart-algorithm-7e179acee8ff">CART algorithm</a>. The <code>rpart</code> function needs to know the model formula and training data you would like to use. Because I was performing a classification, I set <code>method = "class"</code>. I also set <code>na.action = na.omit</code> to remove any pixels with <code>NA</code>s from the analysis.<br>
 </p>
 <p>To understand how the decision tree will classify pixels, I first plotted the results. The decision tree is comprised of a hierarchy of binary decisions. Each decision rule has 2 outcomes based on a conditional statement pertaining to values in each spectral band.</p>
@@ -469,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="apply-decision-tree" class="level4">
-<h4 class="anchored" data-anchor-id="apply-decision-tree">Apply decision tree</h4>
+<h4 data-anchor-id="apply-decision-tree">Apply decision tree</h4>
 <p>After making the decision tree, I applied it to the entire image. The <code>terra</code> package includes a <code>predict()</code> function that allows you to apply a model to the data. In order for this to work properly, the names of the layers needed to match the column names of the predictors I used to train our decision tree. The <code>predict()</code> function then returns a raster layer with integer values. These integer values correspond to the <em>factor levels</em> in the training data. To figure out what category each integer corresponded to, I then inspected the levels of the training data.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -483,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="plot-results" class="level4">
-<h4 class="anchored" data-anchor-id="plot-results">Plot results</h4>
+<h4 data-anchor-id="plot-results">Plot results</h4>
 <p>Finally, I plotted the results to check out the land cover map.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
@@ -503,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>This analysis highlights the power of using supervised classification to gain insight of land use over on a large scale. While this technique has some challenges, it is a powerful tool that can be used in the environmental field to understand not just land use cover but a wide variety of environmental topics. It is important that these practices are also ground truthed to ensure the predicted model results are accurate.</p>
 
 
@@ -533,13 +532,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -548,18 +540,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -591,7 +572,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -650,7 +653,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1222,7 +1225,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-249"><a href="#cb12-249"></a><span class="fu">## Conclusion</span></span>
 <span id="cb12-250"><a href="#cb12-250"></a></span>
 <span id="cb12-251"><a href="#cb12-251"></a>This analysis highlights the power of using supervised classification to gain insight of land use over on a large scale. While this technique has some challenges, it is a powerful tool that can be used in the environmental field to understand not just land use cover but a wide variety of environmental topics. It is important that these practices are also ground truthed to ensure the predicted model results are accurate.</span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -1230,7 +1233,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
- Copyright 2023, Raymond Hunter
+ Copyright 2024, Raymond Hunter
   </li>  
 </ul>
     </div>   
