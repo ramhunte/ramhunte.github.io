@@ -22,7 +22,7 @@ format:
     warning: false
     message: false
 toc: true
-draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
 If you are reading this post, you are probably familiar with the process of collecting, cleaning, wrangling, and analyzing data and maybe writing it up in a report. You are also probably familiar with the feeling of finding an error (or getting critical feedback on things to change from your supervisor) at the finish line and having to go aaalllllll the way back and re-run your time and energy intensive workflow. Even worse, your pipeline has gotten so large and messy over the corrections you don't exactly remember which pieces of code are still relevant making the process even more painful. Rinse and repeat. It is not a fun process! It's what the package developers call a *Sysyphean loop*. That is precious time that you could be spending on enjoying life. Fortunately there is an R package for shrinking this death loop and making your job as an analyst/developer/scientist/etc. much more enjoyable, and it is called `{targets}`

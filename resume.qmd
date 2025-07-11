@@ -1,25 +1,26 @@
-
 <!-- Image banner at top -->
- <img class="banner-image-two" src="images/stones2.png" alt="River Stones"/>
- <div class="center-banner-box">
-</div>
-  
-<div class="gray-placeholder-two">
-</div>
+
+<img src="images/stones2.png" alt="River Stones" class="banner-image-two"/>
+
+::: center-banner-box
+:::
+
+::: gray-placeholder-two
+:::
 
 <!-- Education -->
 
 <h2>Education</h2>
 
-<h3>University of California, Santa Barbara</h3> 
+<h3>University of California, Santa Barbara</h3>
 
 ![](images/cap2.svg){width="2%"} **Masters in Environmental Science and Management** \| Sept 2022 - June 2024
-<h3>University of California, Santa Cruz</h3> 
+
+<h3>University of California, Santa Cruz</h3>
 
 ![](images/cap2.svg){width="2%"} **B.Sc. Ecology and Evolutionary Biology** \| Highest Honors 4.0 GPA\| Sept 2017 - Dec 2020
 
-![](images/cap2.svg){width="2%"} **B.A. Environmental Studies** \| Highest Honors 4.0 GPA\| Sept 2017 - Dec 2020
-<!-- Skills  -->
+![](images/cap2.svg){width="2%"} **B.A. Environmental Studies** \| Highest Honors 4.0 GPA\| Sept 2017 - Dec 2020 <!-- Skills  -->
 
 <h2>Skills</h2>
 
@@ -28,79 +29,115 @@
 R/RStudio, Python, Git/GitHub, SQL, Bash, Excel, Google Drive
 
 <h3>Remote Sensing & Geospatial Analysis</h3>
+
 R, QGIS, Python and Google Earth Engine
 
 <h3>Machine Learning</h3>
+
 R, Python, supervised/unsupervised, validation, training/testing, optimization, feature engineering, model evaluation
 
 <h3>Data Visualization</h3>
+
 Shiny app/dashboard, ggplot, Leaflet, Quarto, RMarkown, CSS, HTML, Javascript, Tableau
 
 <!-- Experience -->
 
 <h2>Experience</h2>
 
-<h3>Data Manager -- Masters Group Project</h3> UCSB (3/23-6/24)
-<!-- **Data Manager -- Masters Group Project**, UCSB (3/23-6/24) -->
+<h3>Data Analyst -- NOAA Fisheries (Contract)</h3>
 
--   Designed and spearheaded extensive geospatial analyses with 180k+ hectares of remotely sensed spatial and tabular data sets to model riparian habitat restoration requirements and generate cost estimates 
--   Leveraged zonal statistics, spatial subsets/joins, and raster/vector transformations with overlayed indigenous demographics to identify keys ecologically unique areas for recommended restoration    
+Remote (4/25-pres.) 
+
+-   Developed reproducible data pipelines in R, incorporating statistical and machine learning methods to analyze sustainable fisheries data and assess the effectiveness of federally managed fisheries.
+-   Built interactive R Shiny dashboards, apps, and public web pages to communicate analytical findings and provide accessible fisheries data to stakeholders.
+-   Integrated SQL databases with R to create automated, robust workflows for data extraction, modeling, and reporting.
+
+
+<h3>Data Analyst -- Comunidad y Biodiversidad (Contract)</h3>
+
+Remote (4/25-7/25.) 
+
+-   Designed and deployed a server-based evaluation tool using R Shiny, enabling users to assess the effectiveness of marine protected areas across Mexico.
+
+
+<h3>Data Manager -- Masters Group Project</h3>
+
+UCSB (3/23-6/24) <!-- **Data Manager -- Masters Group Project**, UCSB (3/23-6/24) -->
+
+-   Designed and spearheaded extensive geospatial analyses with 180k+ hectares of remotely sensed spatial and tabular data sets to model riparian habitat restoration requirements and generate cost estimates
+-   Leveraged zonal statistics, spatial subsets/joins, and raster/vector transformations with overlayed indigenous demographics to identify keys ecologically unique areas for recommended restoration\
 -   Developed a user friendly and interactive Shiny dashboard (HTML and CSS) to visually present results and facilitate clear communication of key findings to NOAA restoration management and other stakeholders
 
-<h3> Teaching Assistant -- UCSB </h3> 
+<h3>Teaching Assistant -- UCSB</h3>
+
 UCSB (9/22-6/24)
 
 -   *Applied Ecology* \| *Environmental Chemistry* \| *Environmental Ethics* \| *Infectious Disease Ecology*
 
+<h3>Biosecurity Intern -- The Nature Conservancy</h3>
 
-<h3>Biosecurity Intern -- The Nature Conservancy</h3> Santa Barbara, CA (6/23-9-23)
+Santa Barbara, CA (6/23-9-23)
 
 -   Led a comprehensive study including statistical analysis/modeling, GIS, report writing, fieldwork, and publication to address biosecurity weaknesses in the Channel Islands while mentoring an undergraduate
--   Coded logistic regression models with environmental covariates measured using GIS to predict behavioral responses; performed model evaluations and feature engineering to optimize model performance 
+-   Coded logistic regression models with environmental covariates measured using GIS to predict behavioral responses; performed model evaluations and feature engineering to optimize model performance
 -   Presented findings at the California Islands Symposium (publishing a first-authored scientific paper)
 
-<h3>Data Analyst -- Yoga Soup</h3> 
+<h3>Data Analyst -- Yoga Soup</h3>
+
 Santa Barbara, CA (9/23-pres.)
 
 -   Programmed and executed a data management plan to distribute and archive terabytes of company data
 -   Coded automated reproducible pipelines in R to perform identification and relocation of sensitive data
 
+<h3>Biologist -- Mountain View Biological Consulting</h3>
 
-<h3>Biologist -- Mountain View Biological Consulting</h3> Mammoth Lakes, CA (2/21–6/21)
+Mammoth Lakes, CA (2/21–6/21)
 
 -   Mapped dozens of field sites in GIS, located access points and project perimeters, and communicated project logistics to senior biologists, project managers, and contractors
 -   Drafted environmental compliance reports for contractors, consultants, and land owners summarizing project description and biological activity within the region of interest (ROI)
 
-<h3>Lab Technician -- Sierra Nevada Aquatic Research laboratory</h3> Mammoth Lakes, CA (1/21–6/22)
+<h3>Lab Technician -- Sierra Nevada Aquatic Research laboratory</h3>
+
+Mammoth Lakes, CA (1/21–6/22)
 
 -   Quantified 20+ years of long term acid mining drainage impacts on alpine stream biodiversity to inform US Forest Service on remediation success
 -   Identified and recorded 100,000’s of stream organisms in excel to manage over 20 years of project data
 
-<h3>Research Technician -- Palkovacs Lab UCSC</h3> Santa Cruz, CA (9/2019-12-20)
+<h3>Research Technician -- Palkovacs Lab UCSC</h3>
+
+Santa Cruz, CA (9/2019-12-20)
 
 -   Secured \$10,000's in research grants to study the link between steelhead trout genotypes and prey selectivity on benthic macroinvertebrate (BMI) communities
 -   Designed a study measuring the ecological consequences of wildfires across 3 different watersheds in coastal California to inform land management of potential trophic cascades
 
-<h3>Environmental Consultant Assistant – Laguna Geosciences</h3> Laguna Beach, CA (seasonal 1/18-6/20)
+<h3>Environmental Consultant Assistant – Laguna Geosciences</h3>
+
+Laguna Beach, CA (seasonal 1/18-6/20)
 
 -   Organized and documented project data sets for senior management to ensure clients’ needs are met
 
+<h3>REU Researcher -- University of Puerto Rico</h3>
 
-<h3>REU Researcher -- University of Puerto Rico</h3> Rio Piedras, PR (6/19-9/19)
+Rio Piedras, PR (6/19-9/19)
 
 -   Designed a research project measuring disturbance impacts on diversity of 25+ freshwater meiofauna taxa in proximity to highly developed areas in low income communities
 -   Collected hundreds of field samples, analyzed samples under the microscope, and reported findings to a committee of freshwater ecologists and Puerto Rican citizens in a research paper
 
-<h3>Field Technician -- Lyon Lab</h3> UCSC (9/19-12-20)
+<h3>Field Technician -- Lyon Lab</h3>
+
+UCSC (9/19-12-20)
 
 -   Documented hundreds of sparrow social interactions to provide data on the link between phenotypic hierarchical traits and social dominance within migrating flocks
 
-<h3>Intern - Small Mammal Undergraduate Research in the Forest</h3> UCSC (9/18-12/18)
+<h3>Intern - Small Mammal Undergraduate Research in the Forest</h3>
+
+UCSC (9/18-12/18)
 
 -   Trapped, tagged, and recorded hundreds of coastal California rodents and contributed results to long term metadata on mammal populations
 -   Worked intensive field days setting up transects, laying traps, and collecting field data in Monterey Bay
 
 <!-- Certificates  -->
+
 <h2>Certificates</h2>
 
 -   **Google Data Analytics** (9/2023)
@@ -119,6 +156,7 @@ Santa Barbara, CA (9/23-pres.)
 -   **UCSC Deans Honor Roll** (2017-2020)
 
 <!-- Downlad Button  -->
-<div class="button-container">
-  <a href="rh_resume.pdf" class="button" style="margin-top: 0px">View/Download Resume PDF</a> 
-</div>
+
+::: button-container
+<a href="rh_resume.pdf" class="button" style="margin-top: 0px">View/Download Resume PDF</a>
+:::

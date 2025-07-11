@@ -24,11 +24,8 @@ about:
 
 Out of the infinite amount of content available on the web, you have stumbled upon a little screenshot of my life on a computer screen. Whoohoo! My name is Ray, and I created this personal website using Quarto to share a bit about who I am and what I do including the skills, experiences, and hobbies that have molded me into the nature loving, data enthusiast that I am today.
 
-An Environmental Data Scientist by training, I focus in coastal conservation projects having worked on data-driven projects with [NOAA Fisheries](https://www.fisheries.noaa.gov/) and [TNC](https://www.nature.org/en-us/) in recent years. I hold a Masters of Environmental Science and Management (MESM) degree from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara, a B.S.in Ecology and Evolutionary Biology, and B.A. in Environmental Studies from UC Santa Cruz. I enjoy various outdoor activities when not squinting my eyes at error messages.
-
-Enjoy!
+An Environmental Data Scientist by training, I currently work for [NOAA Fisheries](https://www.fisheries.noaa.gov/). I hold a **Masters of Environmental Science and Management (MESM)** degree from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara, a **B.S.in Ecology and Evolutionary Biology**, and **B.A. in Environmental Studies** from UC Santa Cruz. I enjoy various outdoor activities when not squinting my eyes at error messages.I work part-time contract data related gigs, so shoot me an email if I can be of service.
 
 <hr class="custom-line">
 
 *"Not all those who wonder are lost"* - Gandalf the Grey
-
