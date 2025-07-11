@@ -1,0 +1,330 @@
+---
+title: "Data Pipelines with Targets"
+description: "An R package for creating reproducible workflows "
+author:
+  - name: Raymond Hunter 
+    url: <https://ramhunte.github.io/
+date: 7-10-2025
+# bibliography: references.bib
+citation: 
+  url: <https://ramhunte.github.io/blogs/targets_wflow/
+# image: copepod.jpg
+categories: [Reproducible Pipelines] # self-defined categories
+format: 
+  html: 
+    # code-fold: show 
+    code-copy: true 
+    code-summary: "code" 
+    code-line-numbers: false 
+    code-tools: true 
+    code-block-border-left: true
+    # embed-resources: true
+    warning: false
+    message: false
+toc: true
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+If you are reading this post, you are probably familiar with the process of collecting, cleaning, wrangling, and analyzing data and maybe writing it up in a report. You are also probably familiar with the feeling of finding an error (or getting critical feedback on things to change from your supervisor) at the finish line and having to go aaalllllll the way back and re-run your time and energy intensive workflow. Even worse, your pipeline has gotten so large and messy over the corrections you don't exactly remember which pieces of code are still relevant making the process even more painful. Rinse and repeat. It is not a fun process! It's what the package developers call a *Sysyphean loop*. That is precious time that you could be spending on enjoying life. Fortunately there is an R package for shrinking this death loop and making your job as an analyst/developer/scientist/etc. much more enjoyable, and it is called `{targets}`
+
+<br>
+
+## What is `{targets}`?
+
+Targets is an R package that helps organize, structure, and track components throughout your analytical pipeline making it more *reproducible*, *scalable*, and *robust*. It monitors the code and outputs of various steps (or targets) in you your workflow to make sure they stay up-to-date if something changes, but more importantly, to not rerun these steps if they have not changed. It speeds up your analysis by only running code that has been changed (and all of its downstream dependencies). `{targets}` also flags code that has been changed and not run so you know exactly where in your hideously long pipeline you need to pay attention to. Using targets pushes us to make efficient, clean, and function-oriented code that has a slightly higher initial cost but orders of magnitude greater returns in time and energy saved.
+
+<br>
+
+## Example
+
+Fist, lets run through a simple analysis using `{palmerpenguins}` data without using targets:
+
+<br>
+
+### Set Up
+
+We start by installing and loading the necessary packages and reading in the data.
+
+```{r}
+# install packages 
+# install.packages(c("palmerpenguins", "janitor", "tidyverse", "targets"))
+
+# load packages
+library("palmerpenguins") # prenuin data 
+library("janitor") # cleaning column names
+library("tidyverse") # collection of data processing packages
+library("targets")
+
+# read data
+penguins <- palmerpenguins::penguins
+
+```
+
+```{r, echo = FALSE}
+
+lines <- readLines("R/functions.R")
+start <- grep("^fit_model <- function\\(", lines)
+end <- which(grepl("^\\}", lines) & seq_along(lines) > start)[1]
+
+lines[start:end] <- c(
+  "fit_model <- function(data) {",
+  "  lm(flipper_length_mm ~ body_mass_g + name + sex, data)",
+  "}"
+)
+
+writeLines(lines, "R/functions.R")
+
+tar_destroy()
+
+```
+
+### Wrangling data
+
+It's critical to clean up and inspect the data prior to analysis. Fortunately for this basic example, `palmerpenguins` data is relatively clean already
+
+```{r}
+penguins_mod <- penguins |> # raw data
+  janitor::clean_names() |> # lower case columns
+  mutate(name = stringr::word(species, 1)) |>   # species name column
+  dplyr::select(name, island, flipper_length_mm, body_mass_g, bill_length_mm, sex)
+```
+
+### Exploratory data analysis
+
+Before conducting any analysis, its critical to thoroughly check the quality of the data and assumptions being made. There is no single way on how to perform *exploratory data analysis* as it is subjective to the data in hand and the question being asked. Although not thorough, we will inspect a possible linear relationship between body mass and flipper length by species
+
+```{r}
+# visualizing relationship of body mass and flipper length of penguins
+ggplot(data = penguins_mod,
+       aes(x = body_mass_g, y = flipper_length_mm, color = name)) + 
+  geom_point() + # add data points
+  geom_smooth(method = "lm", se = FALSE) +  # Add trend lines for each species
+  labs(
+    y = "Flipper Length (mm)",
+    x = "Body Mass (g)",
+    title = "Penguin Body Mass by Flipper Length",
+    color = "Species"        
+  ) +
+  scale_color_manual( # changing colors 
+    values = c(
+      "Adelie" = "blue4", 
+      "Chinstrap" = "tan",     
+      "Gentoo" = "darkgreen"   
+    )) +
+  theme_minimal() # minimal appearance
+
+```
+
+<br>
+
+### Modeling
+
+You then may go on to fit a variety of different models depending on your data. Here, we choose a simple ordinary least squares linear regression model to see how body mass, species type, and sex influence relate to the flipper length of penguins.
+
+```{r}
+# creating a model 
+m1 <- lm(flipper_length_mm ~ body_mass_g + name + sex, 
+         data = penguins_mod)
+```
+
+<br>
+
+### Results
+
+You may then go on to evaluate and compare the results of your model. We create a simple summary coefficients table and inspect the R squared value.
+
+```{r}
+# model coefficients 
+summary(m1)$coefficients |> 
+  as.data.frame() |> 
+  knitr::kable()
+
+# model r squared 
+summary(m1)$r.squared
+```
+
+And there you have it! A very simple analysis of penguin data in R. Not too complicated, right? Why do we need to use `targets`? Well, imagine your supervisor asks you to investigate 3 different hypotheses with significantly more data using a suite of various machine learning models to see which one predicts the best. Your exploratory data analysis is much more exhaustive, your models take minutes, hours, or even days to run, and your scripts have become painfully hard to keep track of. On top of that, you are expected to write a report which you know will be scrutinized and returned for edits which will require you to re-run the whole process over again.
+
+<br>
+
+## Using {targets}
+
+Lets run through our pipeline again but applying targets this time.
+
+### 1 Function-orient your workflow
+
+Programming best practices involves breaking up your workflow into individual, customized functions that can be recycled, modified, and scaled easily with significantly less effort than copying and pasting code. In your root directory (the folder where your code is stored) you need to make a folder called `R` that will hold a script called `functions.R`
+
+```{r, eval=FALSE}
+dir.create("R") # creating an R folder in your working directory
+
+file.create("R/functions.R") # adding a functions script 
+
+```
+
+once inside this `functions.R` script, we will translate our original pipeline into individual functions
+
+```{r}
+# get_data function
+pull_data <- function() {
+  return(palmerpenguins::penguins)
+  }
+
+
+# cleaning and wrangling data
+clean_data <- function(data) {
+  data |> # raw data
+    janitor::clean_names() |> # lower case columns
+    mutate(name = stringr::word(species, 1)) |>   # species name column
+    dplyr::select(name, island, flipper_length_mm, body_mass_g, sex) # selecting variables
+}
+
+
+# plot data
+plot_data <- function(data) {
+  ggplot(data = data, 
+         aes(x = body_mass_g, y = flipper_length_mm, color = name)) + 
+  geom_point() + # add data points
+  geom_smooth(method = "lm", se = FALSE) +  # Add trend lines for each species
+  labs(
+    y = "Flipper Length (mm)",
+    x = "Body Mass (g)",
+    title = "Penguin Body Mass by Flipper Length",
+    color = "Species"        
+  ) +
+  scale_color_manual( # changing colors 
+    values = c(
+      "Adelie" = "blue4", 
+      "Chinstrap" = "tan",     
+      "Gentoo" = "darkgreen"   
+    )) +
+  theme_minimal() # minimal appearance
+}
+
+
+# fit model
+fit_model <- function(data) {
+  lm(flipper_length_mm ~ body_mass_g + name + sex, data)
+}
+
+
+# model coefficients 
+model_coefs <- function(model) {
+  summary(model)$coefficients |> 
+    as.data.frame() |> 
+    knitr::kable()
+}
+
+
+# model r squared 
+model_r2 <- function(model) {
+  summary(model)$r.squared
+}
+```
+
+### 2 Create the `targets` skeleton
+
+Now that our workflow is neatly packaged into individual functions it is time to create the backbone of our pipeline, a `_targets.R` scrip. You first need to run `install.packages("targets")` if you don't have it installed yet. Next, run `targets::use_targets()` which will create a `_targets.R` script in your working directory. This file will be populated with comments on what to include many of which is irrelevant or optional for this example. make sure to delete the example targets code provided in the file as well. You should fill the file as such:
+
+```{r, eval = FALSE}
+# _targets.R file
+# Load packages required to define the pipeline:
+library(targets)
+
+# Run the R scripts in the R/ folder with your custom functions:
+tar_source()
+
+# Set target options:
+tar_option_set(packages = c("palmerpenguins", "janitor", "tidyverse")) # load packages
+
+# here is where we define our targets using our custom functions
+list(
+  tar_target(data, pull_data()), 
+  tar_target(data_c, clean_data(data)),
+  tar_target(plot, plot_data(data_c)),
+  tar_target(model, fit_model(data_c)),
+  tar_target(coefs, model_coefs(model)),
+  tar_target(r2, model_r2(model))
+)
+```
+
+It can get a little bit confusing, so we will take it slow. First, we call the targets (`library(targets)`) package so the targets functions can run. Next, we call all the fucntions we defined in our `R/functions.R` script by calling `tar_source()`. We then need to load all the packages that are required for those functions themselves to run by using `tar_option_set`. Lastly, we define our targets options using `list` with individual `tar_target()` calls inside that specify each target. The first part inside the `tar_target()` function is the name we are assigning the target object. The second part is the function we wrote that we are using to create the target along with any required upstream targets being used as inputs inside the function.
+
+Confused? It's ok, it's confusing. Let's look take a closer look at our first target. Inside of `tar_target(data, data_pull())`, we are telling R to create a targets option called `data`. The data target is created from the `data_pull()` function we wrote earlier which returns the palmer penguins dataset. Next, we create a targets object called `data_c` (for clean data), this target is created by using the `clean_data` function we write earlier **using our new target called `data`** as the input for the function. So we just used a target inside of a function to create a new target. Cool, right? This process repeats for subsequent targets as well
+
+### Running targets
+
+Lets look at our targets pipeline
+
+```{r}
+# visualize targets pipeline
+targets::tar_visnetwork()
+
+```
+
+Not only does targets track dependencies across your pipeline, but it allows you to visualize them and also see which ones are related and outdated. Functions used to create the targets are shown as triangles, and the targets themselves are shown as circles. If functions or targets are linked with an arrow then they are related to one another. When a target is outdated (blue in this case), it means that there have been changes to its code directly or one of its upstream relatives. This should be the case for downstream dependencies as well. Let's go ahead and update our targets (run our pipeline) by calling `tar_make()`. We then call `tar_visunetwork()` to see the results:
+
+```{r}
+tar_make() # updating and running our targets objects
+tar_visnetwork() # visualizing targets 
+```
+
+So now all of the targets objects, or pieces of the pipeline, are up to date and reflected in the visual network. To test it out, try running `tar_make()` again and see what happens. It should read "skipped pipeline" as everything is up to date!
+
+Each target is stored as an R-like object within targets. You will notice they don't show up in your environment like true R objects do. To access this, we can go ahead and run the following to load our desired target object into our environment. If writing a report, I have a separate qmd report file in the same directory as my `_targets.R` script that I load necessary targets objects into by using `tar_load()`
+
+```{r}
+tar_load(data) # load the target data
+tar_load(plot) # load the target plot
+tar_load(coefs) # load the target model coefficients table
+```
+
+So you ran your entire workflow using targets and "Hey, i thought I asked you to put bill length as one of the model predictors in there. Can you go back and add that in there?" This would not be a big deal with such a small analysis such as this one. But, as you know, your analysis can become very large and difficult to track, re-run, and validate if not strucutred well. So lets test out what this looks like here.
+
+Lets go back into our `functions.R` script and add in bill length as a feature
+
+```{r, eval = FALSE}
+# fit model with bill length
+fit_model <- function(data) {
+  lm(flipper_length_mm ~ body_mass_g + name + sex + bill_length_mm, data)
+}
+```
+
+```{r, echo = FALSE}
+lines <- readLines("R/functions.R")
+start <- grep("^fit_model <- function\\(", lines)
+end <- which(grepl("^\\}", lines) & seq_along(lines) > start)[1]
+
+lines[start:end] <- c(
+  "fit_model <- function(data) {",
+  "  lm(flipper_length_mm ~ body_mass_g + name + sex + bill_length_mm, data)",
+  "}"
+)
+
+writeLines(lines, "R/functions.R")
+
+```
+
+Lets check and see how our pipeline has changed
+
+```{r}
+# visualize outdated targets objects
+tar_visnetwork()
+```
+
+We can see that the `fit_model()` function became outdated (blue color) after we changed its code and saved the file. Consequently, all downstream targets are now outdated too. You can see that `model`, `coefs`, and `r2` all are dependencies of our function. All other functions and targets that are not related to `fit_model()` remain unchanged as seen by their green color. To fix this, we need to update our pipeline
+
+```{r}
+# re-running our pipeline's outdated objects
+tar_make()
+```
+
+Do you notice in your console how the only objects that changed are the downstream dependencies of `fit_model()`? All other objects that are not related were not affected. This can save an immense amount of headache! Let's go ahead and look at the visual again and try re-running everything
+
+```{r}
+tar_visnetwork() # visualizing network
+
+tar_make() # re-running pipeline
+```
+
+The network is all up to date and all 6 targets in the pipeline were skipped.
