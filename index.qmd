@@ -1,6 +1,6 @@
 ---
 title: "Raymond Hunter"
-subtitle: "Data Scientist | Geospatial Analyst"
+subtitle: "NOAA Data Analyst | Contractor"
 image: images/headshot3.jpg
 about:
   template: trestles
@@ -22,9 +22,9 @@ about:
 
 <hr class="custom-line">
 
-Out of the infinite amount of content available on the web, you have stumbled upon a little screenshot of my life on a computer screen. Whoohoo! My name is Ray, and I created this personal website using Quarto to share a bit about who I am and what I do including the skills, experiences, and hobbies that have molded me into the nature loving, data enthusiast that I am today.
+Out of the infinite amount of content on the web, you’ve stumbled upon a little snapshot of my life on a computer screen. Whoohoo! My name is Ray, and I created this personal website using Quarto to share a bit about who I am and what I do—including the skills, experiences, and hobbies that have shaped me into the nature-loving, data enthusiast I am today.
 
-An Environmental Data Scientist by training, I currently work for [NOAA Fisheries](https://www.fisheries.noaa.gov/). I hold a **Masters of Environmental Science and Management (MESM)** degree from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara, a **B.S.in Ecology and Evolutionary Biology**, and **B.A. in Environmental Studies** from UC Santa Cruz. I enjoy various outdoor activities when not squinting my eyes at error messages.I work part-time contract data related gigs, so shoot me an email if I can be of service.
+An Environmental Data Scientist by training, I currently work at [NOAA Fisheries](https://www.fisheries.noaa.gov/) researching the economy and health of West Coast fisheries. I hold a **Masters of Environmental Science and Management (MESM)** degree from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara, as well as a **B.S.in Ecology and Evolutionary Biology**, and a **B.A. in Environmental Studies** from UC Santa Cruz. I enjoy various outdoor activities when not squinting my eyes at error messages. I also take on part-time, contract data-related gigs—so feel free to reach out if I can be of service!
 
 <hr class="custom-line">
 

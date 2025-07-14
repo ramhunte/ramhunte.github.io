@@ -7,17 +7,22 @@
 
 <h4>Background</h4>
 
-I currently work as a Data Analyst at the [NOAA Fisheries (NMFS)](https://www.fisheries.noaa.gov/). How did I get here? My career in environmental data began at the University of California, Santa Cruz where I studied Ecology and Evolutionary Biology (B.S.) and Environmental Studies (B.A.). I worked research tech positions studying aquatic insect and microbe communities throughout CA, Puerto Rico, and Mexico. I then moved to Mammoth Lakes, CA working as a Freshwater Ecologist at the [Sierra Nevada Aquatic Research Center (SNARL)](https://vesr.nrs.ucsb.edu/about) where I researched the long term ecological impacts of acid mine drainage on alpine stream communities. And I may have had a bit too much fun romping around in the mountains when I wasn't working.
+I currently work as a Data Analyst at the [NOAA Fisheries (NMFS)](https://www.fisheries.noaa.gov/). How did I get here? My journey in environmental data began at the University of California, Santa Cruz, where I earned a B.S. in Ecology and Evolutionary Biology and a B.A. in Environmental Studies. I held research technician positions studying aquatic insect and microbial communities across California, Puerto Rico, and Mexico.
 
-I knew I was interested in working with data, so I went to the Bren School at UCSB where I completed a Masters in Environmental Science and Management with a focus in Data Science. Here, I served as a Data Manager on a project for NOAA where I developed salmon restoration cost models. I also worked as a Data Scientist intern for [The Nature Conservancy](https://www.nature.org/en-us/) studying invasive species on the Channel Islands. These experiences taught me the skills that would eventually become the foundation in my career.
+I later moved to Mammoth Lakes, CA, to work as a Freshwater Ecologist at the [Sierra Nevada Aquatic Research Center (SNARL)](https://vesr.nrs.ucsb.edu/about), where I researched the long term ecological impacts of acid mine drainage on alpine stream ecosystems. (And I may have had a bit too much fun romping around in the mountains when I wasn't working)
+
+Knowing I wanted to dive deeper into data, I pursued a Master’s in Environmental Science and Management at the Bren School at UC Santa Barbara, with a focus in Data Science. During this time, I served as a Data Manager on a NOAA project modeling salmon restoration costs and worked as a Data Scientist Intern for The Nature Conservancy, studying potential invasive species on the Channel Islands. 
+
+These experiences built the foundation for the data-driven career I’m lucky to have today.
+
 
 <h4>Data Projects</h4>
 
 **Current**
 
-I work as a Data Analyst with a team of economists at Northwest Fisheries Science Center (a branch of NOAA Fisheries). Our research involves performing analyses to evaluate the effectiveness of commercial fishing vessels and processors that participate in a catch share program to promote sustainable fishing practices among a variety of fisheries. Specifically, I work in R and SQL crunching numbers, building pipelines, running statistical analyses, and developing visual applications to turn data into insight. I then write up these findings and publish the tools so that stakeholders can engage with the data and understand how are fisheries are chaning over time.   
+I work as a Data Analyst with a team of economists at [Northwest Fisheries Science Center](https://www.fisheries.noaa.gov/about/northwest-fisheries-science-center) (a branch of NOAA Fisheries). My research involves performing analyses to evaluate the effectiveness of commercial fishing vessels and processors that participate in a catch share program to promote sustainable fishing practices among a variety of fisheries. Specifically, I work in R and SQL crunching numbers, building pipelines, running machine learningmodels, and developing visual applications to turn data into insight. I then write up these findings and publish the tools so that stakeholders can engage with the data and understand how are fisheries are chaning over time.   
 
-I work part time doing data related contracts as well, so feel free to reach out if you have work in mind you would like assistance with. Recently, I built a Shiny application for the Mexican non-profit [Comunidad y Biodiversidad](https://cobi.org.mx/en/). The app serves as an evaluation tool that enables users to assess the effectiveness of marine protected area across Mexico. Check it out [here](https://innovacionazul.shinyapps.io/fish_refuge_app/). 
+I work part time doing data related contracts as well, so feel free to reach out if you have work in mind you would like assistance with. Recently, I built a Shiny application for [Comunidad y Biodiversidad](https://cobi.org.mx/en/), a Mexican non-profit that supports small, local fisheries. The app serves as an evaluation tool that enables users to assess the effectiveness of marine protected area across Mexico. Check it out [here](https://innovacionazul.shinyapps.io/fish_refuge_app/). 
 
 **Previous**
 

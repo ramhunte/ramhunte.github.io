@@ -82,7 +82,6 @@ library(patchwork)
 library(scales)
 ```
 
-
 ```{r setup, include=FALSE}
 data <- file.path("/Users/rayhunter/Documents/Bren/Past_Courses/EDS_223/assignments/assignment-4-ramhunte/data")
 ```

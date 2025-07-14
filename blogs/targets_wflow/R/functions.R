@@ -56,11 +56,12 @@ fit_model <- function(data) {
 model_coefs <- function(model) {
   summary(model)$coefficients |>
     as.data.frame() |>
-    knitr::kable()
+    knitr::kable( 
+      digits = 2)
 }
 
 
 # model r squared
 model_r2 <- function(model) {
-  summary(model)$r.squared
+  summary(model)$r.squared[1]
 }

@@ -9,7 +9,8 @@
 $gray1:#F8F8F8 ;
 $lightblue: #E0FFFF;
 $darkturq: #2F4F4F;
-$gold: #E9B116	;
+$gold: #E9B116;
+$slateblue: #4B6587;
 
 // Base document colors
 $navbar-bg: $darkturq; // navbar
@@ -20,7 +21,7 @@ $body-color: $darkturq; // page text
 $footer-bg: $darkturq; // footer 
 $footer-fg: $gray1; // footer foreground
 $link-color: $gold; // hyperlinks 
-
+$inline-code-color: $slateblue;
 /*-- scss:rules --*/
 
 h1 {
@@ -54,6 +55,15 @@ color: $darkturq ;
 .custom-line {
     border-style: solid;
     border-top: 3px solid $darkturq; /* Adjust the width and color as needed */
+}
+
+.float-right-image {
+  float: right;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  width: 275px;
+  border-radius: 14px;
+  box-shadow: 0 5px 8px rgba($darkturq, 0.6);
 }
 
 .button-container {
