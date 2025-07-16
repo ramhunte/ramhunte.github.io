@@ -1,13 +1,13 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-data|stem|244294cbcd89dd62|c52653e24a679484|318ebc8f5ae4777e|33550471||t20283.9377988388s|s2915b|2915|rds|local|vector|||0.56|package 'palmerpenguins' was built under R version 4.5.1|
-data_c|stem|a371d64a51a66d6b|cc240c1fbd3216c9|016b1f96b38c42d3|175862662||t20283.937800031s|s2279b|2279|rds|local|vector|||0.06||
-plot|stem|00d05f82a7a41fea|de7ec49c2e9e8db3|24942a0dcaf2390e|874984291||t20283.9378024076s|s132633b|132633|rds|local|vector|||0.01||
-model|stem|797a17fe95f2d211|cc39a466e983f64d|eeef3efe99ba68a3|808688450||t20283.9378442585s|s20852b|20852|rds|local|vector|||0||
-r2|stem|4bf18c796521f051|96745ae39c3108ac|6579eedafbd67763|643730688||t20283.9378451613s|s54b|54|rds|local|vector|||0.01||
-coefs|stem|e03177436a59445a|4633406c90a7353b|ac064002ae67cf05|-2067520850||t20283.9378458414s|s341b|341|rds|local|vector|||0||
+data|stem|244294cbcd89dd62|c52653e24a679484|318ebc8f5ae4777e|33550471||t20285.1756894863s|s2915b|2915|rds|local|vector|||0.55|package 'palmerpenguins' was built under R version 4.5.1|
+data_c|stem|c8b9a28b411ba174|cc240c1fbd3216c9|ebbabd849a782ab3|175862662||t20285.1756907077s|s2285b|2285|rds|local|vector|||0.05||
+plot|stem|c99e29bf02f8b1ec|de7ec49c2e9e8db3|c8ca0eb1a2c18f93|874984291||t20285.1756931004s|s132819b|132819|rds|local|vector|||0.02||
+model|stem|939977337f04f395|cc39a466e983f64d|8bff5e732f7b919a|808688450||t20285.1757336532s|s20866b|20866|rds|local|vector|||0||
+r2|stem|4bf18c796521f051|96745ae39c3108ac|973a8230823e9e98|643730688||t20285.1757345214s|s54b|54|rds|local|vector|||0||
+coefs|stem|6c2d12e45e7fd92b|4633406c90a7353b|4decef4c9d8383d3|-2067520850||t20285.1757353065s|s352b|352|rds|local|vector|||0.02||
 fit_model|function|29a1cad7236c7c16
-clean_data|function|7eecbfac804bdeaf
-model_coefs|function|cea5c9c645f6f62d
-model_r2|function|397d59947769e655
+clean_data|function|580d2135743d816b
+model_coefs|function|ea71bbb541c84925
+model_r2|function|b6b05e3c83a6ae9b
 pull_data|function|0f346d7ec3093f12
 plot_data|function|246b9c7f7bbecf04

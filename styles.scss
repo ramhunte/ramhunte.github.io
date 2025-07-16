@@ -10,7 +10,9 @@ $gray1:#F8F8F8 ;
 $lightblue: #E0FFFF;
 $darkturq: #2F4F4F;
 $gold: #E9B116;
-$slateblue: #4B6587;
+$slateblue: #688dbd;
+$tan: #f2eae0;
+
 
 // Base document colors
 $navbar-bg: $darkturq; // navbar
@@ -22,6 +24,8 @@ $footer-bg: $darkturq; // footer
 $footer-fg: $gray1; // footer foreground
 $link-color: $gold; // hyperlinks 
 $inline-code-color: $slateblue;
+$code-color: $slateblue; // inline code text color
+$code-bg: $tan; // inline code background color
 /*-- scss:rules --*/
 
 h1 {

@@ -1,10 +1,10 @@
 ---
-title: "Data Pipelines with {Targets}"
-description: "An R package for creating reproducible workflows"
+title: "Data Pipelines with {targets}"
+description: "An R package for creating efficient, reproducible workflows"
 author:
   - name: Raymond Hunter 
     url: <https://ramhunte.github.io/
-date: 7-10-2025
+date: 7-16-2025
 # bibliography: references.bib
 citation: 
   url: <https://ramhunte.github.io/blogs/targets_wflow/
@@ -26,11 +26,9 @@ toc: true
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-If you’re reading this post, chances are you’re familiar with the process of collecting, cleaning, wrangling, and analyzing data. You’re probably also familiar with that dreaded moment—discovering an error (or receiving critical feedback from a supervisor) right at the finish line, forcing you to go aaalllllll the way back and re-run your time- and energy-intensive workflow.
+If you’re reading this post, chances are you’re familiar with the process of collecting, cleaning, and analyzing data. You’re probably also familiar with that dreaded moment—discovering an error (or receiving critical feedback from a supervisor) right at the finish line, forcing you to go aaalllllll the way back and re-run your entire time and energy intensive workflow.
 
-Worse yet, your pipeline has grown so cluttered and poorly documented from rushed, repeated fixes and edits that you’re no longer sure which parts of your code are still relevant. The result? A frustrating, tangled mess of rework. 
-
-Fortunately, there’s an R package designed to break this loop and make your work as an analyst, developer, or scientist far more efficient and enjoyable. It’s called `{targets}` [@Landau2021a].
+Worse yet, your pipeline has grown so cluttered and poorly documented from rushed, repeated fixes and edits that you’re no longer sure which parts of your code are still relevant. The result? A frustrating, tangled mess. Fortunately, there’s an R package designed to break this loop and make your work as an analyst, developer, or scientist far more efficient and enjoyable. It’s called `targets` [@Landau2021].
 
 <br>
 
@@ -39,9 +37,9 @@ Fortunately, there’s an R package designed to break this loop and make your wo
 <img src="images/eye_sauron.jpg" class = "float-right-image" alt="The Eye of Sauron from the Lord of the Rings trilogy">
 
 
-`{targets}` is an R package that helps organize, structure, and track the components of your analytical pipeline, making it more reproducible, scalable, and robust. It monitors the code and outputs of each step (or “target”) in your workflow to ensure they stay up to date when something changes—and, more importantly, to avoid rerunning steps that haven’t changed. This speeds up your analysis by only re-running code that has been modified (and its downstream dependencies). `{targets}` also flags steps that have changed but haven’t yet been executed, so you know exactly where to focus your attention in a pipeline. It encourages efficient, clean, and function-oriented code. While it may take a bit more effort to set up at first, the payoff in saved time and reduced frustration is well worth it.
+`targets` is an R package that helps organize, structure, and track the components of an analytical pipeline, making it more reproducible, scalable, and robust. It monitors the code and outputs of each step (or “target”) in your workflow to ensure they stay up to date when something changes—and, more importantly, to avoid rerunning steps that haven’t changed. This speeds up your analysis by only re-running code that has been modified (and its downstream dependencies). `targets` also flags steps that have changed but haven’t yet been executed, so you know exactly where to focus your attention in a pipeline. It encourages efficient, clean, and function-oriented code. While it may take a bit more effort to set up at first, the payoff in saved time and reduced frustration is well worth it.
 
-I sort of see it as The Eye of Sauron from JRR Tolkien's The Lord of the Rings. Sauron (or the `{targets}` package in this case) is ceaselessly scouring Middle Earth (your analytical pipeline) with an everlasting, burning desire to find the ring (changes in your code) so that he can resume full power (update your code). 
+I sort of see it as The Eye of Sauron from JRR Tolkien's The Lord of the Rings. Sauron (the `targets` package) is ceaselessly scouring Middle Earth (your pipeline) with an everlasting, burning desire to find the One Ring (changes in your code) so that he can resume full power (update your code). The Great Eye sees all!
 
 
 
@@ -49,9 +47,7 @@ I sort of see it as The Eye of Sauron from JRR Tolkien's The Lord of the Rings. 
 
 ## A simple analysis
 
-Lets run through a simple analysis using `{palmerpenguins}` data without targets so we can later apply it and see the magic. 
-
-Maybe we are interested in seeing if penguin flipper length can be predicted by other physical characteristics of the animal. Here is a short workflow on how one might approach this analysis.
+Let's run through a simple analysis using `{palmerpenguins}` package data without targets so we can later apply it and see the magic. Maybe we are interested in seeing if penguin flipper length can be predicted by other physical characteristics of the animal. Here is a short workflow on how one might approach this analysis.
 
 <br>
 
@@ -64,10 +60,11 @@ We start by installing and loading the necessary packages and reading in the dat
 # install.packages(c("palmerpenguins", "janitor", "tidyverse", "targets"))
 
 # load packages
+library("targets")
 library("palmerpenguins") # penguin data 
 library("janitor") # cleaning column names
 library("tidyverse") # collection of data processing packages
-library("targets")
+library("knitr") # nice table output
 
 # read data
 penguins <- palmerpenguins::penguins
@@ -100,9 +97,9 @@ Its critical to clean up and inspect the data prior to analysis. Fortunately for
 
 ```{r}
 penguins_mod <- penguins |> # raw data
-  janitor::clean_names() |> # make columns lower case and remove spaces
-  mutate(name = stringr::word(species, 1)) |>   # add a species name column
-  dplyr::select(name, island, flipper_length_mm, body_mass_g, bill_length_mm, sex)
+  clean_names() |> # make columns lower case and remove spaces
+  mutate(name = word(species, 1)) |>   # add a species name column
+  select(name, island, flipper_length_mm, body_mass_g, bill_length_mm, sex)
 ```
 
 
@@ -111,11 +108,11 @@ penguins_mod <- penguins |> # raw data
 
 ### Exploratory data analysis
 
-Before conducting any modeling, you should thoroughly check the quality of the data and assumptions being made. There is no single way on how to perform *exploratory data analysis* as it is subjective to the data in hand and the question being asked. 
+Before conducting any modeling, you should thoroughly check the data quality, assumptions, and underlying patterns and outliers. There is no single way on how to perform *exploratory data analysis* as it is subjective to the data in hand and the question being asked. 
 
-We will inspect a possible linear relationship between body mass and flipper length by species.
+For simplicity, We will just inspect a possible linear relationship between body mass and flipper length by species.
 
-```{r, fig.cap= "Figure 1. A graph showign linear relationship between Body Mass (g) and Flipper Length (mm) across penguin species."}
+```{r, fig.cap= "Figure 1. A graph showign linear relationship between Body Mass (g) and Flipper Length (mm) by penguin species."}
 # visualizing relationship of body mass and flipper length of penguins
 ggplot(data = penguins_mod,
        aes(x = body_mass_g, y = flipper_length_mm, color = name)) + 
@@ -141,7 +138,7 @@ ggplot(data = penguins_mod,
 
 ### Modeling
 
-The plot suggested a potential linear relationship between flipper length and body mass, varying by species. There are many possible models and explanatory variables we could explore to better understand this relationship. For now, let’s start with a simple ordinary least squares (OLS) linear regression model to examine how body mass, species, and sex influence the flipper length of penguins.
+The plot suggested a potential linear relationship between flipper length and body mass, varying by species. There are many possible models and explanatory variables we could explore to better understand this relationship. For now, let’s start with a simple ordinary least squares (OLS) linear regression model to examine *if* and *how* body mass, species, and sex influence the flipper length of penguins.
 
 ```{r}
 # fitting a linear regression model 
@@ -153,30 +150,31 @@ m1 <- lm(flipper_length_mm ~ body_mass_g + name + sex,
 
 ### Results
 
-We should create a summary table of model coefficients to help contextualize the magnitude of effects and their statistical significance. We’ll also inspect the R-squared value as an estimate of overall model fit.
+We should create a summary table of model coefficients to help contextualize statistical significance and effect of of predictor variables. We’ll also inspect the R-squared value as an estimate of overall model fit.
 
 ```{r, tab.cap= "Table 1. OLS Regression Summary: Predicting Penguin Flipper Length"}
 # model coefficients 
 summary(m1)$coefficients |> 
   as.data.frame() |> 
-  knitr::kable( 
-    digits = 2)
+  mutate(across(where(is.numeric), ~round(., 3))) |> 
+  knitr::kable() 
+
 ```
 
 
 ```{r}
 # model r squared 
-summary(m1)$r.squared[1] %>% 
+summary(m1)$r.squared %>% 
   round(2)
 ```
 
-And there you have it! A simple analysis of penguin data in R. Not too complicated, right? So, why do we need to use `{targets}`? 
+And there you have it! A simple analysis of penguin data in R. Not too complicated, right? Why use `targets`? 
 
-Imagine your supervisor asks you to investigate three different hypotheses using much larger datasets and a suite of machine learning models to identify the best predictors. Your exploratory data analysis becomes far more exhaustive, your models take minutes, hours, or even days to run, and your scripts grow increasingly difficult to manage. On top of that, you’re expected to write a report that will be scrutinized and sent back with edits—meaning you’ll have to re-run the entire process all over again.
+Imagine your supervisor asks you to investigate three different hypotheses using much larger datasets and a suite of machine learning models to identify the best predictors. Your exploratory data analysis becomes far more exhaustive, your models take minutes, hours, or even days to run, and your scripts grow increasingly difficult to manage. On top of that, you’re expected to write a report that will be scrutinized and sent back with edits—meaning you’ll have to re-run the entire process all over again. `targets` helps you manage this process with ease!
 
 <br>
 
-## Using `{targets}`
+## Using {targets}
 
 Lets run through our pipeline again but applying targets this time.
 
@@ -184,7 +182,7 @@ Lets run through our pipeline again but applying targets this time.
 
 A key programming best practice is to break your workflow into individual, customized functions. Functions make your code reusable, easier to modify, and more scalable—much more efficient than copying and pasting code repeatedly.
 
-To get started, create a folder named `R` in your root directory (the main folder where your project’s code lives). Inside that folder, create a script called `functions.R` where you will store all your custom functions.
+To get started, let's create a folder named `R` in the root directory (the main folder where your project’s code lives). Inside that folder, we will create a script called `functions.R` where we will store all our custom functions.
 
 ```{r, eval=FALSE}
 dir.create("R") # creating an R folder in your working directory
@@ -193,7 +191,7 @@ file.create("R/functions.R") # adding a functions script
 
 ```
 
-once inside this `functions.R` script, we will translate our original pipeline into individual functions:
+Once inside this `functions.R` script, we will translate our original pipeline into a set of individual functions:
 
 ```{r}
 # pull penguin data
@@ -243,8 +241,8 @@ fit_model <- function(data) {
 model_coefs <- function(model) {
   summary(model)$coefficients |> 
     as.data.frame() |> 
-    knitr::kable( 
-      digits = 2)
+  mutate(across(where(is.numeric), ~round(., 3))) |> 
+  knitr::kable() 
 }
 
 
@@ -256,14 +254,14 @@ model_r2 <- function(model) {
 
 <br> 
 
-### 2. Create the `{targets}` skeleton
+### 2. Create the {targets} skeleton
 
 Now that our workflow is neatly packaged into individual functions it is time to create the backbone of our pipeline, a `_targets.R` script. 
 
 You first need to run: 
 
-```{r}
-targets::use_targets()
+```{r, eval= FALSE}
+use_targets()
 ```
 
 This will create a `_targets.R` file in your working directory. The file comes pre-populated with commented instructions and example code, many of which are irrelevant or optional for our example. *Important: Delete the example target code inside script before proceeding.*
@@ -278,7 +276,7 @@ library(targets)
 tar_source()
 
 # Set target options:
-tar_option_set(packages = c("palmerpenguins", "janitor", "tidyverse")) # load packages
+tar_option_set(packages = c("tidyverse", "palmerpenguins", "janitor", "knitr")) # load packages
 
 # Here is where we define our targets using our custom functions
 list(
@@ -293,16 +291,14 @@ list(
 
 This part can feel a little confusing, so let’s take it step by step.
 
-First, load the package with `library(targets)`.
-Then, use `tar_source()` to load all the functions from your `functions.R` script.
-Next, use `tar_option_set()` to load any packages your functions depend on.
+First, load the package with `library(targets)` (we need the package to be loaded before using any of its functions). Then, use `tar_source()` to load all the functions from your `functions.R` script. Next, use `tar_option_set()` to load any packages your pipeline or functions depend on.
 Finally, define your pipeline using `list(`) with individual `tar_target()` calls.
 
 Each `tar_target()` has two main parts:
 
--   1. The name we are assigning to the target object
+  1. The name we are assigning to the target object
 
--   2. The code used to generate it, often a function that may use upstream targets as inputs
+  2. The code used to generate it, often a function that may use upstream targets as inputs
 
 Still confused? That’s okay—let’s break down an example.
 
@@ -318,9 +314,7 @@ Lets look at the next one:
 tar_target(data_c, clean_data(data))
 ```
 
-This creates a new target called `data_c` using the `clean_data()` function—with data as its input. In other words, we used the `data` target inside a function to create a new target (`data_c`). Cool, right?
-
-And that’s the basic pattern we’ll follow for the rest of the pipeline.
+This creates a new target called `data_c` using the `clean_data()` function—with the `data` target as its input. In other words, we used the `data` target inside a function to create a new target (`data_c`). Cool, right? That’s the basic pattern we’ll follow for the rest of the pipeline.
 
 <br> 
 
@@ -330,15 +324,15 @@ And that’s the basic pattern we’ll follow for the rest of the pipeline.
 Lets look at our targets pipeline
 
 ```{r}
-targets::tar_visnetwork()
+targets::tar_visnetwork() # visualize our targets network
 ```
 
-`{targets}` doesn’t just track dependencies—it also lets you visualize them and see which parts of your pipeline are related or out of date. In the visualization, functions appear as triangles, targets appear as circles, and arrows show relationships between them. If a target is blue, it means it’s outdated—either because its own code changed or because an upstream dependency changed. This will also trigger updates in downstream targets.
+{targets} doesn’t just track dependencies—it also lets you visualize them and see which parts of your pipeline are related or out of date. In the visualization, functions appear as triangles, targets appear as circles, and arrows show relationships between them. If a target is blue, it means it’s outdated—either because its own code changed or because an upstream relative changed.
 
-We haven't run our targets workflow yet, so it makes sense that everything is outdated. To run and update the pipeline, run:
+We have built our pipeline but we haven't run it, so it makes sense that everything is outdated. Let's run it:
 
 ```{r, results = FALSE}
-tar_make() # updating and running our targets objects
+tar_make() # running our targets pipeline
 ```
 
 And to visualize the update:
@@ -346,10 +340,10 @@ And to visualize the update:
 tar_visnetwork()
 ```
 
-At this point, all of your target objects are up to date and reflected in the visual network. To test this, try running `tar_make()` again. You should see the message:
+At this point, all of your target objects are up to date and reflected in the visual network (changed from blue ot green). To test this, try running `tar_make()` again. You should see the message:
 *“skipped pipeline”*, indicating that nothing has changed and no targets need to be rebuilt.
 
-Each target is stored as an internal object managed by the package and won’t appear in your global environment like regular R objects. To access a specific target, you can load it manually using: `tar_load()`
+Each target is stored as an internal object managed by the package and won’t appear in your global environment like regular R objects. To access a specific target, you can load it into your environment using `tar_load()` (you can also return the target value with `tar_read()`).
 
 ```{r}
 tar_load(data) # load the target data
@@ -357,10 +351,11 @@ tar_load(plot) # load the target plot
 tar_load(coefs) # load the target model coefficients table
 ```
 
+<br>
 
 ### 4. Updating {targets}
 
-So you ran your entire workflow using `{targets}`, wrote up some preliminary results, showed your boss, and she says: **"Hey, i thought I asked you to put bill length as one of the model predictors in there. Can you go back and add that in there?"** This would not be a big deal with such a small analysis such as this one. But, as you know, your analysis can become very large and difficult to track, re-run, and validate if not structured well. So lets test out what this change looks like here.
+So you ran your entire workflow using {targets}, wrote up some preliminary results, showed your boss, and she says: **"Hey, I thought I asked you to put bill length as one of the model predictors in there. Can you go back and add that in there?"** This would not be a big deal with such a small analysis such as this one. But, as you know, your analysis can become very large and difficult to track, re-run, and validate if not structured well. So let's test out what this change looks like here.
 
 We go back into our `functions.R` script and add in bill length as a predictor.
 
@@ -410,15 +405,17 @@ tar_make()
 
 The network is all up to date and all 6 targets in the pipeline were skipped. 
 
+<br>
+
 ## Reporting 
 
-You are all finished with your workflow beginning to end in the `{targets}` pipeline, now what? If I am writing a report, I usually create a Quarto markdown file (qmd) and use `tar_load()` at the beginning of with package loading to load in all of the target outputs I need. This keeps your lengthy data processing and analysis code separate from the final written product. Now whenever you render your report, you aren't re-running your entire analysis every time. You are simply just loading in the final and updated targets objects (data/graphs/tables/etc.) that you need! You just need to make sure that your report file lives in the same directory as your `_targets.R` script.
+You are all finished with your workflow beginning to end in the `{targets}` pipeline, now what? Create a Quarto markdown file (qmd) and use `tar_load()` in the set up code chunk (along with necessary packages) to add in all of the target outputs you need. This keeps your lengthy data processing and analysis code separate from the final written product. Now whenever you render your report, you aren't re-running your entire analysis every time. You are simply just loading in the final and updated targets objects (data/graphs/tables/etc.) that you need! You just need to make sure that your report file lives in the same directory as your `_targets.R` script.
 
 <br>
 
 ## Final thoughts
 
-And there you have it! An introduction to `{targets}` by [@Landau2021a]. I encourage you to dive into [The {targets} R package user manual](https://books.ropensci.org/targets/) for a deeper look at the package and other cool features I did not mention here [@Landau2021b]. The package can be used in many different ways outside of statistical analyses. It can be expanded to many different aspects of R workflows regardless of your field. While it can be intimidating at first to hop on board with targets, I promise you that your future self will thank you when you have to revise your workflow.
+And there you have it! An introduction to the {targets} package by [@Landau2021]. I encourage you to dive into [The {targets} R package user manual](https://books.ropensci.org/targets/) for a deeper look at the package and other cool features I did not mention here. The package can be used in many different ways outside of statistical analyses. It can be expanded to many different aspects of R workflows regardless of your field. While it can be intimidating at first to hop on board with targets, I promise you that your future self will thank you when you have to revise your workflow.
 
 
 

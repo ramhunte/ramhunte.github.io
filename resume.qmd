@@ -22,6 +22,8 @@
 
 ![](images/cap2.svg){width="2%"} **B.A. Environmental Studies** \| Highest Honors 4.0 GPA\| Sept 2017 - Dec 2020 <!-- Skills  -->
 
+<br>
+
 <h2>Skills</h2>
 
 <h3>Data Science and Management</h3>
@@ -42,23 +44,25 @@ Shiny app/dashboard, ggplot, Leaflet, Quarto, RMarkown, CSS, HTML, Javascript, T
 
 <!-- Experience -->
 
+
+<br>
+
+
 <h2>Experience</h2>
 
 <h3>Data Analyst -- NOAA Fisheries (Contract)</h3>
 
-Remote (4/25-pres.) 
+Remote (4/25-pres.)
 
 -   Developed reproducible data pipelines in R, incorporating statistical and machine learning methods to analyze sustainable fisheries data and assess the effectiveness of federally managed fisheries.
 -   Built interactive R Shiny dashboards, apps, and public web pages to communicate analytical findings and provide accessible fisheries data to stakeholders.
 -   Integrated SQL databases with R to create automated, robust workflows for data extraction, modeling, and reporting.
 
-
 <h3>Data Analyst -- Comunidad y Biodiversidad (Contract)</h3>
 
-Remote (4/25-7/25.) 
+Remote (4/25-7/25.)
 
 -   Designed and deployed a server-based evaluation tool using R Shiny, enabling users to assess the effectiveness of marine protected areas across Mexico.
-
 
 <h3>Data Manager -- Masters Group Project</h3>
 
@@ -138,9 +142,17 @@ UCSC (9/18-12/18)
 
 <!-- Certificates  -->
 
+
+<br>
+
+
 <h2>Certificates</h2>
 
 -   **Google Data Analytics** (9/2023)
+
+
+<br>
+
 
 <h2>Awards</h2>
 

@@ -1,4 +1,4 @@
-# get_data function
+# pull penguin data
 pull_data <- function() {
   return(palmerpenguins::penguins)
 }
@@ -8,40 +8,29 @@ pull_data <- function() {
 clean_data <- function(data) {
   data |> # raw data
     janitor::clean_names() |> # lower case columns
-    mutate(name = stringr::word(species, 1)) |> # species name column
-    dplyr::select(
-      name,
-      island,
-      flipper_length_mm,
-      body_mass_g,
-      bill_length_mm,
-      sex
-    ) # selecting variables
+    mutate(name = stringr::word(species, 1)) |>   # species name column
+    dplyr::select(name, island, flipper_length_mm, bill_length_mm, body_mass_g, sex) # selecting variables
 }
 
 
 # plot data
 plot_data <- function(data) {
-  ggplot(
-    data = data,
-    aes(x = body_mass_g, y = flipper_length_mm, color = name)
-  ) +
+  ggplot(data = data, 
+         aes(x = body_mass_g, y = flipper_length_mm, color = name)) + 
     geom_point() + # add data points
-    geom_smooth(method = "lm", se = FALSE) + # Add trend lines for each species
+    geom_smooth(method = "lm", se = FALSE) +  # Add trend lines for each species
     labs(
       y = "Flipper Length (mm)",
       x = "Body Mass (g)",
       title = "Penguin Body Mass by Flipper Length",
-      color = "Species"
+      color = "Species"        
     ) +
-    scale_color_manual(
-      # changing colors
+    scale_color_manual( # changing colors 
       values = c(
-        "Adelie" = "blue4",
-        "Chinstrap" = "tan",
-        "Gentoo" = "darkgreen"
-      )
-    ) +
+        "Adelie" = "blue4", 
+        "Chinstrap" = "tan",     
+        "Gentoo" = "darkgreen"   
+      )) +
     theme_minimal() # minimal appearance
 }
 
@@ -52,16 +41,16 @@ fit_model <- function(data) {
 }
 
 
-# model coefficients
+# model coefficients 
 model_coefs <- function(model) {
-  summary(model)$coefficients |>
-    as.data.frame() |>
-    knitr::kable( 
-      digits = 2)
+  summary(model)$coefficients |> 
+    as.data.frame() |> 
+    mutate(across(where(is.numeric), ~round(., 3))) |> 
+    knitr::kable() 
 }
 
 
-# model r squared
+# model r squared 
 model_r2 <- function(model) {
-  summary(model)$r.squared[1]
+  summary(model)$r.squared
 }
