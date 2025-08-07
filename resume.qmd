@@ -56,7 +56,7 @@ Policy analysis, grant writing, technical writing, budgeting, public presentatio
 
 Remote (3/25-pres.)
 
--   Designed and implemented statistical models in R to analyze trends in sustainable fisheries and evaluate commercial fishing sector responses to federal management policies under the Magnuson-Stevens Act, supporting decision making by the Pacific Fishery Management Council.
+-   Designed and implemented statistical models in R to analyze trends in sustainable fisheries and evaluated commercial fishing sector responses to federal management policies under the Magnuson-Stevens Act, supporting decision making by the Pacific Fishery Management Council.
 
 -   Developed and maintained interactive R Shiny dashboards and technical reports to communicate complex findings clearly to federal, state, and regional stakeholders, enhancing transparency and stakeholder engagement in policy processes.
 
@@ -115,6 +115,14 @@ Mammoth Lakes, CA (1/21–6/22)
 -   Assessed over 20 years of acid mine drainage impacts on alpine stream biodiversity and quantified ecological recovery trends to evaluate remediation effectiveness under the CERCLA (Superfund) framework, supporting policy compliance for the U.S. Forest Service.
 
 -   Managed and analyzed a long-term aquatic invertebrate dataset to support regulatory reporting, environmental permitting, and adaptive management strategies.
+
+<h3>Sustainability Educator -- Coastal Watershed Council</h3>
+
+Santa Cruz, CA (1/20-4/20)
+
+-   Educated the public through restoration events, school activities, and attending public counsels on how upstream actions impact native river ecology and wildlife throughout Santa Cruz County.
+
+
 
 <h3>Research Technician -- Palkovacs Lab UCSC</h3>
 
