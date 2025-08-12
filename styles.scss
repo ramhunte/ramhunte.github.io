@@ -149,3 +149,44 @@ color: $darkturq ;
     transform: scale(1.03); /* Slightly enlarge the image */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow */
 }
+
+
+.image-row {
+  display: flex;
+  gap: 3em;          /* space between images */
+  justify-content: center;  /* center the images horizontally */
+  flex-wrap: wrap;      /* allow wrapping on smaller screens */
+}
+
+.image-row a {
+  text-decoration: none; /* remove underline */
+  outline: none;         /* remove focus outline if needed */
+  border: none;          /* remove any borders */
+  display: inline-block; /* keep link wrapping the image */
+}
+
+//css for floating image of workign fishermen on about page
+.float-right-image {
+  float: right;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  width: 400px;
+  border-radius: 14px;
+  box-shadow: 0 5px 8px rgba($darkturq, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.float-image {
+  width: 550px;
+  border-radius: 14px;
+  box-shadow: 0 5px 8px rgba($darkturq, 0.6); /* replace $darkturq color */
+  margin: 5px; /* margin handled by gap in flex container */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.float-image:hover, .float-right-image:hover{
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba($darkturq, 0.6);
+}

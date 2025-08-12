@@ -58,9 +58,9 @@ Remote (3/25-pres.)
 
 -   Designed and implemented statistical models in R to analyze trends in sustainable fisheries and evaluated commercial fishing sector responses to federal management policies under the Magnuson-Stevens Act, supporting decision making by the Pacific Fishery Management Council.
 
--   Developed and maintained interactive R Shiny dashboards and technical reports to communicate complex findings clearly to federal, state, and regional stakeholders, enhancing transparency and stakeholder engagement in policy processes.
+-   Developed and maintained interactive R Shiny dashboards and technical reports to communicate complex findings clearly to federal policymakers at the Pacific Fishery Management Council and enhance transparency with other stakeholders.
 
--   Collaborated with multidisciplinary teams to interpret technical modeling outputs for non-technical audiences, aligning analytical work with strategic planning.
+-   Collaborated with multidisciplinary teams to maintain and interpret large, complex government data sets.
 
 <h3>Data Analyst -- Comunidad y Biodiversidad (Part Time Contract)</h3>
 
@@ -121,8 +121,6 @@ Mammoth Lakes, CA (1/21–6/22)
 Santa Cruz, CA (1/20-4/20)
 
 -   Educated the public through restoration events, school activities, and attending public counsels on how upstream actions impact native river ecology and wildlife throughout Santa Cruz County.
-
-
 
 <h3>Research Technician -- Palkovacs Lab UCSC</h3>
 
