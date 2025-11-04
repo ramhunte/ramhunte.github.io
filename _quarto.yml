@@ -43,7 +43,7 @@ format:
     mainfont: Raleway
     toc: false
     anchor-sections: false
-    page-layout: full
+    # page-layout: full
 
 editor: visual
 

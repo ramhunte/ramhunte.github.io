@@ -6,10 +6,10 @@
 
 
 // Colors
-$gray1:#F8F8F8 ;
+$gray1: #F8F8F8;
 $lightblue: #E0FFFF;
 $darkturq: #2F4F4F;
-$gold: #E9B116;
+$seablue: #5f9f9f;
 $slateblue: #688dbd;
 $tan: #f2eae0;
 
@@ -17,14 +17,15 @@ $tan: #f2eae0;
 // Base document colors
 $navbar-bg: $darkturq; // navbar
 $navbar-fg: $gray1; // navbar foreground elements
-$navbar-hl: $gold; // highlight color when hovering over navbar links
+$navbar-hl: $seablue; // highlight color when hovering over navbar links
 $body-bg: $gray1; // page background 
 $body-color: $darkturq; // page text 
 $footer-bg: $darkturq; // footer 
 $footer-fg: $gray1; // footer foreground
-$link-color: $gold; // hyperlinks 
+$link-color: $seablue; // hyperlinks 
 $inline-code-color: $slateblue;
-$code-color: $slateblue; // inline code text color
+$code-color: $slateblue;
+$inline-code-bg: white;
 $code-bg: $tan; // inline code background color
 /*-- scss:rules --*/
 
@@ -34,18 +35,19 @@ h1 {
   color: $darkturq ;
 }
 
-h2, h4 {
-letter-spacing: 5px;
-font-weight: 700;
-font-size: 28px;
-color: $darkturq ;
+h2,
+h4 {
+  letter-spacing: 5px;
+  font-weight: 700;
+  font-size: 28px;
+  color: $darkturq ;
 }
 
 h3 {
-letter-spacing: 1px;
-font-weight: 700;
-font-size: 20px;
-color: $darkturq ;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 20px;
+  color: $darkturq ;
 }
 
 .title {
@@ -57,8 +59,9 @@ color: $darkturq ;
 }
 
 .custom-line {
-    border-style: solid;
-    border-top: 3px solid $darkturq; /* Adjust the width and color as needed */
+  border-style: solid;
+  border-top: 3px solid $darkturq;
+  /* Adjust the width and color as needed */
 }
 
 .float-right-image {
@@ -72,13 +75,13 @@ color: $darkturq ;
 
 .button-container {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   margin-top: 25px;
 }
 
 .button {
-  color: $gold;
+  color: $seablue;
   border: 2px solid $darkturq;
   padding: 10px 20px;
   border-radius: 5px;
@@ -87,7 +90,7 @@ color: $darkturq ;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  margin-right: 25px; 
+  margin-right: 25px;
   margin-left: 25px;
 }
 
@@ -98,25 +101,30 @@ color: $darkturq ;
   width: 100%;
 }
 
-.banner-image-two{
+.banner-image-two {
   position: absolute;
   top: -75px;
   left: 0px;
   width: 100%;
   max-width: 150%;
-  height: 380px; /* Set a fixed height for the image */
+  height: 380px;
+  /* Set a fixed height for the image */
   object-fit: cover;
   z-index: 0;
 }
 
 .center-banner-box {
-  background-color: $darkturq; /* Set the background color to teal */
-  color: $gray1; /* Set the text color to white */
-  position: absolute; /* Position it as needed */
-  top: 175px; /* Adjust top positioning if necessary */
+  background-color: $darkturq;
+  /* Set the background color to teal */
+  color: $gray1;
+  /* Set the text color to white */
+  position: absolute;
+  /* Position it as needed */
+  top: 175px;
+  /* Adjust top positioning if necessary */
   width: 35rem;
   border-radius: 25px;
-  
+
 }
 
 
@@ -131,38 +139,52 @@ color: $darkturq ;
 }
 
 .rounded-hover {
-    border-radius: 15px; /* Rounds the edges of the image */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  border-radius: 15px;
+  /* Rounds the edges of the image */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effect */
 }
 
 .rounded-hover:hover {
-    transform: scale(1.03); /* Slightly enlarge the image */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow */
+  transform: scale(1.03);
+  /* Slightly enlarge the image */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Add a shadow */
 }
 
 
 .about-image {
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effect */
 }
 
 .about-image:hover {
-    transform: scale(1.03); /* Slightly enlarge the image */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow */
+  transform: scale(1.03);
+  /* Slightly enlarge the image */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Add a shadow */
 }
 
 
 .image-row {
   display: flex;
-  gap: 3em;          /* space between images */
-  justify-content: center;  /* center the images horizontally */
-  flex-wrap: wrap;      /* allow wrapping on smaller screens */
+  gap: 3em;
+  /* space between images */
+  justify-content: center;
+  /* center the images horizontally */
+  flex-wrap: wrap;
+  /* allow wrapping on smaller screens */
 }
 
 .image-row a {
-  text-decoration: none; /* remove underline */
-  outline: none;         /* remove focus outline if needed */
-  border: none;          /* remove any borders */
-  display: inline-block; /* keep link wrapping the image */
+  text-decoration: none;
+  /* remove underline */
+  outline: none;
+  /* remove focus outline if needed */
+  border: none;
+  /* remove any borders */
+  display: inline-block;
+  /* keep link wrapping the image */
 }
 
 //css for floating image of workign fishermen on about page
@@ -180,13 +202,16 @@ color: $darkturq ;
 .float-image {
   width: 550px;
   border-radius: 14px;
-  box-shadow: 0 5px 8px rgba($darkturq, 0.6); /* replace $darkturq color */
-  margin: 5px; /* margin handled by gap in flex container */
+  box-shadow: 0 5px 8px rgba($darkturq, 0.6);
+  /* replace $darkturq color */
+  margin: 5px;
+  /* margin handled by gap in flex container */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
-.float-image:hover, .float-right-image:hover{
+.float-image:hover,
+.float-right-image:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 16px rgba($darkturq, 0.6);
 }
