@@ -9,7 +9,7 @@ date: 7-16-2025
 citation: 
   url: <https://ramhunte.github.io/blogs/targets_wflow/
 bibliography: references.bib
-image: images/eye_sauron.jpg
+image: images/thumbnail_eye_sauron.jpg
 categories: [Reproducible Pipelines] # self-defined categories
 format: 
   html: 
@@ -61,7 +61,7 @@ We start by installing and loading the necessary packages and reading in the dat
 
 # load packages
 library("targets")
-library("palmerpenguins") # penguin data 
+library("palmerpenguins") # penguin data
 library("janitor") # cleaning column names
 library("tidyverse") # collection of data processing packages
 library("knitr") # nice table output
@@ -98,7 +98,7 @@ Its critical to clean up and inspect the data prior to analysis. Fortunately for
 ```{r}
 penguins_mod <- penguins |> # raw data
   clean_names() |> # make columns lower case and remove spaces
-  mutate(name = word(species, 1)) |>   # add a species name column
+  mutate(name = word(species, 1)) |> # add a species name column
   select(name, island, flipper_length_mm, body_mass_g, bill_length_mm, sex)
 ```
 
@@ -114,22 +114,26 @@ For simplicity, We will just inspect a possible linear relationship between body
 
 ```{r, fig.cap= "Figure 1. A graph showign linear relationship between Body Mass (g) and Flipper Length (mm) by penguin species."}
 # visualizing relationship of body mass and flipper length of penguins
-ggplot(data = penguins_mod,
-       aes(x = body_mass_g, y = flipper_length_mm, color = name)) + 
+ggplot(
+  data = penguins_mod,
+  aes(x = body_mass_g, y = flipper_length_mm, color = name)
+) +
   geom_point() + # add data points
-  geom_smooth(method = "lm", se = FALSE) +  # Add trend lines for each species
+  geom_smooth(method = "lm", se = FALSE) + # Add trend lines for each species
   labs(
     y = "Flipper Length (mm)",
     x = "Body Mass (g)",
     title = "Penguin Body Mass by Flipper Length",
-    color = "Species"        
+    color = "Species"
   ) +
-  scale_color_manual( # changing colors 
+  scale_color_manual(
+    # changing colors
     values = c(
-      "Adelie" = "blue4", 
-      "Chinstrap" = "tan",     
-      "Gentoo" = "darkgreen"   
-    )) +
+      "Adelie" = "blue4",
+      "Chinstrap" = "tan",
+      "Gentoo" = "darkgreen"
+    )
+  ) +
   theme_minimal() # minimal appearance
 
 ```
@@ -141,9 +145,8 @@ ggplot(data = penguins_mod,
 The plot suggested a potential linear relationship between flipper length and body mass, varying by species. There are many possible models and explanatory variables we could explore to better understand this relationship. For now, let’s start with a simple ordinary least squares (OLS) linear regression model to examine *if* and *how* body mass, species, and sex influence the flipper length of penguins.
 
 ```{r}
-# fitting a linear regression model 
-m1 <- lm(flipper_length_mm ~ body_mass_g + name + sex, 
-         data = penguins_mod)
+# fitting a linear regression model
+m1 <- lm(flipper_length_mm ~ body_mass_g + name + sex, data = penguins_mod)
 ```
 
 <br>
@@ -153,18 +156,18 @@ m1 <- lm(flipper_length_mm ~ body_mass_g + name + sex,
 We should create a summary table of model coefficients to help contextualize statistical significance and effect of of predictor variables. We’ll also inspect the R-squared value as an estimate of overall model fit.
 
 ```{r, tab.cap= "Table 1. OLS Regression Summary: Predicting Penguin Flipper Length"}
-# model coefficients 
-summary(m1)$coefficients |> 
-  as.data.frame() |> 
-  mutate(across(where(is.numeric), ~round(., 3))) |> 
-  knitr::kable() 
+# model coefficients
+summary(m1)$coefficients |>
+  as.data.frame() |>
+  mutate(across(where(is.numeric), ~ round(., 3))) |>
+  knitr::kable()
 
 ```
 
 
 ```{r}
-# model r squared 
-summary(m1)$r.squared %>% 
+# model r squared
+summary(m1)$r.squared %>%
   round(2)
 ```
 
@@ -187,7 +190,7 @@ To get started, let's create a folder named `R` in the root directory (the main 
 ```{r, eval=FALSE}
 dir.create("R") # creating an R folder in your working directory
 
-file.create("R/functions.R") # adding a functions script 
+file.create("R/functions.R") # adding a functions script
 
 ```
 
@@ -197,37 +200,41 @@ Once inside this `functions.R` script, we will translate our original pipeline i
 # pull penguin data
 pull_data <- function() {
   return(palmerpenguins::penguins)
-  }
+}
 
 
 # cleaning and wrangling data
 clean_data <- function(data) {
   data |> # raw data
     janitor::clean_names() |> # lower case columns
-    mutate(name = stringr::word(species, 1)) |>   # species name column
+    mutate(name = stringr::word(species, 1)) |> # species name column
     dplyr::select(name, island, flipper_length_mm, body_mass_g, sex) # selecting variables
 }
 
 
 # plot data
 plot_data <- function(data) {
-  ggplot(data = data, 
-         aes(x = body_mass_g, y = flipper_length_mm, color = name)) + 
-  geom_point() + # add data points
-  geom_smooth(method = "lm", se = FALSE) +  # Add trend lines for each species
-  labs(
-    y = "Flipper Length (mm)",
-    x = "Body Mass (g)",
-    title = "Penguin Body Mass by Flipper Length",
-    color = "Species"        
+  ggplot(
+    data = data,
+    aes(x = body_mass_g, y = flipper_length_mm, color = name)
   ) +
-  scale_color_manual( # changing colors 
-    values = c(
-      "Adelie" = "blue4", 
-      "Chinstrap" = "tan",     
-      "Gentoo" = "darkgreen"   
-    )) +
-  theme_minimal() # minimal appearance
+    geom_point() + # add data points
+    geom_smooth(method = "lm", se = FALSE) + # Add trend lines for each species
+    labs(
+      y = "Flipper Length (mm)",
+      x = "Body Mass (g)",
+      title = "Penguin Body Mass by Flipper Length",
+      color = "Species"
+    ) +
+    scale_color_manual(
+      # changing colors
+      values = c(
+        "Adelie" = "blue4",
+        "Chinstrap" = "tan",
+        "Gentoo" = "darkgreen"
+      )
+    ) +
+    theme_minimal() # minimal appearance
 }
 
 
@@ -237,16 +244,16 @@ fit_model <- function(data) {
 }
 
 
-# model coefficients 
+# model coefficients
 model_coefs <- function(model) {
-  summary(model)$coefficients |> 
-    as.data.frame() |> 
-  mutate(across(where(is.numeric), ~round(., 3))) |> 
-  knitr::kable() 
+  summary(model)$coefficients |>
+    as.data.frame() |>
+    mutate(across(where(is.numeric), ~ round(., 3))) |>
+    knitr::kable()
 }
 
 
-# model r squared 
+# model r squared
 model_r2 <- function(model) {
   summary(model)$r.squared
 }
@@ -280,7 +287,7 @@ tar_option_set(packages = c("tidyverse", "palmerpenguins", "janitor", "knitr")) 
 
 # Here is where we define our targets using our custom functions
 list(
-  tar_target(data, pull_data()), 
+  tar_target(data, pull_data()),
   tar_target(data_c, clean_data(data)),
   tar_target(plot, plot_data(data_c)),
   tar_target(model, fit_model(data_c)),

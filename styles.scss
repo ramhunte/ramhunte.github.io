@@ -25,8 +25,9 @@ $footer-fg: $gray1; // footer foreground
 $link-color: $seablue; // hyperlinks 
 $inline-code-color: $slateblue;
 $code-color: $slateblue;
-$inline-code-bg: white;
+$code-block-bg: $tan; // code block background color
 $code-bg: $tan; // inline code background color
+// change background color of code blocks
 /*-- scss:rules --*/
 
 h1 {
