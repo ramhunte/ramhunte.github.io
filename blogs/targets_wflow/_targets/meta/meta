@@ -1,10 +1,10 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-data|stem|244294cbcd89dd62|c52653e24a679484|318ebc8f5ae4777e|33550471||t20396.9013604373s|s2915b|2915|rds|local|vector|||0.79|package 'palmerpenguins' was built under R version 4.5.1. package 'ggplot2' was built under R version 4.5.1. package 'tibble' was built under R version 4.5.1. package 'purrr' was built under R version 4.5.1|
-data_c|stem|c8b9a28b411ba174|cc240c1fbd3216c9|ebbabd849a782ab3|175862662||t20396.901360999s|s2285b|2285|rds|local|vector|||0.01||
-plot|stem|549fa3ac0c57939b|de7ec49c2e9e8db3|c8ca0eb1a2c18f93|874984291||t20396.9013628917s|s276760b|276760|rds|local|vector|||0.05||
-model|stem|939977337f04f395|cc39a466e983f64d|8bff5e732f7b919a|808688450||t20396.9014088178s|s20866b|20866|rds|local|vector|||0||
-r2|stem|4bf18c796521f051|96745ae39c3108ac|973a8230823e9e98|643730688||t20396.9014090843s|s54b|54|rds|local|vector|||0||
-coefs|stem|6c2d12e45e7fd92b|4633406c90a7353b|4decef4c9d8383d3|-2067520850||t20396.9014095072s|s352b|352|rds|local|vector|||0.01||
+data|stem|df8b8ce271d281be|c52653e24a679484|318ebc8f5ae4777e|33550471||t20396.9168301933s|s2917b|2917|rds|local|vector|||0.259||
+data_c|stem|5e3f13e0386949f6|cc240c1fbd3216c9|e75380a7d49b1d77|175862662||t20396.9168313426s|s2288b|2288|rds|local|vector|||0.068||
+plot|stem|da6510e8c7b112c7|de7ec49c2e9e8db3|4e9e8c8db6fffdc3|874984291||t20396.9168322012s|s132655b|132655|rds|local|vector|||0.011||
+model|stem|5faa0336d4a2a6d1|cc39a466e983f64d|0a8a70364b212c41|808688450||t20396.9168529638s|s20874b|20874|rds|local|vector|||0.002||
+r2|stem|d3f5815fda731a88|96745ae39c3108ac|ab6815e0dc5f6e0b|643730688||t20396.9168531394s|s55b|55|rds|local|vector|||0.001||
+coefs|stem|be14e541dfb4ac86|4633406c90a7353b|14ddbd6beed1afc8|-2067520850||t20396.9168539267s|s353b|353|rds|local|vector|||0.008|'xfun::attr()' is deprecated. Use 'xfun::attr2()' instead. See help('Deprecated')|
 fit_model|function|29a1cad7236c7c16
 clean_data|function|580d2135743d816b
 model_coefs|function|ea71bbb541c84925

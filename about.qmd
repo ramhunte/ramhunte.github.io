@@ -1,74 +1,247 @@
 <!-- Image banner at top -->
 
-<img src="images/stones2.png" alt="River Stones" class="banner-image-two"/>
 
-::: gray-placeholder-two
+<div><img src="images/ocean_banner.jpg" alt="Blue ocean banner" class="banner-image"/><p class="banner-caption">About</p></div>
+
+
+::: icon-header-container
+{{< iconify ic:round-star size=xl style="position:relative; top:0.1em;" >}} Focus
 :::
 
-<h4>Background</h4>
+<hr>
 
-I currently work as a Data Analyst at the [National Marine Fisheries Service (NOAA Fisheries)](https://www.fisheries.noaa.gov/) and independent contractor. How did I get here? My journey in environmental data began at the University of California, Santa Cruz, where I earned a **B.S. in Ecology and Evolutionary Biology** and a **B.A. in Environmental Studies**. I held research technician positions studying human impacts on aquatic insect and microbial communities across California, Puerto Rico, and Mexico.
-
-I later moved to Mammoth Lakes, CA, to work as a Freshwater Ecologist at the [Sierra Nevada Aquatic Research Center (SNARL)](https://vesr.nrs.ucsb.edu/about), where I researched the long term ecological impacts of mining pollution on alpine stream ecosystems. This was in effort to monitor post-remediation success according to the Comprehensive *Environmental Response, Compensation, and Liability Act* (CERCLA) or Superfund.
-
-In 2022, I pursued a **Master’s in Environmental Science and Management** at the [Bren School](https://bren.ucsb.edu/) at UC Santa Barbara with a focus in Data Science. My goal was to learn more technical skills so that I could use them to guide and inform environmental policy. During this time, I served as a data manager on a project for NOAA modeling riparian habitat restoration costs and worked and interned with the Nature Conservancy studying potential invasive species on the Channel Islands. These experiences built the foundation for the career I’m lucky to have today.
-
-<h4>Projects</h4>
-
-**Current**
-
-I work collaboratively with a team of economists at NOAA’s [Northwest Fisheries Science Center](https://www.fisheries.noaa.gov/about/northwest-fisheries-science-center), a division of NOAA Fisheries, to conduct analyses that support the management of sustainable commercial fisheries under the *Magnuson-Stevens Fishery Conservation and Management Act* (MSA). My work involves building data pipelines in R and SQL to analyze economic and social data, along with developing interactive dashboards and reports to visually communicate insights with stakeholders. My role is to ensure that stakeholders, including federal policymakers on the Pacific Fishery Management Council, scientists, and the public, can engage with the data and understand how fisheries are evolving in response to ecological and regulatory changes. Checkout some of the tools I have made for NOAA here:
-
-::: image-row
-<a href="https://connect.fisheries.noaa.gov/fisheye/" target="_blank"> <img src="images/fisheye.png" alt="FISHEyE website" class="float-image"/> </a> <a href="https://connect.fisheries.noaa.gov/purch_prod/" target="_blank"> <img src="images/purcprod.png" alt="NOAA Shiny App" class="float-image"/> </a>
-:::
-
-
-I work part time doing data related contracts as well, so feel free to reach out if you have work in mind you would like assistance with. Recently, I built a Shiny application for [Comunidad y Biodiversidad](https://cobi.org.mx/en/), a non-profit based in Mexico that supports small scale fisheries. The app serves as an evaluation tool that enables users to assess the effectiveness of marine protected area across Mexico. Check it out [here](https://innovacionazul.shinyapps.io/fish_refuge_app/).
+My favorite part about my work is helping clients bring their data to life. I do this through automating data processing scripts, developing interactive R Shiny dashboards, performing spatial/statistical analyses, and generating aesthetic reports and visualizations using Quarto. I really enjoy sharing the R skills I've learned along my journey (see my Blog posts) to help others grow. I provide R workshops as a service to clients who are interested in deepening their teams' technical skills. With over 2 years of experience teaching college coursework, teaching is something I truly love doing. Reach out to me if you are in a rut with a data problem or want to upskill your team!
 
 <br>
 
-**Previous**
-
-<a href="https://ramhunte.shinyapps.io/noaa_shiny/" target="_blank"> <img src="images/stilly.png" class = "float-right-image" alt="Stillaguamish river basin"> </a>
-
-
-As the Data Manager for my master’s capstone project at UCSB in partnership with NOAA, I spearheaded the development of an economic model to inform habitat restoration planning in Washington state. Using R and ArcGIS, I integrated diverse vector and raster datasets, including land use, hydrology, and watershed characteristics, to estimate restoration costs and assess ecological benefits to endangered salmonids and surrounding populations. I oversaw the project’s analytical pipeline and GitHub repository, ensuring reproducibility and streamlined team coordination. To support strategic decision making and communication, I designed an interactive R Shiny dashboard to effectively share our findings to NOAA restoration managers which you can see [here](https://ramhunte.shinyapps.io/noaa_shiny/).
-
-During an internship with [The Nature Conservancy](https://www.nature.org/en-us/), I designed and led a field based research project to evaluate how invasive species species respond to native predators on the Channel Islands to help strengthen biosecurity protocols and inform conservation strategies. I coordinated field logistics, statistical modeling, data visualization, and mentorship of an undergraduate team member. Our findings revealed key vulnerabilities in existing biosecurity protocols and provided actionable recommendations to TNC management. We presented our results at the California Islands Symposium and the Point Conception Institute Symposium, contributing to the efforts of habitat conservation efforts among the Central Coast.
-
-::: {layout-ncol="2"}
-![Field work in Puerto Rico](images/pr.jpg){.rounded-hover}
-
-![Holding a desert iguana in Baja California](images/liz.jpeg){.rounded-hover}
-
-![Some beautiful microbes from Puerto Rico](images/microbes.jpg){.rounded-hover}
-
-![Field work in Big Sur, CA](images/big_sur.jpg){.rounded-hover}
+::: icon-header-container
+{{< iconify material-symbols:person-rounded size=xl style="position:relative; top:0.1em;" >}} Background
 :::
 
-<h4>In my free time</h4>
+<hr>
+
+My journey in environmental data began at the University of California, Santa Cruz, where I studied the freshwater stream insect communities across California and Puerto Rico. Desipite my love for fieldwork, I quickly gravitated to running statistics and working with the data in R. I wanted to dive deeper into these skills, so I continued my pursuit of knowledge at the [Bren School](https://bren.ucsb.edu/) at UC Santa Barbara where I earned a **Master’s in Environmental Science and Management** with a focus in Data Science. Extensive technical coursework and project experience with NOAA and TNC showed me really how vast and exciting the world of data science really is. Today, I work as a contract Data Analyst at [NOAA Fisheries](https://www.fisheries.noaa.gov/) and freelance data scientist where I get to exercise my passion for data every day and share it with others.
+
+<br>
+
+::: {layout-ncol="3"}
+![Field work in Puerto Rico](images/pr.jpg){.rounded-image}
+
+![Holding a desert iguana in Baja California](images/liz.jpeg){.rounded-image}
+
+![Some beautiful microbes from Puerto Rico](images/microbes.jpg){.rounded-image}
+
+![Field work in Big Sur, CA](images/big_sur.jpg){.rounded-image}
+:::
+
+<br>
+
+<!-- Education -->
+
+::: icon-header-container
+{{< iconify tdesign:education-filled size=lg >}} Education
+:::
+
+<hr>
+
+::: box-header
+University of California, Santa Barbara
+:::
+
+::: box-text
+{{< iconify wpf:diploma-1 size=lg >}} **Masters in Environmental Science and Management** Sept 2022 - June 2024
+:::
+
+<br>
+
+::: box-header
+University of California, Santa Cruz
+:::
+
+::: box-text
+{{< iconify wpf:diploma-1 size=lg >}} **B.Sc. Ecology and Evolutionary Biology** Sept 2017 - Dec 2020
+
+{{< iconify wpf:diploma-1 size=lg >}} **B.A. Environmental Studies** Sept 2017 - Dec 2020
+:::
+
+<br>
+
+::: icon-header-container
+{{< iconify carbon:skill-level-advanced size=lg >}} Skills
+:::
+
+<hr>
+
+::: box-plain
+<h3>Data Science and Management</h3>
+
+R/RStudio, Git/GitHub, SQL, Bash, Excel, Google Drive
+
+<h3>Remote Sensing & Geospatial Analysis</h3>
+
+R, ArcGIS, QGIS
+
+<h3>Machine Learning</h3>
+
+R, supervised/unsupervised, validation, training/testing, optimization, feature engineering, model evaluation
+
+<h3>Data Visualization</h3>
+
+Shiny app/dashboard, ggplot, Leaflet, Quarto, RMarkown, CSS, HTML, Javascript, Tableau
+:::
+
+<!-- Experience -->
+
+<br>
+
+::: icon-header-container
+{{< iconify material-symbols:work size=lg >}} Experience
+:::
+
+<hr>
+
+::::::::::::::: timeline-container
+::: box-header
+Data Analyst -- NOAA Fisheries (Full Time Contract)
+:::
+
+::: box-text
+**Remote (3/25-pres.)**
+
+-   Developed interactive R Shiny tools to publicize West Coast commercial fisheries health and response to federal regulation federal, supporting federal fisheries policy making.
+
+-   Trained statistical models on timeseries government datasets to analyze vessel fuel use.
+:::
+
+<br> <!--              -->
+
+::: box-header
+Data Analyst -- part time contract
+:::
+
+::: box-text
+**(4/25-7/25)** --Comunidad y Biodiversidad
+
+-   Built a marine conservation evaluation tool in R to automate inefficient excel sheets
+
+**(9/23-pres.)** -- Yoga Soup Studio
+
+-   Programmed automated R pipelines to identify, relocate, and archive terabytes of company data, improving data security and lowering thousands in expensive subscription costs.
+:::
+
+<br> <!--              -->
+
+::: box-header
+Data Manager -- Masters Project for NOAA Fisheries
+:::
+
+::: box-text
+**UCSB (3/23-6/24)**
+
+-   Conducted geospatial analyses in R of 180k+ hectares of riparian habitat to model restoration costs, supporting strategic resource allocation for federally endangered salmon conservation.
+
+-   Developed an interactive spatial web application to communicate priority restoration areas and budgets to NOAA restoration managers and conservation non-profits.
+:::
+
+<br> <!--              -->
+
+::: box-header
+Biosecurity Intern -- The Nature Conservancy
+:::
+
+::: box-text
+**Santa Barbara, CA (6/23-9-23)**
+
+-   Executed a research project with statistical modeling, GIS, and a public presentation at the California Islands Symposium to address biosecurity weaknesses in the Channel Islands.
+
+-   Coded logistic regression models with spatial covariates to predict invasive species behavior, performing model optimizations using feature engineering; mentored an undergraduate.
+:::
+
+<br> <!--              -->
+
+::: box-header
+Teaching Assistant -- UCSB
+:::
+
+::: box-text
+**UCSB (9/22-6/24)**
+
+-   *Applied Ecology* \| *Environmental Chemistry* \| *Environmental Ethics*
+:::
+
+<br> <!--              -->
+
+::: box-header
+Biologist and Research Technician
+:::
+
+::: box-text
+**Mammoth Lakes, CA (2/21–6/21)** -- Mountain View Biological Consulting
+
+**Mammoth Lakes, CA (1/21–6/22)** -- Sierra Nevada Aquatic Research laboratory
+
+**Santa Cruz, CA (9/2019-12-20)** -- UC Santa Cruz
+
+**Rio Piedras, PR (6/19-9/19)** -- University of Puerto Rico
+:::
+:::::::::::::::
+
+<br>
+
+<!-- Certificates  -->
+
+::: icon-header-container
+{{< iconify tabler:award-filled size=lg style="position:relative; top:0.1em;" >}} Certificates and Awards
+:::
+
+<hr>
+
+::: box-plain
+-   **Google Data Analytics** (2023)
+-   **Bren Academic Excellence Recruitment Fellowship** 2022 & 2023
+-   **NRS Field Science Fellowship** 2020
+-   **Future Leaders in Coastal Science Award** 2019
+-   **Kathryn D. Sullivan Impact Award** 2019
+-   **Norris Center Student Natural History Award** 2019
+-   **Richard A. Cooley Award** 2019
+-   **Golden Key International Honors Society** 2018
+-   **The National Society of Collegiate Scholars** 2017
+-   **Honors Program UCSC**
+-   **UCSC Deans Honor Roll** (2017-2020)
+:::
+
+<!-- Downlad Button  -->
+
+::: button-container
+<a href="rh_resume.pdf" class="button" style="margin-top: 0px">View/Download Resume PDF</a>
+:::
+
+<br>
+
+::: icon-header-container
+{{< iconify fa7-solid:mountain-sun size=lg >}} Hobbies
+:::
+
+<hr>
 
 While much of my life passion lies in working with data, I enjoy getting outside equally as much. Some of my favorite activities include: rock climbing, surfing, paragliding, spearfishing, running, and practicing yoga.
 
-::: {layout-ncol="2"}
-![Some California Surf!](images/surf.JPG){.rounded-hover}
+::: {layout-ncol="4"}
+![French Polynesia exploring](images/raiatea.jpeg){.rounded-image}
 
-![French Polynesia exploring](images/raiatea.jpeg){.rounded-hover}
+![Mountaineering trip up Matterhorn Peak in the Sierra Nevada mountains](images/backpack.jpg){.rounded-image}
 
-![Mountaineering trip up Matterhorn Peak in the Sierra Nevada mountains](images/backpack.jpg){.rounded-hover}
+![Climbing Lone Pine Peak, California](images/lpp.jpg){.rounded-image}
 
-![Preparing for a multiday ascent up El Capitan, Yosemite](images/el_cap.jpg){.rounded-hover}
+![Preparing for a multiday ascent up El Capitan, Yosemite](images/el_cap.jpg){.rounded-image}
 
-![Big wall climbing on El Capitan, Yosemite](images/zod.jpg){.rounded-hover}
+![Big wall climbing on El Capitan, Yosemite](images/zod.jpg){.rounded-image}
 
-![El Capitan, Yosemite](images/nose.jpeg){.rounded-hover}
+![El Capitan, Yosemite](images/nose.jpeg){.rounded-image}
 
-![Snack during a backcountry ski tour](images/touring.jpeg){.rounded-hover}
+![Some California Surf!](images/surf.JPG){.rounded-image}
 
-![Climbing Lone Pine Peak, California](images/lpp.jpg){.rounded-hover}
+![Beach day in Kauai](images/beach.jpg){.rounded-image}
 
-![Beach day in Kauai](images/beach.jpg){.rounded-hover}
-
-![Paragliding in the eastern Sierra Nevada mountains](images/glide.jpg){.rounded-hover}
+![Paragliding in the eastern Sierra Nevada mountains](images/glide.jpg){.rounded-image}
 :::

@@ -7,9 +7,11 @@
 
 // Colors
 $gray1: #F8F8F8;
+$grey2: #dbe1e6ff;
+$grey3: #ebeef1ff;
 $lightblue: #E0FFFF;
 $darkturq: #2F4F4F;
-$seablue: #5f9f9f;
+$seablue: #5f9f9fff;
 $slateblue: #688dbd;
 $tan: #f2eae0;
 
@@ -25,7 +27,7 @@ $footer-fg: $gray1; // footer foreground
 $link-color: $seablue; // hyperlinks 
 $inline-code-color: $slateblue;
 $code-color: $slateblue;
-$code-block-bg: $tan; // code block background color
+$code-block-bg: $grey2; // code block background color
 $code-bg: $tan; // inline code background color
 // change background color of code blocks
 /*-- scss:rules --*/
@@ -95,23 +97,33 @@ h3 {
   margin-left: 25px;
 }
 
-.banner-container {
+
+.banner-image {
   position: relative;
-  top: -50px;
-  left: 0px;
-  width: 100%;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: -7rem;
+  height: 300px;           // Increased height for better coverage
+  transform: scaleY(0.7);
+  z-index: 0;
 }
 
-.banner-image-two {
-  position: absolute;
-  top: -75px;
-  left: 0px;
-  width: 100%;
-  max-width: 150%;
-  height: 380px;
-  /* Set a fixed height for the image */
-  object-fit: cover;
-  z-index: 0;
+.banner-caption {
+    color: $grey2;
+    font-size: 2.2em;
+    font-weight: 500;
+    position: absolute;
+    left: 25%;
+    transform: translateX(-50%);
+    bottom: 72%;
+    margin: 0;
+    padding: .5rem 1rem;
+    background: rgba(95, 159, 159, .4);
+    border-radius: 6px;
+    z-index: 1;
 }
 
 .center-banner-box {
@@ -128,15 +140,8 @@ h3 {
 
 }
 
-
-.gray-placeholder-two {
-  background-color: $gray1;
-  padding-top: 150px;
-  padding-bottom: 70px;
-  padding-right: 8px;
-  padding-left: 8px;
+.rounded-image {
   border-radius: 15px;
-  margin-bottom: 20px;
 }
 
 .rounded-hover {
@@ -199,6 +204,11 @@ h3 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.float-right-image-wide {
+  @extend .float-right-image;
+  width: 550px;
+}
+
 
 .float-image {
   width: 550px;
@@ -216,3 +226,140 @@ h3 {
   transform: scale(1.02);
   box-shadow: 0 8px 16px rgba($darkturq, 0.6);
 }
+
+.thumbnail-image {
+
+  border: 3px solid $seablue;
+}
+
+.rounded-corners {
+  border-radius: 7px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* gandalf quote */
+
+.about-entity::after {
+  content: '"Not all those who wonder are lost"\A -Gandalf the Grey';
+  white-space: pre;
+  display: block;
+  margin-top: 1.5em;
+  padding-top: 1em;
+  font-style: italic;
+  border-top: 1px solid $grey2;
+  font-size: 1em;
+  color: $darkturq;
+  text-align: center;
+}
+
+/* Conact Box Information */
+.contact-box {
+  text-align: center;
+  padding:.4rem;
+  border-radius:10px;
+  background: $grey2;
+  max-width:36rem;
+}
+
+.contact-text {
+  margin:0 0 .5rem;
+  font-weight:600;
+  font-size:1.4rem;
+  color:$seablue;
+}
+
+.contact-button {
+  display:inline-block;
+  text-align: center;
+  padding:.6rem 1rem;
+  background:$seablue;
+  color:#fff;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+
+.box-header {
+  display: flex;
+  text-align: left;
+  justify-content: left;   /* horizontally center content */
+  margin-bottom: 0;          /* keep header in contact with the .education-text below */
+  padding: 0.75rem;
+  background: $seablue;
+  height: 2.2rem;
+  color: $gray1;
+  border-radius: 6px 6px 0 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+  box-shadow: 0 4px 10px rgba($darkturq, 0.4);
+}
+
+.box-text {
+  border: 1.5px solid $seablue;
+  text-align: left;
+  /* top right bottom left: make bottom smaller */
+  padding: 1rem 1rem .1rem;
+  border-radius: 0 0 6px 6px;
+  background: $grey3;
+  color: $darkturq;
+  box-shadow: 0 4px 10px rgba($darkturq, 0.4);
+}
+
+  .box-plain {
+    @extend .box-text;
+    border-radius: 6px;
+    padding: .1rem 1rem .1rem
+    }
+
+
+
+
+
+.timeline-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0rem;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: repeating-linear-gradient(
+      to bottom,
+      $darkturq 0,
+      $darkturq 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    z-index: -1;
+  }
+
+  .box-header, 
+  .box-text {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.icon-header-container {
+    display: flex;       /* Use flexbox for layout */
+    align-items: center; /* Vertically center the items relative to each other */
+    gap: 10px;           /* Add some space between the icon and the header */
+  letter-spacing: 5px;
+  font-weight: 700;
+  font-size: 28px;
+  color: $darkturq ;
+  }
+
+  .icon-header-container p {
+    margin-bottom: 0;
+  }

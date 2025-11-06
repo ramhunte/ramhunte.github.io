@@ -1,6 +1,6 @@
 ---
 title: "An Introduction to Positron Assistant"
-description: "Coding more efficiently with LLMs in your IDE"
+description: "Coding more efficiently with LLMs in Posit's new IDE"
 author:
   - name: Raymond Hunter 
     url: <https://ramhunte.github.io/
@@ -23,17 +23,17 @@ format:
     warning: false
     message: false
 toc: true
-draft: true # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-I was pretty slow to migrate over to [Positron](https://positron.posit.co/), Posit's new integrated development environment (IDE). Researchers and academics aren't always the first to hop on emerging tools and products... or even the second. My attachment to RStudio's classic and reliable graphical user interface (GUI) kept me skeptical about breaking the status quo of my workflow. Why fix something if it's not broken? After a curious introduction to the new software, I am more than stoked I made the switch as it has a lot more to offer R users than just Python integration.
+I was pretty slow to migrate over to [Positron](https://positron.posit.co/), Posit's new integrated development environment (IDE) for data scientists. My attachment to RStudio's classic and reliable graphical user interface (GUI) kept me skeptical about breaking the status quo of my workflow. Why fix something if it's not broken?
 
-I was so inspired by my (initially reluctant) switch to Positron that I decided to write up this blog post to convince fellow data scientists and analysts why it is worthwhile to checkout. Positron offers many features that give it a leg up over its older sibling, RStudio. It is tailored specifically to the needs of data scientists and analysts, providing us with what we need, where we need it. I won't go into detail on all of its bells and whistles in this blog, but I will mention a few of the key features that stood out to me:
+After a curious introduction to the new software, I am more than stoked I made the switch as it has a lot more to offer R users than just Python integration. I was so inspired by my (initially reluctant) switch to Positron that I decided to write up this blog post to convince fellow data enthusiasts why it is worthwhile to checkout. Positron offers many features that give it a leg up over its older sibling, RStudio. It is tailored specifically to the needs of data scientists and analysts, providing us with what we need, where we need it. I won't go into detail on all of its bells and whistles in this blog, but I will mention a few of the key features that stood out to me:
 
 -   Improved data frame/variable exploration (interactive filtering, sorting, etc.)
 -   Better point-and-click integration with GitHub commands
 -   Aesthetic source control and commit history layout
--   Multi-language support (R, Python, etc.)
+-   Multi-language support
 
 I could go on and on about this, but that is not what this post is about. It is about the one feature that drew me in like a moth to a flame. The one feature that showed me how my day to day was about to drastically change. It is about [Positron Assistant](https://positron.posit.co/assistant.html).
 
@@ -43,9 +43,9 @@ I could go on and on about this, but that is not what this post is about. It is 
 
 ![](images/positron-assistant-blue.svg){width="20%" fig-align="center" fig-alt="Positron Assistant logo"}
 
-Positron Assistant is "***an AI client that provides LLM integration within Positron, both for chat and for inline completions.***" - [Posit](https://posit.co/). It is Posit's native AI coding assistant that can be powered by either Anthropic Claude models or various other large language models (LLMs) supported in GitHub Copilot (as of 10-30-2025). But why is Positron Assistant any better for us compared to web interface chats? Code completion and LLM chatbots are not new concepts after all.
+Positron Assistant is "***an AI client that provides LLM integration within Positron, both for chat and for inline completions.***" - [Posit](https://posit.co/). It is Posit's native AI coding assistant that can be powered by both Anthropic Claude and GitHub Copilot large language models (LLMs) (as of 10-30-2025). But why is Positron Assistant any better for us compared to web interface chats? Code completion and LLM chatbots are not new concepts after all.
 
-The key is that Positron Assistant brings LLM chats directly into the IDE, which reduces the friction of copy-paste and also incorporates your code base and environment context (files, variables, data frames, system version, etc.) into its understanding of your requests, giving you more accurate results. More importantly, it can function as an *AI Agent*, meaning it can perform tasks on behalf of the user by executing code and iterating over errors to give you the best results. It is honestly a bit scary.
+The key is that Positron Assistant brings LLM chats directly into the IDE, which reduces the friction of copy-paste across desktop windows and also incorporates your code base and environment context (files, variables, data frames, system version, etc.) into its understanding of your requests, giving you more accurate results. More importantly, it can function as an *AI Agent*, meaning it can perform tasks on behalf of the user by executing code and iterating over time consuming tasks. It is honestly a bit scary.
 
 ::: callout-note
 ## Install and Enable
@@ -61,7 +61,7 @@ You will need either an API key from Anthropic (paid) or a GitHub account (free 
 
 ## Functionalities
 
-Positron Assistant offers two different main functionalities - **chat** and **code completion**. **Chat** is the core functionality that allows you to ask questions and talk to the LLM (either in the chat pane or inline). It is similar to how you would interact with an LLM web interface, but it is integrated into Positron. It has 3 different modes provides: *Ask*, *Edit*, and *Agent* which have different functionalities. **Code completion** suggests code and annotations for you as you are typing them out. It is basically an autocomplete for code that tries to finish your lines for you.
+Positron Assistant offers two different main functionalities - **chat** and **code completion**. **Chat** is the core functionality that allows you to talk to the LLM (either in the chat pane or inline) and generate or debug code. It is similar to how you would interact with an LLM web interface, but it is integrated into Positron. Here, you can also add context to your requests by providing it relevant files and variables. There are three different modes: *Ask*, *Edit*, and *Agent* which have different purposes. The other functionality is **code completion**, which suggests code and annotations for you as you are typing them out. It is basically an autocomplete that tries to finish your lines for you.
 
 <br>
 
@@ -83,14 +83,14 @@ Positron Assistant offers two different main functionalities - **chat** and **co
 :::
 
 ::: g-col-6
-![Chat pane view](images/chat_pane.png){width="90%" fig-align="center" fig-alt="Positron Assistant chat modes: Ask, Edit, Agent" style="border-radius: 5px;"}
+![Chat pane view](images/chat_pane.png){.rounded-corners width="90%" fig-align="center" fig-alt="Positron Assistant chat modes: Ask, Edit, Agent"}
 
-![Inline chat view](images/chat_inline.png){width="90%" fig-align="center" fig-alt="inline chat view of Positron Assistant" style="border-radius: 5px;"}
+![Inline chat view](images/chat_inline.png){.rounded-corners width="90%" fig-align="center" fig-alt="inline chat view of Positron Assistant" style="border-radius: 5px;"}
 :::
 :::::
 
 ::: callout-tip
-You can provide Chat mode with additional context (files, variables, R session, etc.) by clicking on the {{< iconify mdi-light:paperclip >}} **Add Context...** button in the Chat pane to give more specific detail in your requests. Dropdown arrows {{< iconify ep:arrow-down >}} will also allow you to choose a mode and model.
+You can provide context (files, variables, R session, etc.) by clicking on the {{< iconify mdi-light:paperclip >}} **Add Context...** button in the Chat pane to give more specific detail in your requests. Dropdown arrows {{< iconify ep:arrow-down >}} will also allow you to choose a mode and model.
 :::
 
 <br>
@@ -101,11 +101,11 @@ You can provide Chat mode with additional context (files, variables, R session, 
 
 ::::: grid
 ::: g-col-6
-GitHub Copilot currently supports code completion which suggests code and annotation to be autocompleted. Start a line of code and it will automatically suggest completions that you can accept or reject by pressing `tab` to accept or keep typing to ignore.
+GitHub Copilot currently supports code completion, providing code and comment autocomplete suggestions as you type. You can either accept the completion by pressing `tab` or continue typing to ignore it.
 :::
 
 ::: g-col-6
-![Inline code completion view](images/code_complete.png){width="90%" fig-align="center" fig-alt="code completion suggestions from Positron Assistant" style="border-radius: 5px;"}
+![Inline code completion view](images/code_complete.png){.rounded-corners width="90%" fig-align="center" fig-alt="code completion suggestions from Positron Assistant" style="border-radius: 5px;"}
 :::
 :::::
 
@@ -119,17 +119,17 @@ Code completion is relatively straight forward and automatic, but the three diff
 
 ### Ask
 
-Ask mode is intended to be used to generate code, answer questions, and help debug. It is the most generally applicable mode and a good place to start. I wanted to see if it could write some code on the popular `mtcars` R data set:
+Ask mode is intended to be used to generate code, answer questions, and help debug. It is the most generally applicable mode and a good place to t. Let's see what it can do using the popular `mtcars` R data set:
 
 > *"Generate some exploratory data analysis figures of the mtcars dataset with ggplot2"*
 
-It responded with some nice R code which I could run directly in the chat before adding into my R script. It included a few different plots that were saved as variables and stitched together to make a `{patchwork}` plot shown in the Plots pane.
+It responded with some nice R code which we could run directly in the chat before adding into my R script. It included a few different plots that were saved as variables and stitched together to make a `{patchwork}` plot shown in the Plots pane. The output not only gives you the option to copy the code but also to insert it directly into your script where your cursor is located.
 
-![](images/chat_ask.png){width="70%" fig-align="center" fig-alt="mtcars EDA plots generated by Positron Assistant"}
+![](images/chat_ask.png){.rounded-corners width="70%" fig-align="center" fig-alt="mtcars EDA plots generated by Positron Assistant"}
 
 Here is the code it generated, which can be easily transferred into your script or notebook:
 
-```{r, run = FALSE, eval = FALSE}
+```{r, fig.align='center', fig.alt='mtcars EDA plots generated by Positron Assistant'}
 library(ggplot2)
 library(dplyr)
 
@@ -173,19 +173,25 @@ If you are asking an R Shiny specific question, start your message with `@Shiny`
 
 <br>
 
-So far so good! I gave it a well known R dataset and an easy task. I also could have done this in ChatGPT for free (although without the additional context files) and copied and pasted it into my code too though, so it isn't a home run yet.
+So far so good! I gave it a well known R dataset and an easy task. I also could have done this on the ChatGPT website for free, but I would not be able to provide the detailed context of my R environment nor quickly insert the changes in my script at the click of a button.
+
+Why don't we ask it about the `p1` plot is just generated.
+
+> *"Interpret p1 for me"*
+
+It then responded with a short summary on the figure explaining key observations and highlighting trends based on the graph. We did not have to copy and paste an image or provide any additional files. We simply pointed to an object in our R environment and it read the figure. This would be a lot higher friction to complete in a web interface.
+
+![](images/chat_p1.png){.rounded-corners width="70%" fig-align="center" fig-alt="p1 plot interpretation from Positron Assistant"}
 
 <br>
 
 ### Edit
 
-Let's say I wanted to change the boxplot fill color to green instead. It would also be nice if the final `ggplot2` object could be saved as its own value and exported as a PNG. We could use *Ask* mode to do this, but *Ask* mode can be a little general at times and focuses more on initial code generation and big picture questions. Because we are trying to fix a small, specific piece of a code already generated, it would be more appropriate to use the *Edit* mode to get more desirable results. *Edit* mode focuses on making acute changes to code already in the code base.
+Let's say I wanted to change the boxplot fill color to green instead. It would also be nice if the final `ggplot2` object could be saved as its own value and exported as a PNG. We could use *Ask* mode to do this, but *Ask* mode can be a little general at times and focuses more on initial code generation and big picture questions. *Ask* mode also provides suggestions that you have to copy over or point to where it belongs. Because we are trying to fix a specific piece of a code already generated, it would be more appropriate to use the *Edit* mode which will automatically change it for us. *Edit* mode focuses on making and inserting acute changes to your code base and less on the answering questions/suggesting code like you get in *Ask* mode.
 
 Let's try the following prompt in *Edit* mode:
 
 > *"Write me code that will change the boxplot fill color to green and save the final plot as a PNG file named mtcars_eda.png."*
-
-The nice this about the results in *Edit* mode is that it only showed me the pieces of code it modified. The results appear to be more focused on the specific changes and less on the general structure like what you get in *Ask* mode.
 
 ```{r, run = FALSE, eval = FALSE}
 # Change boxplot fill color to green
@@ -208,13 +214,13 @@ combined_plot <- p1 +
 ggsave("mtcars_eda.png", combined_plot, width = 12, height = 8)
 ```
 
-It successfully gave me *only* the code I needed to change the color and save a PNG to my working directory like I asked it to. Similarly to *Ask* mode, I could have also done this in ChatGPT for free. However, the advantage here is that it has the additional context of my R environment, and I don't need to copy and paste code back and forth to a website, which gives me more accurate results. Let's take a look at where the real power of Positron Assistant shines.
+It successfully inserted *only* the code I needed to change the color and save a PNG to my working directory like I asked it to. The nice thing is that it inserted the code changes in my script by itself (which I can reject or accept) without me having to copy it or tell it where it goes. We already can see major benefits in using Positron Assistant to help us fix code compared to interacting with LLMs on the web. Now, let's take a look at where the real power of Positron Assistant shines.
 
 <br>
 
 ### Agent
 
-Finally for the scary part... *Agent* mode essentially lets Positron Assistant take over your IDE and perform tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out tasks you ask it to and take steps it sees as necessary to get you the results. It feels really weird and risky to let it take the reigns like that, but let's try it out anyway. I gave it the following prompt which is more specific and complex than the previous two:
+Finally for the scary part... *Agent* mode essentially lets Positron Assistant take over your IDE and perform a series of tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out necessary steps to get you the results you asked for. We will give it the following prompt which is more specific and complex than the previous two:
 
 > *"Make a short quarto report asking some questions about the data that provides figures and a conclusion. Render it and name it mtcars_report.qmd"*
 
@@ -228,7 +234,7 @@ I then watched it generate appropriate code and text inside a file called `mtcar
 
 After I gave it the thumbs up, it created the quarto file in my working directory and rendered it as an HTML file.
 
-![](images/html.png){width="90%" fig-align="center" fig-alt="Rendered mtcars analysis report"}
+![](images/html.png){.rounded-corners width="90%" fig-align="center" fig-alt="Rendered mtcars analysis report"}
 
 Pretty impressive, right? The agent fully took the necessary actions to create a quarto document, execute code, and render the final report without any intervention besides asking if I would like it to continue. *Agent* mode can be used in many different ways to automate repetitive tasks and carry out grunt work on the back burner. It is very powerful and will greatly change how we work with data.
 
@@ -236,13 +242,15 @@ Pretty impressive, right? The agent fully took the necessary actions to create a
 
 ## Final thoughts
 
-It is critical to note that Positron and the LLM's it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is *crucial*. I kept things simple and broad in this demonstration, but you will get much better results if you provide more context and details. One way to do this is to create a `.txt` file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.
+It is critical to note that Positron and the LLM's it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is *crucial*. I kept things short in this demonstration for simplicity, but you will get much better results if you provide more context and detail to the LLM. One way to do this is to create a `.txt` file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.
 
 Overall, I am feeling both excited and conflicted about the integration of LLMs into IDEs like Positron Assistant. They are remarkably powerful tools that can greatly increase efficiency and productivity, especially for repetitive tasks. You can generate and debug code quickly, carry out time intensive tasks in *Agent* mode, and gain new insights into improving your analytical pipelines.
 
 However, I do see these tools pushing us towards becoming vibecoders where we end up relying heavily on LLMs to execute our work. So much of the learning and joy as an analyst comes from looking deep on Stack Overflow and GitHub for solutions. It teaches you how to think like a programmer, and I am afraid that reliance on these chatbots like Positron Assistant will change the way we work. I think that we just have to move cautiously and be intentional about how we integrate these tools into our day to day.
 
 <br>
+
+## Other Resources
 
 ### Databot
 

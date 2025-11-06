@@ -1,6 +1,6 @@
 ---
 title: "Raymond Hunter"
-subtitle: "NOAA Data Analyst | Contractor"
+subtitle: "NOAA | Freelance Data Scientist"
 image: images/headshot3.jpg
 about:
   template: trestles
@@ -22,10 +22,16 @@ about:
 
 <hr class="custom-line">
 
-Out of the infinite amount of content on the web, you’ve stumbled upon a little snapshot of my life on a computer screen. Whoohoo! My name is Ray, and I created this personal website using Quarto to share a bit about who I am and what I do—including the skills, experiences, and hobbies that have shaped me into the nature-loving, data enthusiast I am today.
+Out of the infinite amount of content on the web, you’ve stumbled upon a little snapshot of my life. Whoohoo! My name is Ray, and I created this personal website using Quarto to share a bit about who I am and what I do. I am passionate about helping teams leverage programming tools (R, SQL, Shiny dashboards, GIS) to more efficiently tackle and understand their data. An Environmental Data Scientist by training, I currently work as a Data Analsyt at [NOAA Fisheries](https://www.fisheries.noaa.gov/) building Shiny applications and data pipelines to bring governemnt datasets to life. I hold a **Masters of Environmental Science and Management (MESM)** degree with a focus in Data Science from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara. I enjoy various outdoor activities when not squinting my eyes at error messages.
 
-An Environmental Data Scientist by training, I currently work at [NOAA Fisheries](https://www.fisheries.noaa.gov/) researching how federal policy can shape the economy and health of sustainable fisheries along the Pacific West Coast. I hold a **Masters of Environmental Science and Management (MESM)** degree from the [Bren School of Environmental Science and Management](https://bren.ucsb.edu/masters-programs/master-environmental-science-and-management) at UC Santa Barbara, as well as a **B.S.in Ecology and Evolutionary Biology**, and a **B.A. in Environmental Studies** from UC Santa Cruz. I enjoy various outdoor activities when not squinting my eyes at error messages. I also take on part-time, contract data-related gigs—so feel free to reach out if I can be of service!
+::: contact-box
+<p class="contact-text">
 
-<hr class="custom-line">
+Need help with your data?
 
-*"Not all those who wonder are lost"* - Gandalf the Grey
+</p>
+
+<a href="mailto:rmhunter999@gmail.com?subject=Freelance%20Data%20Science%20Inquiry" 
+     class="contact-button"
+     aria-label="Email Raymond Hunter about a freelance project"> Email me </a>
+:::

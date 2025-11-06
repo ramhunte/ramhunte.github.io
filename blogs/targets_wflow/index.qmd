@@ -10,7 +10,7 @@ citation:
   url: <https://ramhunte.github.io/blogs/targets_wflow/
 bibliography: references.bib
 image: images/thumbnail_eye_sauron.jpg
-categories: [Reproducible Pipelines] # self-defined categories
+categories: [Reproducible Pipelines, Automation] # self-defined categories
 format: 
   html: 
     # code-fold: show 

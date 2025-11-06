@@ -8,7 +8,7 @@
 
 <meta name="author" content="Raymond Hunter">
 <meta name="dcterms.date" content="2025-10-30">
-<meta name="description" content="Coding more efficiently with LLMs in your IDE">
+<meta name="description" content="Coding more efficiently with LLMs in Posit’s new IDE">
 
 <title>An Introduction to Positron Assistant</title>
 <style>
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1426c3bcb4f912aac6a6a37a347d319c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-df45b6ebc5e8c83ddb36eb962042f2fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -136,8 +136,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html"> 
-<span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blogs.html"> 
@@ -188,7 +188,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#edit" id="toc-edit" class="nav-link" data-scroll-target="#edit">Edit</a></li>
   <li><a href="#agent" id="toc-agent" class="nav-link" data-scroll-target="#agent">Agent</a></li>
   </ul></li>
-  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a></li>
+  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources">Other Resources</a>
   <ul class="collapse">
   <li><a href="#databot" id="toc-databot" class="nav-link" data-scroll-target="#databot">Databot</a></li>
   </ul></li>
@@ -208,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    Coding more efficiently with LLMs in your IDE
+    Coding more efficiently with LLMs in Posit’s new IDE
   </div>
 </div>
 
@@ -237,13 +238,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>I was pretty slow to migrate over to <a href="https://positron.posit.co/">Positron</a>, Posit’s new integrated development environment (IDE). Researchers and academics aren’t always the first to hop on emerging tools and products… or even the second. My attachment to RStudio’s classic and reliable graphical user interface (GUI) kept me skeptical about breaking the status quo of my workflow. Why fix something if it’s not broken? After a curious introduction to the new software, I am more than stoked I made the switch as it has a lot more to offer R users than just Python integration.</p>
-<p>I was so inspired by my (initially reluctant) switch to Positron that I decided to write up this blog post to convince fellow data scientists and analysts why it is worthwhile to checkout. Positron offers many features that give it a leg up over its older sibling, RStudio. It is tailored specifically to the needs of data scientists and analysts, providing us with what we need, where we need it. I won’t go into detail on all of its bells and whistles in this blog, but I will mention a few of the key features that stood out to me:</p>
+<p>I was pretty slow to migrate over to <a href="https://positron.posit.co/">Positron</a>, Posit’s new integrated development environment (IDE) for data scientists. My attachment to RStudio’s classic and reliable graphical user interface (GUI) kept me skeptical about breaking the status quo of my workflow. Why fix something if it’s not broken?</p>
+<p>After a curious introduction to the new software, I am more than stoked I made the switch as it has a lot more to offer R users than just Python integration. I was so inspired by my (initially reluctant) switch to Positron that I decided to write up this blog post to convince fellow data enthusiasts why it is worthwhile to checkout. Positron offers many features that give it a leg up over its older sibling, RStudio. It is tailored specifically to the needs of data scientists and analysts, providing us with what we need, where we need it. I won’t go into detail on all of its bells and whistles in this blog, but I will mention a few of the key features that stood out to me:</p>
 <ul>
 <li>Improved data frame/variable exploration (interactive filtering, sorting, etc.)</li>
 <li>Better point-and-click integration with GitHub commands</li>
 <li>Aesthetic source control and commit history layout</li>
-<li>Multi-language support (R, Python, etc.)</li>
+<li>Multi-language support</li>
 </ul>
 <p>I could go on and on about this, but that is not what this post is about. It is about the one feature that drew me in like a moth to a flame. The one feature that showed me how my day to day was about to drastically change. It is about <a href="https://positron.posit.co/assistant.html">Positron Assistant</a>.</p>
 <p><br><br></p>
@@ -254,8 +255,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/positron-assistant-blue.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:20.0%" alt="Positron Assistant logo"></p>
 </figure>
 </div>
-<p>Positron Assistant is “<strong><em>an AI client that provides LLM integration within Positron, both for chat and for inline completions.</em></strong>” - <a href="https://posit.co/">Posit</a>. It is Posit’s native AI coding assistant that can be powered by either Anthropic Claude models or various other large language models (LLMs) supported in GitHub Copilot (as of 10-30-2025). But why is Positron Assistant any better for us compared to web interface chats? Code completion and LLM chatbots are not new concepts after all.</p>
-<p>The key is that Positron Assistant brings LLM chats directly into the IDE, which reduces the friction of copy-paste and also incorporates your code base and environment context (files, variables, data frames, system version, etc.) into its understanding of your requests, giving you more accurate results. More importantly, it can function as an <em>AI Agent</em>, meaning it can perform tasks on behalf of the user by executing code and iterating over errors to give you the best results. It is honestly a bit scary.</p>
+<p>Positron Assistant is “<strong><em>an AI client that provides LLM integration within Positron, both for chat and for inline completions.</em></strong>” - <a href="https://posit.co/">Posit</a>. It is Posit’s native AI coding assistant that can be powered by both Anthropic Claude and GitHub Copilot large language models (LLMs) (as of 10-30-2025). But why is Positron Assistant any better for us compared to web interface chats? Code completion and LLM chatbots are not new concepts after all.</p>
+<p>The key is that Positron Assistant brings LLM chats directly into the IDE, which reduces the friction of copy-paste across desktop windows and also incorporates your code base and environment context (files, variables, data frames, system version, etc.) into its understanding of your requests, giving you more accurate results. More importantly, it can function as an <em>AI Agent</em>, meaning it can perform tasks on behalf of the user by executing code and iterating over time consuming tasks. It is honestly a bit scary.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -277,7 +278,7 @@ Install and Enable
 </section>
 <section id="functionalities" class="level2">
 <h2 data-anchor-id="functionalities">Functionalities</h2>
-<p>Positron Assistant offers two different main functionalities - <strong>chat</strong> and <strong>code completion</strong>. <strong>Chat</strong> is the core functionality that allows you to ask questions and talk to the LLM (either in the chat pane or inline). It is similar to how you would interact with an LLM web interface, but it is integrated into Positron. It has 3 different modes provides: <em>Ask</em>, <em>Edit</em>, and <em>Agent</em> which have different functionalities. <strong>Code completion</strong> suggests code and annotations for you as you are typing them out. It is basically an autocomplete for code that tries to finish your lines for you.</p>
+<p>Positron Assistant offers two different main functionalities - <strong>chat</strong> and <strong>code completion</strong>. <strong>Chat</strong> is the core functionality that allows you to talk to the LLM (either in the chat pane or inline) and generate or debug code. It is similar to how you would interact with an LLM web interface, but it is integrated into Positron. Here, you can also add context to your requests by providing it relevant files and variables. There are three different modes: <em>Ask</em>, <em>Edit</em>, and <em>Agent</em> which have different purposes. The other functionality is <strong>code completion</strong>, which suggests code and annotations for you as you are typing them out. It is basically an autocomplete that tries to finish your lines for you.</p>
 <p><br></p>
 <section id="chat" class="level3" style="text-align: center;">
 <h3 style="text-align: center;" data-anchor-id="chat">Chat</h3>
@@ -293,15 +294,15 @@ Install and Enable
 <p><em>Click on the Positron Assistant icon <img src="images/positron-assistant-blue.svg" class="img-fluid" style="width:5.0%"> in the left-hand side Activity Bar to open the chat pane, or run <code>Ctrl + I</code> / <code>Cmd + I</code> in a script for inline chat.</em></p>
 </div>
 <div class="g-col-6">
-<div class="quarto-figure quarto-figure-center" style="border-radius: 5px;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/chat_pane.png" class="img-fluid figure-img" style="width:90.0%" alt="Positron Assistant chat modes: Ask, Edit, Agent"></p>
+<p><img src="images/chat_pane.png" class="rounded-corners img-fluid figure-img" style="width:90.0%" alt="Positron Assistant chat modes: Ask, Edit, Agent"></p>
 <figcaption>Chat pane view</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="border-radius: 5px;">
 <figure class="figure">
-<p><img src="images/chat_inline.png" class="img-fluid figure-img" style="width:90.0%" alt="inline chat view of Positron Assistant"></p>
+<p><img src="images/chat_inline.png" class="rounded-corners img-fluid figure-img" style="width:90.0%" alt="inline chat view of Positron Assistant"></p>
 <figcaption>Inline chat view</figcaption>
 </figure>
 </div>
@@ -317,7 +318,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can provide Chat mode with additional context (files, variables, R session, etc.) by clicking on the <iconify-icon role="img" inline="" icon="mdi-light:paperclip" aria-label="Icon paperclip from mdi-light Iconify.design set." title="Icon paperclip from mdi-light Iconify.design set."></iconify-icon> <strong>Add Context…</strong> button in the Chat pane to give more specific detail in your requests. Dropdown arrows <iconify-icon role="img" inline="" icon="ep:arrow-down" aria-label="Icon arrow-down from ep Iconify.design set." title="Icon arrow-down from ep Iconify.design set."></iconify-icon> will also allow you to choose a mode and model.</p>
+<p>You can provide context (files, variables, R session, etc.) by clicking on the <iconify-icon role="img" inline="" icon="mdi-light:paperclip" aria-label="Icon paperclip from mdi-light Iconify.design set." title="Icon paperclip from mdi-light Iconify.design set."></iconify-icon> <strong>Add Context…</strong> button in the Chat pane to give more specific detail in your requests. Dropdown arrows <iconify-icon role="img" inline="" icon="ep:arrow-down" aria-label="Icon arrow-down from ep Iconify.design set." title="Icon arrow-down from ep Iconify.design set."></iconify-icon> will also allow you to choose a mode and model.</p>
 </div>
 </div>
 <p><br></p>
@@ -327,12 +328,12 @@ Tip
 <hr>
 <div class="grid">
 <div class="g-col-6">
-<p>GitHub Copilot currently supports code completion which suggests code and annotation to be autocompleted. Start a line of code and it will automatically suggest completions that you can accept or reject by pressing <code>tab</code> to accept or keep typing to ignore.</p>
+<p>GitHub Copilot currently supports code completion, providing code and comment autocomplete suggestions as you type. You can either accept the completion by pressing <code>tab</code> or continue typing to ignore it.</p>
 </div>
 <div class="g-col-6">
 <div class="quarto-figure quarto-figure-center" style="border-radius: 5px;">
 <figure class="figure">
-<p><img src="images/code_complete.png" class="img-fluid figure-img" style="width:90.0%" alt="code completion suggestions from Positron Assistant"></p>
+<p><img src="images/code_complete.png" class="rounded-corners img-fluid figure-img" style="width:90.0%" alt="code completion suggestions from Positron Assistant"></p>
 <figcaption>Inline code completion view</figcaption>
 </figure>
 </div>
@@ -347,18 +348,18 @@ Tip
 <p><br></p>
 <section id="ask" class="level3">
 <h3 data-anchor-id="ask">Ask</h3>
-<p>Ask mode is intended to be used to generate code, answer questions, and help debug. It is the most generally applicable mode and a good place to start. I wanted to see if it could write some code on the popular <code>mtcars</code> R data set:</p>
+<p>Ask mode is intended to be used to generate code, answer questions, and help debug. It is the most generally applicable mode and a good place to t. Let’s see what it can do using the popular <code>mtcars</code> R data set:</p>
 <blockquote class="blockquote">
 <p><em>“Generate some exploratory data analysis figures of the mtcars dataset with ggplot2”</em></p>
 </blockquote>
-<p>It responded with some nice R code which I could run directly in the chat before adding into my R script. It included a few different plots that were saved as variables and stitched together to make a <code>{patchwork}</code> plot shown in the Plots pane.</p>
+<p>It responded with some nice R code which we could run directly in the chat before adding into my R script. It included a few different plots that were saved as variables and stitched together to make a <code>{patchwork}</code> plot shown in the Plots pane. The output not only gives you the option to copy the code but also to insert it directly into your script where your cursor is located.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/chat_ask.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%" alt="mtcars EDA plots generated by Positron Assistant"></p>
+<p><img src="images/chat_ask.png" class="rounded-corners img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%" alt="mtcars EDA plots generated by Positron Assistant"></p>
 </figure>
 </div>
 <p>Here is the code it generated, which can be easily transferred into your script or notebook:</p>
-<div class="cell" data-run="false">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -394,6 +395,13 @@ Tip
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fuel Efficiency Relationships in mtcars Dataset"</span></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="mtcars EDA plots generated by Positron Assistant" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -409,17 +417,26 @@ Tip
 </div>
 </div>
 <p><br></p>
-<p>So far so good! I gave it a well known R dataset and an easy task. I also could have done this in ChatGPT for free (although without the additional context files) and copied and pasted it into my code too though, so it isn’t a home run yet.</p>
+<p>So far so good! I gave it a well known R dataset and an easy task. I also could have done this on the ChatGPT website for free, but I would not be able to provide the detailed context of my R environment nor quickly insert the changes in my script at the click of a button.</p>
+<p>Why don’t we ask it about the <code>p1</code> plot is just generated.</p>
+<blockquote class="blockquote">
+<p><em>“Interpret p1 for me”</em></p>
+</blockquote>
+<p>It then responded with a short summary on the figure explaining key observations and highlighting trends based on the graph. We did not have to copy and paste an image or provide any additional files. We simply pointed to an object in our R environment and it read the figure. This would be a lot higher friction to complete in a web interface.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chat_p1.png" class="rounded-corners img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%" alt="p1 plot interpretation from Positron Assistant"></p>
+</figure>
+</div>
 <p><br></p>
 </section>
 <section id="edit" class="level3">
 <h3 data-anchor-id="edit">Edit</h3>
-<p>Let’s say I wanted to change the boxplot fill color to green instead. It would also be nice if the final <code>ggplot2</code> object could be saved as its own value and exported as a PNG. We could use <em>Ask</em> mode to do this, but <em>Ask</em> mode can be a little general at times and focuses more on initial code generation and big picture questions. Because we are trying to fix a small, specific piece of a code already generated, it would be more appropriate to use the <em>Edit</em> mode to get more desirable results. <em>Edit</em> mode focuses on making acute changes to code already in the code base.</p>
+<p>Let’s say I wanted to change the boxplot fill color to green instead. It would also be nice if the final <code>ggplot2</code> object could be saved as its own value and exported as a PNG. We could use <em>Ask</em> mode to do this, but <em>Ask</em> mode can be a little general at times and focuses more on initial code generation and big picture questions. <em>Ask</em> mode also provides suggestions that you have to copy over or point to where it belongs. Because we are trying to fix a specific piece of a code already generated, it would be more appropriate to use the <em>Edit</em> mode which will automatically change it for us. <em>Edit</em> mode focuses on making and inserting acute changes to your code base and less on the answering questions/suggesting code like you get in <em>Ask</em> mode.</p>
 <p>Let’s try the following prompt in <em>Edit</em> mode:</p>
 <blockquote class="blockquote">
 <p><em>“Write me code that will change the boxplot fill color to green and save the final plot as a PNG file named mtcars_eda.png.”</em></p>
 </blockquote>
-<p>The nice this about the results in <em>Edit</em> mode is that it only showed me the pieces of code it modified. The results appear to be more focused on the specific changes and less on the general structure like what you get in <em>Ask</em> mode.</p>
 <div class="cell" data-run="false">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change boxplot fill color to green</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
@@ -440,12 +457,12 @@ Tip
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PNG</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mtcars_eda.png"</span>, combined_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It successfully gave me <em>only</em> the code I needed to change the color and save a PNG to my working directory like I asked it to. Similarly to <em>Ask</em> mode, I could have also done this in ChatGPT for free. However, the advantage here is that it has the additional context of my R environment, and I don’t need to copy and paste code back and forth to a website, which gives me more accurate results. Let’s take a look at where the real power of Positron Assistant shines.</p>
+<p>It successfully insterted <em>only</em> the code I needed to change the color and save a PNG to my working directory like I asked it to. The nice thing is that it inserted the code changes in my script by itself (which I can reject or accept). We already can see major benefits in using Positron Assistant to help us fix code compared to nteractiving with LLMs on the web. Now, let’s take a look at where the real power of Positron Assistant shines.</p>
 <p><br></p>
 </section>
 <section id="agent" class="level3">
 <h3 data-anchor-id="agent">Agent</h3>
-<p>Finally for the scary part… <em>Agent</em> mode essentially lets Positron Assistant take over your IDE and perform tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out tasks you ask it to and take steps it sees as necessary to get you the results. It feels really weird and risky to let it take the reigns like that, but let’s try it out anyway. I gave it the following prompt which is more specific and complex than the previous two:</p>
+<p>Finally for the scary part… <em>Agent</em> mode essentially lets Positron Assistant take over your IDE and perform a series of tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out necessary steps to get you the results you asked for. We will give it the following prompt which is more specific and complex than the previous two:</p>
 <blockquote class="blockquote">
 <p><em>“Make a short quarto report asking some questions about the data that provides figures and a conclusion. Render it and name it mtcars_report.qmd”</em></p>
 </blockquote>
@@ -460,7 +477,7 @@ Tip
 <p>After I gave it the thumbs up, it created the quarto file in my working directory and rendered it as an HTML file.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/html.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Rendered mtcars analysis report"></p>
+<p><img src="images/html.png" class="rounded-corners img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Rendered mtcars analysis report"></p>
 </figure>
 </div>
 <p>Pretty impressive, right? The agent fully took the necessary actions to create a quarto document, execute code, and render the final report without any intervention besides asking if I would like it to continue. <em>Agent</em> mode can be used in many different ways to automate repetitive tasks and carry out grunt work on the back burner. It is very powerful and will greatly change how we work with data.</p>
@@ -469,10 +486,13 @@ Tip
 </section>
 <section id="final-thoughts" class="level2">
 <h2 data-anchor-id="final-thoughts">Final thoughts</h2>
-<p>It is critical to note that Positron and the LLM’s it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is <em>crucial</em>. I kept things simple and broad in this demonstration, but you will get much better results if you provide more context and details. One way to do this is to create a <code>.txt</code> file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.</p>
+<p>It is critical to note that Positron and the LLM’s it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is <em>crucial</em>. I kept things short in this demonstration for simplicity, but you will get much better results if you provide more context and detail to the LLM. One way to do this is to create a <code>.txt</code> file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.</p>
 <p>Overall, I am feeling both excited and conflicted about the integration of LLMs into IDEs like Positron Assistant. They are remarkably powerful tools that can greatly increase efficiency and productivity, especially for repetitive tasks. You can generate and debug code quickly, carry out time intensive tasks in <em>Agent</em> mode, and gain new insights into improving your analytical pipelines.</p>
 <p>However, I do see these tools pushing us towards becoming vibecoders where we end up relying heavily on LLMs to execute our work. So much of the learning and joy as an analyst comes from looking deep on Stack Overflow and GitHub for solutions. It teaches you how to think like a programmer, and I am afraid that reliance on these chatbots like Positron Assistant will change the way we work. I think that we just have to move cautiously and be intentional about how we integrate these tools into our day to day.</p>
 <p><br></p>
+</section>
+<section id="other-resources" class="level2">
+<h2 data-anchor-id="other-resources">Other Resources</h2>
 <section id="databot" class="level3">
 <h3 data-anchor-id="databot">Databot</h3>
 <div class="quarto-figure quarto-figure-center">
@@ -503,11 +523,11 @@ Installation
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{hunter2025,
   author = {Hunter, Raymond},
-  title = {Thoughts on {Positron} {Assistant}},
+  title = {An {Introduction} to {Positron} {Assistant}},
   date = {2025-10-30},
   url = {</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-hunter2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Hunter, Raymond. 2025. <span>“Thoughts on Positron Assistant.”</span>
-October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/">&lt;https://ramhunte.github.io/blogs/positron_assistant/</a>.
+Hunter, Raymond. 2025. <span>“An Introduction to Positron
+Assistant.”</span> October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/">&lt;https://ramhunte.github.io/blogs/positron_assistant/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -954,7 +974,7 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "An Introduction to Positron Assistant"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Coding more efficiently with LLMs in your IDE"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Coding more efficiently with LLMs in Posit's new IDE"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: Raymond Hunter </span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    url: &lt;https://ramhunte.github.io/</span></span>
@@ -980,14 +1000,14 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!</span></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>I was pretty slow to migrate over to <span class="co">[</span><span class="ot">Positron</span><span class="co">](https://positron.posit.co/)</span>, Posit's new integrated development environment (IDE). Researchers and academics aren't always the first to hop on emerging tools and products... or even the second. My attachment to RStudio's classic and reliable graphical user interface (GUI) kept me skeptical about breaking the status quo of my workflow. Why fix something if it's not broken? After a curious introduction to the new software, I am more than stoked I made the switch as it has a lot more to offer R users than just Python integration.</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>I was pretty slow to migrate over to <span class="co">[</span><span class="ot">Positron</span><span class="co">](https://positron.posit.co/)</span>, Posit's new integrated development environment (IDE) for data scientists. My attachment to RStudio's classic and reliable graphical user interface (GUI) kept me skeptical about breaking the status quo of my workflow. Why fix something if it's not broken?</span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>I was so inspired by my (initially reluctant) switch to Positron that I decided to write up this blog post to convince fellow data scientists and analysts why it is worthwhile to checkout. Positron offers many features that give it a leg up over its older sibling, RStudio. It is tailored specifically to the needs of data scientists and analysts, providing us with what we need, where we need it. I won't go into detail on all of its bells and whistles in this blog, but I will mention a few of the key features that stood out to me:</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>After a curious introduction to the new software, I am more than stoked I made the switch as it has a lot more to offer R users than just Python integration. I was so inspired by my (initially reluctant) switch to Positron that I decided to write up this blog post to convince fellow data enthusiasts why it is worthwhile to checkout. Positron offers many features that give it a leg up over its older sibling, RStudio. It is tailored specifically to the needs of data scientists and analysts, providing us with what we need, where we need it. I won't go into detail on all of its bells and whistles in this blog, but I will mention a few of the key features that stood out to me:</span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Improved data frame/variable exploration (interactive filtering, sorting, etc.)</span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Better point-and-click integration with GitHub commands</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Aesthetic source control and commit history layout</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Multi-language support (R, Python, etc.)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Multi-language support</span>
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>I could go on and on about this, but that is not what this post is about. It is about the one feature that drew me in like a moth to a flame. The one feature that showed me how my day to day was about to drastically change. It is about <span class="co">[</span><span class="ot">Positron Assistant</span><span class="co">](https://positron.posit.co/assistant.html)</span>.</span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
@@ -997,9 +1017,9 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
 <span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/positron-assistant-blue.svg)</span>{width="20%" fig-align="center" fig-alt="Positron Assistant logo"}</span>
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>Positron Assistant is "***an AI client that provides LLM integration within Positron, both for chat and for inline completions.***" - <span class="co">[</span><span class="ot">Posit</span><span class="co">](https://posit.co/)</span>. It is Posit's native AI coding assistant that can be powered by either Anthropic Claude models or various other large language models (LLMs) supported in GitHub Copilot (as of 10-30-2025). But why is Positron Assistant any better for us compared to web interface chats? Code completion and LLM chatbots are not new concepts after all.</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>Positron Assistant is "***an AI client that provides LLM integration within Positron, both for chat and for inline completions.***" - <span class="co">[</span><span class="ot">Posit</span><span class="co">](https://posit.co/)</span>. It is Posit's native AI coding assistant that can be powered by both Anthropic Claude and GitHub Copilot large language models (LLMs) (as of 10-30-2025). But why is Positron Assistant any better for us compared to web interface chats? Code completion and LLM chatbots are not new concepts after all.</span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>The key is that Positron Assistant brings LLM chats directly into the IDE, which reduces the friction of copy-paste and also incorporates your code base and environment context (files, variables, data frames, system version, etc.) into its understanding of your requests, giving you more accurate results. More importantly, it can function as an *AI Agent*, meaning it can perform tasks on behalf of the user by executing code and iterating over errors to give you the best results. It is honestly a bit scary.</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>The key is that Positron Assistant brings LLM chats directly into the IDE, which reduces the friction of copy-paste across desktop windows and also incorporates your code base and environment context (files, variables, data frames, system version, etc.) into its understanding of your requests, giving you more accurate results. More importantly, it can function as an *AI Agent*, meaning it can perform tasks on behalf of the user by executing code and iterating over time consuming tasks. It is honestly a bit scary.</span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
 <span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Install and Enable</span></span>
@@ -1015,7 +1035,7 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
 <span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functionalities</span></span>
 <span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>Positron Assistant offers two different main functionalities - **chat** and **code completion**. **Chat** is the core functionality that allows you to ask questions and talk to the LLM (either in the chat pane or inline). It is similar to how you would interact with an LLM web interface, but it is integrated into Positron. It has 3 different modes provides: *Ask*, *Edit*, and *Agent* which have different functionalities. **Code completion** suggests code and annotations for you as you are typing them out. It is basically an autocomplete for code that tries to finish your lines for you.</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>Positron Assistant offers two different main functionalities - **chat** and **code completion**. **Chat** is the core functionality that allows you to talk to the LLM (either in the chat pane or inline) and generate or debug code. It is similar to how you would interact with an LLM web interface, but it is integrated into Positron. Here, you can also add context to your requests by providing it relevant files and variables. There are three different modes: *Ask*, *Edit*, and *Agent* which have different purposes. The other functionality is **code completion**, which suggests code and annotations for you as you are typing them out. It is basically an autocomplete that tries to finish your lines for you.</span>
 <span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 <span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
@@ -1037,14 +1057,14 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
 <span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>::: g-col-6</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="al">![Chat pane view](images/chat_pane.png)</span>{width="90%" fig-align="center" fig-alt="Positron Assistant chat modes: Ask, Edit, Agent" style="border-radius: 5px;"}</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="al">![Chat pane view](images/chat_pane.png)</span>{.rounded-corners width="90%" fig-align="center" fig-alt="Positron Assistant chat modes: Ask, Edit, Agent"}</span>
 <span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="al">![Inline chat view](images/chat_inline.png)</span>{width="90%" fig-align="center" fig-alt="inline chat view of Positron Assistant" style="border-radius: 5px;"}</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="al">![Inline chat view](images/chat_inline.png)</span>{.rounded-corners width="90%" fig-align="center" fig-alt="inline chat view of Positron Assistant" style="border-radius: 5px;"}</span>
 <span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>:::::</span>
 <span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>You can provide Chat mode with additional context (files, variables, R session, etc.) by clicking on the {{&lt; iconify mdi-light:paperclip &gt;}} **Add Context...** button in the Chat pane to give more specific detail in your requests. Dropdown arrows {{&lt; iconify ep:arrow-down &gt;}} will also allow you to choose a mode and model.</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>You can provide context (files, variables, R session, etc.) by clicking on the {{&lt; iconify mdi-light:paperclip &gt;}} **Add Context...** button in the Chat pane to give more specific detail in your requests. Dropdown arrows {{&lt; iconify ep:arrow-down &gt;}} will also allow you to choose a mode and model.</span>
 <span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
@@ -1055,11 +1075,11 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
 <span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>::::: grid</span>
 <span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>::: g-col-6</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>GitHub Copilot currently supports code completion which suggests code and annotation to be autocompleted. Start a line of code and it will automatically suggest completions that you can accept or reject by pressing <span class="in">`tab`</span> to accept or keep typing to ignore.</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>GitHub Copilot currently supports code completion, providing code and comment autocomplete suggestions as you type. You can either accept the completion by pressing <span class="in">`tab`</span> or continue typing to ignore it.</span>
 <span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>::: g-col-6</span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="al">![Inline code completion view](images/code_complete.png)</span>{width="90%" fig-align="center" fig-alt="code completion suggestions from Positron Assistant" style="border-radius: 5px;"}</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="al">![Inline code completion view](images/code_complete.png)</span>{.rounded-corners width="90%" fig-align="center" fig-alt="code completion suggestions from Positron Assistant" style="border-radius: 5px;"}</span>
 <span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>:::::</span>
 <span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
@@ -1073,17 +1093,17 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
 <span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ask</span></span>
 <span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>Ask mode is intended to be used to generate code, answer questions, and help debug. It is the most generally applicable mode and a good place to start. I wanted to see if it could write some code on the popular <span class="in">`mtcars`</span> R data set:</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>Ask mode is intended to be used to generate code, answer questions, and help debug. It is the most generally applicable mode and a good place to t. Let's see what it can do using the popular <span class="in">`mtcars`</span> R data set:</span>
 <span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Generate some exploratory data analysis figures of the mtcars dataset with ggplot2"*</span></span>
 <span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>It responded with some nice R code which I could run directly in the chat before adding into my R script. It included a few different plots that were saved as variables and stitched together to make a <span class="in">`{patchwork}`</span> plot shown in the Plots pane.</span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>It responded with some nice R code which we could run directly in the chat before adding into my R script. It included a few different plots that were saved as variables and stitched together to make a <span class="in">`{patchwork}`</span> plot shown in the Plots pane. The output not only gives you the option to copy the code but also to insert it directly into your script where your cursor is located.</span>
 <span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/chat_ask.png)</span>{width="70%" fig-align="center" fig-alt="mtcars EDA plots generated by Positron Assistant"}</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/chat_ask.png)</span>{.rounded-corners width="70%" fig-align="center" fig-alt="mtcars EDA plots generated by Positron Assistant"}</span>
 <span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>Here is the code it generated, which can be easily transferred into your script or notebook:</span>
 <span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, run = FALSE, eval = FALSE}</span></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.align='center', fig.alt='mtcars EDA plots generated by Positron Assistant'}</span></span>
 <span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
@@ -1127,88 +1147,97 @@ October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/
 <span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 <span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>So far so good! I gave it a well known R dataset and an easy task. I also could have done this in ChatGPT for free (although without the additional context files) and copied and pasted it into my code too though, so it isn't a home run yet.</span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>So far so good! I gave it a well known R dataset and an easy task. I also could have done this on the ChatGPT website for free, but I would not be able to provide the detailed context of my R environment nor quickly insert the changes in my script at the click of a button.</span>
 <span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>Why don't we ask it about the <span class="in">`p1`</span> plot is just generated.</span>
 <span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="fu">### Edit</span></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Interpret p1 for me"*</span></span>
 <span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>Let's say I wanted to change the boxplot fill color to green instead. It would also be nice if the final <span class="in">`ggplot2`</span> object could be saved as its own value and exported as a PNG. We could use *Ask* mode to do this, but *Ask* mode can be a little general at times and focuses more on initial code generation and big picture questions. Because we are trying to fix a small, specific piece of a code already generated, it would be more appropriate to use the *Edit* mode to get more desirable results. *Edit* mode focuses on making acute changes to code already in the code base.</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>It then responded with a short summary on the figure explaining key observations and highlighting trends based on the graph. We did not have to copy and paste an image or provide any additional files. We simply pointed to an object in our R environment and it read the figure. This would be a lot higher friction to complete in a web interface.</span>
 <span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>Let's try the following prompt in *Edit* mode:</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/chat_p1.png)</span>{.rounded-corners width="70%" fig-align="center" fig-alt="p1 plot interpretation from Positron Assistant"}</span>
 <span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Write me code that will change the boxplot fill color to green and save the final plot as a PNG file named mtcars_eda.png."*</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 <span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>The nice this about the results in *Edit* mode is that it only showed me the pieces of code it modified. The results appear to be more focused on the specific changes and less on the general structure like what you get in *Ask* mode.</span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="fu">### Edit</span></span>
 <span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, run = FALSE, eval = FALSE}</span></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Change boxplot fill color to green</span></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"MPG by Cylinder Count"</span>,</span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of Cylinders"</span>,</span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Miles per Gallon"</span></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and save the combined plot</span></span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> p1 <span class="sc">+</span></span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>  p2 <span class="sc">+</span></span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>  p3 <span class="sc">+</span></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Fuel Efficiency Relationships in mtcars Dataset"</span>)</span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>Let's say I wanted to change the boxplot fill color to green instead. It would also be nice if the final <span class="in">`ggplot2`</span> object could be saved as its own value and exported as a PNG. We could use *Ask* mode to do this, but *Ask* mode can be a little general at times and focuses more on initial code generation and big picture questions. *Ask* mode also provides suggestions that you have to copy over or point to where it belongs. Because we are trying to fix a specific piece of a code already generated, it would be more appropriate to use the *Edit* mode which will automatically change it for us. *Edit* mode focuses on making and inserting acute changes to your code base and less on the answering questions/suggesting code like you get in *Ask* mode.</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>Let's try the following prompt in *Edit* mode:</span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Write me code that will change the boxplot fill color to green and save the final plot as a PNG file named mtcars_eda.png."*</span></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, run = FALSE, eval = FALSE}</span></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Change boxplot fill color to green</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"MPG by Cylinder Count"</span>,</span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of Cylinders"</span>,</span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Miles per Gallon"</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PNG</span></span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mtcars_eda.png"</span>, combined_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>)</span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>It successfully gave me *only* the code I needed to change the color and save a PNG to my working directory like I asked it to. Similarly to *Ask* mode, I could have also done this in ChatGPT for free. However, the advantage here is that it has the additional context of my R environment, and I don't need to copy and paste code back and forth to a website, which gives me more accurate results. Let's take a look at where the real power of Positron Assistant shines.</span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="fu">### Agent</span></span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>Finally for the scary part... *Agent* mode essentially lets Positron Assistant take over your IDE and perform tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out tasks you ask it to and take steps it sees as necessary to get you the results. It feels really weird and risky to let it take the reigns like that, but let's try it out anyway. I gave it the following prompt which is more specific and complex than the previous two:</span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Make a short quarto report asking some questions about the data that provides figures and a conclusion. Render it and name it mtcars_report.qmd"*</span></span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>It then responded:</span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a Quarto report that explores some key questions about the mtcars dataset. Here's the content:"*</span></span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>I then watched it generate appropriate code and text inside a file called <span class="in">`mtcars_analysis.qmd`</span> that *it* created. To be fair, it asked me the following prior:</span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a new task to save this as 'mtcars_report.qmd' and render it. You can then open the rendered HTML file to view the complete report. Would you like me to save this file and render it for you?"*</span></span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>After I gave it the thumbs up, it created the quarto file in my working directory and rendered it as an HTML file.</span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/html.png)</span>{width="90%" fig-align="center" fig-alt="Rendered mtcars analysis report"}</span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>Pretty impressive, right? The agent fully took the necessary actions to create a quarto document, execute code, and render the final report without any intervention besides asking if I would like it to continue. *Agent* mode can be used in many different ways to automate repetitive tasks and carry out grunt work on the back burner. It is very powerful and will greatly change how we work with data.</span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a><span class="fu">## Final thoughts</span></span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>It is critical to note that Positron and the LLM's it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is *crucial*. I kept things simple and broad in this demonstration, but you will get much better results if you provide more context and details. One way to do this is to create a <span class="in">`.txt`</span> file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.</span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>Overall, I am feeling both excited and conflicted about the integration of LLMs into IDEs like Positron Assistant. They are remarkably powerful tools that can greatly increase efficiency and productivity, especially for repetitive tasks. You can generate and debug code quickly, carry out time intensive tasks in *Agent* mode, and gain new insights into improving your analytical pipelines.</span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>However, I do see these tools pushing us towards becoming vibecoders where we end up relying heavily on LLMs to execute our work. So much of the learning and joy as an analyst comes from looking deep on Stack Overflow and GitHub for solutions. It teaches you how to think like a programmer, and I am afraid that reliance on these chatbots like Positron Assistant will change the way we work. I think that we just have to move cautiously and be intentional about how we integrate these tools into our day to day.</span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a><span class="fu">### Databot</span></span>
-<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/databot-logo_positronblue.svg)</span>{width="20%" fig-align="center" fig-alt="Positron Assistant logo"}</span>
-<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a>Databot is an experimental feature of Positron Assistant that specializes in data analysis tasks such as data cleaning, visualization, and exploration. I see it as a more *specialized* assistant that helps you crack open you data to get more insights faster. While Positron Assitant can also do this for us as we just saw, databot would be more thorough in data exploration tasks. I encourage you to try it out if you have a paid Anthropic API key as is highly rewarding. It functions quite similar to the Positron Assistant chat, so I chose to exclude a demonstration here for brevity.</span>
-<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and save the combined plot</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> p1 <span class="sc">+</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>  p2 <span class="sc">+</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>  p3 <span class="sc">+</span></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Fuel Efficiency Relationships in mtcars Dataset"</span>)</span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PNG</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mtcars_eda.png"</span>, combined_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>)</span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>It successfully insterted *only* the code I needed to change the color and save a PNG to my working directory like I asked it to. The nice thing is that it inserted the code changes in my script by itself (which I can reject or accept). We already can see major benefits in using Positron Assistant to help us fix code compared to nteractiving with LLMs on the web. Now, let's take a look at where the real power of Positron Assistant shines.</span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### Agent</span></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>Finally for the scary part... *Agent* mode essentially lets Positron Assistant take over your IDE and perform a series of tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out necessary steps to get you the results you asked for. We will give it the following prompt which is more specific and complex than the previous two:</span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Make a short quarto report asking some questions about the data that provides figures and a conclusion. Render it and name it mtcars_report.qmd"*</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>It then responded:</span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a Quarto report that explores some key questions about the mtcars dataset. Here's the content:"*</span></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>I then watched it generate appropriate code and text inside a file called <span class="in">`mtcars_analysis.qmd`</span> that *it* created. To be fair, it asked me the following prior:</span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a new task to save this as 'mtcars_report.qmd' and render it. You can then open the rendered HTML file to view the complete report. Would you like me to save this file and render it for you?"*</span></span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>After I gave it the thumbs up, it created the quarto file in my working directory and rendered it as an HTML file.</span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/html.png)</span>{.rounded-corners width="90%" fig-align="center" fig-alt="Rendered mtcars analysis report"}</span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>Pretty impressive, right? The agent fully took the necessary actions to create a quarto document, execute code, and render the final report without any intervention besides asking if I would like it to continue. *Agent* mode can be used in many different ways to automate repetitive tasks and carry out grunt work on the back burner. It is very powerful and will greatly change how we work with data.</span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Final thoughts</span></span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>It is critical to note that Positron and the LLM's it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is *crucial*. I kept things short in this demonstration for simplicity, but you will get much better results if you provide more context and detail to the LLM. One way to do this is to create a <span class="in">`.txt`</span> file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.</span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a>Overall, I am feeling both excited and conflicted about the integration of LLMs into IDEs like Positron Assistant. They are remarkably powerful tools that can greatly increase efficiency and productivity, especially for repetitive tasks. You can generate and debug code quickly, carry out time intensive tasks in *Agent* mode, and gain new insights into improving your analytical pipelines.</span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>However, I do see these tools pushing us towards becoming vibecoders where we end up relying heavily on LLMs to execute our work. So much of the learning and joy as an analyst comes from looking deep on Stack Overflow and GitHub for solutions. It teaches you how to think like a programmer, and I am afraid that reliance on these chatbots like Positron Assistant will change the way we work. I think that we just have to move cautiously and be intentional about how we integrate these tools into our day to day.</span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other Resources</span></span>
 <span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a>Make sure you have Positron Assistant enabled to use Databot. Install Databot by choosing the Extension view from the activity bar on the left. Search for *Databot* and install it. Once installed, open the settings icon and acknowledge *Databot: Research Preview Acknowldgement*. Read more about Databot <span class="co">[</span><span class="ot">here</span><span class="co">](https://positron.posit.co/databot.html)</span>.</span>
-<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### Databot</span></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/databot-logo_positronblue.svg)</span>{width="20%" fig-align="center" fig-alt="Positron Assistant logo"}</span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a>Databot is an experimental feature of Positron Assistant that specializes in data analysis tasks such as data cleaning, visualization, and exploration. I see it as a more *specialized* assistant that helps you crack open you data to get more insights faster. While Positron Assitant can also do this for us as we just saw, databot would be more thorough in data exploration tasks. I encourage you to try it out if you have a paid Anthropic API key as is highly rewarding. It functions quite similar to the Positron Assistant chat, so I chose to exclude a demonstration here for brevity.</span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>Make sure you have Positron Assistant enabled to use Databot. Install Databot by choosing the Extension view from the activity bar on the left. Search for *Databot* and install it. Once installed, open the settings icon and acknowledge *Databot: Research Preview Acknowldgement*. Read more about Databot <span class="co">[</span><span class="ot">here</span><span class="co">](https://positron.posit.co/databot.html)</span>.</span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

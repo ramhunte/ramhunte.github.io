@@ -1,0 +1,25 @@
+<!-- Image banner at top -->
+
+<div><img src="images/ocean_banner.jpg" alt="Blue ocean banner" class="banner-image"/><p class="banner-caption">Projects</p></div>
+
+**Current**
+
+::: {style="text-align: center;"}
+[![](images/fisheye.png){.float-right-image-wide}](https://connect.fisheries.noaa.gov/fisheye/)
+
+[![](images/purcprod.png){.float-right-image-wide}](https://connect.fisheries.noaa.gov/purch_prod/)
+:::
+
+I build Shiny dashboards and program data pipelines in R and SQL, supporting a team of economists at NOAA’s [Northwest Fisheries Science Center](https://www.fisheries.noaa.gov/about/northwest-fisheries-science-center). I ensure that stakeholders, including federal policymakers, scientists, and the public, can engage with public data and understand how fisheries are evolving in response to ecological and regulatory changes. Click on the images to see some of the tools I have made for NOAA.
+
+As a freelancer, I pick up side contracts to help companies and organizations understand their data. I recently built a Shiny application for [Comunidad y Biodiversidad](https://cobi.org.mx/en/), a non-profit based in Mexico that supports small scale fisheries. The app serves as an evaluation tool that enables users to assess the effectiveness of marine protected area across Mexico. Check it out [here](https://innovacionazul.shinyapps.io/fish_refuge_app/).
+
+<br>
+
+**Previous**
+
+<a href="https://ramhunte.shinyapps.io/noaa_shiny/" target="_blank"> <img src="images/stilly.png" alt="Stillaguamish river basin" class="float-right-image"/> </a>
+
+At Bren, I spearheaded the development of a spatial model to estimate riparian habitat restoration costs and assess ecological benefits to endangered salmonids in WA state for NOAA. I oversaw the team GitHub repo, analysis, and designed an interactive R Shiny dashboard to communicate our findings to NOAA restoration managers and the public [here](https://ramhunte.shinyapps.io/noaa_shiny/).
+
+During an internship with [The Nature Conservancy](https://www.nature.org/en-us/), I led a field based research project to evaluate biosecurity risks on the Channel Islands and help strengthen existing protocols. I leveraged statistical modeling and data visualizations to identify potential weaknesses with TNC's established systems. The findings revealed key vulnerabilities and provided actionable recommendations to TNC management. I mentored an undergaduate throughout the process and presented at the California Islands Symposium and the Point Conception Institute Symposium, contributing to the efforts of habitat conservation efforts among the Central Coast.
