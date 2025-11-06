@@ -20,7 +20,7 @@ My favorite part about my work is helping clients bring their data to life. I do
 
 <hr>
 
-My journey in environmental data began at the University of California, Santa Cruz, where I studied the freshwater stream insect communities across California and Puerto Rico. Desipite my love for fieldwork, I quickly gravitated to running statistics and working with the data in R. I wanted to dive deeper into these skills, so I continued my pursuit of knowledge at the [Bren School](https://bren.ucsb.edu/) at UC Santa Barbara where I earned a **Master’s in Environmental Science and Management** with a focus in Data Science. Extensive technical coursework and project experience with NOAA and TNC showed me really how vast and exciting the world of data science really is. Today, I work as a contract Data Analyst at [NOAA Fisheries](https://www.fisheries.noaa.gov/) and freelance data scientist where I get to exercise my passion for data every day and share it with others.
+My journey in environmental data began at the University of California, Santa Cruz, where I studied freshwater insect communities across California and Puerto Rico. Desipite my love for fieldwork, I quickly gravitated to running statistics and working with the data in R. I wanted to dive deeper into these skills, so I continued my pursuit of knowledge at the [Bren School](https://bren.ucsb.edu/) at UC Santa Barbara where I earned a **Master’s in Environmental Science and Management** with a focus in Data Science. Extensive technical coursework and project experience with NOAA and TNC showed me really how vast and exciting the world of data science really is. Today, I work as a contract Data Analyst at [NOAA Fisheries](https://www.fisheries.noaa.gov/) and freelance data scientist where I get to exercise my passion for data every day and share it with others.
 
 <br>
 
@@ -49,7 +49,7 @@ University of California, Santa Barbara
 :::
 
 ::: box-text
-{{< iconify wpf:diploma-1 size=lg >}} **Masters in Environmental Science and Management** Sept 2022 - June 2024
+{{< iconify wpf:diploma-1 size=lg >}} **Master's in Environmental Science and Management** Sept 2022 - June 2024
 :::
 
 <br>
