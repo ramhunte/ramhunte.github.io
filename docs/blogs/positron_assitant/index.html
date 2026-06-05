@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,6 +12,9 @@
 
 <title>An Introduction to Positron Assistant</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-df45b6ebc5e8c83ddb36eb962042f2fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-14aeaabcebbc76ccf98e964192cc1776.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -118,7 +121,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/logo.png" alt="" class="navbar-logo">
+    <img src="../../images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../images/logo.png" alt="" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -263,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Install and Enable
+<span class="screen-reader-only">Note</span>Install and Enable
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -360,7 +364,7 @@ Tip
 </div>
 <p>Here is the code it generated, which can be easily transferred into your script or notebook:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create visualization of relationships between mpg and key variables</span></span>
@@ -394,7 +398,7 @@ Tip
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fuel Efficiency Relationships in mtcars Dataset"</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -438,7 +442,7 @@ Tip
 <p><em>“Write me code that will change the boxplot fill color to green and save the final plot as a PNG file named mtcars_eda.png.”</em></p>
 </blockquote>
 <div class="cell" data-run="false">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change boxplot fill color to green</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change boxplot fill color to green</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
@@ -455,9 +459,9 @@ Tip
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Fuel Efficiency Relationships in mtcars Dataset"</span>)</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PNG</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mtcars_eda.png"</span>, combined_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mtcars_eda.png"</span>, combined_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>It successfully insterted <em>only</em> the code I needed to change the color and save a PNG to my working directory like I asked it to. The nice thing is that it inserted the code changes in my script by itself (which I can reject or accept). We already can see major benefits in using Positron Assistant to help us fix code compared to nteractiving with LLMs on the web. Now, let’s take a look at where the real power of Positron Assistant shines.</p>
+<p>It successfully inserted <em>only</em> the code I needed to change the color and save a PNG to my working directory like I asked it to. The nice thing is that it inserted the code changes in my script by itself (which I can reject or accept) without me having to copy it or tell it where it goes. We already can see major benefits in using Positron Assistant to help us fix code compared to interacting with LLMs on the web. Now, let’s take a look at where the real power of Positron Assistant shines.</p>
 <p><br></p>
 </section>
 <section id="agent" class="level3">
@@ -507,7 +511,7 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Installation
+<span class="screen-reader-only">Note</span>Installation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -527,7 +531,7 @@ Installation
   date = {2025-10-30},
   url = {</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-hunter2025" class="csl-entry quarto-appendix-citeas" role="listitem">
 Hunter, Raymond. 2025. <span>“An Introduction to Positron
-Assistant.”</span> October 30, 2025. <a href="<https://ramhunte.github.io/blogs/positron_assistant/">&lt;https://ramhunte.github.io/blogs/positron_assistant/</a>.
+Assistant.”</span> October 30. <a href="<https://ramhunte.github.io/blogs/positron_assistant/">&lt;https://ramhunte.github.io/blogs/positron_assistant/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -573,13 +577,14 @@ Assistant.”</span> October 30, 2025. <a href="<https://ramhunte.github.io/blog
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -972,7 +977,7 @@ Assistant.”</span> October 30, 2025. <a href="<https://ramhunte.github.io/blog
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "An Introduction to Positron Assistant"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Coding more efficiently with LLMs in Posit's new IDE"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
@@ -1163,81 +1168,80 @@ Assistant.”</span> October 30, 2025. <a href="<https://ramhunte.github.io/blog
 <span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>Let's say I wanted to change the boxplot fill color to green instead. It would also be nice if the final <span class="in">`ggplot2`</span> object could be saved as its own value and exported as a PNG. We could use *Ask* mode to do this, but *Ask* mode can be a little general at times and focuses more on initial code generation and big picture questions. *Ask* mode also provides suggestions that you have to copy over or point to where it belongs. Because we are trying to fix a specific piece of a code already generated, it would be more appropriate to use the *Edit* mode which will automatically change it for us. *Edit* mode focuses on making and inserting acute changes to your code base and less on the answering questions/suggesting code like you get in *Ask* mode.</span>
 <span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>Let's try the following prompt in *Edit* mode:</span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Write me code that will change the boxplot fill color to green and save the final plot as a PNG file named mtcars_eda.png."*</span></span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, run = FALSE, eval = FALSE}</span></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Change boxplot fill color to green</span></span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"MPG by Cylinder Count"</span>,</span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of Cylinders"</span>,</span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Miles per Gallon"</span></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and save the combined plot</span></span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> p1 <span class="sc">+</span></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>  p2 <span class="sc">+</span></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>  p3 <span class="sc">+</span></span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Fuel Efficiency Relationships in mtcars Dataset"</span>)</span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PNG</span></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mtcars_eda.png"</span>, combined_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>)</span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>It successfully insterted *only* the code I needed to change the color and save a PNG to my working directory like I asked it to. The nice thing is that it inserted the code changes in my script by itself (which I can reject or accept). We already can see major benefits in using Positron Assistant to help us fix code compared to nteractiving with LLMs on the web. Now, let's take a look at where the real power of Positron Assistant shines.</span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### Agent</span></span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>Finally for the scary part... *Agent* mode essentially lets Positron Assistant take over your IDE and perform a series of tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out necessary steps to get you the results you asked for. We will give it the following prompt which is more specific and complex than the previous two:</span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Make a short quarto report asking some questions about the data that provides figures and a conclusion. Render it and name it mtcars_report.qmd"*</span></span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>It then responded:</span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a Quarto report that explores some key questions about the mtcars dataset. Here's the content:"*</span></span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>I then watched it generate appropriate code and text inside a file called <span class="in">`mtcars_analysis.qmd`</span> that *it* created. To be fair, it asked me the following prior:</span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a new task to save this as 'mtcars_report.qmd' and render it. You can then open the rendered HTML file to view the complete report. Would you like me to save this file and render it for you?"*</span></span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>After I gave it the thumbs up, it created the quarto file in my working directory and rendered it as an HTML file.</span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/html.png)</span>{.rounded-corners width="90%" fig-align="center" fig-alt="Rendered mtcars analysis report"}</span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>Pretty impressive, right? The agent fully took the necessary actions to create a quarto document, execute code, and render the final report without any intervention besides asking if I would like it to continue. *Agent* mode can be used in many different ways to automate repetitive tasks and carry out grunt work on the back burner. It is very powerful and will greatly change how we work with data.</span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Final thoughts</span></span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>It is critical to note that Positron and the LLM's it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is *crucial*. I kept things short in this demonstration for simplicity, but you will get much better results if you provide more context and detail to the LLM. One way to do this is to create a <span class="in">`.txt`</span> file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.</span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a>Overall, I am feeling both excited and conflicted about the integration of LLMs into IDEs like Positron Assistant. They are remarkably powerful tools that can greatly increase efficiency and productivity, especially for repetitive tasks. You can generate and debug code quickly, carry out time intensive tasks in *Agent* mode, and gain new insights into improving your analytical pipelines.</span>
-<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>However, I do see these tools pushing us towards becoming vibecoders where we end up relying heavily on LLMs to execute our work. So much of the learning and joy as an analyst comes from looking deep on Stack Overflow and GitHub for solutions. It teaches you how to think like a programmer, and I am afraid that reliance on these chatbots like Positron Assistant will change the way we work. I think that we just have to move cautiously and be intentional about how we integrate these tools into our day to day.</span>
-<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other Resources</span></span>
-<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a><span class="fu">### Databot</span></span>
-<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/databot-logo_positronblue.svg)</span>{width="20%" fig-align="center" fig-alt="Positron Assistant logo"}</span>
-<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a>Databot is an experimental feature of Positron Assistant that specializes in data analysis tasks such as data cleaning, visualization, and exploration. I see it as a more *specialized* assistant that helps you crack open you data to get more insights faster. While Positron Assitant can also do this for us as we just saw, databot would be more thorough in data exploration tasks. I encourage you to try it out if you have a paid Anthropic API key as is highly rewarding. It functions quite similar to the Positron Assistant chat, so I chose to exclude a demonstration here for brevity.</span>
-<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
-<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>Make sure you have Positron Assistant enabled to use Databot. Install Databot by choosing the Extension view from the activity bar on the left. Search for *Databot* and install it. Once installed, open the settings icon and acknowledge *Databot: Research Preview Acknowldgement*. Read more about Databot <span class="co">[</span><span class="ot">here</span><span class="co">](https://positron.posit.co/databot.html)</span>.</span>
-<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>Let's try the following prompt in *Edit* mode:</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Write me code that will change the boxplot fill color to green and save the final plot as a PNG file named mtcars_eda.png."*</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, run = FALSE, eval = FALSE}</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Change boxplot fill color to green</span></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"green"</span>) <span class="sc">+</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"MPG by Cylinder Count"</span>,</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of Cylinders"</span>,</span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Miles per Gallon"</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and save the combined plot</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">&lt;-</span> p1 <span class="sc">+</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>  p2 <span class="sc">+</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>  p3 <span class="sc">+</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="st">"Fuel Efficiency Relationships in mtcars Dataset"</span>)</span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PNG</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"mtcars_eda.png"</span>, combined_plot, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>)</span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>It successfully inserted *only* the code I needed to change the color and save a PNG to my working directory like I asked it to. The nice thing is that it inserted the code changes in my script by itself (which I can reject or accept) without me having to copy it or tell it where it goes. We already can see major benefits in using Positron Assistant to help us fix code compared to interacting with LLMs on the web. Now, let's take a look at where the real power of Positron Assistant shines.</span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a><span class="fu">### Agent</span></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>Finally for the scary part... *Agent* mode essentially lets Positron Assistant take over your IDE and perform a series of tasks autonomously upon your approval. It acts like a highly efficient coworker who will carry out necessary steps to get you the results you asked for. We will give it the following prompt which is more specific and complex than the previous two:</span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"Make a short quarto report asking some questions about the data that provides figures and a conclusion. Render it and name it mtcars_report.qmd"*</span></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>It then responded:</span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a Quarto report that explores some key questions about the mtcars dataset. Here's the content:"*</span></span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>I then watched it generate appropriate code and text inside a file called <span class="in">`mtcars_analysis.qmd`</span> that *it* created. To be fair, it asked me the following prior:</span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *"I'll create a new task to save this as 'mtcars_report.qmd' and render it. You can then open the rendered HTML file to view the complete report. Would you like me to save this file and render it for you?"*</span></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>After I gave it the thumbs up, it created the quarto file in my working directory and rendered it as an HTML file.</span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/html.png)</span>{.rounded-corners width="90%" fig-align="center" fig-alt="Rendered mtcars analysis report"}</span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>Pretty impressive, right? The agent fully took the necessary actions to create a quarto document, execute code, and render the final report without any intervention besides asking if I would like it to continue. *Agent* mode can be used in many different ways to automate repetitive tasks and carry out grunt work on the back burner. It is very powerful and will greatly change how we work with data.</span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Final thoughts</span></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a>It is critical to note that Positron and the LLM's it relies on are not perfect. They hallucinate, make simple errors, and can take a lot of iteration to yield the results you want. That is why adding context and being as specific as possible in your requests is *crucial*. I kept things short in this demonstration for simplicity, but you will get much better results if you provide more context and detail to the LLM. One way to do this is to create a <span class="in">`.txt`</span> file in your directory that gives specific instructions to Positron Assistant on how you want it to behave. You can then attach this file as context to your chat.</span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a>Overall, I am feeling both excited and conflicted about the integration of LLMs into IDEs like Positron Assistant. They are remarkably powerful tools that can greatly increase efficiency and productivity, especially for repetitive tasks. You can generate and debug code quickly, carry out time intensive tasks in *Agent* mode, and gain new insights into improving your analytical pipelines.</span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a>However, I do see these tools pushing us towards becoming vibecoders where we end up relying heavily on LLMs to execute our work. So much of the learning and joy as an analyst comes from looking deep on Stack Overflow and GitHub for solutions. It teaches you how to think like a programmer, and I am afraid that reliance on these chatbots like Positron Assistant will change the way we work. I think that we just have to move cautiously and be intentional about how we integrate these tools into our day to day.</span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other Resources</span></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a><span class="fu">### Databot</span></span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/databot-logo_positronblue.svg)</span>{width="20%" fig-align="center" fig-alt="Positron Assistant logo"}</span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>Databot is an experimental feature of Positron Assistant that specializes in data analysis tasks such as data cleaning, visualization, and exploration. I see it as a more *specialized* assistant that helps you crack open you data to get more insights faster. While Positron Assitant can also do this for us as we just saw, databot would be more thorough in data exploration tasks. I encourage you to try it out if you have a paid Anthropic API key as is highly rewarding. It functions quite similar to the Positron Assistant chat, so I chose to exclude a demonstration here for brevity.</span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installation</span></span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a>Make sure you have Positron Assistant enabled to use Databot. Install Databot by choosing the Extension view from the activity bar on the left. Search for *Databot* and install it. Once installed, open the settings icon and acknowledge *Databot: Research Preview Acknowldgement*. Read more about Databot <span class="co">[</span><span class="ot">here</span><span class="co">](https://positron.posit.co/databot.html)</span>.</span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

@@ -2,6 +2,8 @@
   {
     "listing": "/blogs.html",
     "items": [
+      "/blogs/shiny_aesthetics/index.html",
+      "/blogs/shiny_aesthetics_css/index.html",
       "/blogs/positron_assitant/index.html",
       "/blogs/targets_wflow/index.html",
       "/blogs/water_class/index.html",
